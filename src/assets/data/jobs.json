@@ -1,0 +1,295 @@
+{
+  "jobs": [
+    {
+      "id": "senior-software-engineer",
+      "title": "Senior Software Engineer",
+      "department": "Engineering",
+      "location": "San Francisco, CA",
+      "type": "Full-time",
+      "remote": true,
+      "experience": "5+ years",
+      "salary": "$120,000 - $160,000",
+      "posted": "2024-01-15",
+      "description": "We're looking for a Senior Software Engineer to join our growing engineering team. You'll work on cutting-edge technology solutions and help build scalable systems that power our client's digital transformations.",
+      "responsibilities": [
+        "Design and implement scalable software solutions",
+        "Collaborate with cross-functional teams to deliver high-quality products",
+        "Mentor junior developers and contribute to technical architecture decisions",
+        "Participate in code reviews and maintain coding standards",
+        "Work with modern technologies and cloud platforms"
+      ],
+      "requirements": [
+        "5+ years of software development experience",
+        "Strong proficiency in JavaScript/TypeScript, Python, or Java",
+        "Experience with cloud platforms (AWS, Azure, or GCP)",
+        "Knowledge of microservices architecture and DevOps practices",
+        "Excellent problem-solving and communication skills",
+        "Bachelor's degree in Computer Science or related field"
+      ],
+      "preferred": [
+        "Experience with React, Node.js, or similar frameworks",
+        "Knowledge of containerization (Docker, Kubernetes)",
+        "Experience with CI/CD pipelines",
+        "Understanding of database design and optimization",
+        "Previous consulting or client-facing experience"
+      ],
+      "benefits": [
+        "Competitive salary and equity package",
+        "Comprehensive health, dental, and vision insurance",
+        "Flexible work arrangements and remote options",
+        "Professional development and training opportunities",
+        "Generous PTO and paid holidays",
+        "401(k) with company match"
+      ],
+      "tags": ["Software Engineering", "Full-Stack", "Cloud", "JavaScript", "Python"]
+    },
+    {
+      "id": "devops-engineer",
+      "title": "DevOps Engineer",
+      "department": "Engineering",
+      "location": "Remote",
+      "type": "Full-time",
+      "remote": true,
+      "experience": "3+ years",
+      "salary": "$100,000 - $140,000",
+      "posted": "2024-01-10",
+      "description": "Join our DevOps team to help build and maintain robust, scalable infrastructure that supports our client's applications and services. You'll work with cutting-edge cloud technologies and automation tools.",
+      "responsibilities": [
+        "Design and implement CI/CD pipelines",
+        "Manage cloud infrastructure using Infrastructure as Code",
+        "Monitor and optimize system performance and reliability",
+        "Implement security best practices and compliance requirements",
+        "Collaborate with development teams to improve deployment processes"
+      ],
+      "requirements": [
+        "3+ years of DevOps or infrastructure engineering experience",
+        "Strong knowledge of AWS, Azure, or GCP",
+        "Experience with containerization (Docker, Kubernetes)",
+        "Proficiency in scripting languages (Python, Bash, PowerShell)",
+        "Knowledge of Infrastructure as Code (Terraform, CloudFormation)",
+        "Understanding of networking and security principles"
+      ],
+      "preferred": [
+        "Experience with monitoring tools (Prometheus, Grafana, ELK stack)",
+        "Knowledge of GitOps practices",
+        "Experience with service mesh technologies",
+        "Understanding of microservices architecture",
+        "Certifications in cloud platforms"
+      ],
+      "benefits": [
+        "Competitive salary and equity package",
+        "Comprehensive health, dental, and vision insurance",
+        "Flexible work arrangements and remote options",
+        "Professional development and training opportunities",
+        "Generous PTO and paid holidays",
+        "401(k) with company match"
+      ],
+      "tags": ["DevOps", "Cloud", "Automation", "Kubernetes", "AWS"]
+    },
+    {
+      "id": "technical-recruiter",
+      "title": "Technical Recruiter",
+      "department": "Talent Acquisition",
+      "location": "New York, NY",
+      "type": "Full-time",
+      "remote": true,
+      "experience": "3+ years",
+      "salary": "$80,000 - $110,000",
+      "posted": "2024-01-08",
+      "description": "We're seeking a Technical Recruiter to help us find and attract top technology talent. You'll work closely with hiring managers and candidates to ensure successful placements and build strong relationships.",
+      "responsibilities": [
+        "Source and recruit top technology professionals",
+        "Manage the full recruitment lifecycle from sourcing to placement",
+        "Build and maintain relationships with candidates and clients",
+        "Conduct technical interviews and assessments",
+        "Develop and implement recruitment strategies",
+        "Track and report on recruitment metrics"
+      ],
+      "requirements": [
+        "3+ years of technical recruitment experience",
+        "Strong understanding of technology roles and skills",
+        "Experience with ATS and recruitment tools",
+        "Excellent communication and interpersonal skills",
+        "Ability to assess technical skills and cultural fit",
+        "Bachelor's degree in Human Resources or related field"
+      ],
+      "preferred": [
+        "Experience in technology staffing or consulting",
+        "Knowledge of emerging technology trends",
+        "Experience with technical assessment tools",
+        "Understanding of employment law and compliance",
+        "Network of technology professionals"
+      ],
+      "benefits": [
+        "Competitive salary and commission structure",
+        "Comprehensive health, dental, and vision insurance",
+        "Flexible work arrangements and remote options",
+        "Professional development and training opportunities",
+        "Generous PTO and paid holidays",
+        "401(k) with company match"
+      ],
+      "tags": ["Recruitment", "Talent Acquisition", "Technology", "HR", "Sourcing"]
+    },
+    {
+      "id": "senior-consultant",
+      "title": "Senior Technology Consultant",
+      "department": "Consulting",
+      "location": "Chicago, IL",
+      "type": "Full-time",
+      "remote": true,
+      "experience": "7+ years",
+      "salary": "$130,000 - $180,000",
+      "posted": "2024-01-05",
+      "description": "Join our consulting team to help clients navigate digital transformation and technology strategy. You'll work with senior executives to develop and implement technology solutions that drive business value.",
+      "responsibilities": [
+        "Lead technology strategy and digital transformation projects",
+        "Conduct technology assessments and provide recommendations",
+        "Develop technology roadmaps and implementation plans",
+        "Manage client relationships and project delivery",
+        "Mentor junior consultants and contribute to thought leadership",
+        "Stay current with technology trends and best practices"
+      ],
+      "requirements": [
+        "7+ years of technology consulting or related experience",
+        "Strong understanding of enterprise technology architecture",
+        "Experience with digital transformation and cloud migration",
+        "Excellent client relationship and project management skills",
+        "Strong analytical and problem-solving abilities",
+        "MBA or advanced degree in technology or business"
+      ],
+      "preferred": [
+        "Experience in specific industries (financial services, healthcare, etc.)",
+        "Knowledge of emerging technologies (AI, blockchain, IoT)",
+        "Experience with change management and organizational transformation",
+        "Published thought leadership or speaking experience",
+        "Certifications in relevant technologies or methodologies"
+      ],
+      "benefits": [
+        "Competitive salary and performance bonuses",
+        "Comprehensive health, dental, and vision insurance",
+        "Flexible work arrangements and remote options",
+        "Professional development and training opportunities",
+        "Generous PTO and paid holidays",
+        "401(k) with company match"
+      ],
+      "tags": ["Consulting", "Digital Transformation", "Strategy", "Technology", "Leadership"]
+    },
+    {
+      "id": "integration-developer",
+      "title": "Integration Developer",
+      "department": "Integration Services",
+      "location": "Austin, TX",
+      "type": "Full-time",
+      "remote": true,
+      "experience": "4+ years",
+      "salary": "$110,000 - $150,000",
+      "posted": "2024-01-03",
+      "description": "Help us build seamless integrations that connect disparate systems and automate business processes. You'll work with modern integration technologies and cloud platforms to deliver robust solutions.",
+      "responsibilities": [
+        "Design and develop API integrations and middleware solutions",
+        "Implement data transformation and ETL processes",
+        "Work with various integration platforms and tools",
+        "Ensure security and compliance in integration solutions",
+        "Collaborate with clients to understand integration requirements",
+        "Maintain and optimize existing integration systems"
+      ],
+      "requirements": [
+        "4+ years of integration development experience",
+        "Strong knowledge of REST APIs, GraphQL, and web services",
+        "Experience with integration platforms (MuleSoft, Boomi, etc.)",
+        "Proficiency in programming languages (Java, Python, JavaScript)",
+        "Understanding of data formats (JSON, XML, CSV)",
+        "Knowledge of cloud platforms and services"
+      ],
+      "preferred": [
+        "Experience with enterprise systems (SAP, Salesforce, etc.)",
+        "Knowledge of message queues and event-driven architecture",
+        "Experience with API management and gateway solutions",
+        "Understanding of data governance and security",
+        "Certifications in integration platforms"
+      ],
+      "benefits": [
+        "Competitive salary and equity package",
+        "Comprehensive health, dental, and vision insurance",
+        "Flexible work arrangements and remote options",
+        "Professional development and training opportunities",
+        "Generous PTO and paid holidays",
+        "401(k) with company match"
+      ],
+      "tags": ["Integration", "API Development", "ETL", "Middleware", "Cloud"]
+    },
+    {
+      "id": "marketing-manager",
+      "title": "Marketing Manager",
+      "department": "Marketing",
+      "location": "Remote",
+      "type": "Full-time",
+      "remote": true,
+      "experience": "5+ years",
+      "salary": "$90,000 - $130,000",
+      "posted": "2024-01-01",
+      "description": "Lead our marketing efforts to build brand awareness and generate qualified leads. You'll develop and execute marketing strategies that position SourceCloud as a leader in technology staffing and consulting.",
+      "responsibilities": [
+        "Develop and execute comprehensive marketing strategies",
+        "Manage digital marketing campaigns and lead generation",
+        "Create compelling content for various marketing channels",
+        "Analyze marketing performance and optimize campaigns",
+        "Manage relationships with marketing agencies and vendors",
+        "Collaborate with sales team to align marketing and sales efforts"
+      ],
+      "requirements": [
+        "5+ years of B2B marketing experience",
+        "Strong understanding of digital marketing channels and tools",
+        "Experience with marketing automation and CRM systems",
+        "Excellent written and verbal communication skills",
+        "Analytical mindset with ability to measure and optimize performance",
+        "Bachelor's degree in Marketing or related field"
+      ],
+      "preferred": [
+        "Experience in technology or professional services marketing",
+        "Knowledge of account-based marketing strategies",
+        "Experience with content marketing and thought leadership",
+        "Understanding of SEO and SEM best practices",
+        "Experience with marketing analytics and reporting tools"
+      ],
+      "benefits": [
+        "Competitive salary and performance bonuses",
+        "Comprehensive health, dental, and vision insurance",
+        "Flexible work arrangements and remote options",
+        "Professional development and training opportunities",
+        "Generous PTO and paid holidays",
+        "401(k) with company match"
+      ],
+      "tags": ["Marketing", "Digital Marketing", "B2B", "Content Marketing", "Lead Generation"]
+    }
+  ],
+  "departments": [
+    "Engineering",
+    "Talent Acquisition",
+    "Consulting",
+    "Integration Services",
+    "Marketing",
+    "Sales",
+    "Operations"
+  ],
+  "locations": [
+    "San Francisco, CA",
+    "New York, NY",
+    "Chicago, IL",
+    "Austin, TX",
+    "Remote"
+  ],
+  "jobTypes": [
+    "Full-time",
+    "Part-time",
+    "Contract",
+    "Internship"
+  ],
+  "stats": {
+    "totalJobs": 6,
+    "remoteJobs": 5,
+    "fullTimeJobs": 6,
+    "averageSalary": "$105,000",
+    "newThisWeek": 2
+  }
+}

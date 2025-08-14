@@ -1,0 +1,187 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "clientName": "Sarah Johnson",
+      "clientTitle": "CTO",
+      "company": "TechFlow Solutions",
+      "companyLogo": "/images/clients/techflow-logo.png",
+      "rating": 5,
+      "testimonial": "SourceCloud transformed our technology hiring process. They found us exceptional developers who not only had the technical skills but also fit perfectly with our company culture. Our development velocity increased by 40% within the first quarter.",
+      "service": "Technology Staffing",
+      "industry": "Technology",
+      "projectType": "Full-stack Development Team",
+      "duration": "6 months",
+      "results": [
+        "40% increase in development velocity",
+        "Reduced time-to-hire by 60%",
+        "95% retention rate after 12 months"
+      ],
+      "image": "/images/testimonials/sarah-johnson.jpg",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "clientName": "Michael Chen",
+      "clientTitle": "VP of Engineering",
+      "company": "HealthTech Innovations",
+      "companyLogo": "/images/clients/healthtech-logo.png",
+      "rating": 5,
+      "testimonial": "The IT consulting services from SourceCloud were invaluable during our digital transformation. Their strategic guidance helped us modernize our infrastructure and implement DevOps practices that reduced our deployment time from days to hours.",
+      "service": "IT Consulting",
+      "industry": "Healthcare",
+      "projectType": "Digital Transformation",
+      "duration": "12 months",
+      "results": [
+        "Deployment time reduced from days to hours",
+        "30% reduction in infrastructure costs",
+        "Improved system reliability by 99.9%"
+      ],
+      "image": "/images/testimonials/michael-chen.jpg",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "clientName": "Emily Rodriguez",
+      "clientTitle": "Operations Director",
+      "company": "Global Manufacturing Corp",
+      "companyLogo": "/images/clients/gmc-logo.png",
+      "rating": 5,
+      "testimonial": "SourceCloud's integration services connected our legacy ERP system with modern cloud applications seamlessly. The automation they implemented saved us 20 hours per week in manual data entry and eliminated costly errors.",
+      "service": "Integration Services",
+      "industry": "Manufacturing",
+      "projectType": "System Integration",
+      "duration": "8 months",
+      "results": [
+        "20 hours saved per week in manual processes",
+        "100% elimination of data entry errors",
+        "Real-time data synchronization achieved"
+      ],
+      "image": "/images/testimonials/emily-rodriguez.jpg",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "clientName": "David Thompson",
+      "clientTitle": "IT Director",
+      "company": "Financial Services Group",
+      "companyLogo": "/images/clients/fsg-logo.png",
+      "rating": 5,
+      "testimonial": "Working with SourceCloud on our cybersecurity staffing needs was exceptional. They found us senior security engineers who helped us implement robust security protocols and achieve SOC 2 compliance within 6 months.",
+      "service": "Technology Staffing",
+      "industry": "Financial Services",
+      "projectType": "Cybersecurity Team",
+      "duration": "6 months",
+      "results": [
+        "Achieved SOC 2 compliance in 6 months",
+        "Zero security incidents since implementation",
+        "Reduced security audit findings by 80%"
+      ],
+      "image": "/images/testimonials/david-thompson.jpg",
+      "featured": false
+    },
+    {
+      "id": 5,
+      "clientName": "Lisa Wang",
+      "clientTitle": "Chief Digital Officer",
+      "company": "Retail Dynamics",
+      "companyLogo": "/images/clients/retail-dynamics-logo.png",
+      "rating": 5,
+      "testimonial": "SourceCloud's consulting team helped us develop a comprehensive e-commerce strategy that increased our online sales by 150%. Their expertise in digital transformation was exactly what we needed to compete in the modern retail landscape.",
+      "service": "IT Consulting",
+      "industry": "Retail",
+      "projectType": "E-commerce Strategy",
+      "duration": "10 months",
+      "results": [
+        "150% increase in online sales",
+        "Improved customer experience scores",
+        "Reduced cart abandonment by 25%"
+      ],
+      "image": "/images/testimonials/lisa-wang.jpg",
+      "featured": false
+    },
+    {
+      "id": 6,
+      "clientName": "Robert Kim",
+      "clientTitle": "Systems Administrator",
+      "company": "Government Agency",
+      "companyLogo": "/images/clients/gov-agency-logo.png",
+      "rating": 5,
+      "testimonial": "SourceCloud's integration services helped us modernize our citizen portal by connecting multiple government databases. The API development was flawless, and the documentation was comprehensive. Our citizens now have a seamless experience accessing government services.",
+      "service": "Integration Services",
+      "industry": "Government",
+      "projectType": "Citizen Portal Integration",
+      "duration": "14 months",
+      "results": [
+        "50% reduction in citizen service wait times",
+        "Improved data accuracy to 99.9%",
+        "Enhanced security compliance"
+      ],
+      "image": "/images/testimonials/robert-kim.jpg",
+      "featured": false
+    },
+    {
+      "id": 7,
+      "clientName": "Jennifer Adams",
+      "clientTitle": "HR Director",
+      "company": "Startup Ventures",
+      "companyLogo": "/images/clients/startup-ventures-logo.png",
+      "rating": 5,
+      "testimonial": "As a growing startup, we needed to scale our engineering team quickly. SourceCloud delivered exceptional candidates who were not only technically skilled but also aligned with our startup culture. They helped us build a world-class engineering team.",
+      "service": "Technology Staffing",
+      "industry": "Technology",
+      "projectType": "Engineering Team Scaling",
+      "duration": "4 months",
+      "results": [
+        "Doubled engineering team size in 4 months",
+        "100% cultural fit success rate",
+        "Accelerated product development timeline"
+      ],
+      "image": "/images/testimonials/jennifer-adams.jpg",
+      "featured": false
+    },
+    {
+      "id": 8,
+      "clientName": "Thomas Wilson",
+      "clientTitle": "CIO",
+      "company": "Educational Institute",
+      "companyLogo": "/images/clients/edu-institute-logo.png",
+      "rating": 5,
+      "testimonial": "SourceCloud's consulting services helped us implement a comprehensive learning management system that improved student engagement and administrative efficiency. Their expertise in educational technology was invaluable.",
+      "service": "IT Consulting",
+      "industry": "Education",
+      "projectType": "Learning Management System",
+      "duration": "16 months",
+      "results": [
+        "30% improvement in student engagement",
+        "Reduced administrative workload by 40%",
+        "Enhanced data analytics capabilities"
+      ],
+      "image": "/images/testimonials/thomas-wilson.jpg",
+      "featured": false
+    }
+  ],
+  "stats": {
+    "totalTestimonials": 8,
+    "averageRating": 5.0,
+    "featuredCount": 3,
+    "satisfactionRate": "100%",
+    "repeatClientRate": "85%"
+  },
+  "categories": {
+    "byService": {
+      "Technology Staffing": 3,
+      "IT Consulting": 3,
+      "Integration Services": 2
+    },
+    "byIndustry": {
+      "Technology": 2,
+      "Healthcare": 1,
+      "Manufacturing": 1,
+      "Financial Services": 1,
+      "Retail": 1,
+      "Government": 1,
+      "Education": 1
+    }
+  }
+}

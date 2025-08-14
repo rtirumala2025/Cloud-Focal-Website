@@ -1,0 +1,301 @@
+{
+  "mainNavigation": [
+    {
+      "id": "home",
+      "title": "Home",
+      "path": "/",
+      "icon": "home"
+    },
+    {
+      "id": "about",
+      "title": "About",
+      "path": "/about",
+      "icon": "info",
+      "children": [
+        {
+          "id": "our-story",
+          "title": "Our Story",
+          "path": "/about#our-story",
+          "description": "Learn about our journey and mission"
+        },
+        {
+          "id": "leadership",
+          "title": "Leadership",
+          "path": "/about#leadership",
+          "description": "Meet our executive team"
+        },
+        {
+          "id": "mission-values",
+          "title": "Mission & Values",
+          "path": "/about#mission-values",
+          "description": "Our purpose and guiding principles"
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Services",
+      "path": "/services",
+      "icon": "briefcase",
+      "children": [
+        {
+          "id": "technology-staffing",
+          "title": "Technology Staffing",
+          "path": "/services/technology-staffing",
+          "description": "Find top tech talent for your organization"
+        },
+        {
+          "id": "it-consulting",
+          "title": "IT Consulting",
+          "path": "/services/it-consulting",
+          "description": "Strategic technology guidance and solutions"
+        },
+        {
+          "id": "integration-services",
+          "title": "Integration Services",
+          "path": "/services/integration-services",
+          "description": "Connect your systems and automate processes"
+        }
+      ]
+    },
+    {
+      "id": "industries",
+      "title": "Industries",
+      "path": "/industries",
+      "icon": "building",
+      "children": [
+        {
+          "id": "public-sector",
+          "title": "Public Sector",
+          "path": "/industries/public-sector",
+          "description": "Government and public service solutions"
+        },
+        {
+          "id": "private-enterprise",
+          "title": "Private Enterprise",
+          "path": "/industries/private-enterprise",
+          "description": "Corporate and business solutions"
+        }
+      ]
+    },
+    {
+      "id": "case-studies",
+      "title": "Case Studies",
+      "path": "/case-studies",
+      "icon": "folder-open"
+    },
+    {
+      "id": "careers",
+      "title": "Careers",
+      "path": "/careers",
+      "icon": "users",
+      "children": [
+        {
+          "id": "job-listings",
+          "title": "Job Listings",
+          "path": "/careers#jobs",
+          "description": "View current openings"
+        },
+        {
+          "id": "culture",
+          "title": "Culture",
+          "path": "/careers#culture",
+          "description": "Learn about our workplace"
+        },
+        {
+          "id": "benefits",
+          "title": "Benefits",
+          "path": "/careers#benefits",
+          "description": "Employee benefits and perks"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Resources",
+      "path": "/resources",
+      "icon": "book-open",
+      "children": [
+        {
+          "id": "blog",
+          "title": "Blog",
+          "path": "/resources#blog",
+          "description": "Latest insights and articles"
+        },
+        {
+          "id": "whitepapers",
+          "title": "Whitepapers",
+          "path": "/resources#whitepapers",
+          "description": "In-depth research and reports"
+        },
+        {
+          "id": "insights",
+          "title": "Industry Insights",
+          "path": "/resources#insights",
+          "description": "Technology trends and analysis"
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "path": "/contact",
+      "icon": "mail"
+    }
+  ],
+  "footerNavigation": {
+    "services": [
+      {
+        "title": "Technology Staffing",
+        "path": "/services/technology-staffing"
+      },
+      {
+        "title": "IT Consulting",
+        "path": "/services/it-consulting"
+      },
+      {
+        "title": "Integration Services",
+        "path": "/services/integration-services"
+      }
+    ],
+    "industries": [
+      {
+        "title": "Financial Services",
+        "path": "/industries#financial-services"
+      },
+      {
+        "title": "Healthcare",
+        "path": "/industries#healthcare"
+      },
+      {
+        "title": "Manufacturing",
+        "path": "/industries#manufacturing"
+      },
+      {
+        "title": "Government",
+        "path": "/industries/public-sector"
+      },
+      {
+        "title": "Technology",
+        "path": "/industries#technology"
+      }
+    ],
+    "company": [
+      {
+        "title": "About Us",
+        "path": "/about"
+      },
+      {
+        "title": "Leadership",
+        "path": "/about#leadership"
+      },
+      {
+        "title": "Careers",
+        "path": "/careers"
+      },
+      {
+        "title": "Case Studies",
+        "path": "/case-studies"
+      },
+      {
+        "title": "Contact",
+        "path": "/contact"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Blog",
+        "path": "/resources#blog"
+      },
+      {
+        "title": "Whitepapers",
+        "path": "/resources#whitepapers"
+      },
+      {
+        "title": "Industry Insights",
+        "path": "/resources#insights"
+      },
+      {
+        "title": "Webinars",
+        "path": "/resources#webinars"
+      }
+    ],
+    "legal": [
+      {
+        "title": "Privacy Policy",
+        "path": "/privacy"
+      },
+      {
+        "title": "Terms of Service",
+        "path": "/terms"
+      },
+      {
+        "title": "Cookie Policy",
+        "path": "/cookies"
+      },
+      {
+        "title": "Accessibility",
+        "path": "/accessibility"
+      }
+    ]
+  },
+  "socialLinks": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/company/sourcecloud",
+      "icon": "linkedin"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/sourcecloud",
+      "icon": "twitter"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://facebook.com/sourcecloud",
+      "icon": "facebook"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://youtube.com/sourcecloud",
+      "icon": "youtube"
+    }
+  ],
+  "contactInfo": {
+    "phone": "+1 (555) 123-4567",
+    "email": "info@sourcecloud.com",
+    "address": {
+      "street": "123 Technology Drive",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94105",
+      "country": "USA"
+    }
+  },
+  "quickActions": [
+    {
+      "title": "Get a Quote",
+      "path": "/contact",
+      "icon": "calculator",
+      "description": "Request a custom quote for your project"
+    },
+    {
+      "title": "Schedule Consultation",
+      "path": "/contact",
+      "icon": "calendar",
+      "description": "Book a free consultation with our experts"
+    },
+    {
+      "title": "View Jobs",
+      "path": "/careers",
+      "icon": "briefcase",
+      "description": "Explore career opportunities at SourceCloud"
+    },
+    {
+      "title": "Download Resources",
+      "path": "/resources",
+      "icon": "download",
+      "description": "Access whitepapers and industry insights"
+    }
+  ]
+}

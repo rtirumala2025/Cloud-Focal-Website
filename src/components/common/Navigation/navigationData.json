@@ -1,0 +1,83 @@
+[
+  {
+    "id": "home",
+    "title": "Home",
+    "path": "/"
+  },
+  {
+    "id": "about",
+    "title": "About",
+    "path": "/about"
+  },
+  {
+    "id": "services",
+    "title": "Services",
+    "path": "/services",
+    "children": [
+      {
+        "id": "technology-staffing",
+        "title": "Technology Staffing",
+        "path": "/services/technology-staffing"
+      },
+      {
+        "id": "it-consulting",
+        "title": "IT Consulting",
+        "path": "/services/it-consulting"
+      },
+      {
+        "id": "integration-services",
+        "title": "Integration Services",
+        "path": "/services/integration-services"
+      }
+    ]
+  },
+  {
+    "id": "industries",
+    "title": "Industries",
+    "path": "/industries",
+    "children": [
+      {
+        "id": "public-sector",
+        "title": "Public Sector",
+        "path": "/industries/public-sector"
+      },
+      {
+        "id": "private-enterprise",
+        "title": "Private Enterprise",
+        "path": "/industries/private-enterprise"
+      }
+    ]
+  },
+  {
+    "id": "case-studies",
+    "title": "Case Studies",
+    "path": "/case-studies"
+  },
+  {
+    "id": "careers",
+    "title": "Careers",
+    "path": "/careers"
+  },
+  {
+    "id": "resources",
+    "title": "Resources",
+    "path": "/resources",
+    "children": [
+      {
+        "id": "blog",
+        "title": "Blog",
+        "path": "/resources/blog"
+      },
+      {
+        "id": "whitepapers",
+        "title": "Whitepapers",
+        "path": "/resources/whitepapers"
+      }
+    ]
+  },
+  {
+    "id": "contact",
+    "title": "Contact",
+    "path": "/contact"
+  }
+]

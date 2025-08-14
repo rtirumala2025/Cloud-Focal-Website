@@ -1,0 +1,288 @@
+{
+  "services": [
+    {
+      "id": "technology-staffing",
+      "title": "Technology Staffing",
+      "shortTitle": "Tech Staffing",
+      "description": "Connect with top-tier technology professionals to accelerate your digital transformation journey.",
+      "longDescription": "Our technology staffing services help organizations find and retain the best tech talent in the market. We specialize in placing skilled professionals across all technology domains, from software development and DevOps to cybersecurity and data science.",
+      "icon": "users",
+      "image": "/images/services/tech-staffing.jpg",
+      "features": [
+        {
+          "title": "Contract Staffing",
+          "description": "Flexible contract-to-hire and temporary staffing solutions for project-based needs.",
+          "icon": "clock"
+        },
+        {
+          "title": "Permanent Placement",
+          "description": "Direct hire solutions for long-term technology positions with comprehensive screening.",
+          "icon": "user-check"
+        },
+        {
+          "title": "Executive Search",
+          "description": "Specialized recruitment for C-level and senior technology leadership positions.",
+          "icon": "award"
+        },
+        {
+          "title": "Skill Assessment",
+          "description": "Comprehensive technical and cultural fit evaluation for optimal placements.",
+          "icon": "clipboard-check"
+        }
+      ],
+      "benefits": [
+        "Reduced time-to-hire by 60%",
+        "95% retention rate after 12 months",
+        "Access to pre-vetted talent pool",
+        "Industry-specific expertise matching"
+      ],
+      "process": [
+        {
+          "step": 1,
+          "title": "Requirements Analysis",
+          "description": "Deep dive into your technical needs, team culture, and project requirements."
+        },
+        {
+          "step": 2,
+          "title": "Talent Sourcing",
+          "description": "Leverage our extensive network and advanced sourcing techniques to find the perfect match."
+        },
+        {
+          "step": 3,
+          "title": "Screening & Assessment",
+          "description": "Comprehensive technical and cultural evaluation through multiple assessment rounds."
+        },
+        {
+          "step": 4,
+          "title": "Placement & Support",
+          "description": "Seamless onboarding and ongoing support to ensure successful integration."
+        }
+      ],
+      "technologies": [
+        "JavaScript/TypeScript",
+        "Python",
+        "Java",
+        "C#/.NET",
+        "React/Angular/Vue",
+        "Node.js",
+        "AWS/Azure/GCP",
+        "Docker/Kubernetes",
+        "DevOps",
+        "Cybersecurity",
+        "Data Science/AI",
+        "Mobile Development"
+      ],
+      "industries": [
+        "Financial Services",
+        "Healthcare",
+        "E-commerce",
+        "Manufacturing",
+        "Government",
+        "Education",
+        "Technology"
+      ],
+      "cta": {
+        "title": "Find Your Next Tech Star",
+        "description": "Let us help you build the perfect technology team.",
+        "buttonText": "Get Started",
+        "buttonLink": "/contact"
+      }
+    },
+    {
+      "id": "it-consulting",
+      "title": "IT Consulting",
+      "shortTitle": "IT Consulting",
+      "description": "Strategic technology guidance to drive innovation and operational excellence.",
+      "longDescription": "Our IT consulting services provide strategic guidance to help organizations leverage technology for competitive advantage. We work closely with your team to develop technology roadmaps, optimize processes, and implement best practices.",
+      "icon": "lightbulb",
+      "image": "/images/services/it-consulting.jpg",
+      "features": [
+        {
+          "title": "Technology Strategy",
+          "description": "Comprehensive technology roadmaps aligned with business objectives and market trends.",
+          "icon": "map"
+        },
+        {
+          "title": "Digital Transformation",
+          "description": "End-to-end digital transformation consulting from assessment to implementation.",
+          "icon": "refresh-cw"
+        },
+        {
+          "title": "Process Optimization",
+          "description": "Streamline operations and improve efficiency through technology-driven process improvements.",
+          "icon": "settings"
+        },
+        {
+          "title": "Technology Assessment",
+          "description": "Comprehensive evaluation of current technology stack and recommendations for improvement.",
+          "icon": "search"
+        }
+      ],
+      "benefits": [
+        "30% average cost reduction",
+        "50% faster time-to-market",
+        "Improved operational efficiency",
+        "Enhanced competitive advantage"
+      ],
+      "process": [
+        {
+          "step": 1,
+          "title": "Discovery & Assessment",
+          "description": "Comprehensive analysis of current state, challenges, and opportunities."
+        },
+        {
+          "step": 2,
+          "title": "Strategy Development",
+          "description": "Create tailored technology strategy aligned with business goals."
+        },
+        {
+          "step": 3,
+          "title": "Implementation Planning",
+          "description": "Detailed roadmap and implementation plan with clear milestones."
+        },
+        {
+          "step": 4,
+          "title": "Execution & Support",
+          "description": "Guided implementation with ongoing support and optimization."
+        }
+      ],
+      "specializations": [
+        "Cloud Migration",
+        "DevOps Transformation",
+        "Security Assessment",
+        "Data Strategy",
+        "Application Modernization",
+        "Infrastructure Optimization"
+      ],
+      "industries": [
+        "Financial Services",
+        "Healthcare",
+        "Manufacturing",
+        "Retail",
+        "Government",
+        "Education",
+        "Technology"
+      ],
+      "cta": {
+        "title": "Transform Your Technology",
+        "description": "Get expert guidance to drive your technology strategy forward.",
+        "buttonText": "Schedule Consultation",
+        "buttonLink": "/contact"
+      }
+    },
+    {
+      "id": "integration-services",
+      "title": "Integration Services",
+      "shortTitle": "Integration",
+      "description": "Seamless system integration and API development to connect your technology ecosystem.",
+      "longDescription": "Our integration services help organizations connect disparate systems, automate workflows, and create seamless data flows. We specialize in API development, system integration, and custom middleware solutions.",
+      "icon": "link",
+      "image": "/images/services/integration.jpg",
+      "features": [
+        {
+          "title": "API Development",
+          "description": "Custom API development and integration for seamless system connectivity.",
+          "icon": "code"
+        },
+        {
+          "title": "System Integration",
+          "description": "Connect legacy systems with modern applications for unified data flow.",
+          "icon": "database"
+        },
+        {
+          "title": "Workflow Automation",
+          "description": "Automate business processes and workflows for improved efficiency.",
+          "icon": "zap"
+        },
+        {
+          "title": "Data Migration",
+          "description": "Secure and efficient data migration between systems and platforms.",
+          "icon": "upload"
+        }
+      ],
+      "benefits": [
+        "40% reduction in manual processes",
+        "Real-time data synchronization",
+        "Improved system reliability",
+        "Enhanced user experience"
+      ],
+      "process": [
+        {
+          "step": 1,
+          "title": "System Analysis",
+          "description": "Comprehensive analysis of existing systems and integration requirements."
+        },
+        {
+          "step": 2,
+          "title": "Architecture Design",
+          "description": "Design scalable and secure integration architecture."
+        },
+        {
+          "step": 3,
+          "title": "Development & Testing",
+          "description": "Build and thoroughly test integration solutions."
+        },
+        {
+          "step": 4,
+          "title": "Deployment & Monitoring",
+          "description": "Deploy with monitoring and ongoing support."
+        }
+      ],
+      "technologies": [
+        "REST APIs",
+        "GraphQL",
+        "SOAP",
+        "Webhooks",
+        "Message Queues",
+        "ETL/ELT",
+        "Microservices",
+        "Event-Driven Architecture",
+        "API Gateway",
+        "Service Mesh"
+      ],
+      "platforms": [
+        "AWS",
+        "Azure",
+        "Google Cloud",
+        "Salesforce",
+        "SAP",
+        "Oracle",
+        "Microsoft Dynamics",
+        "Custom Systems"
+      ],
+      "cta": {
+        "title": "Connect Your Systems",
+        "description": "Build seamless integrations that power your business.",
+        "buttonText": "Start Integration",
+        "buttonLink": "/contact"
+      }
+    }
+  ],
+  "overview": {
+    "title": "Comprehensive Technology Solutions",
+    "subtitle": "From talent acquisition to system integration, we provide end-to-end technology services",
+    "description": "SourceCloud delivers comprehensive technology solutions that help organizations thrive in the digital age. Our expertise spans technology staffing, strategic consulting, and system integration, providing everything you need to build, optimize, and scale your technology operations.",
+    "stats": [
+      {
+        "number": "500+",
+        "label": "Successful Placements",
+        "description": "Technology professionals placed across industries"
+      },
+      {
+        "number": "100+",
+        "label": "Projects Delivered",
+        "description": "Consulting and integration projects completed"
+      },
+      {
+        "number": "95%",
+        "label": "Client Satisfaction",
+        "description": "Average client satisfaction rating"
+      },
+      {
+        "number": "24/7",
+        "label": "Support Available",
+        "description": "Round-the-clock technical support"
+      }
+    ]
+  }
+}
