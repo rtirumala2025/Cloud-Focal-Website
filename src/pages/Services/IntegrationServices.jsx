@@ -87,20 +87,20 @@ const IntegrationServices = () => {
   return (
     <>
       <Helmet>
-        <title>Integration Services | SourceCloud - Seamless System Integration</title>
+        <title>Integration Services | Cloud Focal - Seamless System Integration</title>
         <meta name="description" content="Expert system integration services to connect your applications, data, and platforms. API integration, data integration, cloud integration, and legacy system modernization." />
         <meta name="keywords" content="system integration, API integration, data integration, cloud integration, legacy integration, ETL, microservices" />
         <link rel="canonical" href="https://sourcecloud.com/services/integration-services" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Integration Services | SourceCloud" />
+        <meta property="og:title" content="Integration Services | Cloud Focal" />
         <meta property="og:description" content="Expert system integration services to connect your applications, data, and platforms seamlessly." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/services/integration-services" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Integration Services | SourceCloud" />
+        <meta name="twitter:title" content="Integration Services | Cloud Focal" />
         <meta name="twitter:description" content="Expert system integration services to connect your applications seamlessly." />
       </Helmet>
 

@@ -58,20 +58,20 @@ const PrivateEnterprise = () => {
   return (
     <>
       <Helmet>
-        <title>Private Enterprise Solutions | SourceCloud - Business Technology</title>
+        <title>Private Enterprise Solutions | Cloud Focal - Business Technology</title>
         <meta name="description" content="Digital transformation and technology solutions for private sector organizations. Cloud migration, data analytics, and enterprise integration services." />
         <meta name="keywords" content="private enterprise, digital transformation, cloud migration, data analytics, enterprise integration, business technology" />
         <link rel="canonical" href="https://sourcecloud.com/industries/private-enterprise" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Private Enterprise Solutions | SourceCloud" />
+        <meta property="og:title" content="Private Enterprise Solutions | Cloud Focal" />
         <meta property="og:description" content="Digital transformation and technology solutions for private sector organizations." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/industries/private-enterprise" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Private Enterprise Solutions | SourceCloud" />
+        <meta name="twitter:title" content="Private Enterprise Solutions | Cloud Focal" />
         <meta name="twitter:description" content="Digital transformation solutions for private sector organizations." />
       </Helmet>
 

@@ -107,7 +107,7 @@ const IndustryFocus = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="section-lg bg-neutral-50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -115,12 +115,12 @@ const IndustryFocus = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="heading-2 text-neutral-900 mb-6">
             Industry Expertise
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="body-large text-neutral-600 max-w-3xl mx-auto">
             We understand the unique challenges and opportunities across different industries. 
             Our specialized expertise ensures solutions that drive real business value.
           </p>
@@ -132,7 +132,7 @@ const IndustryFocus = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          className="grid-3-cols mb-20"
         >
           {industries.map((industry, index) => (
             <motion.div
@@ -140,7 +140,7 @@ const IndustryFocus = () => {
               variants={itemVariants}
               className="group"
             >
-              <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+              <div className="card card-elevated overflow-hidden">
                 {/* Industry Header */}
                 <div className={`p-6 ${industry.bgColor}`}>
                   <div className={`w-16 h-16 bg-gradient-to-br ${industry.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>

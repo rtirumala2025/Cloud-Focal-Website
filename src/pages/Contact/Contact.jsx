@@ -8,11 +8,11 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us - Get in Touch | SourceCloud</title>
-        <meta name="description" content="Get in touch with SourceCloud for technology staffing and IT consulting services. We're here to help transform your business." />
-        <meta name="keywords" content="contact SourceCloud, technology consulting, IT staffing, get quote" />
+        <title>Contact Us - Get in Touch | Cloud Focal</title>
+        <meta name="description" content="Get in touch with Cloud Focal for technology staffing and IT consulting services. We're here to help transform your business." />
+        <meta name="keywords" content="contact Cloud Focal, technology consulting, IT staffing, get quote" />
         <meta property="og:title" content="Contact Us - Get in Touch" />
-        <meta property="og:description" content="Get in touch with SourceCloud for technology staffing and IT consulting services." />
+        <meta property="og:description" content="Get in touch with Cloud Focal for technology staffing and IT consulting services." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/contact" />
       </Helmet>
@@ -21,9 +21,10 @@ const Contact = () => {
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
         transition={{ duration: 0.5 }}
+        className="page-content-with-footer"
       >
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
+        <section className="section-lg bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
             <motion.div 
               initial={{ opacity: 0, y: 30 }} 
@@ -31,8 +32,8 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">Get in Touch</h1>
-              <p className="text-xl md:text-2xl text-primary-100 mb-8 leading-relaxed">
+              <h1 className="heading-1 mb-8">Get in Touch</h1>
+              <p className="body-large text-primary-100 mb-12">
                 Ready to transform your technology initiatives? Let's discuss how we can help you achieve your goals.
               </p>
             </motion.div>
@@ -40,7 +41,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-20 bg-white">
+        <section className="section-lg bg-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <motion.div 
@@ -49,8 +50,8 @@ const Contact = () => {
                 viewport={{ once: true }} 
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Let's Start a Conversation</h2>
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                <h2 className="heading-2 text-neutral-900 mb-6">Let's Start a Conversation</h2>
+                <p className="body-large text-neutral-600 mb-8">
                   Fill out the form and we'll get back to you within 24 hours to discuss your technology needs.
                 </p>
                 <ContactForm />

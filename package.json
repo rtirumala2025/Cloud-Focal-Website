@@ -1,7 +1,7 @@
 {
-  "name": "sourcecloud-website",
+  "name": "cloudfocal-website",
   "version": "1.0.0",
-  "description": "SourceCloud - Technology Staffing and IT Consulting Website",
+  "description": "Cloud Focal - Technology Staffing and IT Consulting Website",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^2.9.11",

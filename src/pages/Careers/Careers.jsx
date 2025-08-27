@@ -7,8 +7,10 @@ import jobsData from '../../assets/data/jobs.json';
 import CTASection from '../../ui/CTA/CTASection';
 
 const Careers = () => {
-  const featuredJobs = jobsData.slice(0, 6);
-  const allJobs = jobsData;
+  // Add null checks to prevent runtime errors
+  const jobs = jobsData?.jobs || [];
+  const featuredJobs = jobs.slice(0, 6);
+  const allJobs = jobs;
 
   const benefits = [
     {
@@ -73,30 +75,31 @@ const Careers = () => {
   return (
     <>
       <Helmet>
-        <title>Careers | SourceCloud - Join Our Team</title>
-        <meta name="description" content="Join SourceCloud's dynamic team. Explore career opportunities in technology staffing, IT consulting, and system integration. Competitive benefits and growth opportunities." />
+        <title>Careers | Cloud Focal - Join Our Team</title>
+        <meta name="description" content="Join Cloud Focal's dynamic team. Explore career opportunities in technology staffing, IT consulting, and system integration. Competitive benefits and growth opportunities." />
         <meta name="keywords" content="careers, jobs, employment, technology jobs, IT consulting careers, remote work, benefits" />
         <link rel="canonical" href="https://sourcecloud.com/careers" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Careers | SourceCloud - Join Our Team" />
-        <meta property="og:description" content="Join SourceCloud's dynamic team. Explore career opportunities in technology staffing, IT consulting, and system integration." />
+        <meta property="og:title" content="Careers | Cloud Focal - Join Our Team" />
+        <meta property="og:description" content="Join Cloud Focal's dynamic team. Explore career opportunities in technology staffing, IT consulting, and system integration." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/careers" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Careers | SourceCloud" />
-        <meta name="twitter:description" content="Join SourceCloud's dynamic team. Explore career opportunities." />
+        <meta name="twitter:title" content="Careers | Cloud Focal" />
+        <meta name="twitter:description" content="Join Cloud Focal's dynamic team. Explore career opportunities." />
       </Helmet>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
+        className="page-content-with-footer"
       >
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
+        <section className="section-lg bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white section-divider-wave">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
@@ -266,7 +269,7 @@ const Careers = () => {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
-              {featuredJobs.map((job, index) => (
+              {(featuredJobs || []).map((job, index) => (
                 <motion.div
                   key={job.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -296,7 +299,7 @@ const Careers = () => {
                   
                   <div className="flex items-center justify-between">
                     <div className="flex flex-wrap gap-2">
-                      {job.skills.slice(0, 3).map((skill, skillIndex) => (
+                      {(job.skills || []).slice(0, 3).map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
                           className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
@@ -304,9 +307,9 @@ const Careers = () => {
                           {skill}
                         </span>
                       ))}
-                      {job.skills.length > 3 && (
+                      {(job.skills || []).length > 3 && (
                         <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
-                          +{job.skills.length - 3} more
+                          +{(job.skills || []).length - 3} more
                         </span>
                       )}
                     </div>
@@ -450,15 +453,11 @@ const Careers = () => {
         {/* CTA Section */}
         <CTASection
           title="Ready to Join Our Team?"
-          subtitle="Take the next step in your career and be part of something extraordinary."
-          primaryButton={{
-            text: "View All Positions",
-            to: "#openings"
-          }}
-          secondaryButton={{
-            text: "Contact Recruiting",
-            to: "/contact"
-          }}
+          description="Take the next step in your career and be part of something extraordinary."
+          primaryButton={{ text: "View All Positions", link: "#openings", variant: "white" }}
+          secondaryButton={{ text: "Contact Recruiting", link: "/contact", variant: "whiteOutline" }}
+          background="gradient"
+          divider="wave"
         />
       </motion.div>
     </>

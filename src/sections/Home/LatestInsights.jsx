@@ -267,9 +267,8 @@ const LatestInsights = () => {
               className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
             <Button
-              variant="primary"
+              variant="white"
               size="large"
-              className="bg-white text-primary-700 hover:bg-gray-100"
             >
               Subscribe
             </Button>

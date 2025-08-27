@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 
+/* FIXED: Added error boundary for better error handling */
+import ErrorBoundary from './components/common/ErrorBoundary/ErrorBoundary';
+
 // Context Providers
 import { AppProvider } from './context/AppContext';
 import { AuthProvider } from './context/AuthContext';
@@ -33,12 +36,13 @@ import './assets/index.css';
 
 function App() {
   return (
-    <HelmetProvider>
-      <AppProvider>
-        <AuthProvider>
-          <ThemeProvider>
-            <Router>
-              <div className="App">
+    <ErrorBoundary>
+      <HelmetProvider>
+        <AppProvider>
+          <AuthProvider>
+            <ThemeProvider>
+              <Router>
+                <div className="App">
                 <AnimatePresence mode="wait">
                   <Routes>
                     <Route path="/" element={
@@ -243,6 +247,7 @@ function App() {
         </AuthProvider>
       </AppProvider>
     </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 

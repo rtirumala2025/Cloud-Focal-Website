@@ -182,7 +182,7 @@ export const AppProvider = ({ children }) => {
 
   // Load theme from localStorage on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem('sourcecloud-theme');
+    const savedTheme = localStorage.getItem('cloudfocal-theme');
     if (savedTheme) {
       dispatch({ type: ActionTypes.SET_THEME, payload: savedTheme });
     }
@@ -190,7 +190,7 @@ export const AppProvider = ({ children }) => {
 
   // Save theme to localStorage when it changes
   useEffect(() => {
-    localStorage.setItem('sourcecloud-theme', state.theme);
+    localStorage.setItem('cloudfocal-theme', state.theme);
     document.documentElement.setAttribute('data-theme', state.theme);
   }, [state.theme]);
 

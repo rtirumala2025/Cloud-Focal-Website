@@ -12,7 +12,7 @@ const SEOHead = ({
 
   // Default SEO data
   const defaultSEO = {
-    title: 'SourceCloud Technologies - Transform Your Vision Into Reality',
+    title: 'Cloud Focal Technologies - Transform Your Vision Into Reality',
     description: 'Strategic technology staffing and consulting for mission-critical success. We bridge the gap between your business objectives and the technical expertise needed to achieve them.',
     keywords: 'technology staffing, IT consulting, integration services, digital transformation, enterprise solutions, government contracting',
     ogImage: '/logo512.png'
@@ -21,12 +21,12 @@ const SEOHead = ({
   // Page-specific SEO data
   const pageSEO = {
     '/': {
-      title: 'SourceCloud Technologies - Transform Your Vision Into Reality',
+      title: 'Cloud Focal Technologies - Transform Your Vision Into Reality',
       description: 'Strategic technology staffing and consulting for mission-critical success. Expert solutions for public and private sectors.'
     },
     '/about': {
-      title: 'About SourceCloud Technologies - Our Story & Mission',
-      description: 'Learn about SourceCloud Technologies leadership, mission, and 15+ years of experience in strategic technology solutions.'
+      title: 'About Cloud Focal Technologies - Our Story & Mission',
+      description: 'Learn about Cloud Focal Technologies leadership, mission, and 15+ years of experience in strategic technology solutions.'
     },
     '/services': {
       title: 'Technology Services - Staffing, Consulting & Integration',
@@ -37,12 +37,12 @@ const SEOHead = ({
       description: 'Specialized technology solutions for government, healthcare, financial services, and Fortune 500 companies.'
     },
     '/careers': {
-      title: 'Careers at SourceCloud Technologies - Join Our Team',
-      description: 'Explore career opportunities in technology consulting and staffing. Build your future with SourceCloud Technologies.'
+      title: 'Careers at Cloud Focal Technologies - Join Our Team',
+      description: 'Explore career opportunities in technology consulting and staffing. Build your future with Cloud Focal Technologies.'
     },
     '/contact': {
-      title: 'Contact SourceCloud Technologies - Get Started Today',
-      description: 'Ready to transform your technology strategy? Contact SourceCloud for strategic consulting and staffing solutions.'
+      title: 'Contact Cloud Focal Technologies - Get Started Today',
+      description: 'Ready to transform your technology strategy? Contact Cloud Focal for strategic consulting and staffing solutions.'
     }
   };
 

@@ -51,8 +51,9 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
+      {/* UI FIX: Using wider container for better space utilization */}
+      <div className="container-wide mx-auto relative z-10">
+        <div className="text-center max-w-6xl mx-auto">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -69,7 +70,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            className="heading-1 text-white mb-8"
           >
             Transform Your Vision
             <span className="block text-accent-300">Into Reality</span>
@@ -80,9 +81,9 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="body-large text-white/90 mb-12 max-w-4xl mx-auto"
           >
-            SourceCloud delivers comprehensive technology solutions that accelerate your digital transformation. 
+            Cloud Focal delivers comprehensive technology solutions that accelerate your digital transformation. 
             From talent acquisition to system integration, we're your strategic partner for success.
           </motion.p>
 
@@ -95,9 +96,9 @@ const HeroSection = () => {
           >
             <Button
               to="/contact"
-              variant="primary"
+              variant="white"
               size="large"
-              className="bg-white text-primary-700 hover:bg-gray-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
+              className="shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
               icon={
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -108,9 +109,9 @@ const HeroSection = () => {
             </Button>
             <Button
               to="/services"
-              variant="outline"
+              variant="whiteOutline"
               size="large"
-              className="border-white text-white hover:bg-white hover:text-primary-700"
+              className="transform hover:-translate-y-1 transition-all duration-200"
             >
               Explore Services
             </Button>
@@ -121,7 +122,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto"
           >
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>

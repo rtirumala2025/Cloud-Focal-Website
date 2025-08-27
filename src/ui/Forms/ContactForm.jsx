@@ -57,111 +57,115 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-            First Name *
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            {...register('firstName')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
-              errors.firstName ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Enter your first name"
-          />
-          {errors.firstName && (
-            <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
-          )}
+    /* UI FIX: Enhanced form with modern styling and better UX */
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" novalidate>
+      <div className="form-row">
+        <div className="form-col">
+          <div className="form-group">
+            <input
+              type="text"
+              id="firstName"
+              {...register('firstName')}
+              className={`form-input ${errors.firstName ? 'is-invalid' : ''}`}
+              placeholder=" "
+              autocomplete="given-name"
+              spellcheck="false"
+            />
+            <label htmlFor="firstName" className="form-label">
+              First Name <span className="form-required">*</span>
+            </label>
+            {errors.firstName && (
+              <div className="form-feedback is-invalid">{errors.firstName.message}</div>
+            )}
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-            Last Name *
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            {...register('lastName')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
-              errors.lastName ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Enter your last name"
-          />
-          {errors.lastName && (
-            <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
-          )}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email Address *
-          </label>
-          <input
-            type="email"
-            id="email"
-            {...register('email')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
-              errors.email ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Enter your email address"
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-            Phone Number *
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            {...register('phone')}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
-              errors.phone ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Enter your phone number"
-          />
-          {errors.phone && (
-            <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
-          )}
+        <div className="form-col">
+          <div className="form-group">
+            <input
+              type="text"
+              id="lastName"
+              {...register('lastName')}
+              className={`form-input ${errors.lastName ? 'is-invalid' : ''}`}
+              placeholder=" "
+              autocomplete="family-name"
+              spellcheck="false"
+            />
+            <label htmlFor="lastName" className="form-label">
+              Last Name <span className="form-required">*</span>
+            </label>
+            {errors.lastName && (
+              <div className="form-feedback is-invalid">{errors.lastName.message}</div>
+            )}
+          </div>
         </div>
       </div>
 
-      <div>
-        <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-          Company Name *
-        </label>
+      <div className="form-row">
+        <div className="form-col">
+          <div className="form-group">
+            <input
+              type="email"
+              id="email"
+              {...register('email')}
+              className={`form-input ${errors.email ? 'is-invalid' : ''}`}
+              placeholder=" "
+              autocomplete="email"
+              spellcheck="false"
+            />
+            <label htmlFor="email" className="form-label">
+              Email Address <span className="form-required">*</span>
+            </label>
+            {errors.email && (
+              <div className="form-feedback is-invalid">{errors.email.message}</div>
+            )}
+          </div>
+        </div>
+
+        <div className="form-col">
+          <div className="form-group">
+            <input
+              type="tel"
+              id="phone"
+              {...register('phone')}
+              className={`form-input ${errors.phone ? 'is-invalid' : ''}`}
+              placeholder=" "
+              autocomplete="tel"
+              spellcheck="false"
+            />
+            <label htmlFor="phone" className="form-label">
+              Phone Number <span className="form-required">*</span>
+            </label>
+            {errors.phone && (
+              <div className="form-feedback is-invalid">{errors.phone.message}</div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="form-group">
         <input
           type="text"
           id="company"
           {...register('company')}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
-            errors.company ? 'border-red-500' : 'border-gray-300'
-          }`}
-          placeholder="Enter your company name"
+          className={`form-input ${errors.company ? 'is-invalid' : ''}`}
+          placeholder=" "
+          autocomplete="organization"
+          spellcheck="false"
         />
+        <label htmlFor="company" className="form-label">
+          Company Name <span className="form-required">*</span>
+        </label>
         {errors.company && (
-          <p className="mt-1 text-sm text-red-600">{errors.company.message}</p>
+          <div className="form-feedback is-invalid">{errors.company.message}</div>
         )}
       </div>
 
-      <div>
-        <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-          Service of Interest *
-        </label>
+      <div className="form-group">
         <select
           id="service"
           {...register('service')}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
-            errors.service ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className={`form-select ${errors.service ? 'is-invalid' : ''}`}
         >
           <option value="">Select a service</option>
           <option value="technology-staffing">Technology Staffing</option>
@@ -169,37 +173,39 @@ const ContactForm = () => {
           <option value="integration-services">Integration Services</option>
           <option value="other">Other</option>
         </select>
+        <label htmlFor="service" className="form-label">
+          Service of Interest <span className="form-required">*</span>
+        </label>
         {errors.service && (
-          <p className="mt-1 text-sm text-red-600">{errors.service.message}</p>
+          <div className="form-feedback is-invalid">{errors.service.message}</div>
         )}
       </div>
 
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          Message *
-        </label>
+      <div className="form-group">
         <textarea
           id="message"
           rows={6}
           {...register('message')}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-none ${
-            errors.message ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className={`form-textarea ${errors.message ? 'is-invalid' : ''}`}
           placeholder="Tell us about your project or requirements..."
         />
+        <label htmlFor="message" className="form-label">
+          Message <span className="form-required">*</span>
+        </label>
         {errors.message && (
-          <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+          <div className="form-feedback is-invalid">{errors.message.message}</div>
         )}
       </div>
 
-      <div className="flex items-start space-x-3">
+      <div className="form-check">
         <input
           type="checkbox"
           id="newsletter"
-          className="mt-1 w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+          {...register('newsletter')}
+          className="form-check-input"
         />
-        <label htmlFor="newsletter" className="text-sm text-gray-600">
-          I would like to receive updates and insights from SourceCloud. You can unsubscribe at any time.
+        <label htmlFor="newsletter" className="form-check-label">
+          I would like to receive updates and insights from Cloud Focal. You can unsubscribe at any time.
         </label>
       </div>
 
@@ -207,11 +213,12 @@ const ContactForm = () => {
         type="submit"
         variant="primary"
         size="large"
-        className="w-full"
+        fullWidth
         disabled={isSubmitting}
         loading={isSubmitting}
+        className={isSubmitting ? 'form-loading' : ''}
       >
-        {isSubmitting ? 'Sending Message...' : 'Send Message'}
+        {isSubmitting ? 'Sending...' : 'Send Message'}
       </Button>
 
       <p className="text-sm text-gray-500 text-center">

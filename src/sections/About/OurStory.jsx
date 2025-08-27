@@ -6,7 +6,7 @@ const OurStory = () => {
     {
       year: '2010',
       title: 'Foundation',
-      description: 'SourceCloud was founded with a vision to bridge the gap between exceptional tech talent and innovative companies.'
+      description: 'Cloud Focal was founded with a vision to bridge the gap between exceptional tech talent and innovative companies.'
     },
     {
       year: '2015',
@@ -76,7 +76,7 @@ const OurStory = () => {
           >
             <h3 className="text-3xl font-bold text-gray-900 mb-6">Building the Future of Technology</h3>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Founded in 2010, SourceCloud began as a small team of technology enthusiasts with a big vision. 
+              Founded in 2010, Cloud Focal began as a small team of technology enthusiasts with a big vision. 
               We recognized that the success of any organization depends on having the right people with the 
               right skills at the right time.
             </p>

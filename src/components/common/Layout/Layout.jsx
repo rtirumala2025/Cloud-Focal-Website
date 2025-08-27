@@ -2,13 +2,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import { useApp } from '../../../context/AppContext';
 
 const Layout = ({ children, title, description, keywords, image, canonical }) => {
   const { state } = useApp();
 
   // Default meta tags
-  const defaultTitle = 'SourceCloud - Technology Staffing & IT Consulting';
+  const defaultTitle = 'Cloud Focal - Technology Staffing & IT Consulting';
   const defaultDescription = 'Leading technology staffing and IT consulting company. We help businesses find top tech talent and implement innovative IT solutions for digital transformation.';
   const defaultKeywords = 'technology staffing, IT consulting, system integration, digital transformation, tech talent, IT solutions';
   const defaultImage = '/images/og-image.jpg';
@@ -44,9 +45,9 @@ const Layout = ({ children, title, description, keywords, image, canonical }) =>
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "SourceCloud",
-            "url": "https://sourcecloud.com",
-            "logo": "https://sourcecloud.com/images/logos/sourcecloud-logo.svg",
+                  "name": "Cloud Focal",
+      "url": "https://cloudfocal.com",
+      "logo": "https://cloudfocal.com/images/logos/cloudfocal-logo.svg",
             "description": "Leading technology staffing and IT consulting company",
             "address": {
               "@type": "PostalAddress",
@@ -60,12 +61,12 @@ const Layout = ({ children, title, description, keywords, image, canonical }) =>
               "@type": "ContactPoint",
               "telephone": "+1-555-123-4567",
               "contactType": "customer service",
-              "email": "info@sourcecloud.com"
+              "email": "info@cloudfocal.com"
             },
             "sameAs": [
-              "https://linkedin.com/company/sourcecloud",
-              "https://twitter.com/sourcecloud",
-              "https://facebook.com/sourcecloud"
+                      "https://linkedin.com/company/cloudfocal",
+        "https://twitter.com/cloudfocal",
+        "https://facebook.com/cloudfocal"
             ]
           })}
         </script>
@@ -76,15 +77,24 @@ const Layout = ({ children, title, description, keywords, image, canonical }) =>
         Skip to main content
       </a>
 
+      {/* FIXED: Added proper semantic HTML structure */}
       <div className="min-h-screen flex flex-col">
-        <Header />
+        <header role="banner">
+          <Header />
+        </header>
         
-        <main id="main-content" className="flex-grow">
+        {/* UI FIX: Added padding-top to prevent header overlap and bottom spacing for footer transition */}
+        <main id="main-content" role="main" className="flex-grow pt-14 lg:pt-16 pb-8">
           {children}
         </main>
         
-        <Footer />
+        <footer role="contentinfo">
+          <Footer />
+        </footer>
       </div>
+      
+      {/* FIXED: Added scroll to top component */}
+      <ScrollToTop />
 
       {/* Notifications */}
       {state.notifications.length > 0 && (

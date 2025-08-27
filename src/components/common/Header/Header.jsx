@@ -45,8 +45,12 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const toggleDropdown = (menuId) => {
-    setActiveDropdown(activeDropdown === menuId ? null : menuId);
+  const toggleDropdown = (menuId, event) => {
+    if (activeDropdown === menuId) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(menuId);
+    }
   };
 
   const isActiveLink = (path) => {
@@ -62,26 +66,45 @@ const Header = () => {
     return (
       <AnimatePresence>
         {activeDropdown === item.id && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
-          >
-            {item.children.map((child) => (
-              <Link
-                key={child.id}
-                to={child.path}
-                className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors"
-              >
-                <div className="font-medium">{child.title}</div>
-                {child.description && (
-                  <div className="text-sm text-gray-500 mt-1">{child.description}</div>
-                )}
-              </Link>
-            ))}
-          </motion.div>
+          <>
+            {/* Overlay to prevent clicks behind dropdown */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[99998] dropdown-overlay"
+              onClick={() => setActiveDropdown(null)}
+            />
+            {/* Dropdown Menu */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-20 left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[99999] dropdown-menu"
+              style={{
+                top: '4rem', // Adjust based on header height
+                left: '50%',
+                transform: 'translateX(-50%)',
+                minWidth: '16rem'
+              }}
+            >
+              {item.children.map((child) => (
+                <Link
+                  key={child.id}
+                  to={child.path}
+                  className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors"
+                  onClick={() => setActiveDropdown(null)}
+                >
+                  <div className="font-medium">{child.title}</div>
+                  {child.description && (
+                    <div className="text-sm text-gray-500 mt-1">{child.description}</div>
+                  )}
+                </Link>
+              ))}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     );
@@ -122,73 +145,84 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[9998] transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200'
-          : 'bg-white'
+          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-neutral-200'
+          : 'bg-white/90 backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center">
             <img
-              src="/images/logos/sourcecloud-logo.svg"
-              alt="SourceCloud"
-              className="h-8 lg:h-10 w-auto"
+              src="/images/logos/cloudfocal-logo.png"
+              alt="Cloud Focal - Technology Staffing & IT Consulting"
+              className="h-8 lg:h-10 w-auto hover:opacity-80 transition-opacity duration-200"
+              loading="eager"
             />
-            <span className="text-xl lg:text-2xl font-bold text-gray-900">
-              SourceCloud
-            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navigationData.mainNavigation.map((item) => (
-              <div key={item.id} className="relative">
+          {/* FIXED: Added proper navigation structure with accessibility */}
+          <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex items-center space-x-6">
+            <ul className="flex items-center space-x-6">
+              {navigationData.mainNavigation.map((item) => (
+                <li key={item.id} className="relative">
                 {item.children ? (
                   <div className="relative">
-                    <button
-                      onClick={() => toggleDropdown(item.id)}
-                      className={`flex items-center space-x-1 py-2 px-3 rounded-md transition-colors ${
-                        isActiveLink(item.path)
-                          ? 'text-primary-600 bg-primary-50'
-                          : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                      }`}
-                    >
-                      <span>{item.title}</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform ${
-                          activeDropdown === item.id ? 'rotate-180' : ''
+                    <div className="flex items-center">
+                      <Link
+                        to={item.path}
+                        className={`py-3 px-4 rounded-l-lg transition-all duration-200 ${
+                          isActiveLink(item.path)
+                            ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
+                            : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
                         }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
+                        {item.title}
+                      </Link>
+                      <button
+                        onClick={(e) => toggleDropdown(item.id, e)}
+                        className={`py-3 px-2 rounded-r-lg transition-all duration-200 ${
+                          isActiveLink(item.path)
+                            ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
+                            : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
+                        }`}
+                      >
+                        <svg
+                          className={`w-4 h-4 transition-transform ${
+                            activeDropdown === item.id ? 'rotate-180' : ''
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                     {renderDropdownMenu(item)}
                   </div>
                 ) : (
                   <Link
                     to={item.path}
-                    className={`py-2 px-3 rounded-md transition-colors ${
+                    className={`py-3 px-4 rounded-lg transition-all duration-200 ${
                       isActiveLink(item.path)
-                        ? 'text-primary-600 bg-primary-50'
-                        : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                        ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
+                        : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
                     }`}
                   >
                     {item.title}
                   </Link>
                 )}
-              </div>
+              </li>
             ))}
+            </ul>
           </nav>
 
           {/* Right side actions */}
@@ -196,7 +230,7 @@ const Header = () => {
             {/* Theme toggle */}
             <button
               onClick={() => themeActions.toggleTheme()}
-              className="p-2 rounded-md text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-colors"
+              className="p-3 rounded-lg text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 transition-all duration-200"
               aria-label="Toggle theme"
             >
               {themeState.isDarkMode ? (
@@ -223,7 +257,7 @@ const Header = () => {
             {/* CTA Button */}
             <Link
               to="/contact"
-              className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium"
+              className="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 hover:shadow-lg transition-all duration-200 font-medium"
             >
               Get Started
             </Link>
@@ -272,36 +306,48 @@ const Header = () => {
             className="lg:hidden bg-white border-t border-gray-200 mobile-menu"
           >
             <div className="container mx-auto px-4 py-4">
-              <nav className="space-y-2">
+              {/* FIXED: Added proper mobile navigation structure */}
+              <nav role="navigation" aria-label="Mobile navigation" className="space-y-2">
                 {navigationData.mainNavigation.map((item) => (
                   <div key={item.id}>
                     {item.children ? (
                       <div>
-                        <button
-                          onClick={() => toggleDropdown(item.id)}
-                          className={`w-full flex items-center justify-between py-3 px-4 rounded-md transition-colors ${
-                            isActiveLink(item.path)
-                              ? 'text-primary-600 bg-primary-50'
-                              : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                          }`}
-                        >
-                          <span className="font-medium">{item.title}</span>
-                          <svg
-                            className={`w-4 h-4 transition-transform ${
-                              activeDropdown === item.id ? 'rotate-180' : ''
+                        <div className="flex items-center">
+                          <Link
+                            to={item.path}
+                            className={`flex-1 py-3 px-4 rounded-l-md transition-colors ${
+                              isActiveLink(item.path)
+                                ? 'text-primary-600 bg-primary-50'
+                                : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                             }`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </button>
+                            <span className="font-medium">{item.title}</span>
+                          </Link>
+                          <button
+                            onClick={() => toggleDropdown(item.id)}
+                            className={`py-3 px-2 rounded-r-md transition-colors ${
+                              isActiveLink(item.path)
+                                ? 'text-primary-600 bg-primary-50'
+                                : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                            }`}
+                          >
+                            <svg
+                              className={`w-4 h-4 transition-transform ${
+                                activeDropdown === item.id ? 'rotate-180' : ''
+                              }`}
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 9l-7 7-7-7"
+                              />
+                            </svg>
+                          </button>
+                        </div>
                         {renderMobileDropdownMenu(item)}
                       </div>
                     ) : (
@@ -336,5 +382,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;

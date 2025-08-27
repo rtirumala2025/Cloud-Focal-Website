@@ -1,6 +1,6 @@
-# SourceCloud Website
+# Cloud Focal Website
 
-A modern, professional React.js website for SourceCloud, a technology staffing and IT consulting company. Built with React, Tailwind CSS, and Framer Motion for smooth animations and interactions.
+A modern, professional React.js website for Cloud Focal, a technology staffing and IT consulting company. Built with React, Tailwind CSS, and Framer Motion for smooth animations and interactions.
 
 ## 🚀 Features
 
@@ -54,8 +54,8 @@ src/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/sourcecloud-website.git
-cd sourcecloud-website
+git clone https://github.com/your-username/cloudfocal-website.git
+cd cloudfocal-website
 ```
 
 2. Install dependencies:
@@ -202,9 +202,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 For support and questions:
-- Email: support@sourcecloud.com
+- Email: support@cloudfocal.com
 - Phone: +1 (555) 123-4567
-- Website: https://sourcecloud.com
+- Website: https://cloudfocal.com
 
 ## 🙏 Acknowledgments
 
@@ -216,5 +216,5 @@ For support and questions:
 
 ---
 
-Built with ❤️ by the SourceCloud team
+Built with ❤️ by the Cloud Focal team
 # Source-Cloud-Website-Redesign

@@ -54,20 +54,20 @@ const PublicSector = () => {
   return (
     <>
       <Helmet>
-        <title>Public Sector Solutions | SourceCloud - Government Technology</title>
+        <title>Public Sector Solutions | Cloud Focal - Government Technology</title>
         <meta name="description" content="Digital transformation solutions for government agencies and public institutions. Secure, compliant, and efficient technology solutions for the public sector." />
         <meta name="keywords" content="public sector, government technology, digital government, FISMA compliance, FedRAMP, citizen services" />
         <link rel="canonical" href="https://sourcecloud.com/industries/public-sector" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Public Sector Solutions | SourceCloud" />
+        <meta property="og:title" content="Public Sector Solutions | Cloud Focal" />
         <meta property="og:description" content="Digital transformation solutions for government agencies and public institutions." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/industries/public-sector" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Public Sector Solutions | SourceCloud" />
+        <meta name="twitter:title" content="Public Sector Solutions | Cloud Focal" />
         <meta name="twitter:description" content="Digital transformation solutions for government agencies." />
       </Helmet>
 

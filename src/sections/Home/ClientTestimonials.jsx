@@ -64,7 +64,7 @@ const ClientTestimonials = () => {
             What Our Clients Say
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it. Here's what our clients have to say about working with SourceCloud.
+            Don't just take our word for it. Here's what our clients have to say about working with Cloud Focal.
           </p>
         </motion.div>
 

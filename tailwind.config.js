@@ -5,6 +5,24 @@ module.exports = {
     "./public/index.html"
   ],
   theme: {
+    /* UI FIX: Custom container configuration for better space utilization */
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '0.5rem',
+        sm: '1rem',
+        lg: '1.5rem',
+        xl: '2rem',
+        '2xl': '3rem',
+      },
+      screens: {
+        sm: '95%',
+        md: '95%',
+        lg: '95%',
+        xl: '95%',
+        '2xl': '95%',
+      },
+    },
     extend: {
       colors: {
         primary: {

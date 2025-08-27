@@ -8,36 +8,78 @@ const CTASection = ({
   primaryButton,
   secondaryButton,
   background = 'white',
+  divider = 'none',
   className = '',
   children
 }) => {
   const backgroundClasses = {
     white: 'bg-white',
-    gray: 'bg-gray-50',
+    gray: 'bg-neutral-50',
     primary: 'bg-primary-600 text-white',
     gradient: 'bg-gradient-to-r from-primary-600 to-primary-700 text-white',
-    dark: 'bg-gray-900 text-white'
+    dark: 'bg-neutral-900 text-white'
   };
 
   const textColorClasses = {
-    white: 'text-gray-900',
-    gray: 'text-gray-900',
+    white: 'text-neutral-900',
+    gray: 'text-neutral-900',
     primary: 'text-white',
     gradient: 'text-white',
     dark: 'text-white'
   };
 
   const descriptionColorClasses = {
-    white: 'text-gray-600',
-    gray: 'text-gray-600',
+    white: 'text-neutral-600',
+    gray: 'text-neutral-600',
     primary: 'text-primary-100',
     gradient: 'text-primary-100',
-    dark: 'text-gray-300'
+    dark: 'text-neutral-300'
   };
 
   return (
-    <section className={`py-16 md:py-20 ${backgroundClasses[background]} ${className}`}>
-      <div className="container mx-auto px-4">
+    <section className={`relative section-lg ${backgroundClasses[background]} ${className}`}>
+      {/* Section Dividers */}
+      {divider === 'wave' && (
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1200 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-auto"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 120C200 80 400 60 600 60C800 60 1000 80 1200 120V0H0V120Z"
+              fill="#111827"
+              className="transition-all duration-500"
+            />
+          </svg>
+        </div>
+      )}
+      
+      {divider === 'angled' && (
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1200 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-auto"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 80L600 0L1200 80V0H0V80Z"
+              fill="#111827"
+              className="transition-all duration-500"
+            />
+          </svg>
+        </div>
+      )}
+      
+      {divider === 'gradient' && (
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-primary-700/20 to-neutral-900/30 pointer-events-none"></div>
+      )}
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,13 +88,13 @@ const CTASection = ({
           className="text-center max-w-4xl mx-auto"
         >
           {/* Title */}
-          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${textColorClasses[background]}`}>
+          <h2 className={`heading-2 mb-6 ${textColorClasses[background]}`}>
             {title}
           </h2>
 
           {/* Description */}
           {description && (
-            <p className={`text-lg md:text-xl mb-8 leading-relaxed ${descriptionColorClasses[background]}`}>
+            <p className={`body-large mb-12 ${descriptionColorClasses[background]}`}>
               {description}
             </p>
           )}

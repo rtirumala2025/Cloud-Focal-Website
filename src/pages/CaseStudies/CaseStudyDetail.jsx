@@ -11,7 +11,7 @@ const CaseStudyDetail = () => {
   return (
     <>
       <Helmet>
-        <title>Case Study - Success Story | SourceCloud</title>
+        <title>Case Study - Success Story | Cloud Focal</title>
         <meta name="description" content="Detailed case study showcasing our technology solutions and results." />
         <meta property="og:title" content="Case Study - Success Story" />
         <meta property="og:description" content="Detailed case study showcasing our technology solutions and results." />
@@ -25,7 +25,7 @@ const CaseStudyDetail = () => {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">Case Study</h1>
               <p className="text-xl md:text-2xl text-primary-100 mb-8 leading-relaxed">Detailed success story and results.</p>
-              <Button to="/case-studies" variant="outline" size="large" className="border-white text-white hover:bg-white hover:text-primary-700">Back to Case Studies</Button>
+              <Button to="/case-studies" variant="whiteOutline" size="large">Back to Case Studies</Button>
             </motion.div>
           </div>
         </section>

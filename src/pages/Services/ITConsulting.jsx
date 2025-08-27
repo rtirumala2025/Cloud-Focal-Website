@@ -81,20 +81,20 @@ const ITConsulting = () => {
   return (
     <>
       <Helmet>
-        <title>IT Consulting Services | SourceCloud - Strategic Technology Solutions</title>
+        <title>IT Consulting Services | Cloud Focal - Strategic Technology Solutions</title>
         <meta name="description" content="Expert IT consulting services to transform your business. Digital transformation, cloud strategy, cybersecurity, and data analytics solutions tailored to your needs." />
         <meta name="keywords" content="IT consulting, digital transformation, cloud strategy, cybersecurity, data analytics, technology consulting" />
         <link rel="canonical" href="https://sourcecloud.com/services/it-consulting" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="IT Consulting Services | SourceCloud" />
+        <meta property="og:title" content="IT Consulting Services | Cloud Focal" />
         <meta property="og:description" content="Expert IT consulting services to transform your business. Digital transformation, cloud strategy, cybersecurity, and data analytics solutions." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/services/it-consulting" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="IT Consulting Services | SourceCloud" />
+        <meta name="twitter:title" content="IT Consulting Services | Cloud Focal" />
         <meta name="twitter:description" content="Expert IT consulting services to transform your business." />
       </Helmet>
 

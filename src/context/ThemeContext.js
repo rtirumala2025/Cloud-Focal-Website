@@ -54,7 +54,7 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const initializeTheme = () => {
       // Check for saved theme preference
-      const savedTheme = localStorage.getItem('sourcecloud-theme');
+      const savedTheme = localStorage.getItem('cloudfocal-theme');
       
       // Check system preference
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -82,7 +82,7 @@ export const ThemeProvider = ({ children }) => {
       dispatch({ type: ThemeActionTypes.SET_SYSTEM_PREFERENCE, payload: systemPreference });
       
       // Only auto-switch if user hasn't set a preference
-      const savedTheme = localStorage.getItem('sourcecloud-theme');
+      const savedTheme = localStorage.getItem('cloudfocal-theme');
       if (!savedTheme) {
         dispatch({ type: ThemeActionTypes.SET_THEME, payload: systemPreference });
         applyTheme(systemPreference);
@@ -111,14 +111,14 @@ export const ThemeProvider = ({ children }) => {
   const actions = {
     setTheme: (theme) => {
       dispatch({ type: ThemeActionTypes.SET_THEME, payload: theme });
-      localStorage.setItem('sourcecloud-theme', theme);
+      localStorage.setItem('cloudfocal-theme', theme);
       applyTheme(theme);
     },
 
     toggleTheme: () => {
       dispatch({ type: ThemeActionTypes.TOGGLE_THEME });
       const newTheme = state.theme === 'light' ? 'dark' : 'light';
-      localStorage.setItem('sourcecloud-theme', newTheme);
+      localStorage.setItem('cloudfocal-theme', newTheme);
       applyTheme(newTheme);
     },
 

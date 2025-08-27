@@ -133,7 +133,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const token = localStorage.getItem('sourcecloud-token');
+        const token = localStorage.getItem('cloudfocal-token');
         if (token) {
           // Here you would typically validate the token with your backend
           // For now, we'll just set it
@@ -152,7 +152,7 @@ export const AuthProvider = ({ children }) => {
         }
       } catch (error) {
         console.error('Auth check failed:', error);
-        localStorage.removeItem('sourcecloud-token');
+        localStorage.removeItem('cloudfocal-token');
       } finally {
         dispatch({ type: AuthActionTypes.SET_LOADING, payload: false });
       }
@@ -193,7 +193,7 @@ export const AuthProvider = ({ children }) => {
         const { user, token } = response;
         
         // Store token in localStorage
-        localStorage.setItem('sourcecloud-token', token);
+        localStorage.setItem('cloudfocal-token', token);
         
         dispatch({
           type: AuthActionTypes.LOGIN_SUCCESS,
@@ -220,7 +220,7 @@ export const AuthProvider = ({ children }) => {
         const { user, token } = response;
         
         // Store token in localStorage
-        localStorage.setItem('sourcecloud-token', token);
+        localStorage.setItem('cloudfocal-token', token);
         
         dispatch({
           type: AuthActionTypes.REGISTER_SUCCESS,
@@ -239,7 +239,7 @@ export const AuthProvider = ({ children }) => {
 
     logout: () => {
       // Remove token from localStorage
-      localStorage.removeItem('sourcecloud-token');
+      localStorage.removeItem('cloudfocal-token');
       
       dispatch({ type: AuthActionTypes.LOGOUT });
     },
@@ -309,24 +309,24 @@ const mockLoginAPI = async (credentials) => {
   await new Promise(resolve => setTimeout(resolve, 1000));
   
   // Mock validation
-  if (credentials.email === 'admin@sourcecloud.com' && credentials.password === 'password') {
+  if (credentials.email === 'admin@cloudfocal.com' && credentials.password === 'password') {
     return {
       user: {
         id: 1,
         name: 'Admin User',
-        email: 'admin@sourcecloud.com',
+        email: 'admin@cloudfocal.com',
         role: 'admin',
         avatar: null,
         permissions: ['read', 'write', 'admin'],
       },
       token: 'mock-jwt-token-admin',
     };
-  } else if (credentials.email === 'user@sourcecloud.com' && credentials.password === 'password') {
+  } else if (credentials.email === 'user@cloudfocal.com' && credentials.password === 'password') {
     return {
       user: {
         id: 2,
         name: 'Regular User',
-        email: 'user@sourcecloud.com',
+        email: 'user@cloudfocal.com',
         role: 'user',
         avatar: null,
         permissions: ['read'],

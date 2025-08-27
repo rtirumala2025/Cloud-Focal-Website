@@ -141,11 +141,11 @@ const MissionValues = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+          className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 md:p-12 shadow-lg text-white"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-6">Why Choose SourceCloud?</h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold text-white mb-6">Why Choose Cloud Focal?</h3>
+            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
               Our values aren't just words on a page—they're the foundation of how we work and what makes us different.
             </p>
           </div>
@@ -157,8 +157,8 @@ const MissionValues = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Proven Track Record</h4>
-              <p className="text-gray-600">14+ years of successful technology partnerships and placements.</p>
+              <h4 className="text-lg font-bold text-white mb-2">Proven Track Record</h4>
+              <p className="text-primary-100">14+ years of successful technology partnerships and placements.</p>
             </div>
             
             <div className="text-center">
@@ -167,8 +167,8 @@ const MissionValues = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Expert Team</h4>
-              <p className="text-gray-600">Industry veterans with deep technology and business expertise.</p>
+              <h4 className="text-lg font-bold text-white mb-2">Expert Team</h4>
+              <p className="text-primary-100">Industry veterans with deep technology and business expertise.</p>
             </div>
             
             <div className="text-center">
@@ -177,8 +177,8 @@ const MissionValues = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Innovation Focus</h4>
-              <p className="text-gray-600">Cutting-edge solutions and emerging technology expertise.</p>
+              <h4 className="text-lg font-bold text-white mb-2">Innovation Focus</h4>
+              <p className="text-primary-100">Cutting-edge solutions and emerging technology expertise.</p>
             </div>
           </div>
         </motion.div>

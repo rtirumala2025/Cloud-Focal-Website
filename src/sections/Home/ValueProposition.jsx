@@ -63,7 +63,7 @@ const ValueProposition = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="section-lg bg-white section-divider">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -71,12 +71,12 @@ const ValueProposition = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Why Choose SourceCloud?
+          <h2 className="heading-2 text-neutral-900 mb-6">
+            Why Choose Cloud Focal?
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="body-large text-neutral-600 max-w-3xl mx-auto">
             We don't just provide services – we deliver transformative results that drive your business forward.
           </p>
         </motion.div>
@@ -87,7 +87,7 @@ const ValueProposition = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
+          className="grid-2-cols mb-20"
         >
           {valueProps.map((prop, index) => (
             <motion.div
@@ -95,23 +95,25 @@ const ValueProposition = () => {
               variants={itemVariants}
               className="group"
             >
-              <div className="bg-gray-50 rounded-xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-transparent hover:border-gray-200">
+              <div className="icon-text-block bg-neutral-50 hover:bg-white hover:shadow-lg border border-transparent hover:border-neutral-200">
                 {/* Icon */}
-                <div className="w-16 h-16 bg-primary-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                <div className="icon-text-block__icon group-hover:bg-primary-600 group-hover:text-white">
                   <div className="text-primary-600 group-hover:text-white transition-colors duration-300">
                     {prop.icon}
                   </div>
                 </div>
                 
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {prop.title}
-                </h3>
-                
-                {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
-                  {prop.description}
-                </p>
+                <div className="icon-text-block__content">
+                  {/* Title */}
+                  <h3 className="icon-text-block__title">
+                    {prop.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="icon-text-block__description">
+                    {prop.description}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -126,7 +128,7 @@ const ValueProposition = () => {
           className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 md:p-12 text-white"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Proven Track Record
             </h3>
             <p className="text-xl text-primary-100 max-w-2xl mx-auto">

@@ -8,8 +8,8 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>404 - Page Not Found | SourceCloud</title>
-        <meta name="description" content="The page you're looking for doesn't exist. Return to SourceCloud's homepage." />
+        <title>404 - Page Not Found | Cloud Focal</title>
+        <meta name="description" content="The page you're looking for doesn't exist. Return to Cloud Focal's homepage." />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 

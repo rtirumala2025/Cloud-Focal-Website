@@ -83,20 +83,20 @@ const Industries = () => {
   return (
     <>
       <Helmet>
-        <title>Industries | SourceCloud - Industry-Specific Solutions</title>
+        <title>Industries | Cloud Focal - Industry-Specific Solutions</title>
         <meta name="description" content="Industry-specific technology solutions for public sector, private enterprise, healthcare, financial services, manufacturing, and retail. Tailored expertise for your sector." />
         <meta name="keywords" content="industry solutions, public sector, private enterprise, healthcare technology, financial services, manufacturing, retail, digital transformation" />
         <link rel="canonical" href="https://sourcecloud.com/industries" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Industries | SourceCloud - Industry-Specific Solutions" />
+        <meta property="og:title" content="Industries | Cloud Focal - Industry-Specific Solutions" />
         <meta property="og:description" content="Industry-specific technology solutions for public sector, private enterprise, healthcare, financial services, manufacturing, and retail." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/industries" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Industries | SourceCloud" />
+        <meta name="twitter:title" content="Industries | Cloud Focal" />
         <meta name="twitter:description" content="Industry-specific technology solutions tailored for your sector." />
       </Helmet>
 
@@ -104,9 +104,10 @@ const Industries = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
+        className="page-content-with-footer"
       >
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
+        <section className="section-lg bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
@@ -114,7 +115,7 @@ const Industries = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+                className="heading-1 mb-8"
               >
                 Industry Solutions
                 <span className="block text-accent-300">Tailored for You</span>
@@ -123,7 +124,7 @@ const Industries = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto"
+                className="body-large text-white/90 mb-12 max-w-3xl mx-auto"
               >
                 We understand the unique challenges and opportunities within your industry. 
                 Our tailored solutions are designed to address your specific needs and drive measurable results.
@@ -403,15 +404,11 @@ const Industries = () => {
         {/* CTA Section */}
         <CTASection
           title="Ready to Transform Your Industry?"
-          subtitle="Let's discuss how our industry-specific solutions can help you achieve your goals."
-          primaryButton={{
-            text: "Get Industry Consultation",
-            to: "/contact"
-          }}
-          secondaryButton={{
-            text: "View Case Studies",
-            to: "/case-studies"
-          }}
+          description="Let's discuss how our industry-specific solutions can help you achieve your goals."
+          primaryButton={{ text: "Get Industry Consultation", link: "/contact", variant: "white" }}
+          secondaryButton={{ text: "View Case Studies", link: "/case-studies", variant: "whiteOutline" }}
+          background="gradient"
+          divider="wave"
         />
       </motion.div>
     </>

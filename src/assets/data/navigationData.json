@@ -1,62 +1,16 @@
 {
   "mainNavigation": [
     {
-      "id": "home",
-      "title": "Home",
-      "path": "/",
-      "icon": "home"
-    },
-    {
       "id": "about",
       "title": "About",
       "path": "/about",
-      "icon": "info",
-      "children": [
-        {
-          "id": "our-story",
-          "title": "Our Story",
-          "path": "/about#our-story",
-          "description": "Learn about our journey and mission"
-        },
-        {
-          "id": "leadership",
-          "title": "Leadership",
-          "path": "/about#leadership",
-          "description": "Meet our executive team"
-        },
-        {
-          "id": "mission-values",
-          "title": "Mission & Values",
-          "path": "/about#mission-values",
-          "description": "Our purpose and guiding principles"
-        }
-      ]
+      "icon": "info"
     },
     {
       "id": "services",
       "title": "Services",
       "path": "/services",
-      "icon": "briefcase",
-      "children": [
-        {
-          "id": "technology-staffing",
-          "title": "Technology Staffing",
-          "path": "/services/technology-staffing",
-          "description": "Find top tech talent for your organization"
-        },
-        {
-          "id": "it-consulting",
-          "title": "IT Consulting",
-          "path": "/services/it-consulting",
-          "description": "Strategic technology guidance and solutions"
-        },
-        {
-          "id": "integration-services",
-          "title": "Integration Services",
-          "path": "/services/integration-services",
-          "description": "Connect your systems and automate processes"
-        }
-      ]
+      "icon": "briefcase"
     },
     {
       "id": "industries",
@@ -242,28 +196,28 @@
   "socialLinks": [
     {
       "platform": "LinkedIn",
-      "url": "https://linkedin.com/company/sourcecloud",
+      "url": "https://linkedin.com/company/cloudfocal",
       "icon": "linkedin"
     },
     {
       "platform": "Twitter",
-      "url": "https://twitter.com/sourcecloud",
+      "url": "https://twitter.com/cloudfocal",
       "icon": "twitter"
     },
     {
       "platform": "Facebook",
-      "url": "https://facebook.com/sourcecloud",
+      "url": "https://facebook.com/cloudfocal",
       "icon": "facebook"
     },
     {
       "platform": "YouTube",
-      "url": "https://youtube.com/sourcecloud",
+      "url": "https://youtube.com/cloudfocal",
       "icon": "youtube"
     }
   ],
   "contactInfo": {
     "phone": "+1 (555) 123-4567",
-    "email": "info@sourcecloud.com",
+    "email": "info@cloudfocal.com",
     "address": {
       "street": "123 Technology Drive",
       "city": "San Francisco",
@@ -289,7 +243,7 @@
       "title": "View Jobs",
       "path": "/careers",
       "icon": "briefcase",
-      "description": "Explore career opportunities at SourceCloud"
+              "description": "Explore career opportunities at Cloud Focal"
     },
     {
       "title": "Download Resources",

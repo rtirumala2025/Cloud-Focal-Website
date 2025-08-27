@@ -6,21 +6,23 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-neutral-900 text-white relative">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 py-16 relative z-10">
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
+            <div className="flex items-center space-x-3 mb-8">
               <img
-                src="/images/logos/sourcecloud-logo-white.svg"
-                alt="SourceCloud"
-                className="h-8 w-auto"
+                src="/images/logos/cloudfocal-logo.png"
+                alt="Cloud Focal - Technology Staffing & IT Consulting"
+                className="h-12 w-auto"
+                loading="eager"
               />
-              <span className="text-xl font-bold">SourceCloud</span>
+              <span className="text-2xl font-bold text-white">Cloud Focal</span>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-neutral-300 mb-8 leading-relaxed text-sm">
               Leading technology staffing and IT consulting company. We help businesses 
               find top tech talent and implement innovative IT solutions for digital transformation.
             </p>
@@ -33,7 +35,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-neutral-400 hover:text-white transition-all duration-200 p-3 rounded-lg hover:bg-neutral-800 hover:scale-110"
                   aria-label={`Follow us on ${social.platform}`}
                 >
                   <SocialIcon platform={social.platform} />
@@ -44,13 +46,13 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Services</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-bold text-white mb-8 border-b border-neutral-700 pb-3 uppercase tracking-wider">Services</h3>
+            <ul className="space-y-4">
               {navigationData.footerNavigation.services.map((service) => (
                 <li key={service.title}>
                   <Link
                     to={service.path}
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-neutral-300 hover:text-white transition-all duration-200 block py-2 hover:translate-x-2 transform hover:font-medium text-sm"
                   >
                     {service.title}
                   </Link>
@@ -61,13 +63,13 @@ const Footer = () => {
 
           {/* Industries */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Industries</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-bold text-white mb-8 border-b border-neutral-700 pb-3 uppercase tracking-wider">Industries</h3>
+            <ul className="space-y-4">
               {navigationData.footerNavigation.industries.map((industry) => (
                 <li key={industry.title}>
                   <Link
                     to={industry.path}
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-neutral-300 hover:text-white transition-all duration-200 block py-2 hover:translate-x-2 transform hover:font-medium text-sm"
                   >
                     {industry.title}
                   </Link>
@@ -78,13 +80,13 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-bold text-white mb-8 border-b border-neutral-700 pb-3 uppercase tracking-wider">Company</h3>
+            <ul className="space-y-4">
               {navigationData.footerNavigation.company.map((item) => (
                 <li key={item.title}>
                   <Link
                     to={item.path}
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-neutral-300 hover:text-white transition-all duration-200 block py-2 hover:translate-x-2 transform hover:font-medium text-sm"
                   >
                     {item.title}
                   </Link>
@@ -95,29 +97,29 @@ const Footer = () => {
         </div>
 
         {/* Contact Information */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-12 pt-8 border-t border-neutral-800">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
+              <h4 className="text-base font-bold text-white mb-4">Contact Us</h4>
               <div className="space-y-3">
-                <div className="flex items-start space-x-3">
-                  <svg className="w-5 h-5 text-primary-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center space-x-3">
+                  <svg className="w-4 h-4 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  <span className="text-gray-300">{navigationData.contactInfo.phone}</span>
+                  <span className="text-neutral-300 text-sm">{navigationData.contactInfo.phone}</span>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <svg className="w-5 h-5 text-primary-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center space-x-3">
+                  <svg className="w-4 h-4 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  <span className="text-gray-300">{navigationData.contactInfo.email}</span>
+                  <span className="text-neutral-300 text-sm">{navigationData.contactInfo.email}</span>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <svg className="w-5 h-5 text-primary-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <div className="text-gray-300">
+                  <div className="text-neutral-300 text-sm">
                     <div>{navigationData.contactInfo.address.street}</div>
                     <div>{navigationData.contactInfo.address.city}, {navigationData.contactInfo.address.state} {navigationData.contactInfo.address.zip}</div>
                     <div>{navigationData.contactInfo.address.country}</div>
@@ -127,13 +129,13 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Actions</h4>
-              <div className="space-y-3">
+              <h4 className="text-base font-bold text-white mb-4">Quick Actions</h4>
+              <div className="space-y-2">
                 {navigationData.quickActions.map((action) => (
                   <Link
                     key={action.title}
                     to={action.path}
-                    className="block text-gray-300 hover:text-white transition-colors"
+                    className="block text-neutral-300 hover:text-white transition-colors duration-200 text-sm py-1 hover:translate-x-1 transform"
                   >
                     {action.title}
                   </Link>
@@ -142,13 +144,13 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4">Resources</h4>
-              <ul className="space-y-3">
+              <h4 className="text-base font-bold text-white mb-4">Resources</h4>
+              <ul className="space-y-2">
                 {navigationData.footerNavigation.resources.map((resource) => (
                   <li key={resource.title}>
                     <Link
                       to={resource.path}
-                      className="text-gray-300 hover:text-white transition-colors"
+                      className="text-neutral-300 hover:text-white transition-colors duration-200 text-sm py-1 hover:translate-x-1 transform block"
                     >
                       {resource.title}
                     </Link>
@@ -162,10 +164,10 @@ const Footer = () => {
 
       {/* Bottom Footer */}
       <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
-              © {currentYear} SourceCloud. All rights reserved.
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
+            <div className="text-gray-400 text-xs">
+              © {currentYear} Cloud Focal. All rights reserved.
             </div>
             
             <div className="flex space-x-6">
@@ -173,7 +175,7 @@ const Footer = () => {
                 <Link
                   key={item.title}
                   to={item.path}
-                  className="text-gray-400 hover:text-white text-sm transition-colors"
+                  className="text-gray-400 hover:text-white text-xs transition-colors duration-200"
                 >
                   {item.title}
                 </Link>

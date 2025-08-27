@@ -26,7 +26,7 @@ const TechnologyStaffing = () => {
   return (
     <>
       <Helmet>
-        <title>Technology Staffing Services - Find Top Tech Talent | SourceCloud</title>
+        <title>Technology Staffing Services - Find Top Tech Talent | Cloud Focal</title>
         <meta name="description" content="Connect with exceptional technology professionals through our comprehensive staffing services. From developers to architects, we find the perfect fit for your team." />
         <meta name="keywords" content="technology staffing, tech talent, software developers, IT professionals, tech recruitment" />
         <meta property="og:title" content="Technology Staffing Services - Find Top Tech Talent" />
@@ -54,10 +54,10 @@ const TechnologyStaffing = () => {
                   {service.longDescription}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button to="/contact" variant="primary" size="large" className="bg-white text-primary-700 hover:bg-gray-100">
+                  <Button to="/contact" variant="white" size="large">
                     Get Started
                   </Button>
-                  <Button to="/case-studies" variant="outline" size="large" className="border-white text-white hover:bg-white hover:text-primary-700">
+                  <Button to="/case-studies" variant="whiteOutline" size="large">
                     View Success Stories
                   </Button>
                 </div>
@@ -112,7 +112,8 @@ const TechnologyStaffing = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{feature}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -218,8 +219,7 @@ const TechnologyStaffing = () => {
                   variants={itemVariants}
                   className="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="text-2xl mb-2">{tech.icon}</div>
-                  <div className="text-sm font-medium text-gray-700">{tech.name}</div>
+                  <div className="text-sm font-medium text-gray-700">{tech}</div>
                 </motion.div>
               ))}
             </motion.div>

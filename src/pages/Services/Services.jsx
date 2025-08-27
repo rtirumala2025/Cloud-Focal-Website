@@ -25,8 +25,8 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Services - Technology Staffing, IT Consulting & System Integration | SourceCloud</title>
-        <meta name="description" content="Comprehensive technology solutions including staffing, IT consulting, and system integration. Transform your business with SourceCloud's expertise." />
+        <title>Services - Technology Staffing, IT Consulting & System Integration | Cloud Focal</title>
+        <meta name="description" content="Comprehensive technology solutions including staffing, IT consulting, and system integration. Transform your business with Cloud Focal's expertise." />
         <meta name="keywords" content="technology staffing, IT consulting, system integration, digital transformation, tech solutions" />
         <meta property="og:title" content="Services - Technology Staffing, IT Consulting & System Integration" />
         <meta property="og:description" content="Comprehensive technology solutions including staffing, IT consulting, and system integration." />
@@ -38,6 +38,7 @@ const Services = () => {
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
         transition={{ duration: 0.5 }}
+        className="page-content-with-footer"
       >
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
@@ -48,15 +49,15 @@ const Services = () => {
               transition={{ duration: 0.6 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
-              <p className="text-xl md:text-2xl text-primary-100 mb-8 leading-relaxed">
+              <h1 className="heading-1 mb-8">Our Services</h1>
+              <p className="body-large text-primary-100 mb-12">
                 Comprehensive technology solutions designed to accelerate your digital transformation and drive sustainable growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button to="/contact" variant="primary" size="large" className="bg-white text-primary-700 hover:bg-gray-100">
+                <Button to="/contact" variant="white" size="large">
                   Get Started
                 </Button>
-                <Button to="/case-studies" variant="outline" size="large" className="border-white text-white hover:bg-white hover:text-primary-700">
+                <Button to="/case-studies" variant="whiteOutline" size="large">
                   View Case Studies
                 </Button>
               </div>
@@ -74,10 +75,10 @@ const Services = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="heading-2 text-neutral-900 mb-6">
                 {servicesData.overview.title}
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="body-large text-neutral-600 max-w-3xl mx-auto">
                 {servicesData.overview.description}
               </p>
             </motion.div>
@@ -108,7 +109,7 @@ const Services = () => {
                             <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-gray-600">{feature}</span>
+                            <span className="text-gray-600">{feature.title}</span>
                           </li>
                         ))}
                       </ul>
@@ -137,7 +138,7 @@ const Services = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {servicesData.overview.stats.map((stat, index) => (
                   <div key={index} className="text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">{stat.value}</div>
+                    <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">{stat.number}</div>
                     <div className="text-gray-600 font-medium">{stat.label}</div>
                   </div>
                 ))}
@@ -156,13 +157,13 @@ const Services = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Process</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <h2 className="heading-2 text-neutral-900 mb-6">Our Process</h2>
+              <p className="body-large text-neutral-600 max-w-3xl mx-auto">
                 A proven methodology that ensures successful delivery and exceptional results for every project.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid-4-cols">
               {[
                 {
                   step: '01',
@@ -196,8 +197,8 @@ const Services = () => {
                   <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
                     {process.step}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{process.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{process.description}</p>
+                  <h3 className="heading-5 text-neutral-900 mb-4">{process.title}</h3>
+                  <p className="body text-neutral-600">{process.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -208,9 +209,10 @@ const Services = () => {
         <CTASection
           title="Ready to Transform Your Technology?"
           description="Let's discuss how our comprehensive services can help you achieve your digital transformation goals."
-          primaryButton={{ text: "Get Started", link: "/contact", variant: "primary" }}
-          secondaryButton={{ text: "Schedule Consultation", link: "/contact", variant: "outline" }}
+          primaryButton={{ text: "Get Started", link: "/contact", variant: "white" }}
+          secondaryButton={{ text: "Schedule Consultation", link: "/contact", variant: "whiteOutline" }}
           background="gradient"
+          divider="wave"
         />
       </motion.div>
     </>
@@ -227,6 +229,16 @@ const ServiceIcon = ({ icon }) => {
     briefcase: (
       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0v2a2 2 0 002 2h2a2 2 0 002-2V6a2 2 0 00-2-2h-2z" />
+      </svg>
+    ),
+    lightbulb: (
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+    link: (
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
       </svg>
     ),
     cog: (

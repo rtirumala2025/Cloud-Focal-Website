@@ -5,18 +5,17 @@ import HeroSection from '../../sections/Home/HeroSection';
 import ServicesOverview from '../../sections/Home/ServicesOverview';
 import ValueProposition from '../../sections/Home/ValueProposition';
 import IndustryFocus from '../../sections/Home/IndustryFocus';
-import ClientTestimonials from '../../sections/Home/ClientTestimonials';
-import LatestInsights from '../../sections/Home/LatestInsights';
 import CTASection from '../../ui/CTA/CTASection';
+
 
 const Home = () => {
   return (
     <>
       <Helmet>
-        <title>SourceCloud - Technology Staffing & IT Consulting | Transform Your Business</title>
+        <title>Cloud Focal - Technology Staffing & IT Consulting | Transform Your Business</title>
         <meta 
           name="description" 
-          content="SourceCloud delivers comprehensive technology solutions including staffing, consulting, and system integration. Transform your business with our expert team and innovative solutions." 
+          content="Cloud Focal delivers comprehensive technology solutions including staffing, consulting, and system integration. Transform your business with our expert team and innovative solutions." 
         />
         <meta 
           name="keywords" 
@@ -25,7 +24,7 @@ const Home = () => {
         <link rel="canonical" href="https://sourcecloud.com/" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="SourceCloud - Technology Staffing & IT Consulting" />
+        <meta property="og:title" content="Cloud Focal - Technology Staffing & IT Consulting" />
         <meta property="og:description" content="Transform your business with our comprehensive technology solutions. Expert staffing, consulting, and system integration services." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/" />
@@ -33,7 +32,7 @@ const Home = () => {
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SourceCloud - Technology Staffing & IT Consulting" />
+        <meta name="twitter:title" content="Cloud Focal - Technology Staffing & IT Consulting" />
         <meta name="twitter:description" content="Transform your business with our comprehensive technology solutions." />
         <meta name="twitter:image" content="/images/og-home.jpg" />
       </Helmet>
@@ -42,6 +41,7 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
+        className="page-content-with-footer"
       >
         {/* Hero Section */}
         <HeroSection />
@@ -55,27 +55,14 @@ const Home = () => {
         {/* Industry Focus */}
         <IndustryFocus />
 
-        {/* Client Testimonials */}
-        <ClientTestimonials />
-
-        {/* Latest Insights */}
-        <LatestInsights />
-
-        {/* Call to Action */}
+        {/* CTA Section */}
         <CTASection
-          title="Ready to Transform Your Technology?"
-          description="Let's discuss how SourceCloud can help you achieve your digital transformation goals."
-          primaryButton={{
-            text: "Get Started",
-            link: "/contact",
-            variant: "primary"
-          }}
-          secondaryButton={{
-            text: "Learn More",
-            link: "/about",
-            variant: "outline"
-          }}
+          title="Ready to Transform Your Business?"
+          description="Let's discuss how Cloud Focal can help accelerate your digital transformation journey."
+          primaryButton={{ text: "Get Started", link: "/contact", variant: "white" }}
+          secondaryButton={{ text: "Learn More", link: "/about", variant: "whiteOutline" }}
           background="gradient"
+          divider="wave"
         />
       </motion.div>
     </>

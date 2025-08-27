@@ -7,8 +7,10 @@ import caseStudiesData from '../../assets/data/caseStudies.json';
 import CTASection from '../../ui/CTA/CTASection';
 
 const CaseStudies = () => {
-  const featuredCaseStudies = caseStudiesData.slice(0, 3);
-  const allCaseStudies = caseStudiesData;
+  // Add null checks to prevent runtime errors
+  const caseStudies = caseStudiesData?.caseStudies || [];
+  const featuredCaseStudies = caseStudies.slice(0, 3);
+  const allCaseStudies = caseStudies;
 
   const categories = [
     { name: "All", count: allCaseStudies.length },
@@ -20,20 +22,20 @@ const CaseStudies = () => {
   return (
     <>
       <Helmet>
-        <title>Case Studies | SourceCloud - Success Stories & Results</title>
-        <meta name="description" content="Explore our success stories and case studies. See how SourceCloud has helped organizations achieve digital transformation, improve efficiency, and drive growth." />
+        <title>Case Studies | Cloud Focal - Success Stories & Results</title>
+        <meta name="description" content="Explore our success stories and case studies. See how Cloud Focal has helped organizations achieve digital transformation, improve efficiency, and drive growth." />
         <meta name="keywords" content="case studies, success stories, client results, digital transformation, technology solutions, ROI" />
         <link rel="canonical" href="https://sourcecloud.com/case-studies" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Case Studies | SourceCloud - Success Stories & Results" />
-        <meta property="og:description" content="Explore our success stories and case studies. See how SourceCloud has helped organizations achieve digital transformation." />
+        <meta property="og:title" content="Case Studies | Cloud Focal - Success Stories & Results" />
+        <meta property="og:description" content="Explore our success stories and case studies. See how Cloud Focal has helped organizations achieve digital transformation." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sourcecloud.com/case-studies" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Case Studies | SourceCloud" />
+        <meta name="twitter:title" content="Case Studies | Cloud Focal" />
         <meta name="twitter:description" content="Explore our success stories and case studies." />
       </Helmet>
 
@@ -41,6 +43,7 @@ const CaseStudies = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
+        className="page-content-with-footer"
       >
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
@@ -178,7 +181,7 @@ const CaseStudies = () => {
                     <p className="text-gray-600 mb-4">{caseStudy.description}</p>
                     
                     <div className="grid grid-cols-2 gap-4 mb-6">
-                      {caseStudy.metrics.slice(0, 2).map((metric, metricIndex) => (
+                      {(caseStudy.metrics || []).slice(0, 2).map((metric, metricIndex) => (
                         <div key={metricIndex} className="text-center">
                           <div className="text-2xl font-bold text-primary-600">{metric.value}</div>
                           <div className="text-sm text-gray-600">{metric.label}</div>

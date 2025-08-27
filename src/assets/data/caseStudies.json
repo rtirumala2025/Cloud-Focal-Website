@@ -10,7 +10,7 @@
       "duration": "18 months",
       "teamSize": 25,
       "challenge": "A major financial services company was struggling with outdated legacy systems that were hindering their ability to compete in the digital marketplace. Their core banking platform was over 20 years old, causing slow transaction processing, security vulnerabilities, and poor customer experience.",
-      "solution": "SourceCloud developed a comprehensive digital transformation strategy that included modernizing their core banking platform, implementing cloud infrastructure, and creating a new customer-facing mobile application. We also established DevOps practices and automated testing procedures.",
+      "solution": "Cloud Focal developed a comprehensive digital transformation strategy that included modernizing their core banking platform, implementing cloud infrastructure, and creating a new customer-facing mobile application. We also established DevOps practices and automated testing procedures.",
       "results": [
         {
           "metric": "Transaction Processing Speed",
@@ -46,7 +46,7 @@
         "PostgreSQL"
       ],
       "testimonial": {
-        "quote": "SourceCloud's expertise in digital transformation was invaluable. They not only modernized our systems but also transformed our entire approach to technology. The results exceeded our expectations.",
+        "quote": "Cloud Focal's expertise in digital transformation was invaluable. They not only modernized our systems but also transformed our entire approach to technology. The results exceeded our expectations.",
         "author": "Jennifer Martinez",
         "title": "CTO",
         "company": "Global Financial Services Inc."
@@ -69,7 +69,7 @@
       "duration": "6 months",
       "teamSize": 15,
       "challenge": "A rapidly growing healthcare technology startup needed to scale their engineering team quickly to meet increasing demand for their telemedicine platform. They required senior developers with healthcare domain expertise and security compliance knowledge.",
-      "solution": "SourceCloud implemented a targeted recruitment strategy that focused on healthcare technology professionals with experience in HIPAA compliance and telemedicine platforms. We provided comprehensive screening and cultural fit assessment.",
+      "solution": "Cloud Focal implemented a targeted recruitment strategy that focused on healthcare technology professionals with experience in HIPAA compliance and telemedicine platforms. We provided comprehensive screening and cultural fit assessment.",
       "results": [
         {
           "metric": "Time to Hire",
@@ -105,7 +105,7 @@
         "Mobile Development"
       ],
       "testimonial": {
-        "quote": "SourceCloud delivered exceptional talent that perfectly matched our needs. Their understanding of healthcare technology and compliance requirements made all the difference.",
+        "quote": "Cloud Focal delivered exceptional talent that perfectly matched our needs. Their understanding of healthcare technology and compliance requirements made all the difference.",
         "author": "Dr. Michael Chen",
         "title": "VP of Engineering",
         "company": "HealthTech Innovations"
@@ -127,7 +127,7 @@
       "duration": "12 months",
       "teamSize": 8,
       "challenge": "A global manufacturing company had disparate systems that couldn't communicate effectively. Their legacy ERP system, modern CRM, and supply chain management tools operated in silos, causing data inconsistencies and manual workarounds.",
-      "solution": "SourceCloud designed and implemented a comprehensive integration solution that connected their SAP ERP system with Salesforce CRM and modern supply chain applications. We created custom APIs and automated data synchronization.",
+      "solution": "Cloud Focal designed and implemented a comprehensive integration solution that connected their SAP ERP system with Salesforce CRM and modern supply chain applications. We created custom APIs and automated data synchronization.",
       "results": [
         {
           "metric": "Manual Data Entry",
@@ -163,7 +163,7 @@
         "Cloud Platforms"
       ],
       "testimonial": {
-        "quote": "The integration work by SourceCloud transformed our operations. We now have real-time visibility across all systems and have eliminated most manual processes.",
+        "quote": "The integration work by Cloud Focal transformed our operations. We now have real-time visibility across all systems and have eliminated most manual processes.",
         "author": "Emily Rodriguez",
         "title": "Operations Director",
         "company": "Global Manufacturing Corp"
@@ -186,7 +186,7 @@
       "duration": "14 months",
       "teamSize": 12,
       "challenge": "A traditional retail chain with 200+ stores was losing market share to online competitors. They needed a comprehensive e-commerce strategy and digital transformation to compete in the modern retail landscape.",
-      "solution": "SourceCloud developed a multi-channel retail strategy that included building a modern e-commerce platform, implementing omnichannel inventory management, and creating a mobile shopping experience. We also provided change management support.",
+      "solution": "Cloud Focal developed a multi-channel retail strategy that included building a modern e-commerce platform, implementing omnichannel inventory management, and creating a mobile shopping experience. We also provided change management support.",
       "results": [
         {
           "metric": "Online Sales",
@@ -222,7 +222,7 @@
         "Cloud Infrastructure"
       ],
       "testimonial": {
-        "quote": "SourceCloud's strategic guidance helped us transform from a traditional retailer to a modern, omnichannel business. The results have been phenomenal.",
+        "quote": "Cloud Focal's strategic guidance helped us transform from a traditional retailer to a modern, omnichannel business. The results have been phenomenal.",
         "author": "Lisa Wang",
         "title": "Chief Digital Officer",
         "company": "Retail Dynamics"
@@ -245,7 +245,7 @@
       "duration": "16 months",
       "teamSize": 10,
       "challenge": "A state government agency needed to modernize their citizen services portal to provide better access to government services. Their existing system was outdated, slow, and difficult to use, leading to long wait times and poor citizen satisfaction.",
-      "solution": "SourceCloud designed and implemented a modern citizen portal that integrated with multiple government databases and systems. We created secure APIs, implemented single sign-on, and developed a responsive web application.",
+      "solution": "Cloud Focal designed and implemented a modern citizen portal that integrated with multiple government databases and systems. We created secure APIs, implemented single sign-on, and developed a responsive web application.",
       "results": [
         {
           "metric": "Service Wait Times",
@@ -281,7 +281,7 @@
         "Cloud Infrastructure"
       ],
       "testimonial": {
-        "quote": "SourceCloud delivered a modern, secure, and user-friendly citizen portal that has transformed how we serve our constituents.",
+        "quote": "Cloud Focal delivered a modern, secure, and user-friendly citizen portal that has transformed how we serve our constituents.",
         "author": "Robert Kim",
         "title": "Systems Administrator",
         "company": "State Government Agency"
@@ -304,7 +304,7 @@
       "duration": "4 months",
       "teamSize": 20,
       "challenge": "A high-growth technology startup needed to rapidly scale their engineering team to meet increasing product demands and investor expectations. They required senior developers who could work in a fast-paced startup environment.",
-      "solution": "SourceCloud implemented a specialized recruitment strategy focused on startup-experienced developers. We provided cultural fit assessment and helped establish hiring processes that could scale with the company's growth.",
+      "solution": "Cloud Focal implemented a specialized recruitment strategy focused on startup-experienced developers. We provided cultural fit assessment and helped establish hiring processes that could scale with the company's growth.",
       "results": [
         {
           "metric": "Team Size",
@@ -340,7 +340,7 @@
         "Machine Learning"
       ],
       "testimonial": {
-        "quote": "SourceCloud helped us build an exceptional engineering team that accelerated our product development and company growth.",
+        "quote": "Cloud Focal helped us build an exceptional engineering team that accelerated our product development and company growth.",
         "author": "Jennifer Adams",
         "title": "HR Director",
         "company": "Startup Ventures"
