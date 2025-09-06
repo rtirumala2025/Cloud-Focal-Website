@@ -4,6 +4,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html"
   ],
+  darkMode: 'class', // Enable class-based dark mode
   theme: {
     /* UI FIX: Custom container configuration for better space utilization */
     container: {
@@ -25,6 +26,21 @@ module.exports = {
     },
     extend: {
       colors: {
+        // Theme-aware colors using CSS variables
+        'bg-primary': 'var(--bg-primary)',
+        'bg-secondary': 'var(--bg-secondary)',
+        'bg-tertiary': 'var(--bg-tertiary)',
+        'bg-elevated': 'var(--bg-elevated)',
+        'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-tertiary': 'var(--text-tertiary)',
+        'text-inverse': 'var(--text-inverse)',
+        'text-muted': 'var(--text-muted)',
+        'border-primary': 'var(--border-primary)',
+        'border-secondary': 'var(--border-secondary)',
+        'border-focus': 'var(--border-focus)',
+        
+        // Keep original colors for specific use cases
         primary: {
           50: '#eff6ff',
           100: '#dbeafe',

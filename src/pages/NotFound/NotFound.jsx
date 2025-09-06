@@ -46,9 +46,6 @@ const NotFound = () => {
               <Link to="/about" className="text-primary-600 hover:text-primary-700 hover:underline">
                 About Us
               </Link>
-              <Link to="/case-studies" className="text-primary-600 hover:text-primary-700 hover:underline">
-                Case Studies
-              </Link>
               <Link to="/careers" className="text-primary-600 hover:text-primary-700 hover:underline">
                 Careers
               </Link>

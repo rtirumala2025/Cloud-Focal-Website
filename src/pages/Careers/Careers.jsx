@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Button from '../../components/common/Button/Button';
 import jobsData from '../../assets/data/jobs.json';
-import CTASection from '../../ui/CTA/CTASection';
 
 const Careers = () => {
   // Add null checks to prevent runtime errors
@@ -100,7 +99,6 @@ const Careers = () => {
       >
         {/* Hero Section */}
         <section className="section-lg bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white section-divider-wave">
-          <div className="absolute inset-0 bg-black/20"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h1
@@ -411,7 +409,7 @@ const Careers = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-primary-700 text-white">
+        <section className="py-20 bg-gray-50 text-gray-900">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
@@ -420,7 +418,7 @@ const Careers = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">100+</div>
-                <div className="text-lg text-white/80">Team Members</div>
+                <div className="text-lg text-gray-600">Team Members</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -428,7 +426,7 @@ const Careers = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">4.8/5</div>
-                <div className="text-lg text-white/80">Employee Rating</div>
+                <div className="text-lg text-gray-600">Employee Rating</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -436,7 +434,7 @@ const Careers = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">95%</div>
-                <div className="text-lg text-white/80">Retention Rate</div>
+                <div className="text-lg text-gray-600">Retention Rate</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -444,21 +442,13 @@ const Careers = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">15+</div>
-                <div className="text-lg text-white/80">Countries</div>
+                <div className="text-lg text-gray-600">Countries</div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <CTASection
-          title="Ready to Join Our Team?"
-          description="Take the next step in your career and be part of something extraordinary."
-          primaryButton={{ text: "View All Positions", link: "#openings", variant: "white" }}
-          secondaryButton={{ text: "Contact Recruiting", link: "/contact", variant: "whiteOutline" }}
-          background="gradient"
-          divider="wave"
-        />
+
       </motion.div>
     </>
   );

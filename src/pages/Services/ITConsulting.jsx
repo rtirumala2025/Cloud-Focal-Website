@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import Button from '../../components/common/Button/Button';
-import CTASection from '../../ui/CTA/CTASection';
 
 const ITConsulting = () => {
   const services = [
@@ -105,7 +104,6 @@ const ITConsulting = () => {
       >
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
-          <div className="absolute inset-0 bg-black/20"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h1
@@ -139,14 +137,6 @@ const ITConsulting = () => {
                   className="bg-white text-primary-700 hover:bg-gray-100"
                 >
                   Get Free Consultation
-                </Button>
-                <Button
-                  to="/case-studies"
-                  variant="secondary"
-                  size="large"
-                  className="border-white text-white hover:bg-white hover:text-primary-700"
-                >
-                  View Case Studies
                 </Button>
               </motion.div>
             </div>
@@ -278,7 +268,7 @@ const ITConsulting = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-primary-700 text-white">
+        <section className="py-20 bg-gray-50 text-gray-900">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
@@ -287,7 +277,7 @@ const ITConsulting = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">500+</div>
-                <div className="text-lg text-white/80">Projects Completed</div>
+                <div className="text-lg text-gray-600">Projects Completed</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -295,7 +285,7 @@ const ITConsulting = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">98%</div>
-                <div className="text-lg text-white/80">Client Satisfaction</div>
+                <div className="text-lg text-gray-600">Client Satisfaction</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -303,7 +293,7 @@ const ITConsulting = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">15+</div>
-                <div className="text-lg text-white/80">Years Experience</div>
+                <div className="text-lg text-gray-600">Years Experience</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -311,25 +301,13 @@ const ITConsulting = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">50+</div>
-                <div className="text-lg text-white/80">Expert Consultants</div>
+                <div className="text-lg text-gray-600">Expert Consultants</div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <CTASection
-          title="Ready to Transform Your Business?"
-          subtitle="Let our expert IT consultants help you navigate the digital landscape and achieve your technology goals."
-          primaryButton={{
-            text: "Get Free Consultation",
-            to: "/contact"
-          }}
-          secondaryButton={{
-            text: "Download Brochure",
-            to: "/resources"
-          }}
-        />
+
       </motion.div>
     </>
   );

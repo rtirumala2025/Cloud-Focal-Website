@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import Button from '../../components/common/Button/Button';
-import CTASection from '../../ui/CTA/CTASection';
 
 const PrivateEnterprise = () => {
   const solutions = [
@@ -82,7 +81,6 @@ const PrivateEnterprise = () => {
       >
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
-          <div className="absolute inset-0 bg-black/20"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h1
@@ -116,14 +114,6 @@ const PrivateEnterprise = () => {
                   className="bg-white text-primary-700 hover:bg-gray-100"
                 >
                   Get Business Consultation
-                </Button>
-                <Button
-                  to="/case-studies"
-                  variant="secondary"
-                  size="large"
-                  className="border-white text-white hover:bg-white hover:text-primary-700"
-                >
-                  View Success Stories
                 </Button>
               </motion.div>
             </div>
@@ -284,7 +274,7 @@ const PrivateEnterprise = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-primary-700 text-white">
+        <section className="py-20 bg-gray-50 text-gray-900">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
@@ -293,7 +283,7 @@ const PrivateEnterprise = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">300+</div>
-                <div className="text-lg text-white/80">Enterprise Projects</div>
+                <div className="text-lg text-gray-600">Enterprise Projects</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -301,7 +291,7 @@ const PrivateEnterprise = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">97%</div>
-                <div className="text-lg text-white/80">Client Satisfaction</div>
+                <div className="text-lg text-gray-600">Client Satisfaction</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -309,7 +299,7 @@ const PrivateEnterprise = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">$45M+</div>
-                <div className="text-lg text-white/80">Cost Savings</div>
+                <div className="text-lg text-gray-600">Cost Savings</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -317,25 +307,13 @@ const PrivateEnterprise = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">200+</div>
-                <div className="text-lg text-white/80">Companies Served</div>
+                <div className="text-lg text-gray-600">Companies Served</div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <CTASection
-          title="Ready to Transform Your Business?"
-          subtitle="Let's discuss how our enterprise solutions can help you achieve your business goals and drive growth."
-          primaryButton={{
-            text: "Get Business Consultation",
-            to: "/contact"
-          }}
-          secondaryButton={{
-            text: "Download Enterprise Guide",
-            to: "/resources"
-          }}
-        />
+
       </motion.div>
     </>
   );

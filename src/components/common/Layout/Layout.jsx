@@ -83,8 +83,8 @@ const Layout = ({ children, title, description, keywords, image, canonical }) =>
           <Header />
         </header>
         
-        {/* UI FIX: Added padding-top to prevent header overlap and bottom spacing for footer transition */}
-        <main id="main-content" role="main" className="flex-grow pt-14 lg:pt-16 pb-8">
+        {/* UI FIX: Added padding-top to prevent header overlap */}
+        <main id="main-content" role="main" className="flex-grow pt-14 lg:pt-16">
           {children}
         </main>
         

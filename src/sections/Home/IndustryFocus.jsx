@@ -107,7 +107,7 @@ const IndustryFocus = () => {
   };
 
   return (
-    <section className="section-lg bg-neutral-50">
+    <section className="section-lg bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div

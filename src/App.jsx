@@ -24,15 +24,27 @@ import IntegrationServices from './pages/Services/IntegrationServices';
 import Industries from './pages/Industries/Industries';
 import PublicSector from './pages/Industries/PublicSector';
 import PrivateEnterprise from './pages/Industries/PrivateEnterprise';
-import CaseStudies from './pages/CaseStudies/CaseStudies';
-import CaseStudyDetail from './pages/CaseStudies/CaseStudyDetail';
 import Careers from './pages/Careers/Careers';
 import Resources from './pages/Resources/Resources';
 import Contact from './pages/Contact/Contact';
+import PrivacyPolicy from './pages/Legal/PrivacyPolicy';
+import TermsOfService from './pages/Legal/TermsOfService';
+import CookiePolicy from './pages/Legal/CookiePolicy';
 import NotFound from './pages/NotFound/NotFound';
+
+// Debug Components
+import MinimalTest from './pages/Debug/MinimalTest';
+import LayoutTest from './pages/Debug/LayoutTest';
+import DebugControlPanel from './components/debug/DebugControlPanel';
+import DarkModeTest from './components/debug/DarkModeTest';
+import ThemeTestPage from './components/debug/ThemeTestPage';
 
 // Global Styles
 import './assets/index.css';
+import './styles/debugOverrides.css';
+
+// Debug Helpers (for console use)
+import './utils/debugHelpers';
 
 function App() {
   return (
@@ -43,6 +55,9 @@ function App() {
             <ThemeProvider>
               <Router>
                 <div className="App">
+                {/* Debug Tools - Always show for testing */}
+                <DebugControlPanel />
+                <DarkModeTest />
                 <AnimatePresence mode="wait">
                   <Routes>
                     <Route path="/" element={
@@ -162,31 +177,6 @@ function App() {
                       </Layout>
                     } />
                     
-                    <Route path="/case-studies" element={
-                      <Layout>
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <CaseStudies />
-                        </motion.div>
-                      </Layout>
-                    } />
-                    
-                    <Route path="/case-studies/:id" element={
-                      <Layout>
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <CaseStudyDetail />
-                        </motion.div>
-                      </Layout>
-                    } />
                     
                     <Route path="/careers" element={
                       <Layout>
@@ -226,6 +216,50 @@ function App() {
                         </motion.div>
                       </Layout>
                     } />
+                    
+                    <Route path="/privacy-policy" element={
+                      <Layout>
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <PrivacyPolicy />
+                        </motion.div>
+                      </Layout>
+                    } />
+                    
+                    <Route path="/terms-of-service" element={
+                      <Layout>
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <TermsOfService />
+                        </motion.div>
+                      </Layout>
+                    } />
+                    
+                    <Route path="/cookie-policy" element={
+                      <Layout>
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <CookiePolicy />
+                        </motion.div>
+                      </Layout>
+                    } />
+                    
+                    {/* Debug Routes */}
+                    <Route path="/debug/minimal" element={<MinimalTest />} />
+                    <Route path="/debug/layout" element={<LayoutTest />} />
+                    <Route path="/debug/theme" element={<ThemeTestPage />} />
                     
                     <Route path="*" element={
                       <Layout>

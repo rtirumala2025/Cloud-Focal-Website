@@ -2,8 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import Button from '../../components/common/Button/Button';
-import CTASection from '../../ui/CTA/CTASection';
 
 const Industries = () => {
   const industries = [
@@ -104,67 +102,80 @@ const Industries = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="page-content-with-footer"
+        className="min-h-screen bg-white"
       >
         {/* Hero Section */}
-        <section className="section-lg bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
-          <div className="absolute inset-0 bg-black/20"></div>
+        <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-blue-100/20"></div>
+            <div className="absolute top-0 left-0 w-full h-full opacity-5">
+              <div className="grid grid-cols-12 gap-4 h-full">
+                {[...Array(24)].map((_, i) => (
+                  <div key={i} className="bg-blue-600 rounded-full w-2 h-2 animate-pulse" style={{animationDelay: `${i * 0.1}s`}}></div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.h1
+            <div className="max-w-5xl mx-auto text-center">
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="heading-1 mb-8"
+                className="mb-6"
               >
-                Industry Solutions
-                <span className="block text-accent-300">Tailored for You</span>
+                <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold tracking-wide uppercase">
+                  Industry Solutions
+                </span>
+              </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-4xl md:text-6xl lg:text-7xl font-bold text-black mb-8 leading-tight"
+              >
+                Tailored Solutions for
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                  Your Industry
+                </span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="body-large text-white/90 mb-12 max-w-3xl mx-auto"
+                className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed"
               >
-                We understand the unique challenges and opportunities within your industry. 
-                Our tailored solutions are designed to address your specific needs and drive measurable results.
+                We understand the unique challenges within your industry. Our specialized solutions 
+                are designed to address your specific needs and drive measurable transformation.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center"
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-6 justify-center"
               >
-                <Button
-                  to="#industries"
-                  variant="primary"
-                  size="large"
-                  className="bg-white text-primary-700 hover:bg-gray-100"
-                >
+                <button className="px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                   Explore Industries
-                </Button>
-                <Button
-                  to="/contact"
-                  variant="secondary"
-                  size="large"
-                  className="border-white text-white hover:bg-white hover:text-primary-700"
-                >
-                  Get Industry Consultation
-                </Button>
+                </button>
+                <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300">
+                  Get Consultation
+                </button>
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* Industry Expertise */}
-        <section className="py-20">
+        <section className="py-20 bg-gray-50/50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-5xl font-bold text-black mb-6"
               >
                 Why Industry Expertise Matters
               </motion.h2>
@@ -174,8 +185,8 @@ const Industries = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-xl text-gray-600 max-w-3xl mx-auto"
               >
-                Our deep industry knowledge enables us to deliver solutions that are not only 
-                technically sound but also aligned with your business objectives and compliance requirements.
+                Our deep industry knowledge enables us to deliver solutions that are technically 
+                sound and aligned with your business objectives.
               </motion.p>
             </div>
 
@@ -186,11 +197,11 @@ const Industries = () => {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="text-center"
+                  className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 text-center group hover:scale-105"
                 >
-                  <div className="text-5xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+                  <h3 className="text-xl font-bold text-black mb-4">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -198,14 +209,14 @@ const Industries = () => {
         </section>
 
         {/* Industries Grid */}
-        <section id="industries" className="py-20 bg-gray-50">
+        <section id="industries" className="py-24 bg-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-20">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-5xl font-bold text-black mb-6"
               >
                 Industries We Serve
               </motion.h2>
@@ -216,33 +227,38 @@ const Industries = () => {
                 className="text-xl text-gray-600 max-w-3xl mx-auto"
               >
                 From government agencies to private enterprises, we deliver tailored solutions 
-                that address the unique challenges of each industry.
+                that address unique industry challenges.
               </motion.p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
               {industries.map((industry, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                  className="bg-white border border-gray-100 rounded-3xl hover:shadow-2xl transition-all duration-500 overflow-hidden group hover:scale-105"
                 >
-                  <div className="h-48 bg-gradient-to-br from-primary-600 to-primary-700 flex items-center justify-center">
-                    <div className="text-6xl text-white/80">{industry.icon}</div>
+                  {/* Header */}
+                  <div className="h-32 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                    <div className="text-4xl relative z-10 group-hover:scale-110 transition-transform duration-300">{industry.icon}</div>
                   </div>
+                  
+                  {/* Content */}
                   <div className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{industry.title}</h3>
-                    <p className="text-gray-600 mb-6">{industry.description}</p>
+                    <h3 className="text-2xl font-bold text-black mb-4">{industry.title}</h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">{industry.description}</p>
                     
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-gray-900 mb-3">Key Solutions:</h4>
+                    {/* Solutions */}
+                    <div className="mb-8">
+                      <h4 className="font-semibold text-black mb-4">Key Solutions:</h4>
                       <div className="flex flex-wrap gap-2">
                         {industry.solutions.map((solution, solutionIndex) => (
                           <span
                             key={solutionIndex}
-                            className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full"
+                            className="px-3 py-2 bg-blue-50 text-blue-700 text-sm rounded-full border border-blue-100 hover:bg-blue-100 transition-colors duration-200"
                           >
                             {solution}
                           </span>
@@ -250,26 +266,28 @@ const Industries = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-primary-600">{industry.stats.projects}</div>
-                        <div className="text-xs text-gray-600">Projects</div>
+                    {/* Stats */}
+                    <div className="grid grid-cols-3 gap-4 mb-8">
+                      <div className="text-center p-4 bg-gray-50 rounded-xl">
+                        <div className="text-2xl font-bold text-blue-600">{industry.stats.projects}</div>
+                        <div className="text-xs text-gray-600 font-medium">Projects</div>
                       </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-primary-600">{industry.stats.satisfaction}</div>
-                        <div className="text-xs text-gray-600">Satisfaction</div>
+                      <div className="text-center p-4 bg-gray-50 rounded-xl">
+                        <div className="text-2xl font-bold text-blue-600">{industry.stats.satisfaction}</div>
+                        <div className="text-xs text-gray-600 font-medium">Satisfaction</div>
                       </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-primary-600">{industry.stats.savings}</div>
-                        <div className="text-xs text-gray-600">Savings</div>
+                      <div className="text-center p-4 bg-gray-50 rounded-xl">
+                        <div className="text-2xl font-bold text-blue-600">{industry.stats.savings}</div>
+                        <div className="text-xs text-gray-600 font-medium">Savings</div>
                       </div>
                     </div>
 
+                    {/* CTA Button */}
                     <Link
                       to={industry.link}
-                      className="block w-full text-center bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors duration-300"
+                      className="block w-full text-center bg-blue-600 text-white py-4 px-6 rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold transform hover:scale-105"
                     >
-                      Learn More
+                      Learn More →
                     </Link>
                   </div>
                 </motion.div>
@@ -278,138 +296,88 @@ const Industries = () => {
           </div>
         </section>
 
-        {/* Success Stories */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <motion.h2
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
-              >
-                Industry Success Stories
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
-              >
-                See how we've helped organizations across different industries achieve 
-                their digital transformation goals and drive measurable results.
-              </motion.p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  industry: "Public Sector",
-                  title: "Digital Government Transformation",
-                  description: "Helped a state government modernize citizen services and improve operational efficiency.",
-                  results: "40% faster service delivery, 60% cost reduction"
-                },
-                {
-                  industry: "Healthcare",
-                  title: "Electronic Health Records Implementation",
-                  description: "Streamlined patient care processes and improved data security for a major hospital system.",
-                  results: "50% reduction in administrative tasks, 99.9% uptime"
-                },
-                {
-                  industry: "Financial Services",
-                  title: "Digital Banking Platform",
-                  description: "Developed a secure, scalable digital banking solution for a regional bank.",
-                  results: "200% increase in digital transactions, 100% compliance"
-                }
-              ].map((story, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="flex items-center mb-4">
-                    <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm font-medium rounded-full">
-                      {story.industry}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{story.title}</h3>
-                  <p className="text-gray-600 mb-4">{story.description}</p>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <p className="text-sm font-medium text-green-800">Results: {story.results}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <Button
-                  to="/case-studies"
-                  variant="secondary"
-                  size="large"
-                >
-                  View All Success Stories
-                </Button>
-              </motion.div>
-            </div>
-          </div>
-        </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-primary-700 text-white">
-          <div className="container mx-auto px-4">
+        <section className="py-20 bg-gray-50 text-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-gray-100"></div>
+          <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
+                className="group"
               >
-                <div className="text-4xl md:text-5xl font-bold mb-2">15+</div>
-                <div className="text-lg text-white/80">Industries Served</div>
+                <div className="text-5xl md:text-6xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">15+</div>
+                <div className="text-lg text-gray-600">Industries Served</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
+                className="group"
               >
-                <div className="text-4xl md:text-5xl font-bold mb-2">500+</div>
-                <div className="text-lg text-white/80">Projects Completed</div>
+                <div className="text-5xl md:text-6xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">500+</div>
+                <div className="text-lg text-gray-600">Projects Completed</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
+                className="group"
               >
-                <div className="text-4xl md:text-5xl font-bold mb-2">98%</div>
-                <div className="text-lg text-white/80">Client Satisfaction</div>
+                <div className="text-5xl md:text-6xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">98%</div>
+                <div className="text-lg text-gray-600">Client Satisfaction</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
+                className="group"
               >
-                <div className="text-4xl md:text-5xl font-bold mb-2">$100M+</div>
-                <div className="text-lg text-white/80">Value Delivered</div>
+                <div className="text-5xl md:text-6xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">$100M+</div>
+                <div className="text-lg text-gray-600">Value Delivered</div>
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <CTASection
-          title="Ready to Transform Your Industry?"
-          description="Let's discuss how our industry-specific solutions can help you achieve your goals."
-          primaryButton={{ text: "Get Industry Consultation", link: "/contact", variant: "white" }}
-          secondaryButton={{ text: "View Case Studies", link: "/case-studies", variant: "whiteOutline" }}
-          background="gradient"
-          divider="wave"
-        />
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-3xl md:text-5xl font-bold text-black mb-6"
+              >
+                Ready to Transform Your Industry?
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto"
+              >
+                Let's discuss how our industry-specific solutions can help you achieve your goals.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-6 justify-center"
+              >
+                <button className="px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  Get Industry Consultation
+                </button>
+                <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300">
+                  View Case Studies
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </section>
       </motion.div>
     </>
   );

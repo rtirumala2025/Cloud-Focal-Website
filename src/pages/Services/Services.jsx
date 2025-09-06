@@ -1,10 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Button from '../../components/common/Button/Button';
 import servicesData from '../../assets/data/services.json';
-import CTASection from '../../ui/CTA/CTASection';
 
 const Services = () => {
   const containerVariants = {
@@ -56,9 +54,6 @@ const Services = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button to="/contact" variant="white" size="large">
                   Get Started
-                </Button>
-                <Button to="/case-studies" variant="whiteOutline" size="large">
-                  View Case Studies
                 </Button>
               </div>
             </motion.div>
@@ -148,7 +143,7 @@ const Services = () => {
         </section>
 
         {/* Process Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <motion.div 
               initial={{ opacity: 0, y: 30 }} 
@@ -205,15 +200,7 @@ const Services = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <CTASection
-          title="Ready to Transform Your Technology?"
-          description="Let's discuss how our comprehensive services can help you achieve your digital transformation goals."
-          primaryButton={{ text: "Get Started", link: "/contact", variant: "white" }}
-          secondaryButton={{ text: "Schedule Consultation", link: "/contact", variant: "whiteOutline" }}
-          background="gradient"
-          divider="wave"
-        />
+
       </motion.div>
     </>
   );

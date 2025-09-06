@@ -5,8 +5,7 @@ import HeroSection from '../../sections/Home/HeroSection';
 import ServicesOverview from '../../sections/Home/ServicesOverview';
 import ValueProposition from '../../sections/Home/ValueProposition';
 import IndustryFocus from '../../sections/Home/IndustryFocus';
-import CTASection from '../../ui/CTA/CTASection';
-
+import TrustSection from '../../sections/Home/TrustSection';
 
 const Home = () => {
   return (
@@ -55,15 +54,8 @@ const Home = () => {
         {/* Industry Focus */}
         <IndustryFocus />
 
-        {/* CTA Section */}
-        <CTASection
-          title="Ready to Transform Your Business?"
-          description="Let's discuss how Cloud Focal can help accelerate your digital transformation journey."
-          primaryButton={{ text: "Get Started", link: "/contact", variant: "white" }}
-          secondaryButton={{ text: "Learn More", link: "/about", variant: "whiteOutline" }}
-          background="gradient"
-          divider="wave"
-        />
+        {/* Trust Section */}
+        <TrustSection />
       </motion.div>
     </>
   );

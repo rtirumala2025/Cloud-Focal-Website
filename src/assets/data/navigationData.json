@@ -33,12 +33,6 @@
       ]
     },
     {
-      "id": "case-studies",
-      "title": "Case Studies",
-      "path": "/case-studies",
-      "icon": "folder-open"
-    },
-    {
       "id": "careers",
       "title": "Careers",
       "path": "/careers",
@@ -148,10 +142,6 @@
         "path": "/careers"
       },
       {
-        "title": "Case Studies",
-        "path": "/case-studies"
-      },
-      {
         "title": "Contact",
         "path": "/contact"
       }
@@ -177,19 +167,15 @@
     "legal": [
       {
         "title": "Privacy Policy",
-        "path": "/privacy"
+        "path": "/privacy-policy"
       },
       {
         "title": "Terms of Service",
-        "path": "/terms"
+        "path": "/terms-of-service"
       },
       {
         "title": "Cookie Policy",
-        "path": "/cookies"
-      },
-      {
-        "title": "Accessibility",
-        "path": "/accessibility"
+        "path": "/cookie-policy"
       }
     ]
   },

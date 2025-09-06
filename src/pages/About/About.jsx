@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import OurStory from '../../sections/About/OurStory';
 import MissionValues from '../../sections/About/MissionValues';
 import Leadership from '../../sections/About/Leadership';
-import CTASection from '../../ui/CTA/CTASection';
 
 const About = () => {
   return (
@@ -28,14 +27,7 @@ const About = () => {
         <OurStory />
         <MissionValues />
         <Leadership />
-        <CTASection
-          title="Ready to Work with Us?"
-          description="Let's discuss how Cloud Focal can help transform your technology initiatives."
-          primaryButton={{ text: "Get Started", link: "/contact", variant: "white" }}
-          secondaryButton={{ text: "View Our Services", link: "/services", variant: "whiteOutline" }}
-          background="gradient"
-          divider="wave"
-        />
+
       </motion.div>
     </>
   );

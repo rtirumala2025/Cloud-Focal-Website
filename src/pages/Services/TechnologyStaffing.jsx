@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import Button from '../../components/common/Button/Button';
 import servicesData from '../../assets/data/services.json';
-import CTASection from '../../ui/CTA/CTASection';
 
 const TechnologyStaffing = () => {
   const service = servicesData.services.find(s => s.id === 'technology-staffing');
@@ -56,9 +55,6 @@ const TechnologyStaffing = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button to="/contact" variant="white" size="large">
                     Get Started
-                  </Button>
-                  <Button to="/case-studies" variant="whiteOutline" size="large">
-                    View Success Stories
                   </Button>
                 </div>
               </motion.div>
@@ -259,14 +255,7 @@ const TechnologyStaffing = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <CTASection
-          title="Ready to Find Your Perfect Tech Talent?"
-          description="Let's discuss your technology staffing needs and find the right professionals for your team."
-          primaryButton={{ text: "Get Started", link: "/contact", variant: "primary" }}
-          secondaryButton={{ text: "Schedule Consultation", link: "/contact", variant: "outline" }}
-          background="gradient"
-        />
+
       </motion.div>
     </>
   );

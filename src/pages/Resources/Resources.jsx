@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Button from '../../components/common/Button/Button';
-import CTASection from '../../ui/CTA/CTASection';
 
 const Resources = () => {
   const blogPosts = [
@@ -126,7 +125,6 @@ const Resources = () => {
       >
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
-          <div className="absolute inset-0 bg-black/20"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h1
@@ -440,19 +438,7 @@ const Resources = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <CTASection
-          title="Ready to Access More Resources?"
-          subtitle="Explore our comprehensive library of insights, guides, and expert perspectives."
-          primaryButton={{
-            text: "Browse All Resources",
-            to: "/resources/library"
-          }}
-          secondaryButton={{
-            text: "Contact Our Experts",
-            to: "/contact"
-          }}
-        />
+
       </motion.div>
     </>
   );

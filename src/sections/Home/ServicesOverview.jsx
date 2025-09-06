@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Button from '../../components/common/Button/Button';
 import servicesData from '../../assets/data/services.json';
 
@@ -27,7 +26,7 @@ const ServicesOverview = () => {
   };
 
   return (
-    <section className="section-lg bg-neutral-50 section-divider">
+    <section className="section-lg bg-neutral-50">
       {/* UI FIX: Using wider container for better space utilization */}
       <div className="container-wide mx-auto">
         {/* Section Header */}

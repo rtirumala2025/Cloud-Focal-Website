@@ -147,7 +147,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-[9998] transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-neutral-200'
+          ? 'bg-white/95 backdrop-blur-md shadow-lg'
           : 'bg-white/90 backdrop-blur-sm'
       }`}
     >
@@ -230,7 +230,7 @@ const Header = () => {
             {/* Theme toggle */}
             <button
               onClick={() => themeActions.toggleTheme()}
-              className="p-3 rounded-lg text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 transition-all duration-200"
+              className="p-3 rounded-lg text-text-secondary hover:text-primary-600 hover:bg-bg-secondary transition-all duration-200"
               aria-label="Toggle theme"
             >
               {themeState.isDarkMode ? (
@@ -303,7 +303,7 @@ const Header = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-white border-t border-gray-200 mobile-menu"
+            className="lg:hidden bg-white mobile-menu"
           >
             <div className="container mx-auto px-4 py-4">
               {/* FIXED: Added proper mobile navigation structure */}
@@ -367,7 +367,7 @@ const Header = () => {
               </nav>
 
               {/* Mobile CTA */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
+              <div className="mt-6 pt-6">
                 <Link
                   to="/contact"
                   className="block w-full bg-primary-600 text-white text-center py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-medium"

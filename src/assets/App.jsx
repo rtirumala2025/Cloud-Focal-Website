@@ -6,7 +6,6 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Services from './pages/Services/Services';
 import Industries from './pages/Industries/Industries';
-import CaseStudies from './pages/CaseStudies/CaseStudies';
 import Careers from './pages/Careers/Careers';
 import Resources from './pages/Resources/Resources';
 import Contact from './pages/Contact/Contact';
@@ -28,7 +27,6 @@ function App() {
             <Route path="/industries" element={<Industries />} />
             <Route path="/industries/public-sector" element={<Industries />} />
             <Route path="/industries/private-enterprise" element={<Industries />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/resources/blog" element={<Resources />} />

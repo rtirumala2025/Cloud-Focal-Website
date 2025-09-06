@@ -1,0 +1,68 @@
+/* Debug CSS Overrides for Black Bar Investigation */
+/* Toggle these classes on/off to isolate the issue */
+
+/* Remove all borders */
+.debug-no-borders * {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Remove all box shadows */
+.debug-no-shadows * {
+  box-shadow: none !important;
+}
+
+/* Remove all background colors */
+.debug-no-backgrounds * {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Hide pseudo elements */
+.debug-no-pseudo *::before,
+.debug-no-pseudo *::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Hide positioned elements */
+.debug-no-positioned [style*="position: absolute"],
+.debug-no-positioned [style*="position: fixed"],
+.debug-no-positioned [style*="position: sticky"] {
+  display: none !important;
+}
+
+/* Hide thin elements */
+.debug-no-thin [class*="h-1"],
+.debug-no-thin [class*="h-2"],
+.debug-no-thin [class*="h-px"] {
+  display: none !important;
+}
+
+/* Hide dark elements */
+.debug-no-dark [class*="bg-black"],
+.debug-no-dark [class*="bg-gray-900"],
+.debug-no-dark [class*="bg-slate-900"] {
+  display: none !important;
+}
+
+/* Debug mode indicator */
+.debug-active {
+  position: relative;
+}
+
+.debug-active::before {
+  content: "DEBUG MODE ACTIVE";
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  z-index: 99999;
+  font-family: monospace;
+}

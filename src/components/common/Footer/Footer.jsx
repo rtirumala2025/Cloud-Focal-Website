@@ -1,42 +1,158 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import navigationData from '../../../assets/data/navigationData.json';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [cursorPrompt, setCursorPrompt] = useState({ show: false, text: '', x: 0, y: 0 });
+
+  // Handle cursor prompts
+  const handleMouseOver = (e, text) => {
+    setCursorPrompt({ show: true, text, x: e.clientX, y: e.clientY - 50 });
+  };
+
+  const handleMouseOut = () => {
+    setCursorPrompt({ show: false, text: '', x: 0, y: 0 });
+  };
+
+  const handleMouseMove = (e) => {
+    if (cursorPrompt.show) {
+      setCursorPrompt(prev => ({ ...prev, x: e.clientX, y: e.clientY - 50 }));
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => document.removeEventListener('mousemove', handleMouseMove);
+  }, [cursorPrompt.show, handleMouseMove]);
 
   return (
-    <footer className="bg-neutral-900 text-white relative">
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-8">
-              <img
-                src="/images/logos/cloudfocal-logo.png"
-                alt="Cloud Focal - Technology Staffing & IT Consulting"
-                className="h-12 w-auto"
-                loading="eager"
-              />
-              <span className="text-2xl font-bold text-white">Cloud Focal</span>
+    <>
+      {/* Cursor Prompt */}
+      <div 
+        className={`fixed top-0 left-0 z-50 pointer-events-none transition-all duration-300 ${
+          cursorPrompt.show ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ 
+          transform: `translate(${cursorPrompt.x}px, ${cursorPrompt.y}px)`,
+        }}
+      >
+        <div className="bg-blue-500/95 text-white px-3 py-2 rounded-full text-sm font-medium backdrop-blur-md border border-white/20">
+          {cursorPrompt.text}
+        </div>
+      </div>
+
+      <footer className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-600 text-white relative overflow-hidden">
+        {/* Floating Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div
+            className="absolute top-10 left-10 w-48 h-48 bg-white/5 rounded-full"
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+          <motion.div
+            className="absolute top-60 right-10 w-48 h-48 bg-white/5 rounded-full"
+            animate={{
+              y: [0, 30, 0],
+              rotate: [360, 180, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+              delay: -7
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-1/3 w-48 h-48 bg-white/5 rounded-full"
+            animate={{
+              y: [0, -15, 0],
+              rotate: [180, 360, 180],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+              delay: -14
+            }}
+          />
+        </div>
+
+
+
+        <div className="container mx-auto px-4 py-20 relative z-10">
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white/10 backdrop-blur-md border border-white/10 rounded-3xl p-10 mb-16 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            onMouseOver={(e) => handleMouseOver(e, "Ready to transform your business?")}
+            onMouseOut={handleMouseOut}
+          >
+            <div className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Ready to Transform Your Business?
+              </h2>
+              <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+                Let's discuss how Cloud Focal can help accelerate your digital transformation journey.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/contact"
+                  className="bg-white text-primary-600 px-7 py-4 rounded-full font-semibold hover:bg-gray-50 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  onMouseOver={(e) => handleMouseOver(e, "Let's start your transformation")}
+                  onMouseOut={handleMouseOut}
+                >
+                  Get Started
+                </Link>
+                <Link
+                  to="/services"
+                  className="bg-transparent text-white border-2 border-white/30 px-7 py-4 rounded-full font-semibold hover:bg-white/10 hover:border-white hover:-translate-y-1 transition-all duration-300"
+                  onMouseOver={(e) => handleMouseOver(e, "Discover our solutions")}
+                  onMouseOut={handleMouseOut}
+                >
+                  Learn More
+                </Link>
+              </div>
             </div>
-            <p className="text-neutral-300 mb-8 leading-relaxed text-sm">
+          </motion.div>
+
+          {/* Footer Content Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
+            {/* Brand Column */}
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center font-bold text-primary-600">
+                  CF
+                </div>
+                <div className="text-2xl font-bold text-white">Cloud Focal</div>
+              </div>
+              <p className="text-white/80 leading-relaxed mb-6">
               Leading technology staffing and IT consulting company. We help businesses 
               find top tech talent and implement innovative IT solutions for digital transformation.
             </p>
             
             {/* Social Links */}
-            <div className="flex space-x-4">
+              <div className="flex gap-4">
               {navigationData.socialLinks.map((social) => (
                 <a
                   key={social.platform}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-neutral-400 hover:text-white transition-all duration-200 p-3 rounded-lg hover:bg-neutral-800 hover:scale-110"
-                  aria-label={`Follow us on ${social.platform}`}
+                    className="w-11 h-11 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white hover:-translate-y-1 transition-all duration-300 group"
+                    onMouseOver={(e) => handleMouseOver(e, `Connect on ${social.platform}`)}
+                    onMouseOut={handleMouseOut}
                 >
                   <SocialIcon platform={social.platform} />
                 </a>
@@ -46,13 +162,17 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-8 border-b border-neutral-700 pb-3 uppercase tracking-wider">Services</h3>
-            <ul className="space-y-4">
+              <h3 className="text-base font-semibold text-white mb-5 uppercase tracking-wider">
+                Services
+              </h3>
+              <ul className="space-y-3">
               {navigationData.footerNavigation.services.map((service) => (
                 <li key={service.title}>
                   <Link
                     to={service.path}
-                    className="text-neutral-300 hover:text-white transition-all duration-200 block py-2 hover:translate-x-2 transform hover:font-medium text-sm"
+                      className="text-white/70 hover:text-white transition-all duration-300 hover:translate-x-1 block"
+                      onMouseOver={(e) => handleMouseOver(e, service.title)}
+                      onMouseOut={handleMouseOut}
                   >
                     {service.title}
                   </Link>
@@ -63,13 +183,17 @@ const Footer = () => {
 
           {/* Industries */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-8 border-b border-neutral-700 pb-3 uppercase tracking-wider">Industries</h3>
-            <ul className="space-y-4">
+              <h3 className="text-base font-semibold text-white mb-5 uppercase tracking-wider">
+                Industries
+              </h3>
+              <ul className="space-y-3">
               {navigationData.footerNavigation.industries.map((industry) => (
                 <li key={industry.title}>
                   <Link
                     to={industry.path}
-                    className="text-neutral-300 hover:text-white transition-all duration-200 block py-2 hover:translate-x-2 transform hover:font-medium text-sm"
+                      className="text-white/70 hover:text-white transition-all duration-300 hover:translate-x-1 block"
+                      onMouseOver={(e) => handleMouseOver(e, industry.title)}
+                      onMouseOut={handleMouseOut}
                   >
                     {industry.title}
                   </Link>
@@ -80,13 +204,17 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-8 border-b border-neutral-700 pb-3 uppercase tracking-wider">Company</h3>
-            <ul className="space-y-4">
+              <h3 className="text-base font-semibold text-white mb-5 uppercase tracking-wider">
+                Company
+              </h3>
+              <ul className="space-y-3">
               {navigationData.footerNavigation.company.map((item) => (
                 <li key={item.title}>
                   <Link
                     to={item.path}
-                    className="text-neutral-300 hover:text-white transition-all duration-200 block py-2 hover:translate-x-2 transform hover:font-medium text-sm"
+                      className="text-white/70 hover:text-white transition-all duration-300 hover:translate-x-1 block"
+                      onMouseOver={(e) => handleMouseOver(e, item.title)}
+                      onMouseOut={handleMouseOut}
                   >
                     {item.title}
                   </Link>
@@ -96,101 +224,37 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Contact Information */}
-        <div className="mt-12 pt-8 border-t border-neutral-800">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="text-base font-bold text-white mb-4">Contact Us</h4>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <svg className="w-4 h-4 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <span className="text-neutral-300 text-sm">{navigationData.contactInfo.phone}</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <svg className="w-4 h-4 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-neutral-300 text-sm">{navigationData.contactInfo.email}</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <svg className="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <div className="text-neutral-300 text-sm">
-                    <div>{navigationData.contactInfo.address.street}</div>
-                    <div>{navigationData.contactInfo.address.city}, {navigationData.contactInfo.address.state} {navigationData.contactInfo.address.zip}</div>
-                    <div>{navigationData.contactInfo.address.country}</div>
-                  </div>
-                </div>
-              </div>
+          {/* Footer Bottom */}
+          <div className="border-t border-white/10 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-5">
+              <div className="text-white/60">
+                © {currentYear} Cloud Focal. All rights reserved.
             </div>
 
-            <div>
-              <h4 className="text-base font-bold text-white mb-4">Quick Actions</h4>
-              <div className="space-y-2">
-                {navigationData.quickActions.map((action) => (
+              <nav className="flex gap-8">
+                {navigationData.footerNavigation.legal.map((item) => (
                   <Link
-                    key={action.title}
-                    to={action.path}
-                    className="block text-neutral-300 hover:text-white transition-colors duration-200 text-sm py-1 hover:translate-x-1 transform"
+                    key={item.title}
+                    to={item.path}
+                    className="text-white/60 hover:text-white transition-colors duration-300"
+                    onMouseOver={(e) => handleMouseOver(e, item.title)}
+                    onMouseOut={handleMouseOut}
                   >
-                    {action.title}
+                    {item.title}
                   </Link>
                 ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-base font-bold text-white mb-4">Resources</h4>
-              <ul className="space-y-2">
-                {navigationData.footerNavigation.resources.map((resource) => (
-                  <li key={resource.title}>
-                    <Link
-                      to={resource.path}
-                      className="text-neutral-300 hover:text-white transition-colors duration-200 text-sm py-1 hover:translate-x-1 transform block"
-                    >
-                      {resource.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Footer */}
-      <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
-            <div className="text-gray-400 text-xs">
-              © {currentYear} Cloud Focal. All rights reserved.
-            </div>
-            
-            <div className="flex space-x-6">
-              {navigationData.footerNavigation.legal.map((item) => (
-                <Link
-                  key={item.title}
-                  to={item.path}
-                  className="text-gray-400 hover:text-white text-xs transition-colors duration-200"
-                >
-                  {item.title}
-                </Link>
-              ))}
-            </div>
+              </nav>
           </div>
         </div>
       </div>
     </footer>
+    </>
   );
 };
 
 // Social Media Icons Component
 const SocialIcon = ({ platform }) => {
-  const iconClasses = "w-5 h-5";
+  const iconClasses = "w-5 h-5 text-white group-hover:text-primary-600 transition-colors duration-300";
   
   switch (platform.toLowerCase()) {
     case 'linkedin':
@@ -205,16 +269,10 @@ const SocialIcon = ({ platform }) => {
           <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
         </svg>
       );
-    case 'facebook':
+    case 'github':
       return (
         <svg className={iconClasses} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-        </svg>
-      );
-    case 'youtube':
-      return (
-        <svg className={iconClasses} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
       );
     default:
