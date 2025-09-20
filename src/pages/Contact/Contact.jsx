@@ -76,7 +76,7 @@ const Contact = () => {
         <meta property="og:title" content="Contact Us - Get in Touch" />
         <meta property="og:description" content="Get in touch with Cloud Focal for technology staffing and IT consulting services." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/contact" />
+        <meta property="og:url" content="https://cloudfocal.com/contact" />
       </Helmet>
 
       <motion.div 
@@ -172,7 +172,7 @@ const Contact = () => {
                 className="space-y-8"
               >
                 <div className="bg-gray-50 rounded-xl p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                  <h3 className="text-2xl font-bold text-black mb-6">Contact Information</h3>
                   <div className="space-y-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -181,8 +181,8 @@ const Contact = () => {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-gray-900 mb-1">Phone</h4>
-                        <p className="text-gray-600">+1 (555) 123-4567</p>
+                        <h4 className="text-lg font-bold text-black mb-1">Phone</h4>
+                        <p className="text-black">+1 (555) 123-4567</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
@@ -192,8 +192,8 @@ const Contact = () => {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-gray-900 mb-1">Email</h4>
-                        <p className="text-gray-600">info@cloudfocal.com</p>
+                        <h4 className="text-lg font-bold text-black mb-1">Email</h4>
+                        <p className="text-black">info@cloudfocal.com</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
@@ -204,8 +204,8 @@ const Contact = () => {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-gray-900 mb-1">Address</h4>
-                        <p className="text-gray-600">
+                        <h4 className="text-lg font-bold text-black mb-1">Address</h4>
+                        <p className="text-black">
                           123 Technology Drive<br />
                           San Francisco, CA 94105<br />
                           United States
@@ -216,23 +216,23 @@ const Contact = () => {
                 </div>
 
                 <div className="bg-gray-50 rounded-xl p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Business Hours</h3>
+                  <h3 className="text-2xl font-bold text-black mb-6">Business Hours</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Monday - Friday</span>
+                      <span className="text-black">Monday - Friday</span>
                       <span className="font-medium">9:00 AM - 6:00 PM PST</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Saturday</span>
+                      <span className="text-black">Saturday</span>
                       <span className="font-medium">10:00 AM - 4:00 PM PST</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Sunday</span>
+                      <span className="text-black">Sunday</span>
                       <span className="font-medium">Closed</span>
                     </div>
                     <div className="pt-3 border-t border-gray-200">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Emergency Support</span>
+                        <span className="text-black">Emergency Support</span>
                         <span className="font-medium text-primary-600">24/7 Available</span>
                       </div>
                     </div>
@@ -240,7 +240,7 @@ const Contact = () => {
                 </div>
 
                 <div className="bg-gray-50 rounded-xl p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Follow Us</h3>
+                  <h3 className="text-2xl font-bold text-black mb-6">Follow Us</h3>
                   <div className="flex space-x-4">
                     <a href="https://linkedin.com/company/cloudfocal" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center text-white hover:bg-primary-700 transition-colors">
                       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

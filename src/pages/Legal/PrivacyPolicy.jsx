@@ -73,7 +73,7 @@ const PrivacyPolicy = () => {
                   <li>Professional information (job title, company, industry)</li>
                   <li>Resume or CV information for job applications</li>
                   <li>Communication preferences</li>
-                  <li>Feedback and testimonials</li>
+                  <li>Feedback and reviews</li>
                 </ul>
 
                 <h3 className="text-2xl font-bold text-neutral-900 mb-4">Automatically Collected Information</h3>

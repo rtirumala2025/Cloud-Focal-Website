@@ -26,7 +26,7 @@ const SEOHead = ({
     },
     '/about': {
       title: 'About Cloud Focal Technologies - Our Story & Mission',
-      description: 'Learn about Cloud Focal Technologies leadership, mission, and 15+ years of experience in strategic technology solutions.'
+      description: 'Learn about Cloud Focal Technologies mission and 15+ years of experience in strategic technology solutions.'
     },
     '/services': {
       title: 'Technology Services - Staffing, Consulting & Integration',

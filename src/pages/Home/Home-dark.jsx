@@ -1,13 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import HeroSection from '../../sections/Home/HeroSection';
-import ServicesOverview from '../../sections/Home/ServicesOverview';
-import ValueProposition from '../../sections/Home/ValueProposition';
-import TrustSection from '../../sections/Home/TrustSection';
+import HeroSection from '../../sections/Home/HeroSection-dark';
+import ServicesOverview from '../../sections/Home/ServicesOverview-dark';
+import ValueProposition from '../../sections/Home/ValueProposition-dark';
+import TrustSection from '../../sections/Home/TrustSection-dark';
 
 const Home = () => {
-
   return (
     <>
       <Helmet>
@@ -40,20 +39,20 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="page-content-with-footer theme-transition"
+        className="page-content-with-footer theme-transition dark-theme"
       >
         {/* Hero Section */}
-        <HeroSection />
+      <HeroSection />
 
         {/* Services Overview */}
-        <ServicesOverview />
+      <ServicesOverview />
 
         {/* Value Proposition */}
-        <ValueProposition />
+      <ValueProposition />
 
         {/* Trust Section */}
-        <TrustSection />
-      </motion.div>
+      <TrustSection />
+    </motion.div>
     </>
   );
 };

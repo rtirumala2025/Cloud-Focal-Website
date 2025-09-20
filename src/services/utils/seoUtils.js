@@ -10,7 +10,7 @@ const DEFAULT_SEO_CONFIG = {
   defaultTitle: 'Cloud Focal - Technology Staffing & IT Consulting',
   defaultDescription: 'Leading technology staffing and IT consulting company. We help businesses find top tech talent and implement innovative IT solutions for digital transformation.',
   defaultKeywords: 'technology staffing, IT consulting, system integration, digital transformation, tech talent, IT solutions',
-  defaultImage: '/images/og-default.jpg',
+  defaultImage: '/images/logos/cloudfocal-logo.png',
   twitterHandle: '@cloudfocal',
   facebookAppId: 'your-facebook-app-id'
 };

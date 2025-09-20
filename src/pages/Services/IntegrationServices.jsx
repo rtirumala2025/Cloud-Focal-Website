@@ -89,13 +89,13 @@ const IntegrationServices = () => {
         <title>Integration Services | Cloud Focal - Seamless System Integration</title>
         <meta name="description" content="Expert system integration services to connect your applications, data, and platforms. API integration, data integration, cloud integration, and legacy system modernization." />
         <meta name="keywords" content="system integration, API integration, data integration, cloud integration, legacy integration, ETL, microservices" />
-        <link rel="canonical" href="https://sourcecloud.com/services/integration-services" />
+        <link rel="canonical" href="https://cloudfocal.com/services/integration-services" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Integration Services | Cloud Focal" />
         <meta property="og:description" content="Expert system integration services to connect your applications, data, and platforms seamlessly." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/services/integration-services" />
+        <meta property="og:url" content="https://cloudfocal.com/services/integration-services" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -108,6 +108,9 @@ const IntegrationServices = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
+        {/* Blue Header Spacer - Only for Services page */}
+        <div className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 h-16 lg:h-20"></div>
+        
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
           <div className="container mx-auto px-4 relative z-10">
@@ -157,7 +160,7 @@ const IntegrationServices = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Comprehensive Integration Solutions
               </motion.h2>
@@ -165,7 +168,7 @@ const IntegrationServices = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 We specialize in connecting diverse systems and platforms to create unified, 
                 efficient workflows that drive your business forward.
@@ -182,11 +185,11 @@ const IntegrationServices = () => {
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="text-4xl mb-4">{type.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{type.title}</h3>
-                  <p className="text-gray-600 mb-4">{type.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{type.title}</h3>
+                  <p className="text-black mb-4">{type.description}</p>
                   <ul className="space-y-2">
                     {type.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                      <li key={featureIndex} className="flex items-center text-sm text-black">
                         <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
                         {feature}
                       </li>
@@ -206,7 +209,7 @@ const IntegrationServices = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Our Integration Process
               </motion.h2>
@@ -214,7 +217,7 @@ const IntegrationServices = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 We follow a proven methodology to ensure successful integration projects 
                 that deliver measurable business value.
@@ -233,8 +236,8 @@ const IntegrationServices = () => {
                   <div className="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                     {step.step}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{step.title}</h3>
+                  <p className="text-black">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -249,7 +252,7 @@ const IntegrationServices = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Benefits of System Integration
               </motion.h2>
@@ -265,8 +268,8 @@ const IntegrationServices = () => {
                   className="text-center"
                 >
                   <div className="text-5xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
+                  <p className="text-black">{benefit.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -281,7 +284,7 @@ const IntegrationServices = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Technologies We Work With
               </motion.h2>
@@ -289,7 +292,7 @@ const IntegrationServices = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Our expertise spans the latest integration technologies and platforms 
                 to ensure the best solution for your specific needs.
@@ -307,7 +310,7 @@ const IntegrationServices = () => {
                   key={index}
                   className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
-                  <span className="text-sm font-medium text-gray-700">{tech}</span>
+                  <span className="text-sm font-medium text-black">{tech}</span>
                 </div>
               ))}
             </motion.div>
@@ -315,7 +318,7 @@ const IntegrationServices = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-gray-50 text-gray-900">
+        <section className="py-20 bg-gray-50 text-black">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
@@ -324,7 +327,7 @@ const IntegrationServices = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">200+</div>
-                <div className="text-lg text-gray-600">Integrations Built</div>
+                <div className="text-lg text-black">Integrations Built</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -332,7 +335,7 @@ const IntegrationServices = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">99.9%</div>
-                <div className="text-lg text-gray-600">Uptime Guarantee</div>
+                <div className="text-lg text-black">Uptime Guarantee</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -340,7 +343,7 @@ const IntegrationServices = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">24/7</div>
-                <div className="text-lg text-gray-600">Support Available</div>
+                <div className="text-lg text-black">Support Available</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -348,7 +351,7 @@ const IntegrationServices = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">50+</div>
-                <div className="text-lg text-gray-600">Technology Partners</div>
+                <div className="text-lg text-black">Technology Partners</div>
               </motion.div>
             </div>
           </div>

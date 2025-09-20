@@ -1,0 +1,87 @@
+/* Icon Text Block Component Styles */
+.icon-text-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  background: var(--bg-elevated);
+}
+
+.icon-text-block:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-primary);
+}
+
+.icon-text-block__icon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-50);
+  color: var(--primary-600);
+  transition: all 0.3s ease;
+}
+
+.icon-text-block__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon-text-block__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.icon-text-block__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+}
+
+.icon-text-block__description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .icon-text-block {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .icon-text-block__icon {
+    align-self: center;
+  }
+}
+
+/* Dark theme support */
+.dark-theme .icon-text-block {
+  background: var(--bg-elevated);
+  border-color: var(--border-primary);
+}
+
+.dark-theme .icon-text-block__icon {
+  background: var(--primary-900);
+  color: var(--primary-300);
+}
+
+.dark-theme .icon-text-block__title {
+  color: var(--text-primary);
+}
+
+.dark-theme .icon-text-block__description {
+  color: var(--text-secondary);
+}

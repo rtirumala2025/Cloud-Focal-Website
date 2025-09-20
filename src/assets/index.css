@@ -5,6 +5,7 @@
 /* UI FIX: Import enhanced form and navigation styles */
 @import './styles/forms.css';
 @import './styles/navigation.css';
+@import './styles/components/icon-text-block.css';
 
 /* FIXED: Added comprehensive CSS reset and accessibility improvements */
 /* CSS Reset/Normalize */
@@ -12,6 +13,73 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* EMERGENCY FIX: Ensure text visibility in dark mode */
+.dark-theme,
+.dark-theme * {
+  color: #FFFFFF !important;
+}
+
+/* Specific text color fixes for dark mode */
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3,
+.dark-theme h4,
+.dark-theme h5,
+.dark-theme h6 {
+  color: #FFFFFF !important;
+}
+
+.dark-theme p,
+.dark-theme span,
+.dark-theme div,
+.dark-theme li {
+  color: #E2E8F0 !important;
+}
+
+.dark-theme .text-gray-300,
+.dark-theme .text-gray-400 {
+  color: #94A3B8 !important;
+}
+
+/* Remove any problematic text effects */
+.dark-theme * {
+  text-shadow: none !important;
+  -webkit-text-stroke: none !important;
+}
+
+/* CRITICAL FIX: Override any text-transparent or bg-clip-text that makes text invisible */
+.dark-theme .text-transparent,
+.dark-theme [class*="text-transparent"],
+.dark-theme [class*="bg-clip-text"] {
+  color: #FFFFFF !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+}
+
+/* EMERGENCY FIX: Ensure proper border rendering */
+.dark-theme .card,
+.dark-theme .service-card,
+.dark-theme .pillar,
+.dark-theme .stats-item,
+.dark-theme [class*="bg-slate-800"]:not(.no-border-section),
+.dark-theme [class*="bg-slate-900"]:not(.no-border-section) {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  box-sizing: border-box !important;
+}
+
+/* Fix any problematic pseudo-element borders */
+.dark-theme *::before,
+.dark-theme *::after {
+  border: none !important;
+}
+
+/* Ensure proper box model for all elements */
+.dark-theme * {
+  box-sizing: border-box !important;
 }
 
 /* DESIGN SYSTEM: Enhanced smooth scrolling and transitions */
@@ -35,9 +103,43 @@ html {
   }
 }
 
-/* Smooth page transitions */
+/* PERFORMANCE FIX: Optimized transitions - only apply to specific elements that need them */
+.theme-transition,
+.theme-transition * {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* PERFORMANCE FIX: Hardware acceleration for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* PERFORMANCE FIX: Optimize body for better scrolling */
+body {
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* PERFORMANCE FIX: Remove global transitions for better performance */
 * {
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  /* Only keep essential transitions for interactive elements */
+  transition: none;
+}
+
+/* Add back transitions only for interactive elements */
+button, a, input, select, textarea, .card, .btn {
+  transition: all 0.2s ease;
+}
+
+/* Optimized hover effects */
+button:hover, a:hover, .card:hover, .btn:hover {
+  transition: all 0.15s ease;
 }
 
 /* Enhanced focus indicators */
@@ -100,7 +202,7 @@ html {
   top: 6px;
 }
 
-/* DESIGN SYSTEM: Modern, cohesive design variables with dark mode support */
+/* DESIGN SYSTEM: Modern, cohesive design variables */
 :root {
   /* Z-Index Scale */
   --z-dropdown: 9999;
@@ -141,7 +243,7 @@ html {
   --leading-relaxed: 1.625;
   --leading-loose: 2;
   
-  /* LIGHT THEME COLORS */
+  /* PRIMARY COLORS */
   /* Primary Colors */
   --primary-50: #eff6ff;
   --primary-100: #dbeafe;
@@ -203,7 +305,7 @@ html {
   --error-500: #ef4444;
   --error-600: #dc2626;
   
-  /* THEME-AWARE COLORS - Light Theme Defaults */
+  /* THEME-AWARE COLORS */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-tertiary: #f1f5f9;
@@ -226,138 +328,13 @@ html {
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-/* DARK THEME COLORS */
-.dark {
-  /* Primary Colors - Adjusted for dark mode */
-  --primary-50: #1e3a8a;
-  --primary-100: #1e40af;
-  --primary-200: #1d4ed8;
-  --primary-300: #2563eb;
-  --primary-400: #3b82f6;
-  --primary-500: #60a5fa;
-  --primary-600: #93c5fd;
-  --primary-700: #bfdbfe;
-  --primary-800: #dbeafe;
-  --primary-900: #eff6ff;
-  
-  /* Secondary Colors - Inverted for dark mode */
-  --secondary-50: #0f172a;
-  --secondary-100: #1e293b;
-  --secondary-200: #334155;
-  --secondary-300: #475569;
-  --secondary-400: #64748b;
-  --secondary-500: #94a3b8;
-  --secondary-600: #cbd5e1;
-  --secondary-700: #e2e8f0;
-  --secondary-800: #f1f5f9;
-  --secondary-900: #f8fafc;
-  
-  /* Neutral Colors - Inverted for dark mode */
-  --neutral-50: #171717;
-  --neutral-100: #262626;
-  --neutral-200: #404040;
-  --neutral-300: #525252;
-  --neutral-400: #737373;
-  --neutral-500: #a3a3a3;
-  --neutral-600: #d4d4d4;
-  --neutral-700: #e5e5e5;
-  --neutral-800: #f5f5f5;
-  --neutral-900: #fafafa;
-  
-  /* Accent Colors - Adjusted for dark mode */
-  --accent-50: #0c4a6e;
-  --accent-100: #075985;
-  --accent-200: #0369a1;
-  --accent-300: #0284c7;
-  --accent-400: #0ea5e9;
-  --accent-500: #38bdf8;
-  --accent-600: #7dd3fc;
-  --accent-700: #bae6fd;
-  --accent-800: #e0f2fe;
-  --accent-900: #f0f9ff;
-  
-  /* Semantic Colors - Adjusted for dark mode */
-  --success-50: #064e3b;
-  --success-500: #10b981;
-  --success-600: #34d399;
-  
-  --warning-50: #78350f;
-  --warning-500: #f59e0b;
-  --warning-600: #fbbf24;
-  
-  --error-50: #7f1d1d;
-  --error-500: #ef4444;
-  --error-600: #f87171;
-  
-  /* THEME-AWARE COLORS - Dark Theme */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --bg-elevated: #1e293b;
-  --bg-overlay: rgba(0, 0, 0, 0.7);
-  
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-tertiary: #94a3b8;
-  --text-inverse: #0f172a;
-  --text-muted: #64748b;
-  
-  --border-primary: #334155;
-  --border-secondary: #475569;
-  --border-focus: #60a5fa;
-  
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.6);
-  
-  /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
-  
-  /* Transitions */
-  --transition-fast: 150ms ease-in-out;
-  --transition-normal: 250ms ease-in-out;
-  --transition-slow: 350ms ease-in-out;
-}
 
 /* Base Styles */
 * {
   box-sizing: border-box;
 }
 
-/* Smooth theme transitions */
-*,
-*::before,
-*::after {
-  transition: 
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.3s ease,
-    fill 0.3s ease,
-    stroke 0.3s ease;
-}
 
-/* DESIGN SYSTEM: Section Dividers and Transitions */
-.section-divider {
-  position: relative;
-  overflow: hidden;
-}
-
-
-
-/* SVG Section Dividers - Removed to prevent white boxes */
-.section-divider-wave {
-  position: relative;
-}
-
-.section-divider-angled {
-  position: relative;
-}
 
 /* Section Spacing System */
 .section {
@@ -376,7 +353,37 @@ html {
   padding: var(--spacing-4xl) 0;
 }
 
-/* Typography System */
+/* Ensure proper spacing between sections */
+.section + .section {
+  margin-top: 0;
+}
+
+/* Hero section specific spacing */
+.hero-section {
+  padding: 4rem 0 var(--spacing-3xl) 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    padding: 5rem 0 var(--spacing-4xl) 0;
+  }
+}
+
+/* Section Dividers - Used in components */
+.section-divider {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-divider-wave {
+  position: relative;
+}
+
+.section-divider-angled {
+  position: relative;
+}
+
+/* Typography System - Essential classes used in components */
 .heading-1 {
   font-size: var(--text-5xl);
   font-weight: 700;
@@ -421,6 +428,16 @@ html {
   line-height: var(--leading-relaxed);
 }
 
+/* Loading Spinner - Used in Layout component */
+.spinner {
+  border: 2px solid var(--secondary-200);
+  border-top: 2px solid var(--primary-600);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
 .body {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
@@ -439,24 +456,25 @@ html {
 /* Card System */
 .card {
   background: var(--bg-elevated);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  transition: all 0.2s ease;
   border: 1px solid var(--border-primary);
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   transform: translateY(-2px);
 }
 
 .card-elevated {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 .card-elevated:hover {
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
+
 
 /* Button System */
 .btn {
@@ -515,51 +533,6 @@ html {
   box-shadow: var(--shadow-md);
 }
 
-/* Icon + Text Block System */
-.icon-text-block {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
-  border-radius: var(--radius-lg);
-  transition: all var(--transition-normal);
-}
-
-.icon-text-block:hover {
-  background: var(--bg-secondary);
-  transform: translateY(-1px);
-}
-
-.icon-text-block__icon {
-  flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary-50);
-  border-radius: var(--radius-md);
-  color: var(--primary-600);
-  font-size: 1.25rem;
-}
-
-.icon-text-block__content {
-  flex: 1;
-  min-width: 0;
-}
-
-.icon-text-block__title {
-  font-size: var(--text-lg);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--spacing-xs);
-}
-
-.icon-text-block__description {
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-  line-height: var(--leading-relaxed);
-}
 
 /* Grid System */
 .grid-auto-fit {
@@ -594,14 +567,53 @@ html {
     gap: var(--spacing-md);
   }
   
-  .heading-1 { font-size: var(--text-4xl); }
-  .heading-2 { font-size: var(--text-3xl); }
-  .heading-3 { font-size: var(--text-2xl); }
-  .heading-4 { font-size: var(--text-xl); }
-  
   .section { padding: var(--spacing-xl) 0; }
   .section-lg { padding: var(--spacing-2xl) 0; }
   .section-xl { padding: var(--spacing-3xl) 0; }
+  
+  /* Hero section responsive improvements */
+  .heading-1 { 
+    font-size: var(--text-4xl); 
+    line-height: 1.1;
+  }
+  
+  .body-large {
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+  
+  /* Card responsive improvements */
+  .card {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* Button responsive improvements */
+  .btn {
+    min-height: 48px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-2-cols,
+  .grid-3-cols,
+  .grid-4-cols {
+    gap: var(--spacing-sm);
+  }
+  
+  .section { padding: var(--spacing-lg) 0; }
+  .section-lg { padding: var(--spacing-xl) 0; }
+  .section-xl { padding: var(--spacing-2xl) 0; }
+  
+  .heading-1 { 
+    font-size: var(--text-3xl); 
+    line-height: 1.2;
+  }
+  
+  .heading-2 { 
+    font-size: var(--text-2xl); 
+    line-height: 1.3;
+  }
 }
 
 html {
@@ -887,7 +899,6 @@ header * {
   padding-bottom: var(--spacing-2xl);
 }
 
-/* REMOVED: Duplicate .page-content-with-footer rule - consolidated above */
 
 
 
@@ -957,21 +968,6 @@ header * {
   }
 }
 
-/* Dark mode support - DISABLED to prevent black bar */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-600: #60a5fa;
-    --primary-700: #3b82f6;
-    --secondary-900: #ffffff;
-    --secondary-700: #e5e7eb;
-  }
-  
-  /* DISABLED: body background to prevent black bar */
-  /* body {
-    background-color: #1f2937;
-    color: #f9fafb;
-  } */
-}
 
 /* Touch targets - minimum 44px for mobile accessibility */
 button, a, input, select, textarea {
@@ -1063,17 +1059,6 @@ video {
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out;
-}
-
-.animate-slide-up {
-  animation: slideInUp 0.5s ease-out;
-}
-
-.animate-slide-down {
-  animation: slideInDown 0.5s ease-out;
-}
 
 /* Container overflow prevention */
   .container {
@@ -1282,20 +1267,6 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-/* UI FIX: Removed duplicate container styles - using optimized version above */
-
-/* Section Spacing */
-.section {
-  padding: 4rem 0;
-}
-
-.section-sm {
-  padding: 2rem 0;
-}
-
-.section-lg {
-  padding: 6rem 0;
-}
 
 /* Card Styles */
 .card {
@@ -1310,45 +1281,7 @@ input:focus, textarea:focus, select:focus {
   transform: translateY(-2px);
 }
 
-/* Gradient Backgrounds */
-.gradient-primary {
-  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
-}
 
-.gradient-secondary {
-  background: linear-gradient(135deg, var(--secondary-600) 0%, var(--secondary-700) 100%);
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, var(--accent-600) 0%, var(--accent-700) 100%);
-}
-
-/* Animation Classes */
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.slide-up {
-  animation: slideUp 0.5s ease-out;
-}
-
-.slide-down {
-  animation: slideDown 0.5s ease-out;
-}
-
-.scale-in {
-  animation: scaleIn 0.3s ease-out;
-}
-
-/* Loading Spinner */
-.spinner {
-  border: 2px solid var(--secondary-200);
-  border-top: 2px solid var(--primary-600);
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 1s linear infinite;
-}
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
@@ -1382,6 +1315,246 @@ img {
 
 .skip-link:focus {
   top: 6px;
+}
+
+/* PERFORMANCE FIX: Optimized Dark Theme Styles - High specificity to override existing styles */
+.dark-theme,
+.dark-theme body,
+.dark-theme html,
+.dark-theme #root {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  /* PERFORMANCE FIX: Hardware acceleration for theme transitions */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* FIXED: Remove sidebars for dark mode pages - balanced width layout */
+.dark-theme .container,
+.dark-theme main,
+.dark-theme .App {
+  max-width: 98% !important;
+  width: 98% !important;
+  padding-left: 1% !important;
+  padding-right: 1% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background-color: #0f172a !important;
+}
+
+/* Ensure dark mode sections use balanced width - but preserve hero section spacing */
+.dark-theme section:not(.hero-section) {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Ensure padding shows on both sides with matching background */
+.dark-theme {
+  padding-left: 1% !important;
+  padding-right: 1% !important;
+  background-color: #0f172a !important;
+}
+
+/* Ensure all padding areas match the background color - but preserve text visibility */
+.dark-theme * {
+  background-color: inherit !important;
+}
+
+/* Ensure text colors are properly set and not inherited from problematic parents */
+.dark-theme * {
+  color: #FFFFFF !important;
+}
+
+/* Specific overrides for different text elements */
+.dark-theme .text-gray-300 {
+  color: #E2E8F0 !important;
+}
+
+.dark-theme .text-gray-400 {
+  color: #94A3B8 !important;
+}
+
+.dark-theme .text-gray-500 {
+  color: #64748B !important;
+}
+
+/* Override for specific elements that need different backgrounds */
+.dark-theme .bg-white,
+.dark-theme .bg-gray-50,
+.dark-theme .bg-gray-100,
+.dark-theme .bg-slate-50,
+.dark-theme .bg-slate-100 {
+  background-color: #1e293b !important;
+}
+
+/* REMOVED: Global main padding - only apply to specific pages */
+
+/* Fix header overlap for dark mode main content */
+.dark-theme .dark-theme-main {
+  padding-top: 4rem !important; /* 64px - enough space for header */
+}
+
+@media (min-width: 1024px) {
+  .dark-theme .dark-theme-main {
+    padding-top: 5rem !important; /* 80px - desktop header height */
+  }
+}
+
+/* Ensure full page coverage */
+.dark-theme #root,
+.dark-theme .App {
+  background-color: #0f172a !important;
+  min-height: 100vh !important;
+}
+
+.dark-theme .bg-white {
+  background-color: #1e293b !important;
+}
+
+.dark-theme .bg-gray-50 {
+  background-color: #334155 !important;
+}
+
+.dark-theme .bg-gray-100 {
+  background-color: #475569 !important;
+}
+
+.dark-theme .text-gray-900 {
+  color: #f8fafc !important;
+}
+
+.dark-theme .text-gray-800 {
+  color: #f8fafc !important;
+}
+
+.dark-theme .text-gray-700 {
+  color: #cbd5e1 !important;
+}
+
+.dark-theme .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark-theme .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+.dark-theme .text-neutral-900 {
+  color: #f8fafc !important;
+}
+
+.dark-theme .text-neutral-800 {
+  color: #f8fafc !important;
+}
+
+.dark-theme .text-neutral-700 {
+  color: #cbd5e1 !important;
+}
+
+.dark-theme .text-neutral-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark-theme .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+.dark-theme .border-gray-300 {
+  border-color: #475569 !important;
+}
+
+.dark-theme .border-neutral-200 {
+  border-color: #334155 !important;
+}
+
+.dark-theme header {
+  background-color: #1e293b !important;
+  border-bottom: 1px solid #334155 !important;
+}
+
+.dark-theme .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5) !important;
+}
+
+.dark-theme .shadow-md {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4) !important;
+}
+
+.dark-theme .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.6) !important;
+}
+
+/* Override border for specific sections that should not have borders */
+.dark-theme .no-border-section {
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Specifically target the CTA section in dark mode */
+.dark-theme .no-border-section.bg-gradient-to-br {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Dark theme for specific sections */
+.dark-theme section {
+  background-color: #0f172a !important;
+}
+
+.dark-theme .section-lg {
+  background-color: #0f172a !important;
+}
+
+.dark-theme .py-20 {
+  background-color: #0f172a !important;
+}
+
+.dark-theme .py-16 {
+  background-color: #0f172a !important;
+}
+
+/* CRITICAL FIX: Override any problematic negative margins that pull content up */
+section {
+  margin-top: 0 !important;
+}
+
+/* Ensure hero sections start below the header */
+.hero-section {
+  margin-top: 0 !important;
+  padding-top: 4rem !important;
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    padding-top: 5rem !important;
+  }
+}
+
+/* Ensure layout components are dark */
+.dark-theme main,
+.dark-theme .page-content-with-footer,
+.dark-theme .container {
+  background-color: #0f172a !important;
+}
+
+/* Ensure no light backgrounds show through */
+.dark-theme .bg-slate-50,
+.dark-theme .bg-slate-100,
+.dark-theme .bg-neutral-50,
+.dark-theme .bg-neutral-100 {
+  background-color: #1e293b !important;
+}
+
+/* Override specific light backgrounds */
+.dark-theme .bg-gray-50,
+.dark-theme .bg-gray-100,
+.dark-theme .bg-white {
+  background-color: #1e293b !important;
 }
 
 /* Print Styles */

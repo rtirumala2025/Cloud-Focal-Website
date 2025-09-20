@@ -22,8 +22,8 @@ export const ROUTE_CONFIG = {
   [ROUTES.ABOUT]: {
     path: ROUTES.ABOUT,
     title: 'About Us',
-    description: 'Learn about Cloud Focal\'s mission, values, and leadership team. Discover how we help businesses transform through technology.',
-    keywords: 'about cloud focal, company history, leadership team, mission values',
+    description: 'Learn about Cloud Focal\'s mission and values. Discover how we help businesses transform through technology.',
+    keywords: 'about cloud focal, company history, mission values',
     breadcrumb: ['Home', 'About'],
     showInNavigation: true,
     showInFooter: true,

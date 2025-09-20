@@ -83,13 +83,13 @@ const ITConsulting = () => {
         <title>IT Consulting Services | Cloud Focal - Strategic Technology Solutions</title>
         <meta name="description" content="Expert IT consulting services to transform your business. Digital transformation, cloud strategy, cybersecurity, and data analytics solutions tailored to your needs." />
         <meta name="keywords" content="IT consulting, digital transformation, cloud strategy, cybersecurity, data analytics, technology consulting" />
-        <link rel="canonical" href="https://sourcecloud.com/services/it-consulting" />
+        <link rel="canonical" href="https://cloudfocal.com/services/it-consulting" />
         
         {/* Open Graph */}
         <meta property="og:title" content="IT Consulting Services | Cloud Focal" />
         <meta property="og:description" content="Expert IT consulting services to transform your business. Digital transformation, cloud strategy, cybersecurity, and data analytics solutions." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/services/it-consulting" />
+        <meta property="og:url" content="https://cloudfocal.com/services/it-consulting" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -102,6 +102,9 @@ const ITConsulting = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
+        {/* Blue Header Spacer - Only for Services page */}
+        <div className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 h-16 lg:h-20"></div>
+        
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
           <div className="container mx-auto px-4 relative z-10">
@@ -151,7 +154,7 @@ const ITConsulting = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Comprehensive IT Consulting Services
               </motion.h2>
@@ -159,7 +162,7 @@ const ITConsulting = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Our expert consultants deliver strategic guidance across all aspects of technology 
                 to help your organization achieve its digital transformation goals.
@@ -176,11 +179,11 @@ const ITConsulting = () => {
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{service.title}</h3>
+                  <p className="text-black mb-4">{service.description}</p>
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                      <li key={featureIndex} className="flex items-center text-sm text-black">
                         <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
                         {feature}
                       </li>
@@ -200,7 +203,7 @@ const ITConsulting = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Our Proven Methodology
               </motion.h2>
@@ -208,7 +211,7 @@ const ITConsulting = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 We follow a systematic approach to ensure successful project delivery and 
                 maximum value for your organization.
@@ -227,8 +230,8 @@ const ITConsulting = () => {
                   <div className="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                     {step.step}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{step.title}</h3>
+                  <p className="text-black">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -243,7 +246,7 @@ const ITConsulting = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Why Choose Our IT Consulting?
               </motion.h2>
@@ -259,8 +262,8 @@ const ITConsulting = () => {
                   className="text-center"
                 >
                   <div className="text-5xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
+                  <p className="text-black">{benefit.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -268,7 +271,7 @@ const ITConsulting = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-gray-50 text-gray-900">
+        <section className="py-20 bg-gray-50 text-black">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
@@ -277,7 +280,7 @@ const ITConsulting = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">500+</div>
-                <div className="text-lg text-gray-600">Projects Completed</div>
+                <div className="text-lg text-black">Projects Completed</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -285,7 +288,7 @@ const ITConsulting = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">98%</div>
-                <div className="text-lg text-gray-600">Client Satisfaction</div>
+                <div className="text-lg text-black">Client Satisfaction</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -293,7 +296,7 @@ const ITConsulting = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">15+</div>
-                <div className="text-lg text-gray-600">Years Experience</div>
+                <div className="text-lg text-black">Years Experience</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -301,7 +304,7 @@ const ITConsulting = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">50+</div>
-                <div className="text-lg text-gray-600">Expert Consultants</div>
+                <div className="text-lg text-black">Expert Consultants</div>
               </motion.div>
             </div>
           </div>

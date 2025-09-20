@@ -3,7 +3,7 @@
  * Centralized event tracking with consistent naming and parameters
  */
 
-import { trackEvent, trackFormSubmission, trackButtonClick, trackDownload, trackExternalLink } from './googleAnalytics';
+import { trackEvent, trackFormSubmission, trackButtonClick, trackDownload } from './googleAnalytics';
 
 // Event categories
 export const EVENT_CATEGORIES = {

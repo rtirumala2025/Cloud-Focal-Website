@@ -9,7 +9,6 @@ import ErrorBoundary from './components/common/ErrorBoundary/ErrorBoundary';
 // Context Providers
 import { AppProvider } from './context/AppContext';
 import { AuthProvider } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';
 
 // Layout Components
 import Layout from './components/common/Layout/Layout';
@@ -32,19 +31,14 @@ import TermsOfService from './pages/Legal/TermsOfService';
 import CookiePolicy from './pages/Legal/CookiePolicy';
 import NotFound from './pages/NotFound/NotFound';
 
-// Debug Components
-import MinimalTest from './pages/Debug/MinimalTest';
-import LayoutTest from './pages/Debug/LayoutTest';
-import DebugControlPanel from './components/debug/DebugControlPanel';
-import DarkModeTest from './components/debug/DarkModeTest';
-import ThemeTestPage from './components/debug/ThemeTestPage';
+// Dark Theme Pages
+import HomeDark from './pages/Home/Home-dark';
+import AboutDark from './pages/About/About-dark';
+import ServicesDark from './pages/Services/Services-dark';
+import ContactDark from './pages/Contact/Contact-dark';
 
 // Global Styles
 import './assets/index.css';
-import './styles/debugOverrides.css';
-
-// Debug Helpers (for console use)
-import './utils/debugHelpers';
 
 function App() {
   return (
@@ -52,12 +46,8 @@ function App() {
       <HelmetProvider>
         <AppProvider>
           <AuthProvider>
-            <ThemeProvider>
-              <Router>
+            <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                 <div className="App">
-                {/* Debug Tools - Always show for testing */}
-                <DebugControlPanel />
-                <DarkModeTest />
                 <AnimatePresence mode="wait">
                   <Routes>
                     <Route path="/" element={
@@ -66,7 +56,7 @@ function App() {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <Home />
                         </motion.div>
@@ -76,10 +66,10 @@ function App() {
                     <Route path="/about" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <About />
                         </motion.div>
@@ -89,10 +79,10 @@ function App() {
                     <Route path="/services" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <Services />
                         </motion.div>
@@ -102,10 +92,10 @@ function App() {
                     <Route path="/services/technology-staffing" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <TechnologyStaffing />
                         </motion.div>
@@ -115,10 +105,10 @@ function App() {
                     <Route path="/services/it-consulting" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <ITConsulting />
                         </motion.div>
@@ -128,10 +118,10 @@ function App() {
                     <Route path="/services/integration-services" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <IntegrationServices />
                         </motion.div>
@@ -141,10 +131,10 @@ function App() {
                     <Route path="/industries" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <Industries />
                         </motion.div>
@@ -154,10 +144,10 @@ function App() {
                     <Route path="/industries/public-sector" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <PublicSector />
                         </motion.div>
@@ -167,10 +157,10 @@ function App() {
                     <Route path="/industries/private-enterprise" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <PrivateEnterprise />
                         </motion.div>
@@ -181,10 +171,10 @@ function App() {
                     <Route path="/careers" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <Careers />
                         </motion.div>
@@ -194,10 +184,10 @@ function App() {
                     <Route path="/resources" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <Resources />
                         </motion.div>
@@ -207,10 +197,10 @@ function App() {
                     <Route path="/contact" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <Contact />
                         </motion.div>
@@ -220,10 +210,10 @@ function App() {
                     <Route path="/privacy-policy" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <PrivacyPolicy />
                         </motion.div>
@@ -233,10 +223,10 @@ function App() {
                     <Route path="/terms-of-service" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <TermsOfService />
                         </motion.div>
@@ -246,28 +236,76 @@ function App() {
                     <Route path="/cookie-policy" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <CookiePolicy />
                         </motion.div>
                       </Layout>
                     } />
                     
-                    {/* Debug Routes */}
-                    <Route path="/debug/minimal" element={<MinimalTest />} />
-                    <Route path="/debug/layout" element={<LayoutTest />} />
-                    <Route path="/debug/theme" element={<ThemeTestPage />} />
+                    {/* Dark Theme Routes */}
+                    <Route path="/dark" element={
+                      <Layout>
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <HomeDark />
+                        </motion.div>
+                      </Layout>
+                    } />
+                    
+                    <Route path="/about-dark" element={
+                      <Layout>
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <AboutDark />
+                        </motion.div>
+                      </Layout>
+                    } />
+                    
+                    <Route path="/services-dark" element={
+                      <Layout>
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ServicesDark />
+                        </motion.div>
+                      </Layout>
+                    } />
+                    
+                    <Route path="/contact-dark" element={
+                      <Layout>
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ContactDark />
+                        </motion.div>
+                      </Layout>
+                    } />
+                    
                     
                     <Route path="*" element={
                       <Layout>
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <NotFound />
                         </motion.div>
@@ -277,7 +315,6 @@ function App() {
                 </AnimatePresence>
               </div>
             </Router>
-          </ThemeProvider>
         </AuthProvider>
       </AppProvider>
     </HelmetProvider>

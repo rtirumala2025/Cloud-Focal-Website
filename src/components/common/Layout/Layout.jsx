@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import ConditionalHeader from '../Header/ConditionalHeader';
+import ConditionalFooter from '../Footer/ConditionalFooter';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import { useApp } from '../../../context/AppContext';
 
@@ -12,7 +12,7 @@ const Layout = ({ children, title, description, keywords, image, canonical }) =>
   const defaultTitle = 'Cloud Focal - Technology Staffing & IT Consulting';
   const defaultDescription = 'Leading technology staffing and IT consulting company. We help businesses find top tech talent and implement innovative IT solutions for digital transformation.';
   const defaultKeywords = 'technology staffing, IT consulting, system integration, digital transformation, tech talent, IT solutions';
-  const defaultImage = '/images/og-image.jpg';
+  const defaultImage = '/images/logos/cloudfocal-logo.png';
 
   return (
     <>
@@ -80,16 +80,16 @@ const Layout = ({ children, title, description, keywords, image, canonical }) =>
       {/* FIXED: Added proper semantic HTML structure */}
       <div className="min-h-screen flex flex-col">
         <header role="banner">
-          <Header />
+          <ConditionalHeader />
         </header>
         
-        {/* UI FIX: Added padding-top to prevent header overlap */}
-        <main id="main-content" role="main" className="flex-grow pt-14 lg:pt-16">
+        {/* UI FIX: Removed padding-top for seamless header transition */}
+        <main id="main-content" role="main" className="flex-grow dark-theme-main">
           {children}
         </main>
         
         <footer role="contentinfo">
-          <Footer />
+          <ConditionalFooter />
         </footer>
       </div>
       

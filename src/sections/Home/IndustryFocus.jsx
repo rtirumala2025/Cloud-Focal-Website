@@ -140,9 +140,9 @@ const IndustryFocus = () => {
               variants={itemVariants}
               className="group"
             >
-              <div className="card card-elevated overflow-hidden">
+              <div className="card card-elevated overflow-hidden h-full flex flex-col">
                 {/* Industry Header */}
-                <div className={`p-6 ${industry.bgColor}`}>
+                <div className={`p-6 flex-1 flex flex-col ${industry.bgColor}`}>
                   <div className={`w-16 h-16 bg-gradient-to-br ${industry.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <div className="text-white">
                       {industry.icon}
@@ -153,7 +153,7 @@ const IndustryFocus = () => {
                     {industry.name}
                   </h3>
                   
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed flex-1">
                     {industry.description}
                   </p>
                 </div>

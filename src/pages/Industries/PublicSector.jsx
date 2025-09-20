@@ -56,13 +56,13 @@ const PublicSector = () => {
         <title>Public Sector Solutions | Cloud Focal - Government Technology</title>
         <meta name="description" content="Digital transformation solutions for government agencies and public institutions. Secure, compliant, and efficient technology solutions for the public sector." />
         <meta name="keywords" content="public sector, government technology, digital government, FISMA compliance, FedRAMP, citizen services" />
-        <link rel="canonical" href="https://sourcecloud.com/industries/public-sector" />
+        <link rel="canonical" href="https://cloudfocal.com/industries/public-sector" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Public Sector Solutions | Cloud Focal" />
         <meta property="og:description" content="Digital transformation solutions for government agencies and public institutions." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/industries/public-sector" />
+        <meta property="og:url" content="https://cloudfocal.com/industries/public-sector" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -124,7 +124,7 @@ const PublicSector = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Public Sector Solutions
               </motion.h2>
@@ -132,7 +132,7 @@ const PublicSector = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Comprehensive technology solutions designed specifically for government agencies 
                 and public institutions to improve efficiency, security, and citizen services.
@@ -149,11 +149,11 @@ const PublicSector = () => {
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="text-4xl mb-4">{solution.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{solution.title}</h3>
-                  <p className="text-gray-600 mb-4">{solution.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{solution.title}</h3>
+                  <p className="text-black mb-4">{solution.description}</p>
                   <ul className="space-y-2">
                     {solution.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                      <li key={featureIndex} className="flex items-center text-sm text-black">
                         <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
                         {feature}
                       </li>
@@ -173,7 +173,7 @@ const PublicSector = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Addressing Public Sector Challenges
               </motion.h2>
@@ -181,7 +181,7 @@ const PublicSector = () => {
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-8">Common Challenges</h3>
+                <h3 className="text-2xl font-bold text-black mb-8">Common Challenges</h3>
                 <div className="space-y-6">
                   {challenges.map((challenge, index) => (
                     <motion.div
@@ -191,15 +191,15 @@ const PublicSector = () => {
                       transition={{ duration: 0.8, delay: index * 0.1 }}
                       className="bg-white rounded-lg p-6 shadow-md"
                     >
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">{challenge.title}</h4>
-                      <p className="text-gray-600">{challenge.description}</p>
+                      <h4 className="text-lg font-bold text-black mb-2">{challenge.title}</h4>
+                      <p className="text-black">{challenge.description}</p>
                     </motion.div>
                   ))}
                 </div>
               </div>
               
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-8">Our Solutions</h3>
+                <h3 className="text-2xl font-bold text-black mb-8">Our Solutions</h3>
                 <div className="space-y-6">
                   {[
                     {
@@ -226,8 +226,8 @@ const PublicSector = () => {
                       transition={{ duration: 0.8, delay: index * 0.1 }}
                       className="bg-primary-50 rounded-lg p-6 border-l-4 border-primary-600"
                     >
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">{solution.title}</h4>
-                      <p className="text-gray-600">{solution.description}</p>
+                      <h4 className="text-lg font-bold text-black mb-2">{solution.title}</h4>
+                      <p className="text-black">{solution.description}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -244,7 +244,7 @@ const PublicSector = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Compliance & Security
               </motion.h2>
@@ -252,7 +252,7 @@ const PublicSector = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 We understand the critical importance of security and compliance in the public sector. 
                 Our solutions meet the highest standards for government agencies.
@@ -285,8 +285,8 @@ const PublicSector = () => {
                   className="text-center"
                 >
                   <div className="text-5xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{item.title}</h3>
+                  <p className="text-black">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -294,7 +294,7 @@ const PublicSector = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-gray-50 text-gray-900">
+        <section className="py-20 bg-gray-50 text-black">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
@@ -303,7 +303,7 @@ const PublicSector = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">150+</div>
-                <div className="text-lg text-gray-600">Government Projects</div>
+                <div className="text-lg text-black">Government Projects</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -311,7 +311,7 @@ const PublicSector = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">98%</div>
-                <div className="text-lg text-gray-600">Compliance Rate</div>
+                <div className="text-lg text-black">Compliance Rate</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -319,7 +319,7 @@ const PublicSector = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">$25M+</div>
-                <div className="text-lg text-gray-600">Cost Savings</div>
+                <div className="text-lg text-black">Cost Savings</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -327,7 +327,7 @@ const PublicSector = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">50+</div>
-                <div className="text-lg text-gray-600">Agencies Served</div>
+                <div className="text-lg text-black">Agencies Served</div>
               </motion.div>
             </div>
           </div>

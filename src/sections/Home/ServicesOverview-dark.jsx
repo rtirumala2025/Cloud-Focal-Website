@@ -26,9 +26,64 @@ const ServicesOverview = () => {
   };
 
   return (
-    <section className="section-lg bg-neutral-50">
+    <section className="section-lg bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden">
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0">
+        {/* Animated mesh gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-indigo-900/20"></div>
+        
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: `
+            linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }}></div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-20 left-20 w-2 h-2 bg-blue-400/30 rounded-full"
+            animate={{
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              delay: 0
+            }}
+          />
+          <motion.div
+            className="absolute top-40 right-32 w-1 h-1 bg-purple-400/40 rounded-full"
+            animate={{
+              y: [0, -80, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              delay: 2
+            }}
+          />
+          <motion.div
+            className="absolute bottom-40 left-1/3 w-1.5 h-1.5 bg-cyan-400/30 rounded-full"
+            animate={{
+              y: [0, -120, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              delay: 4
+            }}
+          />
+        </div>
+      </div>
+      
       {/* UI FIX: Using wider container for better space utilization */}
-      <div className="container-wide mx-auto">
+      <div className="container-wide mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,10 +92,10 @@ const ServicesOverview = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="heading-2 text-neutral-900 mb-6">
+          <h2 className="heading-2 text-white mb-6">
             Comprehensive Technology Solutions
           </h2>
-          <p className="body-large text-neutral-600 max-w-5xl mx-auto">
+          <p className="body-large text-gray-300 max-w-5xl mx-auto">
             From talent acquisition to system integration, we provide end-to-end technology services 
             that help organizations thrive in the digital age.
           </p>
@@ -60,20 +115,23 @@ const ServicesOverview = () => {
               variants={itemVariants}
               className="group"
             >
-              <div className="card card-elevated overflow-hidden h-full flex flex-col">
+              <div className="card card-elevated overflow-hidden h-full flex flex-col bg-gradient-to-br from-slate-800 to-slate-900 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 group-hover:-translate-y-2">
                 {/* Service Icon */}
-                <div className="p-8 pb-6 flex-1 flex flex-col">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="p-8 pb-6 flex-1 flex flex-col relative">
+                  {/* Glow effect behind icon */}
+                  <div className="absolute top-8 left-8 w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl blur-lg group-hover:scale-150 transition-all duration-500"></div>
+                  
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
                     <ServiceIcon icon={service.icon} />
                   </div>
                   
                   {/* Service Title */}
-                  <h3 className="heading-4 text-neutral-900 mb-4">
+                  <h3 className="heading-4 text-white mb-4">
                     {service.title}
                   </h3>
                   
                   {/* Service Description */}
-                  <p className="body text-neutral-600 mb-6 flex-1">
+                  <p className="body text-gray-300 mb-6 flex-1">
                     {service.description}
                   </p>
                   
@@ -81,10 +139,10 @@ const ServicesOverview = () => {
                   <ul className="space-y-3 mb-8">
                     {service.features.slice(0, 3).map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
-                        <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">{feature.title}</span>
+                        <span className="text-gray-300">{feature.title}</span>
                       </li>
                     ))}
                   </ul>
@@ -94,7 +152,7 @@ const ServicesOverview = () => {
                     to={`/services/${service.id}`}
                     variant="outline"
                     size="medium"
-                    className="w-full group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300"
+                    className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300"
                     icon={
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -117,14 +175,20 @@ const ServicesOverview = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-            <h3 className="text-3xl font-bold text-neutral-900 mb-4">
-              Need a Custom Solution?
-            </h3>
-            <p className="text-xl text-neutral-600 mb-8 max-w-2xl mx-auto">
-              Every organization has unique technology needs. Let us create a tailored solution 
-              that perfectly fits your requirements and business objectives.
-            </p>
+          <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 md:p-12 relative overflow-hidden no-border-section" style={{border: 'none !important', boxShadow: 'none !important', outline: 'none !important', borderWidth: '0 !important', borderStyle: 'none !important'}}>
+            {/* Background decoration */}
+            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-full blur-xl"></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Need a Custom Solution?
+              </h3>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Every organization has unique technology needs. Let us create a tailored solution 
+                that perfectly fits your requirements and business objectives.
+              </p>
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button

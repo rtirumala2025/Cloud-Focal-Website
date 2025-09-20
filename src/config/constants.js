@@ -182,7 +182,6 @@ export const API_ENDPOINTS = {
   CONTACT: '/contact',
   JOBS: '/jobs',
   NEWSLETTER: '/newsletter',
-  TESTIMONIALS: '/testimonials',
   TEAM: '/team',
   SERVICES: '/services',
   INDUSTRIES: '/industries',
@@ -332,7 +331,6 @@ export const SUCCESS_MESSAGES = {
 // LOCAL STORAGE KEYS
 // ===========================================
 export const STORAGE_KEYS = {
-  THEME: 'cloudfocal-theme',
   LANGUAGE: 'cloudfocal-language',
   USER_PREFERENCES: 'cloudfocal-user-preferences',
   FORM_DATA: 'cloudfocal-form-data',
@@ -358,7 +356,7 @@ export const SEO_CONFIG = {
   DEFAULT_TITLE: 'Cloud Focal - Technology Staffing & IT Consulting',
   DEFAULT_DESCRIPTION: 'Leading technology staffing and IT consulting company. We help businesses find top tech talent and implement innovative IT solutions for digital transformation.',
   DEFAULT_KEYWORDS: 'technology staffing, IT consulting, system integration, digital transformation, tech talent, IT solutions',
-  DEFAULT_IMAGE: '/images/og-default.jpg',
+  DEFAULT_IMAGE: '/images/logos/cloudfocal-logo.png',
   TWITTER_HANDLE: '@cloudfocal',
   FACEBOOK_APP_ID: 'your-facebook-app-id'
 };

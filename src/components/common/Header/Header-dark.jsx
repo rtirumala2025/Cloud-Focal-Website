@@ -5,7 +5,7 @@ import { useApp } from '../../../context/AppContext';
 import navigationData from '../../../assets/data/navigationData.json';
 import { getThemeAwarePath } from '../../../utils/themeUtils';
 
-const Header = () => {
+const HeaderDark = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -13,8 +13,7 @@ const Header = () => {
   const navigate = useNavigate();
   const { state, actions } = useApp();
 
-  // Get theme from context and URL
-  const isDarkMode = state.theme === 'dark' || location.pathname.includes('-dark') || location.pathname === '/dark';
+  // This component is always in dark mode, but we still need theme context for switching
 
   // PERFORMANCE FIX: Throttled scroll effect
   useEffect(() => {
@@ -51,7 +50,6 @@ const Header = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMobileMenuOpen]);
-
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -121,15 +119,15 @@ const Header = () => {
               className="fixed inset-0 z-[99998] dropdown-overlay"
               onClick={() => setActiveDropdown(null)}
             />
-            {/* Dropdown Menu */}
+            {/* Dropdown Menu - Enhanced Dark Mode */}
             <motion.div
               initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
               transition={{ duration: 0.15 }}
-              className="fixed top-20 left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[99999] dropdown-menu"
+              className="fixed top-20 left-1/2 transform -translate-x-1/2 w-64 rounded-lg shadow-xl border py-2 z-[99999] dropdown-menu bg-slate-900 border-slate-700 shadow-2xl shadow-black/50"
               style={{
-                top: '4rem', // Adjust based on header height
+                top: '4rem',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 minWidth: '16rem'
@@ -139,16 +137,14 @@ const Header = () => {
                 <Link
                   key={child.id}
                   to={getThemeAwarePath(child.path)}
-                  className={`block px-4 py-3 transition-colors ${
-                    isDarkMode
-                      ? 'text-white hover:bg-white/10 hover:text-emerald-400'
-                      : 'text-gray-700 hover:bg-gray-50 hover:text-primary-600'
-                  }`}
+                  className="block px-4 py-3 transition-all duration-200 text-gray-100 hover:bg-slate-700/70 hover:text-emerald-400 border-b border-slate-700/50 last:border-b-0"
                   onClick={() => setActiveDropdown(null)}
                 >
                   <div className="font-medium">{child.title}</div>
                   {child.description && (
-                    <div className="text-sm text-gray-500 mt-1">{child.description}</div>
+                    <div className="text-sm mt-1 text-gray-400">
+                      {child.description}
+                    </div>
                   )}
                 </Link>
               ))}
@@ -172,20 +168,18 @@ const Header = () => {
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="pl-4 space-y-2">
+            <div className="pl-4 space-y-2 mt-2">
               {item.children.map((child) => (
                 <Link
                   key={child.id}
                   to={getThemeAwarePath(child.path)}
-                  className={`block py-2 transition-colors ${
-                    isDarkMode
-                      ? 'text-white hover:text-emerald-400'
-                      : 'text-gray-600 hover:text-primary-600'
-                  }`}
+                  className="block py-2 px-3 rounded-md transition-all duration-200 text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50"
                 >
                   <div className="font-medium">{child.title}</div>
                   {child.description && (
-                    <div className="text-sm text-gray-500 mt-1">{child.description}</div>
+                    <div className="text-sm mt-1 text-gray-400">
+                      {child.description}
+                    </div>
                   )}
                 </Link>
               ))}
@@ -199,28 +193,24 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[9998] transition-all duration-300 ${
-        isDarkMode
-          ? isScrolled
-            ? 'bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-black/25 border-b border-slate-800/50'
-            : 'bg-slate-900/70 backdrop-blur-sm'
-          : isScrolled
-            ? 'bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50'
-            : 'bg-white/70 backdrop-blur-sm'
+        isScrolled
+          ? 'bg-slate-900 backdrop-blur-md shadow-2xl shadow-black/25 border-b border-slate-800/50'
+          : 'bg-slate-900 backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+          {/* Logo - Enhanced for Dark Mode */}
           <Link to="/" className="flex items-center">
             <img
               src="/images/logos/cloudfocal-logo.png"
               alt="Cloud Focal - Technology Staffing & IT Consulting"
-              className={`h-10 lg:h-12 w-auto transition-all duration-200 ${isDarkMode ? 'brightness-110 contrast-110 hover:brightness-125' : 'hover:opacity-80'}`}
+              className="h-10 lg:h-12 w-auto transition-all duration-200 brightness-110 contrast-110 hover:brightness-125 drop-shadow-lg"
               loading="eager"
             />
           </Link>
 
-          {/* FIXED: Added proper navigation structure with accessibility */}
+          {/* Enhanced Navigation with Dark Mode */}
           <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex items-center space-x-6">
             <ul className="flex items-center space-x-6">
               {navigationData.mainNavigation.map((item) => (
@@ -230,14 +220,10 @@ const Header = () => {
                     <div className="flex items-center">
                       <Link
                         to={getThemeAwarePath(item.path)}
-                        className={`py-3 px-4 rounded-l-lg transition-all duration-200 ${
+                        className={`py-3 px-4 rounded-l-lg transition-all duration-200 font-medium ${
                           isActiveLink(item.path)
-                            ? isDarkMode 
-                              ? 'text-emerald-400 bg-emerald-400/10 border-b-2 border-emerald-400'
-                              : 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                            : isDarkMode
-                              ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                              : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
+                            ? 'text-emerald-400 bg-emerald-900/30 border-b-2 border-emerald-400'
+                            : 'text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50'
                         }`}
                       >
                         {item.title}
@@ -246,12 +232,8 @@ const Header = () => {
                         onClick={(e) => toggleDropdown(item.id, e)}
                         className={`py-3 px-2 rounded-r-lg transition-all duration-200 ${
                           isActiveLink(item.path)
-                            ? isDarkMode 
-                              ? 'text-emerald-400 bg-emerald-400/10 border-b-2 border-emerald-400'
-                              : 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                            : isDarkMode
-                              ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                              : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
+                            ? 'text-emerald-400 bg-emerald-900/30 border-b-2 border-emerald-400'
+                            : 'text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50'
                         }`}
                       >
                         <svg
@@ -276,14 +258,10 @@ const Header = () => {
                 ) : (
                   <Link
                     to={getThemeAwarePath(item.path)}
-                    className={`py-3 px-4 rounded-lg transition-all duration-200 ${
+                    className={`py-3 px-4 rounded-lg transition-all duration-200 font-medium ${
                       isActiveLink(item.path)
-                        ? isDarkMode 
-                          ? 'text-emerald-400 bg-emerald-400/10 border-b-2 border-emerald-400'
-                          : 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                        : isDarkMode
-                          ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                          : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
+                        ? 'text-emerald-400 bg-emerald-900/30 border-b-2 border-emerald-400'
+                        : 'text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50'
                     }`}
                   >
                     {item.title}
@@ -294,16 +272,12 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Right side actions */}
+          {/* Right side actions - Enhanced Dark Mode */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Theme toggle */}
+            {/* Enhanced Theme toggle */}
             <button
               onClick={handleThemeSwitch}
-              className={`p-3 rounded-lg transition-all duration-200 ${
-                isDarkMode
-                  ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
-              }`}
+              className="p-3 rounded-lg transition-all duration-200 text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50 bg-slate-800/50"
               aria-label="Toggle theme"
             >
               {state.theme === 'dark' ? (
@@ -327,23 +301,19 @@ const Header = () => {
               )}
             </button>
 
-            {/* CTA Button */}
+            {/* Enhanced CTA Button */}
             <Link
               to={getThemeAwarePath("/contact")}
-              className={`${isDarkMode ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-primary-600 hover:bg-primary-700'} text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-200 font-medium`}
+              className="px-6 py-3 rounded-lg transition-all duration-200 font-medium shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white hover:shadow-emerald-500/25 hover:shadow-xl border border-emerald-500/30"
             >
               Get Started
             </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Enhanced Mobile menu button */}
           <button
             onClick={toggleMobileMenu}
-            className={`lg:hidden p-2 rounded-md transition-colors ${
-              isDarkMode
-                ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
-            }`}
+            className="lg:hidden p-2 rounded-md transition-all duration-200 text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50"
             aria-label="Toggle mobile menu"
           >
             <svg
@@ -372,7 +342,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Enhanced Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -380,10 +350,10 @@ const Header = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden bg-white mobile-menu"
+            className="lg:hidden mobile-menu bg-slate-900 border-t border-slate-700"
           >
             <div className="container mx-auto px-4 py-4">
-              {/* FIXED: Added proper mobile navigation structure */}
+              {/* Enhanced Mobile Navigation */}
               <nav role="navigation" aria-label="Mobile navigation" className="space-y-2">
                 {navigationData.mainNavigation.map((item) => (
                   <div key={item.id}>
@@ -392,28 +362,20 @@ const Header = () => {
                         <div className="flex items-center">
                           <Link
                             to={getThemeAwarePath(item.path)}
-                            className={`flex-1 py-3 px-4 rounded-l-md transition-colors ${
-                              isDarkMode
-                                ? isActiveLink(item.path)
-                                  ? 'text-emerald-400 bg-emerald-50/10'
-                                  : 'text-white hover:text-emerald-400 hover:bg-white/10'
-                                : isActiveLink(item.path)
-                                  ? 'text-primary-600 bg-primary-50'
-                                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                            className={`flex-1 py-3 px-4 rounded-l-md transition-all duration-200 ${
+                              isActiveLink(item.path)
+                                ? 'text-emerald-400 bg-emerald-900/30'
+                                : 'text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50'
                             }`}
                           >
                             <span className="font-medium">{item.title}</span>
                           </Link>
                           <button
                             onClick={() => toggleDropdown(item.id)}
-                            className={`py-3 px-2 rounded-r-md transition-colors ${
-                              isDarkMode
-                                ? isActiveLink(item.path)
-                                  ? 'text-emerald-400 bg-emerald-50/10'
-                                  : 'text-white hover:text-emerald-400 hover:bg-white/10'
-                                : isActiveLink(item.path)
-                                  ? 'text-primary-600 bg-primary-50'
-                                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                            className={`py-3 px-2 rounded-r-md transition-all duration-200 ${
+                              isActiveLink(item.path)
+                                ? 'text-emerald-400 bg-emerald-900/30'
+                                : 'text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50'
                             }`}
                           >
                             <svg
@@ -438,14 +400,10 @@ const Header = () => {
                     ) : (
                       <Link
                         to={getThemeAwarePath(item.path)}
-                        className={`block py-3 px-4 rounded-md transition-colors ${
-                          isDarkMode
-                            ? isActiveLink(item.path)
-                              ? 'text-emerald-400 bg-emerald-50/10'
-                              : 'text-white hover:text-emerald-400 hover:bg-white/10'
-                            : isActiveLink(item.path)
-                              ? 'text-primary-600 bg-primary-50'
-                              : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                        className={`block py-3 px-4 rounded-md transition-all duration-200 font-medium ${
+                          isActiveLink(item.path)
+                            ? 'text-emerald-400 bg-emerald-900/30'
+                            : 'text-gray-200 hover:text-emerald-400 hover:bg-slate-700/50'
                         }`}
                       >
                         {item.title}
@@ -455,11 +413,11 @@ const Header = () => {
                 ))}
               </nav>
 
-              {/* Mobile CTA */}
-              <div className="mt-6 pt-6">
+              {/* Enhanced Mobile CTA */}
+              <div className="mt-6 pt-6 border-t border-slate-700">
                 <Link
                   to={getThemeAwarePath("/contact")}
-                  className={`block w-full ${isDarkMode ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-primary-600 hover:bg-primary-700'} text-white text-center py-3 px-6 rounded-lg transition-colors font-medium`}
+                  className="block w-full text-center py-3 px-6 rounded-lg transition-all duration-200 font-medium bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg hover:shadow-emerald-500/25 border border-emerald-500/30"
                 >
                   Get Started
                 </Link>
@@ -471,4 +429,5 @@ const Header = () => {
     </header>
   );
 };
-export default Header;
+
+export default HeaderDark;

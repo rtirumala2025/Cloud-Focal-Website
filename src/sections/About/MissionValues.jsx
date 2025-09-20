@@ -63,6 +63,7 @@ const MissionValues = () => {
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -82,14 +83,29 @@ const MissionValues = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 md:p-12 text-white text-center mb-16"
+          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 md:p-12 text-white text-center mb-16 shadow-lg"
         >
-          <h3 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h3>
-          <p className="text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
-            To empower organizations with exceptional technology talent and innovative solutions that drive 
-            digital transformation and sustainable growth, while creating meaningful opportunities for 
-            technology professionals and contributing to positive social impact through technology advancement.
-          </p>
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white">Our Mission</h3>
+            <p className="text-xl md:text-2xl leading-relaxed mb-8 text-white">
+              To empower organizations with exceptional technology talent and innovative solutions that drive 
+              digital transformation and sustainable growth, while creating meaningful opportunities for 
+              technology professionals and contributing to positive social impact through technology advancement.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              {[
+                { icon: "🎯", title: "Excellence", description: "Delivering exceptional results" },
+                { icon: "🤝", title: "Partnership", description: "Building lasting relationships" },
+                { icon: "🚀", title: "Innovation", description: "Driving technological advancement" }
+              ].map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-4xl mb-3">{item.icon}</div>
+                  <h4 className="text-lg font-bold mb-2 text-white">{item.title}</h4>
+                  <p className="text-blue-100 text-sm">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* Vision Statement */}
@@ -98,14 +114,52 @@ const MissionValues = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl p-8 md:p-12 text-center mb-16 shadow-lg"
+          className="bg-white rounded-2xl p-8 md:p-12 text-center mb-16 shadow-lg border border-gray-100"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Vision</h3>
-          <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
-            To be the most trusted partner in technology talent and solutions, recognized for our expertise, 
-            innovation, and commitment to client success across all industries, while fostering a more 
-            inclusive and sustainable technology ecosystem.
-          </p>
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Vision</h3>
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
+              To be the most trusted partner in technology talent and solutions, recognized for our expertise, 
+              innovation, and commitment to client success across all industries, while fostering a more 
+              inclusive and sustainable technology ecosystem.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+              <div className="text-left">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">What We Strive For</h4>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Global recognition as the premier technology partner</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Industry-leading innovation and expertise</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Inclusive and sustainable technology ecosystem</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="text-left">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">Our Impact</h4>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Transforming businesses through technology</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Creating meaningful career opportunities</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Driving positive social change through tech</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Core Values */}
@@ -142,54 +196,54 @@ const MissionValues = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16 border border-gray-100"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-neutral-900 mb-6">Our Social Impact</h3>
-            <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold text-gray-900 mb-6">Our Social Impact</h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Beyond business success, we're committed to creating positive change in the technology industry and society.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-neutral-900 mb-2">Diversity & Inclusion</h4>
-              <p className="text-neutral-600">Promoting equal opportunities and diverse representation in tech.</p>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Diversity & Inclusion</h4>
+              <p className="text-gray-600">Promoting equal opportunities and diverse representation in tech.</p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-neutral-900 mb-2">Innovation for Good</h4>
-              <p className="text-neutral-600">Leveraging technology to solve social and environmental challenges.</p>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Innovation for Good</h4>
+              <p className="text-gray-600">Leveraging technology to solve social and environmental challenges.</p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-neutral-900 mb-2">Education & Training</h4>
-              <p className="text-neutral-600">Investing in the next generation of technology professionals.</p>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Education & Training</h4>
+              <p className="text-gray-600">Investing in the next generation of technology professionals.</p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-neutral-900 mb-2">Global Reach</h4>
-              <p className="text-neutral-600">Connecting talent and opportunities across borders and cultures.</p>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Global Reach</h4>
+              <p className="text-gray-600">Connecting talent and opportunities across borders and cultures.</p>
             </div>
           </div>
         </motion.div>
@@ -200,44 +254,44 @@ const MissionValues = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 md:p-12 shadow-lg text-white"
+          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 md:p-12 shadow-lg text-white"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-white mb-6">Why Choose Cloud Focal?</h3>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold mb-6 text-white">Why Choose Cloud Focal?</h3>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               Our values aren't just words on a page—they're the foundation of how we work and what makes us different.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">Proven Track Record</h4>
-              <p className="text-primary-100">14+ years of successful technology partnerships and placements.</p>
+              <h4 className="text-lg font-bold mb-2 text-white">Proven Track Record</h4>
+              <p className="text-blue-100">14+ years of successful technology partnerships and placements.</p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">Expert Team</h4>
-              <p className="text-primary-100">Industry veterans with deep technology and business expertise.</p>
+              <h4 className="text-lg font-bold mb-2 text-white">Expert Team</h4>
+              <p className="text-blue-100">Industry veterans with deep technology and business expertise.</p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">Innovation Focus</h4>
-              <p className="text-primary-100">Cutting-edge solutions and emerging technology expertise.</p>
+              <h4 className="text-lg font-bold mb-2 text-white">Innovation Focus</h4>
+              <p className="text-blue-100">Cutting-edge solutions and emerging technology expertise.</p>
             </div>
           </div>
         </motion.div>

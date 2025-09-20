@@ -4,10 +4,11 @@ import Button from '../../components/common/Button/Button';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
+    <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-800 via-primary-700 to-primary-600">
+      {/* Background Pattern with improved overlay for better readability */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
       {/* Floating Elements */}
@@ -50,48 +51,48 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* UI FIX: Using wider container for better space utilization */}
-      <div className="container-wide mx-auto relative z-10">
+      {/* Improved container with better vertical centering */}
+      <div className="container-wide mx-auto relative z-10 py-20 lg:py-32">
         <div className="text-center max-w-6xl mx-auto">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium mb-8"
+            className="inline-flex items-center px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 text-white text-sm font-medium mb-10"
           >
             <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
             Trusted by 500+ companies worldwide
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Main Headline with improved readability */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="heading-1 text-white mb-8"
+            className="heading-1 text-white mb-6 drop-shadow-lg"
           >
             Transform Your Vision
-            <span className="block text-accent-300">Into Reality</span>
+            <span className="block text-accent-200 drop-shadow-md">Into Reality</span>
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* Subheadline with better spacing */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="body-large text-white/90 mb-12 max-w-4xl mx-auto"
+            className="body-large text-white/95 mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-sm"
           >
             Cloud Focal delivers comprehensive technology solutions that accelerate your digital transformation. 
             From talent acquisition to system integration, we're your strategic partner for success.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons with improved spacing */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
           >
             <Button
               to="/contact"
@@ -116,12 +117,12 @@ const HeroSection = () => {
             </Button>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats with improved spacing and visual connection */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto mt-8"
           >
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>

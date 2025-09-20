@@ -60,13 +60,13 @@ const PrivateEnterprise = () => {
         <title>Private Enterprise Solutions | Cloud Focal - Business Technology</title>
         <meta name="description" content="Digital transformation and technology solutions for private sector organizations. Cloud migration, data analytics, and enterprise integration services." />
         <meta name="keywords" content="private enterprise, digital transformation, cloud migration, data analytics, enterprise integration, business technology" />
-        <link rel="canonical" href="https://sourcecloud.com/industries/private-enterprise" />
+        <link rel="canonical" href="https://cloudfocal.com/industries/private-enterprise" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Private Enterprise Solutions | Cloud Focal" />
         <meta property="og:description" content="Digital transformation and technology solutions for private sector organizations." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/industries/private-enterprise" />
+        <meta property="og:url" content="https://cloudfocal.com/industries/private-enterprise" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -128,7 +128,7 @@ const PrivateEnterprise = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Enterprise Solutions
               </motion.h2>
@@ -136,7 +136,7 @@ const PrivateEnterprise = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Comprehensive technology solutions designed to drive innovation, 
                 improve efficiency, and accelerate growth for private sector organizations.
@@ -153,11 +153,11 @@ const PrivateEnterprise = () => {
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="text-4xl mb-4">{solution.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{solution.title}</h3>
-                  <p className="text-gray-600 mb-4">{solution.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{solution.title}</h3>
+                  <p className="text-black mb-4">{solution.description}</p>
                   <ul className="space-y-2">
                     {solution.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                      <li key={featureIndex} className="flex items-center text-sm text-black">
                         <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
                         {feature}
                       </li>
@@ -177,7 +177,7 @@ const PrivateEnterprise = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Business Benefits
               </motion.h2>
@@ -185,7 +185,7 @@ const PrivateEnterprise = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Our solutions deliver measurable business value and competitive advantages 
                 that help you stay ahead in today's digital economy.
@@ -202,8 +202,8 @@ const PrivateEnterprise = () => {
                   className="text-center"
                 >
                   <div className="text-5xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
+                  <p className="text-black">{benefit.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -218,7 +218,7 @@ const PrivateEnterprise = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Enterprise-Grade Features
               </motion.h2>
@@ -265,8 +265,8 @@ const PrivateEnterprise = () => {
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center"
                 >
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{feature.title}</h3>
+                  <p className="text-black">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -274,7 +274,7 @@ const PrivateEnterprise = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-gray-50 text-gray-900">
+        <section className="py-20 bg-gray-50 text-black">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
@@ -283,7 +283,7 @@ const PrivateEnterprise = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">300+</div>
-                <div className="text-lg text-gray-600">Enterprise Projects</div>
+                <div className="text-lg text-black">Enterprise Projects</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -291,7 +291,7 @@ const PrivateEnterprise = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">97%</div>
-                <div className="text-lg text-gray-600">Client Satisfaction</div>
+                <div className="text-lg text-black">Client Satisfaction</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -299,7 +299,7 @@ const PrivateEnterprise = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">$45M+</div>
-                <div className="text-lg text-gray-600">Cost Savings</div>
+                <div className="text-lg text-black">Cost Savings</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -307,7 +307,7 @@ const PrivateEnterprise = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">200+</div>
-                <div className="text-lg text-gray-600">Companies Served</div>
+                <div className="text-lg text-black">Companies Served</div>
               </motion.div>
             </div>
           </div>

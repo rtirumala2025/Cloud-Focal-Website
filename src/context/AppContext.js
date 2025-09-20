@@ -1,4 +1,13 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import { getThemePreference, saveThemePreference } from '../utils/themeUtils';
+
+// Get initial theme from localStorage
+const getInitialTheme = () => {
+  if (typeof window !== 'undefined') {
+    return getThemePreference();
+  }
+  return 'light';
+};
 
 // Initial state
 const initialState = {
@@ -11,7 +20,7 @@ const initialState = {
     data: null,
   },
   user: null,
-  theme: 'light',
+  theme: getInitialTheme(),
   language: 'en',
   contactForm: {
     isSubmitting: false,
@@ -180,19 +189,13 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // Load theme from localStorage on mount
+  // Initialize theme from localStorage on app start
   useEffect(() => {
-    const savedTheme = localStorage.getItem('cloudfocal-theme');
-    if (savedTheme) {
+    const savedTheme = getThemePreference();
+    if (savedTheme !== state.theme) {
       dispatch({ type: ActionTypes.SET_THEME, payload: savedTheme });
     }
   }, []);
-
-  // Save theme to localStorage when it changes
-  useEffect(() => {
-    localStorage.setItem('cloudfocal-theme', state.theme);
-    document.documentElement.setAttribute('data-theme', state.theme);
-  }, [state.theme]);
 
   // Auto-remove notifications after 5 seconds
   useEffect(() => {
@@ -248,6 +251,7 @@ export const AppProvider = ({ children }) => {
 
     setTheme: (theme) => {
       dispatch({ type: ActionTypes.SET_THEME, payload: theme });
+      saveThemePreference(theme);
     },
 
     setLanguage: (language) => {

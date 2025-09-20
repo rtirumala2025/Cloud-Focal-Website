@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Button from '../../components/common/Button/Button';
 import jobsData from '../../assets/data/jobs.json';
 
@@ -9,7 +8,6 @@ const Careers = () => {
   // Add null checks to prevent runtime errors
   const jobs = jobsData?.jobs || [];
   const featuredJobs = jobs.slice(0, 6);
-  const allJobs = jobs;
 
   const benefits = [
     {
@@ -77,13 +75,13 @@ const Careers = () => {
         <title>Careers | Cloud Focal - Join Our Team</title>
         <meta name="description" content="Join Cloud Focal's dynamic team. Explore career opportunities in technology staffing, IT consulting, and system integration. Competitive benefits and growth opportunities." />
         <meta name="keywords" content="careers, jobs, employment, technology jobs, IT consulting careers, remote work, benefits" />
-        <link rel="canonical" href="https://sourcecloud.com/careers" />
+        <link rel="canonical" href="https://cloudfocal.com/careers" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Careers | Cloud Focal - Join Our Team" />
         <meta property="og:description" content="Join Cloud Focal's dynamic team. Explore career opportunities in technology staffing, IT consulting, and system integration." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/careers" />
+        <meta property="og:url" content="https://cloudfocal.com/careers" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -154,7 +152,7 @@ const Careers = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Our Culture
               </motion.h2>
@@ -162,7 +160,7 @@ const Careers = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 We foster an environment of innovation, collaboration, and continuous learning 
                 where every team member can thrive and grow.
@@ -179,8 +177,8 @@ const Careers = () => {
                   className="text-center"
                 >
                   <div className="text-5xl mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                  <p className="text-gray-600">{value.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{value.title}</h3>
+                  <p className="text-black">{value.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -195,7 +193,7 @@ const Careers = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Benefits & Perks
               </motion.h2>
@@ -203,7 +201,7 @@ const Careers = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 We believe in taking care of our team with comprehensive benefits 
                 and perks that support your well-being and growth.
@@ -220,8 +218,8 @@ const Careers = () => {
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="text-4xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
+                  <p className="text-black">{benefit.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -236,7 +234,7 @@ const Careers = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Open Positions
               </motion.h2>
@@ -244,7 +242,7 @@ const Careers = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Explore exciting opportunities across our departments and join a team 
                 that's passionate about technology and innovation.
@@ -261,7 +259,7 @@ const Careers = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 hover:border-primary-300"
                 >
-                  <span className="font-medium text-gray-700">{dept}</span>
+                  <span className="font-medium text-black">{dept}</span>
                 </motion.button>
               ))}
             </div>
@@ -277,8 +275,8 @@ const Careers = () => {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{job.title}</h3>
-                      <p className="text-gray-600 mb-2">{job.department}</p>
+                      <h3 className="text-xl font-bold text-black mb-2">{job.title}</h3>
+                      <p className="text-black mb-2">{job.department}</p>
                     </div>
                     <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">
                       {job.type}
@@ -293,20 +291,20 @@ const Careers = () => {
                     {job.location}
                   </div>
                   
-                  <p className="text-gray-600 mb-6 line-clamp-3">{job.description}</p>
+                  <p className="text-black mb-6 line-clamp-3">{job.description}</p>
                   
                   <div className="flex items-center justify-between">
                     <div className="flex flex-wrap gap-2">
                       {(job.skills || []).slice(0, 3).map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
-                          className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
+                          className="px-2 py-1 bg-gray-100 text-black text-xs rounded"
                         >
                           {skill}
                         </span>
                       ))}
                       {(job.skills || []).length > 3 && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                        <span className="px-2 py-1 bg-gray-100 text-black text-xs rounded">
                           +{(job.skills || []).length - 3} more
                         </span>
                       )}
@@ -329,7 +327,7 @@ const Careers = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <p className="text-gray-600 mb-6">
+                <p className="text-black mb-6">
                   Don't see a position that matches your skills? We're always looking for talented individuals.
                 </p>
                 <Button
@@ -352,7 +350,7 @@ const Careers = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Application Process
               </motion.h2>
@@ -360,7 +358,7 @@ const Careers = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Our streamlined application process ensures a smooth experience 
                 from initial contact to your first day.
@@ -400,8 +398,8 @@ const Careers = () => {
                   <div className="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                     {step.step}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{step.title}</h3>
+                  <p className="text-black">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -409,7 +407,7 @@ const Careers = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-gray-50 text-gray-900">
+        <section className="py-20 bg-gray-50 text-black">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <motion.div
@@ -418,7 +416,7 @@ const Careers = () => {
                 transition={{ duration: 0.8 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">100+</div>
-                <div className="text-lg text-gray-600">Team Members</div>
+                <div className="text-lg text-black">Team Members</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -426,7 +424,7 @@ const Careers = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">4.8/5</div>
-                <div className="text-lg text-gray-600">Employee Rating</div>
+                <div className="text-lg text-black">Employee Rating</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -434,7 +432,7 @@ const Careers = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">95%</div>
-                <div className="text-lg text-gray-600">Retention Rate</div>
+                <div className="text-lg text-black">Retention Rate</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -442,7 +440,7 @@ const Careers = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">15+</div>
-                <div className="text-lg text-gray-600">Countries</div>
+                <div className="text-lg text-black">Countries</div>
               </motion.div>
             </div>
           </div>

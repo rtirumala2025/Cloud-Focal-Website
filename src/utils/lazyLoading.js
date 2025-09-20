@@ -96,22 +96,12 @@ export const lazySections = {
   ValueProposition: createLazyComponent(() => import('../sections/Home/ValueProposition')),
   IndustryFocus: createLazyComponent(() => import('../sections/Home/IndustryFocus')),
   TrustSection: createLazyComponent(() => import('../sections/Home/TrustSection')),
-  Leadership: createLazyComponent(() => import('../sections/About/Leadership')),
   MissionValues: createLazyComponent(() => import('../sections/About/MissionValues')),
   OurStory: createLazyComponent(() => import('../sections/About/OurStory')),
   ContactInfo: createLazyComponent(() => import('../sections/Contacts/ContactInfo')),
   LocationsMap: createLazyComponent(() => import('../sections/Contacts/LocationsMap'))
 };
 
-/**
- * Lazy load UI components
- */
-export const lazyUI = {
-  Modal: createLazyComponent(() => import('../components/common/Modal/Modal')),
-  TestimonialSlider: createLazyComponent(() => import('../ui/Testimonials/TestimonialSlider')),
-  CTASection: createLazyComponent(() => import('../ui/CTA/CTASection')),
-  StatsSection: createLazyComponent(() => import('../ui/Stats/StatsSection'))
-};
 
 /**
  * Image lazy loading with Intersection Observer
@@ -306,22 +296,6 @@ export const useRouteBasedLazyLoading = () => {
   return { preloadRoute, preloadOnHover, loadedRoutes };
 };
 
-/**
- * Lazy load third-party libraries
- */
-export const lazyLibraries = {
-  // Chart.js for data visualization
-  Chart: createLazyComponent(() => import('chart.js/auto')),
-  
-  // React Slick for carousels
-  Slider: createLazyComponent(() => import('react-slick')),
-  
-  // React Helmet for SEO
-  Helmet: createLazyComponent(() => import('react-helmet-async')),
-  
-  // Framer Motion for animations
-  Motion: createLazyComponent(() => import('framer-motion'))
-};
 
 /**
  * Progressive loading strategy
@@ -483,11 +457,9 @@ export default {
   createLazyComponent,
   lazyPages,
   lazySections,
-  lazyUI,
   LazyImage,
   useLazyImage,
   useRouteBasedLazyLoading,
-  lazyLibraries,
   useProgressiveLoading,
   useLazyLoadWithRetry,
   usePrefetching,

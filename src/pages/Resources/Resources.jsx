@@ -103,13 +103,13 @@ const Resources = () => {
         <title>Resources | Cloud Focal - Insights, Blog & Downloads</title>
         <meta name="description" content="Access valuable resources including blog posts, whitepapers, and industry insights. Stay updated with the latest trends in technology staffing, IT consulting, and system integration." />
         <meta name="keywords" content="resources, blog, whitepapers, industry insights, technology trends, digital transformation, IT consulting" />
-        <link rel="canonical" href="https://sourcecloud.com/resources" />
+        <link rel="canonical" href="https://cloudfocal.com/resources" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Resources | Cloud Focal - Insights, Blog & Downloads" />
         <meta property="og:description" content="Access valuable resources including blog posts, whitepapers, and industry insights." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/resources" />
+        <meta property="og:url" content="https://cloudfocal.com/resources" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -124,7 +124,7 @@ const Resources = () => {
         className="page-content-with-footer"
       >
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32">
+        <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 lg:py-32 -mt-16 pt-36 lg:pt-48">
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h1
@@ -180,7 +180,7 @@ const Resources = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Latest Insights
               </motion.h2>
@@ -188,7 +188,7 @@ const Resources = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Stay ahead of the curve with our expert analysis and insights on the latest 
                 technology trends and industry developments.
@@ -205,7 +205,7 @@ const Resources = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 hover:border-primary-300"
                 >
-                  <span className="font-medium text-gray-700">{category}</span>
+                  <span className="font-medium text-black">{category}</span>
                 </motion.button>
               ))}
             </div>
@@ -229,10 +229,10 @@ const Resources = () => {
                       </span>
                       <span className="ml-2 text-sm text-gray-500">{post.readTime}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                    <h3 className="text-xl font-bold text-black mb-3 line-clamp-2">
                       {post.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                    <p className="text-black mb-4 line-clamp-3">{post.excerpt}</p>
                     
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
@@ -240,7 +240,7 @@ const Resources = () => {
                           {post.author.charAt(0)}
                         </div>
                         <div className="ml-3">
-                          <div className="text-sm font-medium text-gray-900">{post.author}</div>
+                          <div className="text-sm font-medium text-black">{post.author}</div>
                           <div className="text-sm text-gray-500">{post.date}</div>
                         </div>
                       </div>
@@ -282,7 +282,7 @@ const Resources = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Whitepapers & Downloads
               </motion.h2>
@@ -290,7 +290,7 @@ const Resources = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Download comprehensive guides and whitepapers to deepen your understanding 
                 of key technology topics and best practices.
@@ -313,8 +313,8 @@ const Resources = () => {
                     </span>
                     <span className="ml-2 text-sm text-gray-500">{paper.downloadCount} downloads</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{paper.title}</h3>
-                  <p className="text-gray-600 mb-6">{paper.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-3">{paper.title}</h3>
+                  <p className="text-black mb-6">{paper.description}</p>
                   <Button
                     to="/resources/download"
                     variant="primary"
@@ -351,7 +351,7 @@ const Resources = () => {
                     <input
                       type="email"
                       placeholder="Enter your email address"
-                      className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                      className="flex-1 px-4 py-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-white"
                     />
                     <Button
                       variant="primary"
@@ -378,7 +378,7 @@ const Resources = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
               >
                 Industry Insights
               </motion.h2>
@@ -386,7 +386,7 @@ const Resources = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Explore our curated collection of industry reports, market analysis, 
                 and thought leadership content.
@@ -424,8 +424,8 @@ const Resources = () => {
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center"
                 >
                   <div className="text-4xl mb-4">{insight.icon}</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">{insight.title}</h3>
-                  <p className="text-gray-600 mb-4">{insight.description}</p>
+                  <h3 className="text-lg font-bold text-black mb-3">{insight.title}</h3>
+                  <p className="text-black mb-4">{insight.description}</p>
                   <Link
                     to="/resources/insights"
                     className="text-primary-600 hover:text-primary-700 font-medium"

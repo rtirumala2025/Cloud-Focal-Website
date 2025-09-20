@@ -3,28 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import navigationData from '../../../assets/data/navigationData.json';
 
-const Footer = () => {
+const FooterDark = () => {
   const currentYear = new Date().getFullYear();
   const [cursorPrompt, setCursorPrompt] = useState({ show: false, text: '', x: 0, y: 0 });
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Check for dark mode
-  useEffect(() => {
-    const checkDarkMode = () => {
-      setIsDarkMode(document.documentElement.classList.contains('dark-theme'));
-    };
-    
-    checkDarkMode();
-    
-    // Watch for changes to the dark-theme class
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-    
-    return () => observer.disconnect();
-  }, []);
+  const isDarkMode = true; // FooterDark is always in dark mode
 
   // Handle cursor prompts
   const handleMouseOver = (e, text) => {
@@ -57,16 +39,26 @@ const Footer = () => {
           transform: `translate(${cursorPrompt.x}px, ${cursorPrompt.y}px)`,
         }}
       >
-        <div className={`${isDarkMode ? 'bg-slate-800/95' : 'bg-blue-500/95'} text-white px-3 py-2 rounded-full text-sm font-medium backdrop-blur-md border border-white/20`}>
+        <div className={`${
+          isDarkMode 
+            ? 'bg-slate-900/95 border-slate-600/50' 
+            : 'bg-blue-500/95 border-white/20'
+        } text-white px-3 py-2 rounded-full text-sm font-medium backdrop-blur-md border`}>
           {cursorPrompt.text}
         </div>
       </div>
 
-      <footer className={`${isDarkMode ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' : 'bg-gradient-to-br from-primary-900 via-primary-800 to-primary-600'} text-white relative overflow-hidden`}>
+      <footer className={`${
+        isDarkMode 
+          ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-black' 
+          : 'bg-gradient-to-br from-primary-900 via-primary-800 to-primary-600'
+      } text-white relative overflow-hidden`}>
         {/* Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
-            className="absolute top-10 left-10 w-48 h-48 bg-white/5 rounded-full"
+            className={`absolute top-10 left-10 w-48 h-48 ${
+              isDarkMode ? 'bg-slate-800/20' : 'bg-white/5'
+            } rounded-full`}
             animate={{
               y: [0, -20, 0],
               rotate: [0, 180, 360],
@@ -78,7 +70,9 @@ const Footer = () => {
             }}
           />
           <motion.div
-            className="absolute top-60 right-10 w-48 h-48 bg-white/5 rounded-full"
+            className={`absolute top-60 right-10 w-48 h-48 ${
+              isDarkMode ? 'bg-emerald-900/20' : 'bg-white/5'
+            } rounded-full`}
             animate={{
               y: [0, 30, 0],
               rotate: [360, 180, 0],
@@ -91,7 +85,9 @@ const Footer = () => {
             }}
           />
           <motion.div
-            className="absolute bottom-20 left-1/3 w-48 h-48 bg-white/5 rounded-full"
+            className={`absolute bottom-20 left-1/3 w-48 h-48 ${
+              isDarkMode ? 'bg-slate-700/20' : 'bg-white/5'
+            } rounded-full`}
             animate={{
               y: [0, -15, 0],
               rotate: [180, 360, 180],
@@ -105,8 +101,6 @@ const Footer = () => {
           />
         </div>
 
-
-
         <div className="container mx-auto px-4 py-20 relative z-10">
           {/* CTA Section */}
           <motion.div
@@ -114,7 +108,11 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className={`${isDarkMode ? 'bg-slate-800/20 backdrop-blur-md border border-slate-700/30' : 'bg-white/10 backdrop-blur-md border border-white/10'} rounded-3xl p-10 mb-16 ${isDarkMode ? 'hover:bg-slate-800/30' : 'hover:bg-white/15'} hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
+            className={`${
+              isDarkMode 
+                ? 'bg-slate-800/30 backdrop-blur-md border border-slate-700/50 hover:bg-slate-800/40 hover:border-slate-600/60' 
+                : 'bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/15'
+            } rounded-3xl p-10 mb-16 hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
             onMouseOver={(e) => handleMouseOver(e, "Ready to transform your business?")}
             onMouseOut={handleMouseOut}
           >
@@ -122,13 +120,19 @@ const Footer = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to Transform Your Business?
               </h2>
-              <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+              <p className={`${
+                isDarkMode ? 'text-slate-300' : 'text-white/80'
+              } text-lg mb-8 max-w-2xl mx-auto`}>
                 Let's discuss how Cloud Focal can help accelerate your digital transformation journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className={`${isDarkMode ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-white text-primary-600 hover:bg-gray-50'} px-7 py-4 rounded-full font-semibold hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl`}
+                  className={`${
+                    isDarkMode 
+                      ? 'bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-emerald-500/25' 
+                      : 'bg-white text-primary-600 hover:bg-gray-50'
+                  } px-7 py-4 rounded-full font-semibold hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl`}
                   onMouseOver={(e) => handleMouseOver(e, "Let's start your transformation")}
                   onMouseOut={handleMouseOut}
                 >
@@ -136,7 +140,11 @@ const Footer = () => {
                 </Link>
                 <Link
                   to="/services"
-                  className={`${isDarkMode ? 'bg-transparent text-white border-2 border-slate-600 hover:bg-slate-800/30 hover:border-slate-500' : 'bg-transparent text-white border-2 border-white/30 hover:bg-white/10 hover:border-white'} px-7 py-4 rounded-full font-semibold hover:-translate-y-1 transition-all duration-300`}
+                  className={`${
+                    isDarkMode 
+                      ? 'bg-transparent text-white border-2 border-slate-600 hover:bg-slate-800/50 hover:border-emerald-500' 
+                      : 'bg-transparent text-white border-2 border-white/30 hover:bg-white/10 hover:border-white'
+                  } px-7 py-4 rounded-full font-semibold hover:-translate-y-1 transition-all duration-300`}
                   onMouseOver={(e) => handleMouseOver(e, "Discover our solutions")}
                   onMouseOut={handleMouseOut}
                 >
@@ -151,111 +159,149 @@ const Footer = () => {
             {/* Brand Column */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-3 mb-6">
-                <div className={`w-10 h-10 ${isDarkMode ? 'bg-emerald-600' : 'bg-white'} rounded-lg flex items-center justify-center font-bold ${isDarkMode ? 'text-white' : 'text-primary-600'}`}>
+                <div className={`w-10 h-10 ${
+                  isDarkMode 
+                    ? 'bg-gradient-to-br from-emerald-600 to-emerald-700' 
+                    : 'bg-white'
+                } rounded-lg flex items-center justify-center font-bold ${
+                  isDarkMode ? 'text-white' : 'text-primary-600'
+                } shadow-lg`}>
                   CF
                 </div>
                 <div className="text-2xl font-bold text-white">Cloud Focal</div>
               </div>
-              <p className="text-white/80 leading-relaxed mb-6">
-              Leading technology staffing and IT consulting company. We help businesses 
-              find top tech talent and implement innovative IT solutions for digital transformation.
-            </p>
-            
-            {/* Social Links */}
+              <p className={`${
+                isDarkMode ? 'text-slate-300' : 'text-white/80'
+              } leading-relaxed mb-6`}>
+                Leading technology staffing and IT consulting company. We help businesses 
+                find top tech talent and implement innovative IT solutions for digital transformation.
+              </p>
+              
+              {/* Social Links */}
               <div className="flex gap-4">
-              {navigationData.socialLinks.map((social) => (
-                <a
-                  key={social.platform}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                    className={`w-11 h-11 ${isDarkMode ? 'bg-slate-800/30 hover:bg-slate-700' : 'bg-white/10 hover:bg-white'} rounded-xl flex items-center justify-center hover:-translate-y-1 transition-all duration-300 group`}
+                {navigationData.socialLinks.map((social) => (
+                  <a
+                    key={social.platform}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-11 h-11 ${
+                      isDarkMode 
+                        ? 'bg-slate-800/50 hover:bg-emerald-600 border border-slate-700/50 hover:border-emerald-500' 
+                        : 'bg-white/10 hover:bg-white'
+                    } rounded-xl flex items-center justify-center hover:-translate-y-1 transition-all duration-300 group`}
                     onMouseOver={(e) => handleMouseOver(e, `Connect on ${social.platform}`)}
                     onMouseOut={handleMouseOut}
-                >
-                  <SocialIcon platform={social.platform} isDarkMode={isDarkMode} />
-                </a>
-              ))}
+                  >
+                    <SocialIcon platform={social.platform} isDarkMode={isDarkMode} />
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Services */}
-          <div>
-              <h3 className="text-base font-semibold text-white mb-5 uppercase tracking-wider">
+            {/* Services */}
+            <div>
+              <h3 className={`text-base font-semibold ${
+                isDarkMode ? 'text-emerald-400' : 'text-white'
+              } mb-5 uppercase tracking-wider`}>
                 Services
               </h3>
               <ul className="space-y-3">
-              {navigationData.footerNavigation.services.map((service) => (
-                <li key={service.title}>
-                  <Link
-                    to={service.path}
-                      className="text-white/70 hover:text-white transition-all duration-300 hover:translate-x-1 block"
+                {navigationData.footerNavigation.services.map((service) => (
+                  <li key={service.title}>
+                    <Link
+                      to={service.path}
+                      className={`${
+                        isDarkMode 
+                          ? 'text-slate-400 hover:text-emerald-400' 
+                          : 'text-white/70 hover:text-white'
+                      } transition-all duration-300 hover:translate-x-1 block`}
                       onMouseOver={(e) => handleMouseOver(e, service.title)}
                       onMouseOut={handleMouseOut}
-                  >
-                    {service.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    >
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Industries */}
-          <div>
-              <h3 className="text-base font-semibold text-white mb-5 uppercase tracking-wider">
+            {/* Industries */}
+            <div>
+              <h3 className={`text-base font-semibold ${
+                isDarkMode ? 'text-emerald-400' : 'text-white'
+              } mb-5 uppercase tracking-wider`}>
                 Industries
               </h3>
               <ul className="space-y-3">
-              {navigationData.footerNavigation.industries.map((industry) => (
-                <li key={industry.title}>
-                  <Link
-                    to={industry.path}
-                      className="text-white/70 hover:text-white transition-all duration-300 hover:translate-x-1 block"
+                {navigationData.footerNavigation.industries.map((industry) => (
+                  <li key={industry.title}>
+                    <Link
+                      to={industry.path}
+                      className={`${
+                        isDarkMode 
+                          ? 'text-slate-400 hover:text-emerald-400' 
+                          : 'text-white/70 hover:text-white'
+                      } transition-all duration-300 hover:translate-x-1 block`}
                       onMouseOver={(e) => handleMouseOver(e, industry.title)}
                       onMouseOut={handleMouseOut}
-                  >
-                    {industry.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    >
+                      {industry.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Company */}
-          <div>
-              <h3 className="text-base font-semibold text-white mb-5 uppercase tracking-wider">
+            {/* Company */}
+            <div>
+              <h3 className={`text-base font-semibold ${
+                isDarkMode ? 'text-emerald-400' : 'text-white'
+              } mb-5 uppercase tracking-wider`}>
                 Company
               </h3>
               <ul className="space-y-3">
-              {navigationData.footerNavigation.company.map((item) => (
-                <li key={item.title}>
-                  <Link
-                    to={item.path}
-                      className="text-white/70 hover:text-white transition-all duration-300 hover:translate-x-1 block"
+                {navigationData.footerNavigation.company.map((item) => (
+                  <li key={item.title}>
+                    <Link
+                      to={item.path}
+                      className={`${
+                        isDarkMode 
+                          ? 'text-slate-400 hover:text-emerald-400' 
+                          : 'text-white/70 hover:text-white'
+                      } transition-all duration-300 hover:translate-x-1 block`}
                       onMouseOver={(e) => handleMouseOver(e, item.title)}
                       onMouseOut={handleMouseOut}
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
 
           {/* Footer Bottom */}
-          <div className="border-t border-white/10 pt-8">
+          <div className={`border-t ${
+            isDarkMode ? 'border-slate-700/50' : 'border-white/10'
+          } pt-8`}>
             <div className="flex flex-col md:flex-row justify-between items-center gap-5">
-              <div className="text-white/60">
+              <div className={`${
+                isDarkMode ? 'text-slate-400' : 'text-white/60'
+              }`}>
                 © {currentYear} Cloud Focal. All rights reserved.
-            </div>
+              </div>
 
               <nav className="flex gap-8">
                 {navigationData.footerNavigation.legal.map((item) => (
                   <Link
                     key={item.title}
                     to={item.path}
-                    className="text-white/60 hover:text-white transition-colors duration-300"
+                    className={`${
+                      isDarkMode 
+                        ? 'text-slate-400 hover:text-emerald-400' 
+                        : 'text-white/60 hover:text-white'
+                    } transition-colors duration-300`}
                     onMouseOver={(e) => handleMouseOver(e, item.title)}
                     onMouseOut={handleMouseOut}
                   >
@@ -263,17 +309,21 @@ const Footer = () => {
                   </Link>
                 ))}
               </nav>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
     </>
   );
 };
 
 // Social Media Icons Component
 const SocialIcon = ({ platform, isDarkMode }) => {
-  const iconClasses = `w-5 h-5 text-white ${isDarkMode ? 'group-hover:text-emerald-400' : 'group-hover:text-primary-600'} transition-colors duration-300`;
+  const iconClasses = `w-5 h-5 ${
+    isDarkMode 
+      ? 'text-slate-300 group-hover:text-white' 
+      : 'text-white group-hover:text-primary-600'
+  } transition-colors duration-300`;
   
   switch (platform.toLowerCase()) {
     case 'linkedin':
@@ -299,4 +349,4 @@ const SocialIcon = ({ platform, isDarkMode }) => {
   }
 };
 
-export default Footer;
+export default FooterDark;

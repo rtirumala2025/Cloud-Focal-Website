@@ -84,13 +84,13 @@ const Industries = () => {
         <title>Industries | Cloud Focal - Industry-Specific Solutions</title>
         <meta name="description" content="Industry-specific technology solutions for public sector, private enterprise, healthcare, financial services, manufacturing, and retail. Tailored expertise for your sector." />
         <meta name="keywords" content="industry solutions, public sector, private enterprise, healthcare technology, financial services, manufacturing, retail, digital transformation" />
-        <link rel="canonical" href="https://sourcecloud.com/industries" />
+        <link rel="canonical" href="https://cloudfocal.com/industries" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Industries | Cloud Focal - Industry-Specific Solutions" />
         <meta property="og:description" content="Industry-specific technology solutions for public sector, private enterprise, healthcare, financial services, manufacturing, and retail." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/industries" />
+        <meta property="og:url" content="https://cloudfocal.com/industries" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -145,7 +145,7 @@ const Industries = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed"
+                className="text-xl md:text-2xl text-black mb-12 max-w-4xl mx-auto leading-relaxed"
               >
                 We understand the unique challenges within your industry. Our specialized solutions 
                 are designed to address your specific needs and drive measurable transformation.
@@ -183,7 +183,7 @@ const Industries = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 Our deep industry knowledge enables us to deliver solutions that are technically 
                 sound and aligned with your business objectives.
@@ -201,7 +201,7 @@ const Industries = () => {
                 >
                   <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
                   <h3 className="text-xl font-bold text-black mb-4">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                  <p className="text-black leading-relaxed">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -224,7 +224,7 @@ const Industries = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
+                className="text-xl text-black max-w-3xl mx-auto"
               >
                 From government agencies to private enterprises, we deliver tailored solutions 
                 that address unique industry challenges.
@@ -249,7 +249,7 @@ const Industries = () => {
                   {/* Content */}
                   <div className="p-8">
                     <h3 className="text-2xl font-bold text-black mb-4">{industry.title}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{industry.description}</p>
+                    <p className="text-black mb-6 leading-relaxed">{industry.description}</p>
                     
                     {/* Solutions */}
                     <div className="mb-8">
@@ -270,15 +270,15 @@ const Industries = () => {
                     <div className="grid grid-cols-3 gap-4 mb-8">
                       <div className="text-center p-4 bg-gray-50 rounded-xl">
                         <div className="text-2xl font-bold text-blue-600">{industry.stats.projects}</div>
-                        <div className="text-xs text-gray-600 font-medium">Projects</div>
+                        <div className="text-xs text-black font-medium">Projects</div>
                       </div>
                       <div className="text-center p-4 bg-gray-50 rounded-xl">
                         <div className="text-2xl font-bold text-blue-600">{industry.stats.satisfaction}</div>
-                        <div className="text-xs text-gray-600 font-medium">Satisfaction</div>
+                        <div className="text-xs text-black font-medium">Satisfaction</div>
                       </div>
                       <div className="text-center p-4 bg-gray-50 rounded-xl">
                         <div className="text-2xl font-bold text-blue-600">{industry.stats.savings}</div>
-                        <div className="text-xs text-gray-600 font-medium">Savings</div>
+                        <div className="text-xs text-black font-medium">Savings</div>
                       </div>
                     </div>
 
@@ -298,7 +298,7 @@ const Industries = () => {
 
 
         {/* Stats Section */}
-        <section className="py-20 bg-gray-50 text-gray-900 relative overflow-hidden">
+        <section className="py-20 bg-gray-50 text-black relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-gray-100"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-4 gap-8 text-center">
@@ -309,7 +309,7 @@ const Industries = () => {
                 className="group"
               >
                 <div className="text-5xl md:text-6xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">15+</div>
-                <div className="text-lg text-gray-600">Industries Served</div>
+                <div className="text-lg text-black">Industries Served</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -318,7 +318,7 @@ const Industries = () => {
                 className="group"
               >
                 <div className="text-5xl md:text-6xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">500+</div>
-                <div className="text-lg text-gray-600">Projects Completed</div>
+                <div className="text-lg text-black">Projects Completed</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -327,7 +327,7 @@ const Industries = () => {
                 className="group"
               >
                 <div className="text-5xl md:text-6xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">98%</div>
-                <div className="text-lg text-gray-600">Client Satisfaction</div>
+                <div className="text-lg text-black">Client Satisfaction</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -336,7 +336,7 @@ const Industries = () => {
                 className="group"
               >
                 <div className="text-5xl md:text-6xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">$100M+</div>
-                <div className="text-lg text-gray-600">Value Delivered</div>
+                <div className="text-lg text-black">Value Delivered</div>
               </motion.div>
             </div>
           </div>
@@ -358,7 +358,7 @@ const Industries = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto"
+                className="text-xl text-black mb-12 max-w-2xl mx-auto"
               >
                 Let's discuss how our industry-specific solutions can help you achieve your goals.
               </motion.p>

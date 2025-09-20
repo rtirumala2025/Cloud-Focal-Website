@@ -210,20 +210,6 @@ export const generateJobPlaceholder = (jobTitle, options = {}) => {
   });
 };
 
-// Generate testimonial placeholder
-export const generateTestimonialPlaceholder = (clientName, options = {}) => {
-  return generateSVGPlaceholder({
-    width: 300,
-    height: 300,
-    text: clientName,
-    backgroundColor: BRAND_COLORS.success,
-    textColor: '#ffffff',
-    fontSize: 22,
-    borderRadius: 150,
-    pattern: 'gradient',
-    ...options
-  });
-};
 
 // Generate map placeholder
 export const generateMapPlaceholder = (location, options = {}) => {
@@ -374,10 +360,6 @@ export const generateAllPlaceholders = () => {
     jobConsultant: generateJobPlaceholder('IT Consultant'),
     jobManager: generateJobPlaceholder('Project Manager'),
     
-    // Testimonial images
-    testimonial1: generateTestimonialPlaceholder('Sarah Johnson'),
-    testimonial2: generateTestimonialPlaceholder('Michael Chen'),
-    testimonial3: generateTestimonialPlaceholder('Emily Rodriguez'),
     
     // Other images
     mapLocation: generateMapPlaceholder('Atlanta, GA'),
@@ -420,8 +402,6 @@ export const usePlaceholderImages = () => {
         return generateIndustryPlaceholder(customOptions.text || 'Industry', customOptions);
       case 'job':
         return generateJobPlaceholder(customOptions.text || 'Job Position', customOptions);
-      case 'testimonial':
-        return generateTestimonialPlaceholder(customOptions.text || 'Client', customOptions);
       case 'map':
         return generateMapPlaceholder(customOptions.text || 'Location', customOptions);
       case 'blog':
@@ -454,7 +434,6 @@ export default {
   generateWhitepaperPlaceholder,
   generateIndustryPlaceholder,
   generateJobPlaceholder,
-  generateTestimonialPlaceholder,
   generateMapPlaceholder,
   generateChartPlaceholder,
   generateVideoPlaceholder,

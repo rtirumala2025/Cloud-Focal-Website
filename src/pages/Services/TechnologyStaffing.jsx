@@ -31,7 +31,7 @@ const TechnologyStaffing = () => {
         <meta property="og:title" content="Technology Staffing Services - Find Top Tech Talent" />
         <meta property="og:description" content="Connect with exceptional technology professionals through our comprehensive staffing services." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sourcecloud.com/services/technology-staffing" />
+        <meta property="og:url" content="https://cloudfocal.com/services/technology-staffing" />
       </Helmet>
 
       <motion.div 
@@ -39,6 +39,9 @@ const TechnologyStaffing = () => {
         animate={{ opacity: 1 }} 
         transition={{ duration: 0.5 }}
       >
+        {/* Blue Header Spacer - Only for Services page */}
+        <div className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 h-16 lg:h-20"></div>
+        
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
