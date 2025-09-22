@@ -180,31 +180,4 @@
   }
 }
 
-/* Dark theme support */
-.dark-theme .btn-primary {
-  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
-  border-color: var(--primary-500);
-}
-
-.dark-theme .btn-primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
-}
-
-.dark-theme .btn-outline {
-  color: var(--primary-400);
-  border-color: var(--primary-400);
-}
-
-.dark-theme .btn-outline:hover:not(:disabled) {
-  background: var(--primary-500);
-  color: white;
-}
-
-.dark-theme .btn.ghost {
-  color: var(--primary-400);
-}
-
-.dark-theme .btn.ghost:hover:not(:disabled) {
-  background: var(--primary-900);
-  color: var(--primary-300);
-}
+/* Dark theme removed */

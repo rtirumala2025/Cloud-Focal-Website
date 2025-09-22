@@ -7,7 +7,8 @@ const THEME_STORAGE_KEY = 'cloudfocal-theme-preference';
  * @returns {string} 'light' or 'dark'
  */
 export const getThemePreference = () => {
-  return localStorage.getItem(THEME_STORAGE_KEY) || 'light';
+  // Dark mode removed: always return 'light'
+  return 'light';
 };
 
 /**
@@ -15,7 +16,8 @@ export const getThemePreference = () => {
  * @param {string} theme - 'light' or 'dark'
  */
 export const saveThemePreference = (theme) => {
-  localStorage.setItem(THEME_STORAGE_KEY, theme);
+  // Dark mode removed: no-op to avoid persisting
+  try { localStorage.removeItem(THEME_STORAGE_KEY); } catch (e) {}
 };
 
 /**
@@ -24,24 +26,8 @@ export const saveThemePreference = (theme) => {
  * This function is used for initial page load theme synchronization
  */
 export const checkAndRedirectTheme = () => {
-  if (typeof window === 'undefined') return;
-  
-  const savedTheme = getThemePreference();
-  const currentPath = window.location.pathname;
-  
-  // If saved theme is dark but we're on a light page, redirect to dark
-  if (savedTheme === 'dark' && !currentPath.includes('-dark') && currentPath !== '/dark') {
-    const newPath = currentPath === '/' ? '/dark' : currentPath + '-dark';
-    window.location.href = newPath;
-    return;
-  }
-  
-  // If saved theme is light but we're on a dark page, redirect to light
-  if (savedTheme === 'light' && (currentPath.includes('-dark') || currentPath === '/dark')) {
-    const newPath = currentPath === '/dark' ? '/' : currentPath.replace('-dark', '');
-    window.location.href = newPath;
-    return;
-  }
+  // Dark mode removed: no-op
+  return;
 };
 
 /**
@@ -50,17 +36,10 @@ export const checkAndRedirectTheme = () => {
  * @returns {string} Theme-aware path
  */
 export const getThemeAwarePath = (path) => {
-  const savedTheme = getThemePreference();
-  
-  if (savedTheme === 'dark') {
-    if (path === '/') return '/dark';
-    if (!path.includes('-dark')) return path + '-dark';
-  } else {
-    if (path === '/dark') return '/';
-    if (path.includes('-dark')) return path.replace('-dark', '');
-  }
-  
-  return path;
+  // Dark mode removed: always use canonical light paths
+  if (path === '/dark') return '/';
+  if (path && path.includes('-dark')) return path.replace('-dark', '');
+  return path || '/';
 };
 
 /**
@@ -68,7 +47,7 @@ export const getThemeAwarePath = (path) => {
  * @returns {string} 'light' or 'dark'
  */
 export const getCurrentTheme = () => {
-  return getThemePreference();
+  return 'light';
 };
 
 /**
@@ -76,5 +55,6 @@ export const getCurrentTheme = () => {
  * @returns {boolean} true if dark mode, false if light mode
  */
 export const isDarkMode = () => {
-  return getThemePreference() === 'dark';
+  return false;
 };
+

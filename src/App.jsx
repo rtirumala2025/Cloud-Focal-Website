@@ -31,12 +31,6 @@ import TermsOfService from './pages/Legal/TermsOfService';
 import CookiePolicy from './pages/Legal/CookiePolicy';
 import NotFound from './pages/NotFound/NotFound';
 
-// Dark Theme Pages
-import HomeDark from './pages/Home/Home-dark';
-import AboutDark from './pages/About/About-dark';
-import ServicesDark from './pages/Services/Services-dark';
-import ContactDark from './pages/Contact/Contact-dark';
-
 // Global Styles
 import './assets/index.css';
 
@@ -246,54 +240,35 @@ function App() {
                       </Layout>
                     } />
                     
-                    {/* Dark Theme Routes */}
+                    {/* Dark mode removed: preserve old links by redirecting to light equivalents */}
                     <Route path="/dark" element={
                       <Layout>
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <HomeDark />
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
+                          <Home />
                         </motion.div>
                       </Layout>
                     } />
-                    
+
                     <Route path="/about-dark" element={
                       <Layout>
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <AboutDark />
+                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+                          <About />
                         </motion.div>
                       </Layout>
                     } />
-                    
+
                     <Route path="/services-dark" element={
                       <Layout>
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <ServicesDark />
+                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+                          <Services />
                         </motion.div>
                       </Layout>
                     } />
-                    
+
                     <Route path="/contact-dark" element={
                       <Layout>
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <ContactDark />
+                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+                          <Contact />
                         </motion.div>
                       </Layout>
                     } />

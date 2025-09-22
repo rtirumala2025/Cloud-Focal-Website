@@ -1,13 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
-import { getThemePreference, saveThemePreference } from '../utils/themeUtils';
 
 // Get initial theme from localStorage
-const getInitialTheme = () => {
-  if (typeof window !== 'undefined') {
-    return getThemePreference();
-  }
-  return 'light';
-};
+const getInitialTheme = () => 'light';
 
 // Initial state
 const initialState = {
@@ -189,13 +183,7 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // Initialize theme from localStorage on app start
-  useEffect(() => {
-    const savedTheme = getThemePreference();
-    if (savedTheme !== state.theme) {
-      dispatch({ type: ActionTypes.SET_THEME, payload: savedTheme });
-    }
-  }, []);
+  // Theme is fixed to light; no initialization needed
 
   // Auto-remove notifications after 5 seconds
   useEffect(() => {
@@ -249,9 +237,11 @@ export const AppProvider = ({ children }) => {
       dispatch({ type: ActionTypes.SET_USER, payload: user });
     },
 
-    setTheme: (theme) => {
-      dispatch({ type: ActionTypes.SET_THEME, payload: theme });
-      saveThemePreference(theme);
+    setTheme: (_theme) => {
+      // Dark mode removed: keep theme fixed to 'light'
+      if (state.theme !== 'light') {
+        dispatch({ type: ActionTypes.SET_THEME, payload: 'light' });
+      }
     },
 
     setLanguage: (language) => {

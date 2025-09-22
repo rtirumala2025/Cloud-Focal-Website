@@ -1,20 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useApp } from '../../../context/AppContext';
 import navigationData from '../../../assets/data/navigationData.json';
-import { getThemeAwarePath } from '../../../utils/themeUtils';
+// Dark mode removed: no theme context needed; use canonical light paths
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
-  const navigate = useNavigate();
-  const { state, actions } = useApp();
-
-  // Get theme from context and URL
-  const isDarkMode = state.theme === 'dark' || location.pathname.includes('-dark') || location.pathname === '/dark';
 
   // PERFORMANCE FIX: Throttled scroll effect
   useEffect(() => {
@@ -67,43 +61,10 @@ const Header = () => {
 
   const isActiveLink = (path) => {
     if (path === '/') {
-      return location.pathname === '/' || location.pathname === '/dark';
+      return location.pathname === '/';
     }
-    return location.pathname.startsWith(path) || location.pathname.startsWith(path + '-dark');
+    return location.pathname.startsWith(path);
   };
-
-  // PERFORMANCE FIX: Optimized theme switching with smooth transitions
-  const handleThemeSwitch = useCallback((e) => {
-    e.preventDefault();
-    const currentPath = location.pathname;
-    const newTheme = state.theme === 'light' ? 'dark' : 'light';
-    
-    // Update theme in context (this will also save to localStorage)
-    actions.setTheme(newTheme);
-    
-    // Navigate to the appropriate theme version
-    let newPath;
-    if (newTheme === 'dark') {
-      if (currentPath === '/') {
-        newPath = '/dark';
-      } else if (!currentPath.includes('-dark')) {
-        newPath = currentPath + '-dark';
-      } else {
-        newPath = currentPath; // Already on dark page
-      }
-    } else {
-      if (currentPath === '/dark') {
-        newPath = '/';
-      } else if (currentPath.includes('-dark')) {
-        newPath = currentPath.replace('-dark', '');
-      } else {
-        newPath = currentPath; // Already on light page
-      }
-    }
-    
-    // PERFORMANCE FIX: Use React Router navigation instead of full page reload
-    navigate(newPath, { replace: true });
-  }, [location.pathname, navigate, state.theme, actions]);
 
   const renderDropdownMenu = (item) => {
     if (!item.children) return null;
@@ -138,12 +99,8 @@ const Header = () => {
               {item.children.map((child) => (
                 <Link
                   key={child.id}
-                  to={getThemeAwarePath(child.path)}
-                  className={`block px-4 py-3 transition-colors ${
-                    isDarkMode
-                      ? 'text-white hover:bg-white/10 hover:text-emerald-400'
-                      : 'text-gray-700 hover:bg-gray-50 hover:text-primary-600'
-                  }`}
+                  to={child.path}
+                  className={`block px-4 py-3 transition-colors text-gray-700 hover:bg-gray-50 hover:text-primary-600`}
                   onClick={() => setActiveDropdown(null)}
                 >
                   <div className="font-medium">{child.title}</div>
@@ -176,12 +133,8 @@ const Header = () => {
               {item.children.map((child) => (
                 <Link
                   key={child.id}
-                  to={getThemeAwarePath(child.path)}
-                  className={`block py-2 transition-colors ${
-                    isDarkMode
-                      ? 'text-white hover:text-emerald-400'
-                      : 'text-gray-600 hover:text-primary-600'
-                  }`}
+                  to={child.path}
+                  className={`block py-2 transition-colors text-gray-600 hover:text-primary-600`}
                 >
                   <div className="font-medium">{child.title}</div>
                   {child.description && (
@@ -199,13 +152,9 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[9998] transition-all duration-300 ${
-        isDarkMode
-          ? isScrolled
-            ? 'bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-black/25 border-b border-slate-800/50'
-            : 'bg-slate-900/70 backdrop-blur-sm'
-          : isScrolled
-            ? 'bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50'
-            : 'bg-white/70 backdrop-blur-sm'
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50'
+          : 'bg-white/70 backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -215,7 +164,7 @@ const Header = () => {
             <img
               src="/images/logos/cloudfocal-logo.png"
               alt="Cloud Focal - Technology Staffing & IT Consulting"
-              className={`h-10 lg:h-12 w-auto transition-all duration-200 ${isDarkMode ? 'brightness-110 contrast-110 hover:brightness-125' : 'hover:opacity-80'}`}
+              className={`h-10 lg:h-12 w-auto transition-all duration-200 hover:opacity-80`}
               loading="eager"
             />
           </Link>
@@ -229,15 +178,11 @@ const Header = () => {
                   <div className="relative">
                     <div className="flex items-center">
                       <Link
-                        to={getThemeAwarePath(item.path)}
+                        to={item.path}
                         className={`py-3 px-4 rounded-l-lg transition-all duration-200 ${
                           isActiveLink(item.path)
-                            ? isDarkMode 
-                              ? 'text-emerald-400 bg-emerald-400/10 border-b-2 border-emerald-400'
-                              : 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                            : isDarkMode
-                              ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                              : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
+                            ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
+                            : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
                         }`}
                       >
                         {item.title}
@@ -246,12 +191,8 @@ const Header = () => {
                         onClick={(e) => toggleDropdown(item.id, e)}
                         className={`py-3 px-2 rounded-r-lg transition-all duration-200 ${
                           isActiveLink(item.path)
-                            ? isDarkMode 
-                              ? 'text-emerald-400 bg-emerald-400/10 border-b-2 border-emerald-400'
-                              : 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                            : isDarkMode
-                              ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                              : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
+                            ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
+                            : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
                         }`}
                       >
                         <svg
@@ -275,15 +216,11 @@ const Header = () => {
                   </div>
                 ) : (
                   <Link
-                    to={getThemeAwarePath(item.path)}
+                    to={item.path}
                     className={`py-3 px-4 rounded-lg transition-all duration-200 ${
                       isActiveLink(item.path)
-                        ? isDarkMode 
-                          ? 'text-emerald-400 bg-emerald-400/10 border-b-2 border-emerald-400'
-                          : 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                        : isDarkMode
-                          ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                          : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
+                        ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
+                        : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
                     }`}
                   >
                     {item.title}
@@ -296,41 +233,10 @@ const Header = () => {
 
           {/* Right side actions */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Theme toggle */}
-            <button
-              onClick={handleThemeSwitch}
-              className={`p-3 rounded-lg transition-all duration-200 ${
-                isDarkMode
-                  ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
-              }`}
-              aria-label="Toggle theme"
-            >
-              {state.theme === 'dark' ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                  />
-                </svg>
-              )}
-            </button>
-
             {/* CTA Button */}
             <Link
-              to={getThemeAwarePath("/contact")}
-              className={`${isDarkMode ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-primary-600 hover:bg-primary-700'} text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-200 font-medium`}
+              to="/contact"
+              className={`bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-200 font-medium`}
             >
               Get Started
             </Link>
@@ -339,11 +245,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={toggleMobileMenu}
-            className={`lg:hidden p-2 rounded-md transition-colors ${
-              isDarkMode
-                ? 'text-white hover:text-emerald-400 hover:bg-white/10'
-                : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
-            }`}
+            className={`lg:hidden p-2 rounded-md transition-colors text-gray-600 hover:text-primary-600 hover:bg-gray-50`}
             aria-label="Toggle mobile menu"
           >
             <svg
@@ -391,15 +293,11 @@ const Header = () => {
                       <div>
                         <div className="flex items-center">
                           <Link
-                            to={getThemeAwarePath(item.path)}
+                            to={item.path}
                             className={`flex-1 py-3 px-4 rounded-l-md transition-colors ${
-                              isDarkMode
-                                ? isActiveLink(item.path)
-                                  ? 'text-emerald-400 bg-emerald-50/10'
-                                  : 'text-white hover:text-emerald-400 hover:bg-white/10'
-                                : isActiveLink(item.path)
-                                  ? 'text-primary-600 bg-primary-50'
-                                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                              isActiveLink(item.path)
+                                ? 'text-primary-600 bg-primary-50'
+                                : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                             }`}
                           >
                             <span className="font-medium">{item.title}</span>
@@ -407,13 +305,9 @@ const Header = () => {
                           <button
                             onClick={() => toggleDropdown(item.id)}
                             className={`py-3 px-2 rounded-r-md transition-colors ${
-                              isDarkMode
-                                ? isActiveLink(item.path)
-                                  ? 'text-emerald-400 bg-emerald-50/10'
-                                  : 'text-white hover:text-emerald-400 hover:bg-white/10'
-                                : isActiveLink(item.path)
-                                  ? 'text-primary-600 bg-primary-50'
-                                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                              isActiveLink(item.path)
+                                ? 'text-primary-600 bg-primary-50'
+                                : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                             }`}
                           >
                             <svg
@@ -437,15 +331,11 @@ const Header = () => {
                       </div>
                     ) : (
                       <Link
-                        to={getThemeAwarePath(item.path)}
+                        to={item.path}
                         className={`block py-3 px-4 rounded-md transition-colors ${
-                          isDarkMode
-                            ? isActiveLink(item.path)
-                              ? 'text-emerald-400 bg-emerald-50/10'
-                              : 'text-white hover:text-emerald-400 hover:bg-white/10'
-                            : isActiveLink(item.path)
-                              ? 'text-primary-600 bg-primary-50'
-                              : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                          isActiveLink(item.path)
+                            ? 'text-primary-600 bg-primary-50'
+                            : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                         }`}
                       >
                         {item.title}
@@ -458,8 +348,8 @@ const Header = () => {
               {/* Mobile CTA */}
               <div className="mt-6 pt-6">
                 <Link
-                  to={getThemeAwarePath("/contact")}
-                  className={`block w-full ${isDarkMode ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-primary-600 hover:bg-primary-700'} text-white text-center py-3 px-6 rounded-lg transition-colors font-medium`}
+                  to="/contact"
+                  className={`block w-full bg-primary-600 hover:bg-primary-700 text-white text-center py-3 px-6 rounded-lg transition-colors font-medium`}
                 >
                   Get Started
                 </Link>

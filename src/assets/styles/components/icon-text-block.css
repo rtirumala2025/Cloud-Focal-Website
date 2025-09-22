@@ -67,21 +67,4 @@
   }
 }
 
-/* Dark theme support */
-.dark-theme .icon-text-block {
-  background: var(--bg-elevated);
-  border-color: var(--border-primary);
-}
-
-.dark-theme .icon-text-block__icon {
-  background: var(--primary-900);
-  color: var(--primary-300);
-}
-
-.dark-theme .icon-text-block__title {
-  color: var(--text-primary);
-}
-
-.dark-theme .icon-text-block__description {
-  color: var(--text-secondary);
-}
+/* Dark theme removed */
