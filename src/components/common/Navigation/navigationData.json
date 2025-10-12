@@ -54,23 +54,6 @@
     "path": "/careers"
   },
   {
-    "id": "resources",
-    "title": "Resources",
-    "path": "/resources",
-    "children": [
-      {
-        "id": "blog",
-        "title": "Blog",
-        "path": "/resources/blog"
-      },
-      {
-        "id": "whitepapers",
-        "title": "Whitepapers",
-        "path": "/resources/whitepapers"
-      }
-    ]
-  },
-  {
     "id": "contact",
     "title": "Contact",
     "path": "/contact"

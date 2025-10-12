@@ -2,46 +2,48 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const MissionValues = () => {
-  const values = [
+  const pillars = [
     {
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      title: 'Innovation',
-      description: 'We constantly push boundaries and embrace new technologies to deliver cutting-edge solutions that drive business transformation.',
-      color: 'from-blue-500 to-blue-600'
-    },
-    {
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-        </svg>
-      ),
-      title: 'Excellence',
-      description: 'We maintain the highest standards in everything we do, from talent selection to project delivery, ensuring exceptional results.',
-      color: 'from-green-500 to-green-600'
-    },
-    {
+      title: 'People First',
+      color: 'from-blue-500 to-blue-600',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      title: 'Collaboration',
-      description: 'We believe in the power of teamwork and foster strong partnerships with our clients, candidates, and team members.',
-      color: 'from-purple-500 to-purple-600'
+      items: [
+        'Foster an environment of diversity, accountability, and collaboration',
+        'Equip our staff with tools, training, and opportunities for life-long careers',
+        'Celebrate and reward individual, team, and corporate achievement'
+      ]
     },
     {
+      title: 'Process & Innovation',
+      color: 'from-green-500 to-green-600',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      items: [
+        'Balance a process-oriented approach with a passion for innovation',
+        'Listen intently to our clients and embrace their missions as our own',
+        'Endeavor to deliver all projects on time, in scope, and within budget'
+      ]
+    },
+    {
+      title: 'Ethics & Community',
+      color: 'from-purple-500 to-purple-600',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      title: 'Integrity',
-      description: 'We conduct business with honesty, transparency, and ethical practices, building trust with all our stakeholders.',
-      color: 'from-orange-500 to-orange-600'
+      items: [
+        'Expect the highest ethical standards of ourselves and our partners',
+        'Seek to advance the common good professionally and personally',
+        'Promote social responsibility and local community service'
+      ]
     }
   ];
 
@@ -61,7 +63,7 @@ const MissionValues = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
@@ -69,11 +71,12 @@ const MissionValues = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Mission & Values</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Core Values</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Our mission drives everything we do, and our values shape how we work with clients, candidates, and each other.
+            At Cloud Focal, our values are the foundation of everything we do. They guide our decisions, 
+            shape our culture, and ensure we deliver exceptional value to our clients and community.
           </p>
         </motion.div>
 
@@ -85,214 +88,91 @@ const MissionValues = () => {
           transition={{ duration: 0.6 }}
           className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 md:p-12 text-white text-center mb-16 shadow-lg"
         >
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white">Our Mission</h3>
-            <p className="text-xl md:text-2xl leading-relaxed mb-8 text-white">
+            <p className="text-xl md:text-2xl leading-relaxed mb-6 text-white">
               To empower organizations with exceptional technology talent and innovative solutions that drive 
-              digital transformation and sustainable growth, while creating meaningful opportunities for 
-              technology professionals and contributing to positive social impact through technology advancement.
+              digital transformation and sustainable growth. Together, these factors lead to Cloud Focal's 
+              ultimate mission: To be the trusted partner that transforms our clients' visions into reality.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-              {[
-                { icon: "🎯", title: "Excellence", description: "Delivering exceptional results" },
-                { icon: "🤝", title: "Partnership", description: "Building lasting relationships" },
-                { icon: "🚀", title: "Innovation", description: "Driving technological advancement" }
-              ].map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl mb-3">{item.icon}</div>
-                  <h4 className="text-lg font-bold mb-2 text-white">{item.title}</h4>
-                  <p className="text-blue-100 text-sm">{item.description}</p>
-                </div>
-              ))}
-            </div>
+            <p className="text-lg md:text-xl font-medium text-white">
+              Your success is our goal. We embrace your mission as our own.
+            </p>
           </div>
         </motion.div>
 
-        {/* Vision Statement */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl p-8 md:p-12 text-center mb-16 shadow-lg border border-gray-100"
-        >
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Vision</h3>
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
-              To be the most trusted partner in technology talent and solutions, recognized for our expertise, 
-              innovation, and commitment to client success across all industries, while fostering a more 
-              inclusive and sustainable technology ecosystem.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-              <div className="text-left">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">What We Strive For</h4>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Global recognition as the premier technology partner</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Industry-leading innovation and expertise</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Inclusive and sustainable technology ecosystem</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="text-left">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">Our Impact</h4>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Transforming businesses through technology</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Creating meaningful career opportunities</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Driving positive social change through tech</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Core Values */}
+        {/* Values Pillars */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         >
-          <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Core Values</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <motion.div 
-                key={index}
-                variants={itemVariants}
-                className="group"
-              >
-                <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    {value.icon}
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h4>
-                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+          {pillars.map((pillar, index) => (
+            <motion.div
+              key={pillar.title}
+              variants={itemVariants}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+              <div className={`h-2 bg-gradient-to-r ${pillar.color}`}></div>
+              <div className="p-6">
+                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${pillar.color} flex items-center justify-center text-white mb-6 mx-auto`}>
+                  {pillar.icon}
                 </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">{pillar.title}</h3>
+                <ul className="space-y-3">
+                  {pillar.items.map((item, i) => (
+                    <li key={i} className="flex items-start">
+                      <svg className="h-5 w-5 text-green-500 mt-1 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-gray-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Key Differentiators */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl mx-auto"
+        >
+          <h3 className="text-3xl font-bold text-center mb-8">Why Choose Cloud Focal</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Mission-Driven Approach",
+                description: "We're more than a vendor; we're your long-term technology transformation partner. We don't just offer capabilities - we pursue global issues and embrace client missions as our own."
+              },
+              {
+                title: "Dual Expertise",
+                description: "Combining technology AND staffing expertise, we provide scalable solutions for any need - from single staffing assignments to full enterprise IT transformations."
+              },
+              {
+                title: "Proven Methodology",
+                description: "Our proprietary Cloud Focal methodologies combine federal and commercial best practices, ensuring cost benefits, enhanced schedule management, and improved quality."
+              },
+              {
+                title: "Results-Oriented",
+                description: "With over a decade of experience, we consistently deliver high-quality, repeatable solutions on time, in scope, and within budget."
+              }
+            ].map((item, index) => (
+              <motion.div 
+                key={index} 
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+              >
+                <h4 className="text-xl font-bold mb-3 text-gray-800">{item.title}</h4>
+                <p className="text-gray-600">{item.description}</p>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* Social Impact */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16 border border-gray-100"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-6">Our Social Impact</h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Beyond business success, we're committed to creating positive change in the technology industry and society.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                </svg>
-              </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Diversity & Inclusion</h4>
-              <p className="text-gray-600">Promoting equal opportunities and diverse representation in tech.</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Innovation for Good</h4>
-              <p className="text-gray-600">Leveraging technology to solve social and environmental challenges.</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Education & Training</h4>
-              <p className="text-gray-600">Investing in the next generation of technology professionals.</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                </svg>
-              </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Global Reach</h4>
-              <p className="text-gray-600">Connecting talent and opportunities across borders and cultures.</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Why Choose Us */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
-          transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 md:p-12 shadow-lg text-white"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-white">Why Choose Cloud Focal?</h3>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Our values aren't just words on a page—they're the foundation of how we work and what makes us different.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h4 className="text-lg font-bold mb-2 text-white">Proven Track Record</h4>
-              <p className="text-blue-100">14+ years of successful technology partnerships and placements.</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h4 className="text-lg font-bold mb-2 text-white">Expert Team</h4>
-              <p className="text-blue-100">Industry veterans with deep technology and business expertise.</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h4 className="text-lg font-bold mb-2 text-white">Innovation Focus</h4>
-              <p className="text-blue-100">Cutting-edge solutions and emerging technology expertise.</p>
-            </div>
           </div>
         </motion.div>
       </div>

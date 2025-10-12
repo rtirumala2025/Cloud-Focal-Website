@@ -83,20 +83,19 @@ const Careers = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://cloudfocal.com/careers" />
         
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Careers | Cloud Focal" />
         <meta name="twitter:description" content="Join Cloud Focal's dynamic team. Explore career opportunities." />
       </Helmet>
 
-      <motion.div
+      <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="page-content-with-footer"
+        className="min-h-screen bg-white pt-32 w-full overflow-x-hidden flex flex-col"
       >
         {/* Hero Section */}
-        <section className="section-lg bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white section-divider-wave">
+        <section className="bg-white text-gray-900 w-full">
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h1
@@ -106,13 +105,13 @@ const Careers = () => {
                 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
               >
                 Join Our Team
-                <span className="block text-accent-300">Build the Future</span>
+                <span className="block text-primary-600">Build the Future</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto"
+                className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto"
               >
                 Be part of a dynamic team that's transforming how organizations approach 
                 technology. Work with cutting-edge solutions and make a real impact.
@@ -145,7 +144,7 @@ const Careers = () => {
         </section>
 
         {/* Company Culture */}
-        <section className="py-20">
+        <section className="py-20 w-full">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <motion.h2
@@ -186,7 +185,7 @@ const Careers = () => {
         </section>
 
         {/* Benefits */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-gray-50 w-full">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <motion.h2
@@ -264,62 +263,6 @@ const Careers = () => {
               ))}
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-              {(featuredJobs || []).map((job, index) => (
-                <motion.div
-                  key={job.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-black mb-2">{job.title}</h3>
-                      <p className="text-black mb-2">{job.department}</p>
-                    </div>
-                    <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">
-                      {job.type}
-                    </span>
-                  </div>
-                  
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    {job.location}
-                  </div>
-                  
-                  <p className="text-black mb-6 line-clamp-3">{job.description}</p>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-wrap gap-2">
-                      {(job.skills || []).slice(0, 3).map((skill, skillIndex) => (
-                        <span
-                          key={skillIndex}
-                          className="px-2 py-1 bg-gray-100 text-black text-xs rounded"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                      {(job.skills || []).length > 3 && (
-                        <span className="px-2 py-1 bg-gray-100 text-black text-xs rounded">
-                          +{(job.skills || []).length - 3} more
-                        </span>
-                      )}
-                    </div>
-                    <Button
-                      to={`/careers/${job.id}`}
-                      variant="primary"
-                      size="small"
-                    >
-                      Apply Now
-                    </Button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
 
             <div className="text-center mt-12">
               <motion.div
@@ -343,7 +286,7 @@ const Careers = () => {
         </section>
 
         {/* Application Process */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-gray-50 w-full">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <motion.h2

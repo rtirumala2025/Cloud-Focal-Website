@@ -16,73 +16,13 @@
       "id": "industries",
       "title": "Industries",
       "path": "/industries",
-      "icon": "building",
-      "children": [
-        {
-          "id": "public-sector",
-          "title": "Public Sector",
-          "path": "/industries/public-sector",
-          "description": "Government and public service solutions"
-        },
-        {
-          "id": "private-enterprise",
-          "title": "Private Enterprise",
-          "path": "/industries/private-enterprise",
-          "description": "Corporate and business solutions"
-        }
-      ]
+      "icon": "building"
     },
     {
       "id": "careers",
       "title": "Careers",
       "path": "/careers",
-      "icon": "users",
-      "children": [
-        {
-          "id": "job-listings",
-          "title": "Job Listings",
-          "path": "/careers#jobs",
-          "description": "View current openings"
-        },
-        {
-          "id": "culture",
-          "title": "Culture",
-          "path": "/careers#culture",
-          "description": "Learn about our workplace"
-        },
-        {
-          "id": "benefits",
-          "title": "Benefits",
-          "path": "/careers#benefits",
-          "description": "Employee benefits and perks"
-        }
-      ]
-    },
-    {
-      "id": "resources",
-      "title": "Resources",
-      "path": "/resources",
-      "icon": "book-open",
-      "children": [
-        {
-          "id": "blog",
-          "title": "Blog",
-          "path": "/resources#blog",
-          "description": "Latest insights and articles"
-        },
-        {
-          "id": "whitepapers",
-          "title": "Whitepapers",
-          "path": "/resources#whitepapers",
-          "description": "In-depth research and reports"
-        },
-        {
-          "id": "insights",
-          "title": "Industry Insights",
-          "path": "/resources#insights",
-          "description": "Technology trends and analysis"
-        }
-      ]
+      "icon": "users"
     },
     {
       "id": "contact",
@@ -142,24 +82,7 @@
         "path": "/contact"
       }
     ],
-    "resources": [
-      {
-        "title": "Blog",
-        "path": "/resources#blog"
-      },
-      {
-        "title": "Whitepapers",
-        "path": "/resources#whitepapers"
-      },
-      {
-        "title": "Industry Insights",
-        "path": "/resources#insights"
-      },
-      {
-        "title": "Webinars",
-        "path": "/resources#webinars"
-      }
-    ],
+    "resources": [],
     "legal": [
       {
         "title": "Privacy Policy",
@@ -225,13 +148,7 @@
       "title": "View Jobs",
       "path": "/careers",
       "icon": "briefcase",
-              "description": "Explore career opportunities at Cloud Focal"
-    },
-    {
-      "title": "Download Resources",
-      "path": "/resources",
-      "icon": "download",
-      "description": "Access whitepapers and industry insights"
+      "description": "Explore career opportunities at Cloud Focal"
     }
   ]
 }

@@ -2,31 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import navigationData from '../../../assets/data/navigationData.json';
-// Dark mode removed: no theme context needed; use canonical light paths
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
-
-  // PERFORMANCE FIX: Throttled scroll effect
-  useEffect(() => {
-    let ticking = false;
-    
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 10);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -46,17 +26,13 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMobileMenuOpen]);
 
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const toggleDropdown = (menuId, event) => {
-    if (activeDropdown === menuId) {
-      setActiveDropdown(null);
-    } else {
-      setActiveDropdown(menuId);
-    }
+    event?.preventDefault();
+    setActiveDropdown(activeDropdown === menuId ? null : menuId);
   };
 
   const isActiveLink = (path) => {
@@ -73,34 +49,26 @@ const Header = () => {
       <AnimatePresence>
         {activeDropdown === item.id && (
           <>
-            {/* Overlay to prevent clicks behind dropdown */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-0 z-[99998] dropdown-overlay"
+              className="fixed inset-0 bg-black/20 z-[9999]"
               onClick={() => setActiveDropdown(null)}
             />
-            {/* Dropdown Menu */}
             <motion.div
-              initial={{ opacity: 0, y: -5 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -5 }}
+              exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.15 }}
-              className="fixed top-20 left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[99999] dropdown-menu"
-              style={{
-                top: '4rem', // Adjust based on header height
-                left: '50%',
-                transform: 'translateX(-50%)',
-                minWidth: '16rem'
-              }}
+              className="absolute left-0 mt-2 w-56 rounded-lg shadow-lg bg-white border border-gray-100 z-[10000]"
             >
               {item.children.map((child) => (
                 <Link
                   key={child.id}
                   to={child.path}
-                  className={`block px-4 py-3 transition-colors text-gray-700 hover:bg-gray-50 hover:text-primary-600`}
+                  className="block px-4 py-3 text-sm text-gray-800 hover:bg-gray-50"
                   onClick={() => setActiveDropdown(null)}
                 >
                   <div className="font-medium">{child.title}</div>
@@ -116,47 +84,8 @@ const Header = () => {
     );
   };
 
-  const renderMobileDropdownMenu = (item) => {
-    if (!item.children) return null;
-
-    return (
-      <AnimatePresence>
-        {activeDropdown === item.id && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            <div className="pl-4 space-y-2">
-              {item.children.map((child) => (
-                <Link
-                  key={child.id}
-                  to={child.path}
-                  className={`block py-2 transition-colors text-gray-600 hover:text-primary-600`}
-                >
-                  <div className="font-medium">{child.title}</div>
-                  {child.description && (
-                    <div className="text-sm text-gray-500 mt-1">{child.description}</div>
-                  )}
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    );
-  };
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-[9998] transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50'
-          : 'bg-white/70 backdrop-blur-sm'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-[9998] bg-white shadow-sm border-b border-gray-100">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -164,37 +93,139 @@ const Header = () => {
             <img
               src="/images/logos/cloudfocal-logo.png"
               alt="Cloud Focal - Technology Staffing & IT Consulting"
-              className={`h-10 lg:h-12 w-auto transition-all duration-200 hover:opacity-80`}
+              className="h-10 lg:h-12 w-auto"
+              style={{ background: 'transparent' }}
               loading="eager"
             />
           </Link>
 
-          {/* FIXED: Added proper navigation structure with accessibility */}
-          <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex items-center space-x-6">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-6">
             <ul className="flex items-center space-x-6">
               {navigationData.mainNavigation.map((item) => (
                 <li key={item.id} className="relative">
-                {item.children ? (
-                  <div className="relative">
-                    <div className="flex items-center">
-                      <Link
-                        to={item.path}
-                        className={`py-3 px-4 rounded-l-lg transition-all duration-200 ${
-                          isActiveLink(item.path)
-                            ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                            : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
-                        }`}
+                  {item.children ? (
+                    <div className="relative">
+                      <div className="flex items-center">
+                        <Link
+                          to={item.path}
+                          className={`px-4 py-3 transition-colors ${
+                            isActiveLink(item.path)
+                              ? 'text-black font-medium border-b-2 border-black'
+                              : 'text-gray-800 hover:text-black hover:bg-gray-50'
+                          }`}
+                        >
+                          {item.title}
+                        </Link>
+                        <button
+                          onClick={(e) => toggleDropdown(item.id, e)}
+                          className="p-1 -ml-1 text-gray-500 hover:text-black"
+                        >
+                          <svg
+                            className={`w-4 h-4 transition-transform ${
+                              activeDropdown === item.id ? 'rotate-180' : ''
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                      {renderDropdownMenu(item)}
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={`px-4 py-3 transition-colors ${
+                        isActiveLink(item.path)
+                          ? 'text-black font-medium border-b-2 border-black'
+                          : 'text-gray-800 hover:text-black hover:bg-gray-50'
+                      }`}
+                    >
+                      {item.title}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* CTA Button - Desktop */}
+          <div className="hidden lg:flex items-center">
+            <Link
+              to="/contact"
+              className="bg-black hover:bg-gray-800 text-white px-6 py-2.5 rounded-lg font-medium transition-colors"
+            >
+              Get Started
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="lg:hidden p-2 -mr-2 text-gray-800 hover:text-black"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden bg-white overflow-hidden"
+          >
+            <div className="px-4 pt-2 pb-4 space-y-2 border-t border-gray-100">
+              {navigationData.mainNavigation.map((item) => (
+                <div key={item.id} className="border-b border-gray-100">
+                  {item.children ? (
+                    <div>
+                      <div
+                        className="flex items-center justify-between px-4 py-3 text-gray-800 hover:bg-gray-50 rounded-lg cursor-pointer"
+                        onClick={() => toggleDropdown(item.id)}
                       >
-                        {item.title}
-                      </Link>
-                      <button
-                        onClick={(e) => toggleDropdown(item.id, e)}
-                        className={`py-3 px-2 rounded-r-lg transition-all duration-200 ${
-                          isActiveLink(item.path)
-                            ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                            : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
-                        }`}
-                      >
+                        <span className="font-medium">{item.title}</span>
                         <svg
                           className={`w-4 h-4 transition-transform ${
                             activeDropdown === item.id ? 'rotate-180' : ''
@@ -210,146 +241,41 @@ const Header = () => {
                             d="M19 9l-7 7-7-7"
                           />
                         </svg>
-                      </button>
-                    </div>
-                    {renderDropdownMenu(item)}
-                  </div>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className={`py-3 px-4 rounded-lg transition-all duration-200 ${
-                      isActiveLink(item.path)
-                        ? 'text-primary-600 bg-primary-50 border-b-2 border-primary-600'
-                        : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
-                    }`}
-                  >
-                    {item.title}
-                  </Link>
-                )}
-              </li>
-            ))}
-            </ul>
-          </nav>
-
-          {/* Right side actions */}
-          <div className="hidden lg:flex items-center space-x-4">
-            {/* CTA Button */}
-            <Link
-              to="/contact"
-              className={`bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-200 font-medium`}
-            >
-              Get Started
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={toggleMobileMenu}
-            className={`lg:hidden p-2 rounded-md transition-colors text-gray-600 hover:text-primary-600 hover:bg-gray-50`}
-            aria-label="Toggle mobile menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden bg-white mobile-menu"
-          >
-            <div className="container mx-auto px-4 py-4">
-              {/* FIXED: Added proper mobile navigation structure */}
-              <nav role="navigation" aria-label="Mobile navigation" className="space-y-2">
-                {navigationData.mainNavigation.map((item) => (
-                  <div key={item.id}>
-                    {item.children ? (
-                      <div>
-                        <div className="flex items-center">
-                          <Link
-                            to={item.path}
-                            className={`flex-1 py-3 px-4 rounded-l-md transition-colors ${
-                              isActiveLink(item.path)
-                                ? 'text-primary-600 bg-primary-50'
-                                : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                            }`}
-                          >
-                            <span className="font-medium">{item.title}</span>
-                          </Link>
-                          <button
-                            onClick={() => toggleDropdown(item.id)}
-                            className={`py-3 px-2 rounded-r-md transition-colors ${
-                              isActiveLink(item.path)
-                                ? 'text-primary-600 bg-primary-50'
-                                : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                            }`}
-                          >
-                            <svg
-                              className={`w-4 h-4 transition-transform ${
-                                activeDropdown === item.id ? 'rotate-180' : ''
-                              }`}
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 9l-7 7-7-7"
-                              />
-                            </svg>
-                          </button>
-                        </div>
-                        {renderMobileDropdownMenu(item)}
                       </div>
-                    ) : (
-                      <Link
-                        to={item.path}
-                        className={`block py-3 px-4 rounded-md transition-colors ${
-                          isActiveLink(item.path)
-                            ? 'text-primary-600 bg-primary-50'
-                            : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                        }`}
-                      >
-                        {item.title}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </nav>
-
-              {/* Mobile CTA */}
-              <div className="mt-6 pt-6">
+                      {activeDropdown === item.id && (
+                        <div className="pl-6 py-2 space-y-2">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.id}
+                              to={child.path}
+                              className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                              onClick={() => {
+                                setActiveDropdown(null);
+                                setIsMobileMenuOpen(false);
+                              }}
+                            >
+                              {child.title}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className="block px-4 py-3 text-gray-800 hover:bg-gray-50 rounded-lg"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.title}
+                    </Link>
+                  )}
+                </div>
+              ))}
+              <div className="pt-2">
                 <Link
                   to="/contact"
-                  className={`block w-full bg-primary-600 hover:bg-primary-700 text-white text-center py-3 px-6 rounded-lg transition-colors font-medium`}
+                  className="block w-full text-center bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get Started
                 </Link>
@@ -361,4 +287,5 @@ const Header = () => {
     </header>
   );
 };
+
 export default Header;

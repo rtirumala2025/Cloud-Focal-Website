@@ -102,10 +102,10 @@ const Industries = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen bg-white"
+        className="min-h-screen bg-white overflow-x-hidden"
       >
         {/* Hero Section */}
-        <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <section className="relative py-24 lg:py-32 bg-white">
           {/* Background Pattern */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-blue-100/20"></div>
@@ -168,7 +168,7 @@ const Industries = () => {
         </section>
 
         {/* Industry Expertise */}
-        <section className="py-20 bg-gray-50/50">
+        <section className="py-20 bg-gray-50/50 overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <motion.h2
@@ -209,7 +209,7 @@ const Industries = () => {
         </section>
 
         {/* Industries Grid */}
-        <section id="industries" className="py-24 bg-white">
+        <section id="industries" className="py-24 bg-white overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="text-center mb-20">
               <motion.h2
@@ -298,7 +298,7 @@ const Industries = () => {
 
 
         {/* Stats Section */}
-        <section className="py-20 bg-gray-50 text-black relative overflow-hidden">
+        <section className="py-20 bg-gray-50 text-black relative">
           <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-gray-100"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-4 gap-8 text-center">
@@ -343,7 +343,7 @@ const Industries = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h2

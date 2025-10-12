@@ -1,0 +1,229 @@
+{
+  "services": [
+    {
+      "id": "program-management",
+      "title": "Program Management Services",
+      "shortTitle": "Program Management",
+      "category": "Consulting",
+      "description": "End-to-end program management to ensure successful delivery of your technology initiatives.",
+      "longDescription": "Our program management services provide the structure, governance, and oversight needed to ensure your technology initiatives are delivered on time, within scope, and on budget. We bring proven methodologies and best practices to manage complex programs and portfolios.",
+      "icon": "layers",
+      "image": "/images/services/program-management.jpg",
+      "features": [
+        {
+          "title": "Program Planning",
+          "description": "Comprehensive planning and roadmap development for technology programs.",
+          "icon": "map"
+        },
+        {
+          "title": "Governance",
+          "description": "Establish effective governance structures and decision-making processes.",
+          "icon": "shield"
+        },
+        {
+          "title": "Risk Management",
+          "description": "Proactive identification and mitigation of program risks.",
+          "icon": "alert-triangle"
+        },
+        {
+          "title": "Stakeholder Communication",
+          "description": "Clear and consistent communication across all stakeholders.",
+          "icon": "message-square"
+        }
+      ],
+      "benefits": [
+        "Improved program success rates",
+        "Enhanced visibility and control",
+        "Reduced risks and issues",
+        "Better resource utilization"
+      ]
+    },
+    {
+      "id": "it-strategy",
+      "title": "IT Strategy & Transformation",
+      "shortTitle": "IT Strategy",
+      "category": "Consulting",
+      "description": "Strategic IT planning and digital transformation services to drive business growth.",
+      "longDescription": "We help organizations develop and execute IT strategies that align with business objectives, optimize technology investments, and drive digital transformation across the enterprise.",
+      "icon": "trending-up",
+      "image": "/images/services/it-strategy.jpg",
+      "features": [
+        {
+          "title": "Digital Roadmap",
+          "description": "Create a clear path for digital transformation and technology adoption.",
+          "icon": "map"
+        },
+        {
+          "title": "Technology Assessment",
+          "description": "Evaluate current technology landscape and identify improvement opportunities.",
+          "icon": "bar-chart-2"
+        },
+        {
+          "title": "Cloud Strategy",
+          "description": "Develop and implement cloud adoption and migration strategies.",
+          "icon": "cloud"
+        },
+        {
+          "title": "IT Governance",
+          "description": "Establish effective IT governance frameworks and processes.",
+          "icon": "shield"
+        }
+      ],
+      "benefits": [
+        "Aligned IT and business objectives",
+        "Improved technology ROI",
+        "Enhanced operational efficiency",
+        "Future-ready technology foundation"
+      ]
+    },
+    {
+      "id": "technology-staffing",
+      "title": "Technology Staffing",
+      "shortTitle": "Tech Staffing",
+      "category": "Staffing",
+      "description": "Connect with top-tier technology professionals to accelerate your digital transformation journey.",
+      "longDescription": "Our technology staffing services help organizations find and retain the best tech talent in the market. We specialize in placing skilled professionals across all technology domains, from software development and DevOps to cybersecurity and data science.",
+      "icon": "users",
+      "image": "/images/services/tech-staffing.jpg",
+      "features": [
+        {
+          "title": "Contract Staffing",
+          "description": "Flexible contract-to-hire and temporary staffing solutions for project-based needs.",
+          "icon": "clock"
+        },
+        {
+          "title": "Permanent Placement",
+          "description": "Direct hire solutions for long-term technology positions with comprehensive screening.",
+          "icon": "user-check"
+        },
+        {
+          "title": "Executive Search",
+          "description": "Specialized recruitment for C-level and senior technology leadership positions.",
+          "icon": "award"
+        },
+        {
+          "title": "Skill Assessment",
+          "description": "Comprehensive technical and cultural fit evaluation for optimal placements.",
+          "icon": "clipboard-check"
+        }
+      ],
+      "benefits": [
+        "Reduced time-to-hire by 60%",
+        "95% retention rate after 12 months",
+        "Access to pre-vetted talent pool",
+        "Industry-specific expertise matching"
+      ]
+    },
+    {
+      "id": "data-services",
+      "title": "Data Services",
+      "shortTitle": "Data Services",
+      "category": "IT Services",
+      "description": "Comprehensive data management and analytics solutions to unlock business insights.",
+      "longDescription": "Our data services help organizations harness the power of their data through advanced analytics, business intelligence, and data management solutions.",
+      "icon": "database",
+      "image": "/images/services/data-services.jpg",
+      "features": [
+        {
+          "title": "Data Strategy",
+          "description": "Develop a comprehensive data strategy aligned with business goals.",
+          "icon": "target"
+        },
+        {
+          "title": "Data Analytics",
+          "description": "Advanced analytics and business intelligence solutions.",
+          "icon": "bar-chart-2"
+        },
+        {
+          "title": "Data Integration",
+          "description": "Seamless integration of data across systems and platforms.",
+          "icon": "link"
+        },
+        {
+          "title": "Data Governance",
+          "description": "Establish data governance frameworks and best practices.",
+          "icon": "shield"
+        }
+      ],
+      "benefits": [
+        "Data-driven decision making",
+        "Improved data quality and consistency",
+        "Enhanced business insights",
+        "Regulatory compliance"
+      ]
+    },
+    {
+      "id": "application-development",
+      "title": "Application Development",
+      "shortTitle": "App Development",
+      "category": "Development",
+      "description": "Custom application development to solve complex business challenges.",
+      "longDescription": "We design and develop custom applications that drive business value, improve efficiency, and enhance customer experiences across web, mobile, and enterprise platforms.",
+      "icon": "code",
+      "image": "/images/services/app-development.jpg",
+      "features": [
+        {
+          "title": "Web Applications",
+          "description": "Responsive and scalable web applications built with modern technologies.",
+          "icon": "globe"
+        },
+        {
+          "title": "Mobile Apps",
+          "description": "Native and cross-platform mobile applications for iOS and Android.",
+          "icon": "smartphone"
+        },
+        {
+          "title": "Enterprise Solutions",
+          "description": "Custom enterprise applications to streamline business processes.",
+          "icon": "briefcase"
+        },
+        {
+          "title": "UI/UX Design",
+          "description": "User-centered design for intuitive and engaging user experiences.",
+          "icon": "layout"
+        }
+      ],
+      "benefits": [
+        "Custom solutions tailored to your needs",
+        "Faster time-to-market",
+        "Scalable and maintainable code",
+        "Ongoing support and maintenance"
+      ]
+    }
+  ],
+  "overview": {
+    "title": "Comprehensive Technology Solutions",
+    "subtitle": "From talent acquisition to system integration, we provide end-to-end technology services",
+    "description": "Cloud Focal delivers comprehensive technology solutions that help organizations thrive in the digital age. Our expertise spans program management, IT strategy, technology staffing, data services, and application development, providing everything you need to build, optimize, and scale your technology operations.",
+    "benefits": [
+      "End-to-end technology solutions",
+      "Industry-specific expertise",
+      "Proven methodologies and best practices",
+      "Client-focused approach",
+      "Scalable and flexible services"
+    ],
+    "cta": {
+      "text": "Ready to transform your technology strategy?",
+      "buttonText": "Get in Touch",
+      "buttonLink": "/contact"
+    },
+    "stats": [
+      {
+        "value": "98%",
+        "label": "Client Satisfaction"
+      },
+      {
+        "value": "200+",
+        "label": "Projects Completed"
+      },
+      {
+        "value": "15+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "50+",
+        "label": "Technology Experts"
+      }
+    ]
+  }
+}

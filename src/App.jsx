@@ -24,7 +24,6 @@ import Industries from './pages/Industries/Industries';
 import PublicSector from './pages/Industries/PublicSector';
 import PrivateEnterprise from './pages/Industries/PrivateEnterprise';
 import Careers from './pages/Careers/Careers';
-import Resources from './pages/Resources/Resources';
 import Contact from './pages/Contact/Contact';
 import PrivacyPolicy from './pages/Legal/PrivacyPolicy';
 import TermsOfService from './pages/Legal/TermsOfService';
@@ -34,6 +33,10 @@ import NotFound from './pages/NotFound/NotFound';
 // Global Styles
 import './assets/index.css';
 
+// Element Inspector (Development Tool)
+import ElementInspector from './components/ElementInspector/ElementInspector';
+
+
 function App() {
   return (
     <ErrorBoundary>
@@ -42,6 +45,8 @@ function App() {
           <AuthProvider>
             <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                 <div className="App">
+                  {/* Element Inspector - Development Tool */}
+                  <ElementInspector />
                 <AnimatePresence mode="wait">
                   <Routes>
                     <Route path="/" element={
@@ -175,18 +180,6 @@ function App() {
                       </Layout>
                     } />
                     
-                    <Route path="/resources" element={
-                      <Layout>
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <Resources />
-                        </motion.div>
-                      </Layout>
-                    } />
                     
                     <Route path="/contact" element={
                       <Layout>

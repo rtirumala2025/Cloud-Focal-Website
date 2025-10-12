@@ -21,14 +21,14 @@ const OurStory = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="pt-32 pb-12 bg-white">
       <div className="container mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Our Story</h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
@@ -43,7 +43,7 @@ const OurStory = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -83,7 +83,7 @@ const OurStory = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
