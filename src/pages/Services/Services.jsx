@@ -1,10 +1,156 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { 
+  Layers, TrendingUp, Database, Shield, Cloud, Users, 
+  Search, Target, Zap, CheckCircle, Code, Smartphone, 
+  Cpu, GitBranch, Server, BarChart2, Lightbulb, Settings, 
+  ArrowRight, ChevronRight, ExternalLink
+} from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 import servicesData from '../../assets/data/services.json';
 
+// Counter component for statistics with animation
+const Counter = ({ value, suffix = '' }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          const duration = 2000;
+          const stepTime = Math.max(Math.floor(duration / value), 1);
+          
+          const timer = setInterval(() => {
+            setCount(prevCount => {
+              const newCount = Math.min(prevCount + Math.ceil(value / 20), value);
+              if (newCount >= value) {
+                clearInterval(timer);
+                setHasAnimated(true);
+              }
+              return newCount;
+            });
+          }, stepTime);
+
+          return () => clearInterval(timer);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const counterElement = document.getElementById(`counter-${value}`);
+    if (counterElement) observer.observe(counterElement);
+
+    return () => {
+      if (counterElement) observer.unobserve(counterElement);
+    };
+  }, [value, hasAnimated]);
+
+  return <span id={`counter-${value}`}>{count}{suffix}</span>;
+};
+
+// Service offerings data
+const serviceOfferings = [
+  {
+    id: 1,
+    title: 'Custom Web Apps',
+    description: 'Tailored web applications built with modern frameworks for optimal performance and scalability.',
+    icon: <Code className="w-8 h-8 text-primary-600" />
+  },
+  {
+    id: 2,
+    title: 'Mobile Development',
+    description: 'Cross-platform mobile apps that deliver seamless experiences on all devices.',
+    icon: <Smartphone className="w-8 h-8 text-primary-600" />
+  },
+  {
+    id: 3,
+    title: 'Cloud Migration',
+    description: 'Seamless transition to cloud infrastructure with zero downtime and maximum efficiency.',
+    icon: <Cloud className="w-8 h-8 text-primary-600" />
+  },
+  {
+    id: 4,
+    title: 'API Development',
+    description: 'Robust and secure APIs that power your digital ecosystem and enable seamless integrations.',
+    icon: <GitBranch className="w-8 h-8 text-primary-600" />
+  },
+  {
+    id: 5,
+    title: 'Legacy Modernization',
+    description: 'Transform outdated systems into modern, efficient, and maintainable solutions.',
+    icon: <Cpu className="w-8 h-8 text-primary-600" />
+  },
+  {
+    id: 6,
+    title: 'Microservices',
+    description: 'Scalable and maintainable architectures using microservices for complex applications.',
+    icon: <Server className="w-8 h-8 text-primary-600" />
+  }
+];
+
 const Services = () => {
+  const [activeCategory, setActiveCategory] = useState('apps');
+  
+  const stats = [
+    { 
+      id: 1, 
+      value: 250, 
+      suffix: '+', 
+      label: 'Client Satisfaction', 
+      icon: <CheckCircle className="w-10 h-10 text-primary-600" /> 
+    },
+    { 
+      id: 2, 
+      value: 500, 
+      suffix: '+', 
+      label: 'Projects Completed', 
+      icon: <Target className="w-10 h-10 text-primary-600" /> 
+    },
+    { 
+      id: 3, 
+      value: 15, 
+      suffix: '+', 
+      label: 'Years Experience', 
+      icon: <Zap className="w-10 h-10 text-primary-600" /> 
+    },
+    { 
+      id: 4, 
+      value: 50, 
+      suffix: '+', 
+      label: 'Technology Experts', 
+      icon: <Users className="w-10 h-10 text-primary-600" /> 
+    }
+  ];
+
+  const processSteps = [
+    {
+      id: 1,
+      title: 'Discovery',
+      description: 'We analyze your business needs and technical requirements to create a tailored solution.',
+      icon: <Search className="w-6 h-6" />
+    },
+    {
+      id: 2,
+      title: 'Strategy',
+      description: 'Our experts develop a comprehensive strategy to achieve your business objectives.',
+      icon: <Lightbulb className="w-6 h-6" />
+    },
+    {
+      id: 3,
+      title: 'Implementation',
+      description: 'We execute the plan with precision, keeping you informed at every step.',
+      icon: <Settings className="w-6 h-6" />
+    },
+    {
+      id: 4,
+      title: 'Optimization',
+      description: 'Continuous monitoring and improvement to ensure optimal performance.',
+      icon: <BarChart2 className="w-6 h-6" />
+    }
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -17,7 +163,28 @@ const Services = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+  
+  // Get the active category object
+  const activeCategoryData = servicesData.categories.find(cat => cat.id === activeCategory) || {};
+  
+  // Filter services based on the active category
+  const filteredServices = servicesData.services.filter(service => {
+    // Special case for 'apps' category which should match 'Development' services
+    if (activeCategory === 'apps' && service.category === 'Development') {
+      return true;
+    }
+    // For other categories, match the category title exactly
+    return service.category === activeCategoryData.title;
+  });
+  
+  const getCategoryById = (id) => {
+    return servicesData.categories.find(cat => cat.id === id) || {};
   };
 
   return (
@@ -26,220 +193,224 @@ const Services = () => {
         <title>Services - Technology Staffing, IT Consulting & System Integration | Cloud Focal</title>
         <meta name="description" content="Comprehensive technology solutions including staffing, IT consulting, and system integration. Transform your business with Cloud Focal's expertise." />
         <meta name="keywords" content="technology staffing, IT consulting, system integration, digital transformation, tech solutions" />
-        <meta property="og:title" content="Services - Technology Staffing, IT Consulting & System Integration" />
-        <meta property="og:description" content="Comprehensive technology solutions including staffing, IT consulting, and system integration." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://cloudfocal.com/services" />
       </Helmet>
 
       <motion.div 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
-        transition={{ duration: 0.5 }}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
         className="page-content-with-footer"
       >
-        {/* Blue Header Spacer - Only for Services page */}
-        <div className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 h-16 lg:h-20"></div>
-        
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
+        <section className="pt-32 pb-20 bg-white text-gray-900">
           <div className="container mx-auto px-4">
             <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.6 }}
+              variants={itemVariants}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="heading-1 mb-8 text-white">Our Services</h1>
-              <p className="body-large text-white mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Services</h1>
+              <p className="text-lg text-gray-700 mb-8">
                 Comprehensive technology solutions designed to accelerate your digital transformation and drive sustainable growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button to="/contact" variant="white" size="large">
-                  Get Started
+                <Button 
+                  to="/contact" 
+                  variant="outline" 
+                  size="large"
+                  className="group !rounded-lg border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 flex items-center"
+                >
+                  Get in Touch
+                  <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Services Overview */}
-        <section className="py-20 bg-white">
+        {/* Category Navigation */}
+        <section className="py-8 bg-gray-50">
           <div className="container mx-auto px-4">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap justify-center gap-3 mb-4"
             >
-              <h2 className="heading-2 text-gray-900 mb-6">
-                {servicesData.overview.title}
-              </h2>
-              <p className="body-large text-gray-600 max-w-3xl mx-auto">
-                {servicesData.overview.description}
+              {servicesData.categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`px-5 py-2.5 rounded-full font-medium transition-all duration-300 ${
+                    activeCategory === category.id
+                      ? 'bg-black text-white shadow-md transform -translate-y-0.5'
+                      : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-100 hover:border-gray-300'
+                  }`}
+                >
+                  {category.title}
+                </button>
+              ))}
+            </motion.div>
+            <motion.p 
+              variants={itemVariants}
+              className="text-center text-gray-600 text-sm"
+            >
+              {activeCategoryData.description}
+            </motion.p>
+          </div>
+        </section>
+
+        {/* Service Offerings Grid */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-12 text-center"
+            >
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Service Offerings</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Comprehensive solutions tailored to meet your unique business needs and challenges.
               </p>
             </motion.div>
 
             <motion.div 
               variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {servicesData.services.map((service, index) => (
-                <motion.div 
-                  key={service.id}
-                  variants={itemVariants}
-                  className="group"
-                >
-                  <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2 border border-gray-100">
-                    <div className="p-8">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <ServiceIcon icon={service.icon} />
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                      <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
-                      <ul className="space-y-3 mb-8">
-                        {service.features.slice(0, 3).map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-start space-x-3">
-                            <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-gray-600">{feature.title}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <Button 
-                        to={`/services/${service.id}`} 
-                        variant="outline" 
-                        size="medium" 
-                        className="w-full group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300"
-                      >
-                        Learn More
-                      </Button>
+              {filteredServices.length > 0 ? (
+                filteredServices.map((service) => (
+                  <motion.div
+                    key={service.id}
+                    variants={itemVariants}
+                    whileHover={{ y: -5 }}
+                    className="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-100 transition-colors duration-300">
+                      <ServiceIcon icon={service.icon} />
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.6 }}
-              className="bg-gray-50 rounded-2xl p-8 md:p-12"
-            >
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {servicesData.overview.stats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">{stat.number}</div>
-                    <div className="text-gray-600 font-medium">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                    <p className="text-gray-600 mb-4">{service.shortDescription || service.description}</p>
+                    <button className="text-primary-600 hover:text-primary-700 font-medium flex items-center transition-colors">
+                      Learn more <ChevronRight className="w-4 h-4 ml-1" />
+                    </button>
+                  </motion.div>
+                ))
+              ) : (
+                <div className="col-span-3 text-center py-8">
+                  <p className="text-gray-600">No services found in this category.</p>
+                </div>
+              )}
             </motion.div>
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className="py-20 bg-white">
+        {/* Statistics Section */}
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-12"
             >
-              <h2 className="heading-2 text-gray-900 mb-6">Our Process</h2>
-              <p className="body-large text-gray-600 max-w-3xl mx-auto">
-                A proven methodology that ensures successful delivery and exceptional results for every project.
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Impact in Numbers</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Delivering exceptional results through innovative technology solutions and expert consulting.
               </p>
             </motion.div>
-
-            <div className="grid-4-cols">
-              {[
-                {
-                  step: '01',
-                  title: 'Discovery',
-                  description: 'We begin by understanding your unique challenges, goals, and requirements.'
-                },
-                {
-                  step: '02',
-                  title: 'Strategy',
-                  description: 'Develop a comprehensive strategy tailored to your specific needs and objectives.'
-                },
-                {
-                  step: '03',
-                  title: 'Implementation',
-                  description: 'Execute the solution with precision, ensuring quality and timely delivery.'
-                },
-                {
-                  step: '04',
-                  title: 'Optimization',
-                  description: 'Continuously monitor, refine, and optimize for ongoing success and growth.'
-                }
-              ].map((process, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }} 
-                  whileInView={{ opacity: 1, y: 0 }} 
-                  viewport={{ once: true }} 
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="text-center"
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {stats.map((stat) => (
+                <motion.div
+                  key={stat.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: stat.id * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
-                    {process.step}
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary-50 mb-4 mx-auto">
+                    {stat.icon}
                   </div>
-                  <h3 className="heading-5 text-gray-900 mb-4">{process.title}</h3>
-                  <p className="body text-gray-600">{process.description}</p>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-gray-900 mb-2">
+                      <Counter value={stat.value} suffix={stat.suffix} />
+                    </div>
+                    <p className="text-gray-600 font-medium">{stat.label}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* Process Section */}
+        <section className="py-16 bg-white relative">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Process</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                A proven methodology to ensure your success at every stage of the project.
+              </p>
+            </motion.div>
 
+            <div className="relative">
+              {/* Connecting line */}
+              <div className="hidden lg:block absolute left-0 right-0 top-16 h-0.5 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                {processSteps.map((step, index) => (
+                  <motion.div
+                    key={step.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -5 }}
+                    className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group"
+                  >
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-white text-xl font-bold mb-4 relative">
+                        {step.icon}
+                        <span className="absolute -bottom-1 -right-1 w-6 h-6 bg-white border-2 border-primary-600 rounded-full flex items-center justify-center text-primary-600 text-xs font-bold">
+                          {step.id}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
+                      <p className="text-gray-600">{step.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Additional sections can be added here */}
+        
       </motion.div>
     </>
   );
 };
-
+// Helper component for service icons
 const ServiceIcon = ({ icon }) => {
   const icons = {
-    users: (
-      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-      </svg>
-    ),
-    briefcase: (
-      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0v2a2 2 0 002 2h2a2 2 0 002-2V6a2 2 0 00-2-2h-2z" />
-      </svg>
-    ),
-    lightbulb: (
-      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
-    link: (
-      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-      </svg>
-    ),
-    cog: (
-      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    )
+    layers: <Layers className="w-6 h-6 text-primary-600" />,
+    'trending-up': <TrendingUp className="w-6 h-6 text-primary-600" />,
+    database: <Database className="w-6 h-6 text-primary-600" />,
+    shield: <Shield className="w-6 h-6 text-primary-600" />,
+    cloud: <Cloud className="w-6 h-6 text-primary-600" />,
+    users: <Users className="w-6 h-6 text-primary-600" />,
   };
 
-  return icons[icon] || icons.briefcase;
+  return icons[icon] || <Layers className="w-6 h-6 text-primary-600" />;
 };
-
 export default Services;

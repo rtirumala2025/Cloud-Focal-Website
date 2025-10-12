@@ -1,287 +1,302 @@
 {
+  "categories": [
+    {
+      "id": "apps",
+      "title": "Applications",
+      "icon": "layers",
+      "description": "Custom application development and modernization services"
+    },
+    {
+      "id": "consulting",
+      "title": "Consulting",
+      "icon": "trending-up",
+      "description": "Strategic IT consulting and digital transformation"
+    },
+    {
+      "id": "data",
+      "title": "Data & Analytics",
+      "icon": "database",
+      "description": "Data management, analytics, and business intelligence"
+    },
+    {
+      "id": "cyber",
+      "title": "Cybersecurity",
+      "icon": "shield",
+      "description": "Comprehensive security solutions and risk management"
+    },
+    {
+      "id": "cloud",
+      "title": "Cloud Services",
+      "icon": "cloud",
+      "description": "Cloud strategy, migration, and optimization"
+    },
+    {
+      "id": "staffing",
+      "title": "IT Staffing",
+      "icon": "users",
+      "description": "Talent acquisition and workforce solutions"
+    }
+  ],
   "services": [
     {
-      "id": "technology-staffing",
+      "id": "web-apps",
+      "title": "Custom Web Applications",
+      "shortTitle": "Web Apps",
+      "category": "Applications",
+      "description": "Tailored web applications built with modern frameworks for optimal performance and scalability.",
+      "icon": "globe",
+      "features": [
+        {"title": "Responsive Design", "description": "Fully responsive applications that work on all devices", "icon": "smartphone"},
+        {"title": "Modern Stack", "description": "Built with React, Next.js, and modern JavaScript", "icon": "code"},
+        {"title": "Scalable Architecture", "description": "Designed to grow with your business needs", "icon": "layers"}
+      ]
+    },
+    {
+      "id": "mobile-apps",
+      "title": "Mobile App Development",
+      "shortTitle": "Mobile Apps",
+      "category": "Applications",
+      "description": "Cross-platform mobile applications for iOS and Android with native performance.",
+      "icon": "smartphone",
+      "features": [
+        {"title": "Cross-Platform", "description": "Single codebase for both iOS and Android", "icon": "smartphone"},
+        {"title": "Native Performance", "description": "Near-native performance with React Native", "icon": "zap"},
+        {"title": "Offline Support", "description": "Works seamlessly without internet connection", "icon": "wifi-off"}
+      ]
+    },
+    {
+      "id": "enterprise-solutions",
+      "title": "Enterprise Solutions",
+      "shortTitle": "Enterprise Apps",
+      "category": "Applications",
+      "description": "Robust enterprise-grade applications for complex business processes.",
+      "icon": "briefcase",
+      "features": [
+        {"title": "Scalability", "description": "Handles high traffic and data volumes", "icon": "server"},
+        {"title": "Security", "description": "Enterprise-grade security features", "icon": "shield"},
+        {"title": "Integration", "description": "Seamless integration with existing systems", "icon": "link"}
+      ]
+    },
+    {
+      "id": "program-management",
+      "title": "Program Management",
+      "shortTitle": "Program Mgmt",
+      "category": "Consulting",
+      "description": "End-to-end program management for your technology initiatives.",
+      "icon": "layers",
+      "features": [
+        {"title": "Strategic Planning", "description": "Comprehensive program roadmaps", "icon": "map"},
+        {"title": "Governance", "description": "Effective governance structures", "icon": "shield"},
+        {"title": "Risk Management", "description": "Proactive risk mitigation", "icon": "alert-triangle"}
+      ]
+    },
+    {
+      "id": "it-strategy",
+      "title": "IT Strategy & Transformation",
+      "shortTitle": "IT Strategy",
+      "category": "Consulting",
+      "description": "Align technology with business goals through strategic planning.",
+      "icon": "trending-up",
+      "features": [
+        {"title": "Digital Roadmap", "description": "Clear path for digital transformation", "icon": "map"},
+        {"title": "Cloud Strategy", "description": "Cloud adoption and migration", "icon": "cloud"},
+        {"title": "Tech Assessment", "description": "Current state analysis", "icon": "bar-chart-2"}
+      ]
+    },
+    {
+      "id": "digital-transformation",
+      "title": "Digital Transformation",
+      "shortTitle": "Digital Xform",
+      "category": "Consulting",
+      "description": "Comprehensive digital transformation strategies for modern businesses.",
+      "icon": "refresh-cw",
+      "features": [
+        {"title": "Process Automation", "description": "Streamline operations with automation", "icon": "zap"},
+        {"title": "Customer Experience", "description": "Enhance digital customer journeys", "icon": "users"},
+        {"title": "Innovation Labs", "description": "Explore emerging technologies", "icon": "flask"}
+      ]
+    },
+    {
+      "id": "data-analytics",
+      "title": "Data Analytics",
+      "shortTitle": "Analytics",
+      "category": "Data & Analytics",
+      "description": "Turn your data into actionable business insights.",
+      "icon": "bar-chart-2",
+      "features": [
+        {"title": "BI Solutions", "description": "Business intelligence dashboards", "icon": "bar-chart"},
+        {"title": "Predictive Analytics", "description": "Forecast trends and patterns", "icon": "trending-up"},
+        {"title": "Data Visualization", "description": "Interactive data exploration", "icon": "pie-chart"}
+      ]
+    },
+    {
+      "id": "data-engineering",
+      "title": "Data Engineering",
+      "shortTitle": "Data Engineering",
+      "category": "Data & Analytics",
+      "description": "Build robust data pipelines and infrastructure.",
+      "icon": "database",
+      "features": [
+        {"title": "ETL Pipelines", "description": "Efficient data processing", "icon": "refresh-cw"},
+        {"title": "Data Warehousing", "description": "Scalable storage solutions", "icon": "hard-drive"},
+        {"title": "Real-time Processing", "description": "Streaming data solutions", "icon": "zap"}
+      ]
+    },
+    {
+      "id": "ai-ml-solutions",
+      "title": "AI/ML Solutions",
+      "shortTitle": "AI/ML",
+      "category": "Data & Analytics",
+      "description": "Leverage artificial intelligence and machine learning for business growth.",
+      "icon": "cpu",
+      "features": [
+        {"title": "Predictive Modeling", "description": "Forecast business outcomes", "icon": "activity"},
+        {"title": "Computer Vision", "description": "Image and video analysis", "icon": "eye"},
+        {"title": "NLP", "description": "Natural language processing", "icon": "message-square"}
+      ]
+    },
+    {
+      "id": "security-assessment",
+      "title": "Security Assessment",
+      "shortTitle": "Security Audit",
+      "category": "Cybersecurity",
+      "description": "Comprehensive security evaluation and recommendations.",
+      "icon": "shield",
+      "features": [
+        {"title": "Vulnerability Scan", "description": "Identify security weaknesses", "icon": "search"},
+        {"title": "Penetration Testing", "description": "Simulated cyber attacks", "icon": "target"},
+        {"title": "Compliance Check", "description": "Ensure regulatory compliance", "icon": "check-circle"}
+      ]
+    },
+    {
+      "id": "threat-management",
+      "title": "Threat Management",
+      "shortTitle": "Threat Mgmt",
+      "category": "Cybersecurity",
+      "description": "Proactive protection against evolving cyber threats.",
+      "icon": "shield",
+      "features": [
+        {"title": "Threat Detection", "description": "Real-time monitoring for security breaches", "icon": "eye"},
+        {"title": "Incident Response", "description": "Rapid response to security incidents", "icon": "alert-octagon"},
+        {"title": "Vulnerability Management", "description": "Continuous assessment and remediation", "icon": "search"}
+      ]
+    },
+    {
+      "id": "security-training",
+      "title": "Security Training",
+      "shortTitle": "Security Training",
+      "category": "Cybersecurity",
+      "description": "Comprehensive security awareness and training programs.",
+      "icon": "award",
+      "features": [
+        {"title": "Phishing Simulation", "description": "Test employee awareness", "icon": "mail"},
+        {"title": "Security Workshops", "description": "Hands-on training sessions", "icon": "users"},
+        {"title": "Certification Prep", "description": "Prepare for security certifications", "icon": "book"}
+      ]
+    },
+    {
+      "id": "cloud-migration",
+      "title": "Cloud Migration",
+      "shortTitle": "Cloud Migration",
+      "category": "Cloud Services",
+      "description": "Seamless migration to cloud infrastructure.",
+      "icon": "cloud",
+      "features": [
+        {"title": "Cloud Strategy", "description": "Migration planning", "icon": "map"},
+        {"title": "Multi-Cloud", "description": "Hybrid cloud solutions", "icon": "layers"},
+        {"title": "Cost Optimization", "description": "Reduce cloud spending", "icon": "dollar-sign"}
+      ]
+    },
+    {
+      "id": "devops-solutions",
+      "title": "DevOps Solutions",
+      "shortTitle": "DevOps",
+      "category": "Cloud Services",
+      "description": "Streamline development and operations with CI/CD.",
+      "icon": "git-branch",
+      "features": [
+        {"title": "CI/CD Pipelines", "description": "Automated deployments", "icon": "refresh-cw"},
+        {"title": "Infrastructure as Code", "description": "Terraform & CloudFormation", "icon": "code"},
+        {"title": "Monitoring", "description": "Real-time system insights", "icon": "activity"}
+      ]
+    },
+    {
+      "id": "cloud-optimization",
+      "title": "Cloud Optimization",
+      "shortTitle": "Cloud Opt",
+      "category": "Cloud Services",
+      "description": "Maximize performance and minimize costs in the cloud.",
+      "icon": "zap",
+      "features": [
+        {"title": "Cost Analysis", "description": "Identify savings opportunities", "icon": "dollar-sign"},
+        {"title": "Performance Tuning", "description": "Optimize cloud resources", "icon": "activity"},
+        {"title": "Right-Sizing", "description": "Match resources to workloads", "icon": "box"}
+      ]
+    },
+    {
+      "id": "tech-staffing",
       "title": "Technology Staffing",
       "shortTitle": "Tech Staffing",
-      "description": "Connect with top-tier technology professionals to accelerate your digital transformation journey.",
-      "longDescription": "Our technology staffing services help organizations find and retain the best tech talent in the market. We specialize in placing skilled professionals across all technology domains, from software development and DevOps to cybersecurity and data science.",
+      "category": "IT Staffing",
+      "description": "Top-tier technology professionals for your team.",
       "icon": "users",
-      "image": "/images/services/tech-staffing.jpg",
       "features": [
-        {
-          "title": "Contract Staffing",
-          "description": "Flexible contract-to-hire and temporary staffing solutions for project-based needs.",
-          "icon": "clock"
-        },
-        {
-          "title": "Permanent Placement",
-          "description": "Direct hire solutions for long-term technology positions with comprehensive screening.",
-          "icon": "user-check"
-        },
-        {
-          "title": "Executive Search",
-          "description": "Specialized recruitment for C-level and senior technology leadership positions.",
-          "icon": "award"
-        },
-        {
-          "title": "Skill Assessment",
-          "description": "Comprehensive technical and cultural fit evaluation for optimal placements.",
-          "icon": "clipboard-check"
-        }
-      ],
-      "benefits": [
-        "Reduced time-to-hire by 60%",
-        "95% retention rate after 12 months",
-        "Access to pre-vetted talent pool",
-        "Industry-specific expertise matching"
-      ],
-      "process": [
-        {
-          "step": 1,
-          "title": "Requirements Analysis",
-          "description": "Deep dive into your technical needs, team culture, and project requirements."
-        },
-        {
-          "step": 2,
-          "title": "Talent Sourcing",
-          "description": "Leverage our extensive network and advanced sourcing techniques to find the perfect match."
-        },
-        {
-          "step": 3,
-          "title": "Screening & Assessment",
-          "description": "Comprehensive technical and cultural evaluation through multiple assessment rounds."
-        },
-        {
-          "step": 4,
-          "title": "Placement & Support",
-          "description": "Seamless onboarding and ongoing support to ensure successful integration."
-        }
-      ],
-      "technologies": [
-        "JavaScript/TypeScript",
-        "Python",
-        "Java",
-        "C#/.NET",
-        "React/Angular/Vue",
-        "Node.js",
-        "AWS/Azure/GCP",
-        "Docker/Kubernetes",
-        "DevOps",
-        "Cybersecurity",
-        "Data Science/AI",
-        "Mobile Development"
-      ],
-      "industries": [
-        "Financial Services",
-        "Healthcare",
-        "E-commerce",
-        "Manufacturing",
-        "Government",
-        "Education",
-        "Technology"
-      ],
-      "cta": {
-        "title": "Find Your Next Tech Star",
-        "description": "Let us help you build the perfect technology team.",
-        "buttonText": "Get Started",
-        "buttonLink": "/contact"
-      }
+        {"title": "Contract Staffing", "description": "Flexible hiring solutions", "icon": "clock"},
+        {"title": "Permanent Placement", "description": "Long-term hires", "icon": "user-check"},
+        {"title": "Skill Assessment", "description": "Technical screening", "icon": "clipboard-check"}
+      ]
     },
     {
-      "id": "it-consulting",
-      "title": "IT Consulting",
-      "shortTitle": "IT Consulting",
-      "description": "Strategic technology guidance to drive innovation and operational excellence.",
-      "longDescription": "Our IT consulting services provide strategic guidance to help organizations leverage technology for competitive advantage. We work closely with your team to develop technology roadmaps, optimize processes, and implement best practices.",
-      "icon": "lightbulb",
-      "image": "/images/services/it-consulting.jpg",
+      "id": "executive-search",
+      "title": "Executive Search",
+      "shortTitle": "Exec Search",
+      "category": "IT Staffing",
+      "description": "C-level and senior technology leadership recruitment.",
+      "icon": "award",
       "features": [
-        {
-          "title": "Technology Strategy",
-          "description": "Comprehensive technology roadmaps aligned with business objectives and market trends.",
-          "icon": "map"
-        },
-        {
-          "title": "Digital Transformation",
-          "description": "End-to-end digital transformation consulting from assessment to implementation.",
-          "icon": "refresh-cw"
-        },
-        {
-          "title": "Process Optimization",
-          "description": "Streamline operations and improve efficiency through technology-driven process improvements.",
-          "icon": "settings"
-        },
-        {
-          "title": "Technology Assessment",
-          "description": "Comprehensive evaluation of current technology stack and recommendations for improvement.",
-          "icon": "search"
-        }
-      ],
-      "benefits": [
-        "30% average cost reduction",
-        "50% faster time-to-market",
-        "Improved operational efficiency",
-        "Enhanced competitive advantage"
-      ],
-      "process": [
-        {
-          "step": 1,
-          "title": "Discovery & Assessment",
-          "description": "Comprehensive analysis of current state, challenges, and opportunities."
-        },
-        {
-          "step": 2,
-          "title": "Strategy Development",
-          "description": "Create tailored technology strategy aligned with business goals."
-        },
-        {
-          "step": 3,
-          "title": "Implementation Planning",
-          "description": "Detailed roadmap and implementation plan with clear milestones."
-        },
-        {
-          "step": 4,
-          "title": "Execution & Support",
-          "description": "Guided implementation with ongoing support and optimization."
-        }
-      ],
-      "specializations": [
-        "Cloud Migration",
-        "DevOps Transformation",
-        "Security Assessment",
-        "Data Strategy",
-        "Application Modernization",
-        "Infrastructure Optimization"
-      ],
-      "industries": [
-        "Financial Services",
-        "Healthcare",
-        "Manufacturing",
-        "Retail",
-        "Government",
-        "Education",
-        "Technology"
-      ],
-      "cta": {
-        "title": "Transform Your Technology",
-        "description": "Get expert guidance to drive your technology strategy forward.",
-        "buttonText": "Schedule Consultation",
-        "buttonLink": "/contact"
-      }
+        {"title": "Leadership Hiring", "description": "C-level recruitment", "icon": "user"},
+        {"title": "Industry Specialization", "description": "Tech sector expertise", "icon": "briefcase"},
+        {"title": "Retained Search", "description": "Focused recruitment", "icon": "search"}
+      ]
     },
     {
-      "id": "integration-services",
-      "title": "Integration Services",
-      "shortTitle": "Integration",
-      "description": "Seamless system integration and API development to connect your technology ecosystem.",
-      "longDescription": "Our integration services help organizations connect disparate systems, automate workflows, and create seamless data flows. We specialize in API development, system integration, and custom middleware solutions.",
-      "icon": "link",
-      "image": "/images/services/integration.jpg",
+      "id": "team-augmentation",
+      "title": "Team Augmentation",
+      "shortTitle": "Team Aug",
+      "category": "IT Staffing",
+      "description": "Scale your team with skilled professionals on demand.",
+      "icon": "users",
       "features": [
-        {
-          "title": "API Development",
-          "description": "Custom API development and integration for seamless system connectivity.",
-          "icon": "code"
-        },
-        {
-          "title": "System Integration",
-          "description": "Connect legacy systems with modern applications for unified data flow.",
-          "icon": "database"
-        },
-        {
-          "title": "Workflow Automation",
-          "description": "Automate business processes and workflows for improved efficiency.",
-          "icon": "zap"
-        },
-        {
-          "title": "Data Migration",
-          "description": "Secure and efficient data migration between systems and platforms.",
-          "icon": "upload"
-        }
-      ],
-      "benefits": [
-        "40% reduction in manual processes",
-        "Real-time data synchronization",
-        "Improved system reliability",
-        "Enhanced user experience"
-      ],
-      "process": [
-        {
-          "step": 1,
-          "title": "System Analysis",
-          "description": "Comprehensive analysis of existing systems and integration requirements."
-        },
-        {
-          "step": 2,
-          "title": "Architecture Design",
-          "description": "Design scalable and secure integration architecture."
-        },
-        {
-          "step": 3,
-          "title": "Development & Testing",
-          "description": "Build and thoroughly test integration solutions."
-        },
-        {
-          "step": 4,
-          "title": "Deployment & Monitoring",
-          "description": "Deploy with monitoring and ongoing support."
-        }
-      ],
-      "technologies": [
-        "REST APIs",
-        "GraphQL",
-        "SOAP",
-        "Webhooks",
-        "Message Queues",
-        "ETL/ELT",
-        "Microservices",
-        "Event-Driven Architecture",
-        "API Gateway",
-        "Service Mesh"
-      ],
-      "platforms": [
-        "AWS",
-        "Azure",
-        "Google Cloud",
-        "Salesforce",
-        "SAP",
-        "Oracle",
-        "Microsoft Dynamics",
-        "Custom Systems"
-      ],
-      "cta": {
-        "title": "Connect Your Systems",
-        "description": "Build seamless integrations that power your business.",
-        "buttonText": "Start Integration",
-        "buttonLink": "/contact"
-      }
+        {"title": "Flexible Staffing", "description": "Scale up or down as needed", "icon": "users"},
+        {"title": "Specialized Skills", "description": "Access to niche expertise", "icon": "code"},
+        {"title": "Rapid Onboarding", "description": "Quickly integrate new team members", "icon": "zap"}
+      ]
     }
   ],
   "overview": {
     "title": "Comprehensive Technology Solutions",
     "subtitle": "From talent acquisition to system integration, we provide end-to-end technology services",
-    "description": "Cloud Focal delivers comprehensive technology solutions that help organizations thrive in the digital age. Our expertise spans technology staffing, strategic consulting, and system integration, providing everything you need to build, optimize, and scale your technology operations.",
+    "description": "Cloud Focal delivers comprehensive technology solutions that help organizations thrive in the digital age. Our expertise spans program management, IT strategy, technology staffing, data services, and application development, providing everything you need to build, optimize, and scale your technology operations.",
+    "cta": {
+      "text": "Explore Our Services",
+      "link": "/services"
+    },
     "stats": [
       {
-        "number": "500+",
-        "label": "Successful Placements",
-        "description": "Technology professionals placed across industries"
+        "value": "500+",
+        "label": "Projects Completed"
       },
       {
-        "number": "100+",
-        "label": "Projects Delivered",
-        "description": "Consulting and integration projects completed"
+        "value": "15+",
+        "label": "Years Experience"
       },
       {
-        "number": "95%",
-        "label": "Client Satisfaction",
-        "description": "Average client satisfaction rating"
+        "value": "50+",
+        "label": "Technology Experts"
       },
       {
-        "number": "24/7",
-        "label": "Support Available",
-        "description": "Round-the-clock technical support"
+        "value": "98%",
+        "label": "Client Satisfaction"
       }
     ]
   }
