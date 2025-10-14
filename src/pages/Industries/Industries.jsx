@@ -102,7 +102,7 @@ const Industries = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen bg-white overflow-x-hidden"
+        className="bg-white flex flex-col min-h-screen"
       >
         {/* Hero Section */}
         <section className="relative py-24 lg:py-32 bg-white">

@@ -62,8 +62,27 @@ const MissionValues = () => {
     visible: { opacity: 1, y: 0 }
   };
 
+  const differentiators = [
+    {
+      title: "Mission-Driven Approach",
+      description: "We're more than a vendor; we're your long-term technology transformation partner. We don't just offer capabilities - we pursue global issues and embrace client missions as our own."
+    },
+    {
+      title: "Dual Expertise",
+      description: "Combining technology AND staffing expertise, we provide scalable solutions for any need - from single staffing assignments to full enterprise IT transformations."
+    },
+    {
+      title: "Proven Methodology",
+      description: "Our proprietary Cloud Focal methodologies combine federal and commercial best practices, ensuring cost benefits, enhanced schedule management, and improved quality."
+    },
+    {
+      title: "Results-Oriented",
+      description: "With over a decade of experience, we consistently deliver high-quality, repeatable solutions on time, in scope, and within budget."
+    }
+  ];
+
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 w-full">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
@@ -146,24 +165,7 @@ const MissionValues = () => {
         >
           <h3 className="text-3xl font-bold text-center mb-8">Why Choose Cloud Focal</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Mission-Driven Approach",
-                description: "We're more than a vendor; we're your long-term technology transformation partner. We don't just offer capabilities - we pursue global issues and embrace client missions as our own."
-              },
-              {
-                title: "Dual Expertise",
-                description: "Combining technology AND staffing expertise, we provide scalable solutions for any need - from single staffing assignments to full enterprise IT transformations."
-              },
-              {
-                title: "Proven Methodology",
-                description: "Our proprietary Cloud Focal methodologies combine federal and commercial best practices, ensuring cost benefits, enhanced schedule management, and improved quality."
-              },
-              {
-                title: "Results-Oriented",
-                description: "With over a decade of experience, we consistently deliver high-quality, repeatable solutions on time, in scope, and within budget."
-              }
-            ].map((item, index) => (
+            {differentiators.map((item, index) => (
               <motion.div 
                 key={index} 
                 className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"

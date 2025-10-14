@@ -21,14 +21,14 @@ const OurStory = () => {
   ];
 
   return (
-    <section className="pt-32 pb-12 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="pt-24 pb-12 bg-white w-full">
+      <div className="container mx-auto px-4 w-full">
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-12 w-full"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Our Story</h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
