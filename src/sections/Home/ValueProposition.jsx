@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Button from '../../components/common/Button/Button';
 
 const ValueProposition = () => {
   const valueProps = [

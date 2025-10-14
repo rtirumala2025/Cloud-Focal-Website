@@ -33,10 +33,6 @@ import NotFound from './pages/NotFound/NotFound';
 // Global Styles
 import './assets/index.css';
 
-// Element Inspector (Development Tool)
-import ElementInspector from './components/ElementInspector/ElementInspector';
-
-
 function App() {
   return (
     <ErrorBoundary>
@@ -45,8 +41,6 @@ function App() {
           <AuthProvider>
             <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                 <div className="App">
-                  {/* Element Inspector - Development Tool */}
-                  <ElementInspector />
                 <AnimatePresence mode="wait">
                   <Routes>
                     <Route path="/" element={

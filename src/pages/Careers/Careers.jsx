@@ -2,13 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import Button from '../../components/common/Button/Button';
-import jobsData from '../../assets/data/jobs.json';
 
 const Careers = () => {
-  // Add null checks to prevent runtime errors
-  const jobs = jobsData?.jobs || [];
-  const featuredJobs = jobs.slice(0, 6);
-
+  // Removed unused jobs variable
   const benefits = [
     {
       title: "Competitive Compensation",

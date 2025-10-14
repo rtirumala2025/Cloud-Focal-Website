@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * Placeholder image generator for Cloud Focal website
  * Creates placeholder images with consistent branding and styling

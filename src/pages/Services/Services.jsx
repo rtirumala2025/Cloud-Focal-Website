@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { 
-  Layers, TrendingUp, Database, Shield, Cloud, Users, 
-  Search, Target, Zap, CheckCircle, Code, Smartphone, 
-  Cpu, GitBranch, Server, BarChart2, Lightbulb, Settings, 
-  ArrowRight, ChevronRight, ExternalLink
+  Cloud, CheckCircle, Target, Zap, Users,
+  ChevronRight, ArrowRight, Search, Lightbulb, 
+  Settings, BarChart2, Layers, TrendingUp, 
+  Database, Shield
 } from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 import servicesData from '../../assets/data/services.json';
@@ -49,46 +49,6 @@ const Counter = ({ value, suffix = '' }) => {
 
   return <span id={`counter-${value}`}>{count}{suffix}</span>;
 };
-
-// Service offerings data
-const serviceOfferings = [
-  {
-    id: 1,
-    title: 'Custom Web Apps',
-    description: 'Tailored web applications built with modern frameworks for optimal performance and scalability.',
-    icon: <Code className="w-8 h-8 text-primary-600" />
-  },
-  {
-    id: 2,
-    title: 'Mobile Development',
-    description: 'Cross-platform mobile apps that deliver seamless experiences on all devices.',
-    icon: <Smartphone className="w-8 h-8 text-primary-600" />
-  },
-  {
-    id: 3,
-    title: 'Cloud Migration',
-    description: 'Seamless transition to cloud infrastructure with zero downtime and maximum efficiency.',
-    icon: <Cloud className="w-8 h-8 text-primary-600" />
-  },
-  {
-    id: 4,
-    title: 'API Development',
-    description: 'Robust and secure APIs that power your digital ecosystem and enable seamless integrations.',
-    icon: <GitBranch className="w-8 h-8 text-primary-600" />
-  },
-  {
-    id: 5,
-    title: 'Legacy Modernization',
-    description: 'Transform outdated systems into modern, efficient, and maintainable solutions.',
-    icon: <Cpu className="w-8 h-8 text-primary-600" />
-  },
-  {
-    id: 6,
-    title: 'Microservices',
-    description: 'Scalable and maintainable architectures using microservices for complex applications.',
-    icon: <Server className="w-8 h-8 text-primary-600" />
-  }
-];
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState('apps');
@@ -183,10 +143,6 @@ const Services = () => {
     return service.category === activeCategoryData.title;
   });
   
-  const getCategoryById = (id) => {
-    return servicesData.categories.find(cat => cat.id === id) || {};
-  };
-
   return (
     <>
       <Helmet>

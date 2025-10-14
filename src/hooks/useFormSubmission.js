@@ -73,11 +73,26 @@ export const useFormSubmission = (formType = 'contact', options = {}) => {
 
     // Phone validation (if provided)
     if (data.phone) {
-      const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
       const cleanPhone = data.phone.replace(/\D/g, '');
       if (cleanPhone.length < 10) {
         errors.phone = 'Please enter a valid phone number';
       }
+    }
+
+    // Form type specific validations
+    switch (formType) {
+      case 'contact':
+        // Contact form specific validations
+        break;
+      case 'business':
+        // Business form specific validations
+        break;
+      case 'careers':
+        // Careers form specific validations
+        break;
+      default:
+        // No additional validations needed for other form types
+        break;
     }
 
     // Message length validation

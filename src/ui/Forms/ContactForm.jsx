@@ -15,6 +15,7 @@ const schema = yup.object({
   message: yup.string().required('Message is required').min(10, 'Message must be at least 10 characters'),
 }).required();
 
+// Utility function to generate input classes with error states
 const inputClasses = (error) => 
   `w-full h-16 px-5 text-lg rounded-xl border-2 ${
     error 
@@ -22,12 +23,23 @@ const inputClasses = (error) =>
       : 'border-gray-300 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 hover:border-blue-400'
   } transition-all duration-200 outline-none text-gray-900 placeholder-gray-400`;
 
+// Utility function to generate label classes with error states
 const labelClasses = (error) =>
   `block text-base font-semibold mb-2 ${
     error ? 'text-red-600' : 'text-gray-900'
   }`;
 
+// Error message styling
 const errorClasses = 'mt-2 text-sm text-red-600';
+
+// Service options for the contact form
+const serviceOptions = [
+  { value: 'general', label: 'General Inquiry' },
+  { value: 'support', label: 'Technical Support' },
+  { value: 'sales', label: 'Sales' },
+  { value: 'partnership', label: 'Partnership' },
+  { value: 'other', label: 'Other' },
+];
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -124,6 +136,27 @@ const ContactForm = () => {
             <p className={errorClasses}>{errors.lastName.message}</p>
           )}
         </div>
+      </div>
+
+      <div className="space-y-2">
+        <label htmlFor="service" className={labelClasses(errors.service)}>
+          How can we help you? <span className="text-red-500">*</span>
+        </label>
+        <select
+          id="service"
+          {...register('service')}
+          className={`${inputClasses(errors.service)} appearance-none`}
+        >
+          <option value="">Select a service...</option>
+          {serviceOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        {errors.service && (
+          <p className={errorClasses}>{errors.service.message}</p>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

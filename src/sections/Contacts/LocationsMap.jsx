@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 const LocationsMap = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [mapError, setMapError] = useState(false);
 
   // Simulate map loading
   useEffect(() => {
@@ -84,81 +83,78 @@ const LocationsMap = () => {
           {/* Map Container */}
           <motion.div variants={itemVariants} className="relative">
             <div className="relative bg-gray-100 rounded-2xl overflow-hidden shadow-2xl h-96 lg:h-[500px]">
-              {isLoading ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200">
-                  <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
-                    <p className="text-primary-700 font-medium">Loading map...</p>
+              <div className="relative h-full w-full">
+                {isLoading ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200">
+                    <div className="text-center">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+                      <p className="text-primary-700 font-medium">Loading map...</p>
+                    </div>
                   </div>
-                </div>
-              ) : mapError ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                  <div className="text-center p-8">
-                    <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <h3 className="text-lg font-semibold text-gray-700 mb-2">Map Unavailable</h3>
-                    <p className="text-gray-500 mb-4">Unable to load the interactive map</p>
-                    <button
-                      onClick={handleMapClick}
-                      className="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                    <div className="text-center p-8">
+                      <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
-                      Open in Google Maps
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  {/* Map Placeholder */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-br from-primary-50 via-primary-100 to-primary-200 cursor-pointer group"
-                    onClick={handleMapClick}
-                  >
-                    {/* Map Pattern Overlay */}
-                    <div className="absolute inset-0 opacity-20">
-                      <div className="absolute top-8 left-8 w-2 h-2 bg-primary-600 rounded-full"></div>
-                      <div className="absolute top-16 right-12 w-1 h-1 bg-primary-500 rounded-full"></div>
-                      <div className="absolute bottom-20 left-16 w-1.5 h-1.5 bg-primary-600 rounded-full"></div>
-                      <div className="absolute bottom-32 right-8 w-1 h-1 bg-primary-500 rounded-full"></div>
-                      <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-primary-600 rounded-full"></div>
-                      <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-500 rounded-full"></div>
-                    </div>
-
-                    {/* Location Pin */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                        className="relative"
+                      <h3 className="text-lg font-semibold text-gray-700 mb-2">Interactive Map</h3>
+                      <p className="text-gray-500 mb-4">Unable to load the interactive map</p>
+                      <button
+                        onClick={handleMapClick}
+                        className="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
                       >
-                        <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                        </div>
-                        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-primary-600"></div>
-                      </motion.div>
-                    </div>
-
-                    {/* Click to Open Overlay */}
-                    <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 text-center">
-                      <p className="text-sm text-gray-700 font-medium mb-2">Click to open in Google Maps</p>
-                      <div className="flex items-center justify-center text-primary-600">
-                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
-                        <span className="text-sm font-medium">View Larger Map</span>
-                      </div>
+                        Open in Google Maps
+                      </button>
                     </div>
                   </div>
-                </>
-              )}
+                )}
+
+                {/* Decorative elements */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none">
+                  <div className="absolute top-8 left-8 w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="absolute top-16 right-12 w-1 h-1 bg-primary-500 rounded-full"></div>
+                  <div className="absolute bottom-20 left-16 w-1.5 h-1.5 bg-primary-600 rounded-full"></div>
+                  <div className="absolute bottom-32 right-8 w-1 h-1 bg-primary-500 rounded-full"></div>
+                  <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-primary-600 rounded-full"></div>
+                  <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-500 rounded-full"></div>
+                </div>
+
+                {/* Location Pin */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                    className="relative"
+                  >
+                    <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-primary-600"></div>
+                  </motion.div>
+                </div>
+
+                {/* Click to Open Overlay */}
+                <div 
+                  className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 text-center cursor-pointer hover:bg-white transition-colors"
+                  onClick={handleMapClick}
+                >
+                  <p className="text-sm text-gray-700 font-medium mb-2">Click to open in Google Maps</p>
+                  <div className="flex items-center justify-center text-primary-600">
+                    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    <span className="text-sm font-medium">View Larger Map</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
 

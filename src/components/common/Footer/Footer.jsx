@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import navigationData from '../../../assets/data/navigationData.json';
@@ -27,24 +27,26 @@ const Footer = () => {
   }, []);
 
   // Handle cursor prompts
-  const handleMouseOver = (e, text) => {
+  const handleMouseOver = useCallback((e, text) => {
     setCursorPrompt({ show: true, text, x: e.clientX, y: e.clientY - 50 });
-  };
+  }, []);
 
-  const handleMouseOut = () => {
+  const handleMouseOut = useCallback(() => {
     setCursorPrompt({ show: false, text: '', x: 0, y: 0 });
-  };
+  }, []);
 
-  const handleMouseMove = (e) => {
-    if (cursorPrompt.show) {
-      setCursorPrompt(prev => ({ ...prev, x: e.clientX, y: e.clientY - 50 }));
-    }
-  };
+  const handleMouseMove = useCallback((e) => {
+    setCursorPrompt(prev => 
+      prev.show 
+        ? { ...prev, x: e.clientX, y: e.clientY - 50 }
+        : prev
+    );
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
     return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, [cursorPrompt.show, handleMouseMove]);
+  }, [handleMouseMove]);
 
   return (
     <>

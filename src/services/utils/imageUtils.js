@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * Image utility functions for Cloud Focal website
  * Handles image optimization, lazy loading, and error handling
