@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Cloud Focal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  --bg: #060812;
+  --bg-elevated: #0d1120;
+  --bg-panel: #10142a;
+  --line: #232a4a;
+  --line-bright: #3d4778;
+  --amber: #5B8DFF;
+  --amber-dim: #24305c;
+  --amber-glow: rgba(91,141,255,0.20);
+  --green: #7fd4ff;
+  --green-dim: #1f3a52;
+  --ink: #e9ecf7;
+  --ink-dim: #9498ba;
+  --ink-faint: #565c86;
+  --serif: 'Fraunces', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --dur-1: 0.6s;
+  --dur-2: 0.9s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; }
+body::before{
+  content:''; position: fixed; inset:0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px; opacity: 0.35; pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+}
+body::after{ content:''; position: fixed; inset:0; background: radial-gradient(ellipse 60% 40% at 78% 10%, var(--amber-glow), transparent 60%); pointer-events: none; z-index: 0; }
+a{ color: inherit; text-decoration: none; }
+.wrap{ max-width: 1360px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+.eyebrow{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before{ content:''; width: 7px; height: 7px; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp{ from{ opacity:0; transform: translateY(22px); } to{ opacity:1; transform: translateY(0); } }
+.seq{ opacity:0; animation: fadeUp var(--dur-1) var(--ease) forwards; }
+.seq-1{ animation-delay: 0.05s; }
+.seq-2{ animation-delay: 0.22s; }
+
+/* ============ NAV & FOOTER ============ */
+header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: rgba(10,11,9,0.82); backdrop-filter: blur(10px); }
+.nav{ display:flex; align-items:center; justify-content:space-between; padding: 20px 40px; max-width: 1360px; margin: 0 auto; }
+.logo-mark{ display:flex; align-items:center; gap: 12px; }
+.logo-chip{ width: 38px; height: 38px; background: #fff; border-radius: 8px; display:flex; align-items:center; justify-content:center; padding: 5px; box-shadow: 0 0 0 1px var(--line-bright); }
+.logo-word{ font-family: var(--mono); font-weight: 600; font-size: 15px; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase; }
+.logo-word .focal{ color: var(--amber); }
+.nav-links{ display:flex; gap: 36px; }
+.nav-links a{ font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); position: relative; padding-bottom: 3px; transition: color 0.25s var(--ease); }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background: var(--amber); transition: width 0.3s var(--ease); }
+.nav-links a:hover{ color: var(--ink); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a.active{ color: var(--ink); }
+.nav-links a.active::after{ width:100%; }
+.nav-cta{ font-size: 12px; letter-spacing:0.08em; text-transform: uppercase; border: 1px solid var(--line-bright); padding: 9px 18px; color: var(--ink); transition: all 0.25s var(--ease); }
+.nav-cta:hover{ border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
+
+/* ============ PAGE-SPECIFIC STYLE ============ */
+.services-hero{ padding-top: 160px; padding-bottom: 40px; }
+.services-title{ font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 500; line-height: 1.1; margin-top: 18px; margin-bottom: 24px; }
+.services-title em{ font-style: italic; font-weight: 400; color: var(--amber); }
+
+.category-group{ margin-top: 80px; }
+.category-header{ margin-bottom: 32px; border-left: 2px solid var(--amber); padding-left: 18px; }
+.category-title{ font-family: var(--serif); font-size: clamp(24px, 4vw, 36px); font-weight: 500; color: var(--ink); }
+.category-desc{ font-family: var(--mono); font-size: 13.5px; color: var(--ink-dim); line-height: 1.8; margin-top: 8px; max-width: 60ch; }
+
+.services-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.service-card{ background: var(--bg-panel); padding: 40px 32px; position: relative; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.3s var(--ease); }
+.service-card:hover{ background: var(--bg-elevated); }
+.service-tag{ align-self: flex-start; display:inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; border: 1px solid var(--line-bright); color: var(--green); padding: 3px 10px; margin-bottom: 20px; text-transform: uppercase; }
+.service-name{ font-family: var(--serif); font-size: 23px; font-weight: 500; margin-bottom: 12px; color: var(--ink); }
+.service-desc{ font-family: var(--mono); font-size: 13px; line-height: 1.8; color: var(--ink-dim); }
+.service-features{ list-style: none; margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px; }
+.service-features li{ font-size: 11.5px; color: var(--ink-dim); margin-bottom: 8px; font-family: var(--mono); line-height: 1.5; }
+.service-features li strong{ color: var(--ink); font-weight: 500; }
+
+/* ============ FOOTER ============ */
+footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
+.footer-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
+.footer-col ul{ list-style: none; }
+.footer-col ul li{ margin-bottom: 12px; }
+.footer-col ul li a{ font-size: 12px; color: var(--ink-dim); transition: color 0.25s var(--ease); }
+.footer-col ul li a:hover{ color: var(--ink); }
+.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 280px; margin-top: 20px; }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); }
+
+/* ============ RESPONSIVENESS ============ */
+@media (max-width: 1080px) {
+  .services-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px){
+  .nav-links{ display:none; }
+  .services-grid{ grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="nav">
+      <a href="index.html" class="logo-mark" id="nav-logo">
+        <div class="logo-chip">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#060812" stroke-width="2">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 3 L12 21 M3 12 L21 12" />
+          </svg>
+        </div>
+        <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="wrap">
+    <section class="services-hero seq seq-1">
+      <div class="eyebrow">Capabilities &amp; Services</div>
+      <h1 class="services-title">Technical <em>Execution.</em></h1>
+      <p style="color: var(--ink-dim); max-width: 70ch; line-height: 1.8; font-size: 15px;">
+        Cloud Focal delivers comprehensive technology solutions that help organizations thrive in the digital age. Our expertise spans program management, IT strategy, technology staffing, data services, and application development, providing everything you need to build, optimize, and scale.
+      </p>
+    </section>
+
+    <!-- 1. Applications -->
+    <div class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">Applications <span>/ Build</span></h2>
+        <p class="category-desc">Custom application development and modernization services designed for scalability and performance.</p>
+      </div>
+      <section class="services-grid">
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Web Apps</span>
+            <h3 class="service-name">Custom Web Applications</h3>
+            <p class="service-desc">Tailored web applications built with modern frameworks for optimal performance and scalability.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Responsive Design:</strong> Fully responsive applications that work on all devices</li>
+            <li>• <strong>Modern Stack:</strong> Built with React, Next.js, and modern JavaScript</li>
+            <li>• <strong>Scalable Architecture:</strong> Designed to grow with your business needs</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Mobile Apps</span>
+            <h3 class="service-name">Mobile App Development</h3>
+            <p class="service-desc">Cross-platform mobile applications for iOS and Android with native performance.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Cross-Platform:</strong> Single codebase for both iOS and Android</li>
+            <li>• <strong>Native Performance:</strong> Near-native performance with React Native</li>
+            <li>• <strong>Offline Support:</strong> Works seamlessly without internet connection</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Enterprise</span>
+            <h3 class="service-name">Enterprise Solutions</h3>
+            <p class="service-desc">Robust enterprise-grade applications for complex business processes.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Scalability:</strong> Handles high traffic and data volumes</li>
+            <li>• <strong>Security:</strong> Enterprise-grade security features</li>
+            <li>• <strong>Integration:</strong> Seamless integration with existing systems</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- 2. Consulting -->
+    <div class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">Consulting <span>/ Advise</span></h2>
+        <p class="category-desc">Strategic IT consulting and digital transformation planning to align tech with business operations.</p>
+      </div>
+      <section class="services-grid">
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Program Mgmt</span>
+            <h3 class="service-name">Program Management</h3>
+            <p class="service-desc">End-to-end program management for your technology initiatives.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Strategic Planning:</strong> Comprehensive program roadmaps</li>
+            <li>• <strong>Governance:</strong> Effective governance structures</li>
+            <li>• <strong>Risk Management:</strong> Proactive risk mitigation</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Strategy</span>
+            <h3 class="service-name">IT Strategy &amp; Transformation</h3>
+            <p class="service-desc">Align technology with business goals through strategic planning.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Digital Roadmap:</strong> Clear path for digital transformation</li>
+            <li>• <strong>Cloud Strategy:</strong> Cloud adoption and migration planning</li>
+            <li>• <strong>Tech Assessment:</strong> Current state architecture analysis</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Digital Xform</span>
+            <h3 class="service-name">Digital Transformation</h3>
+            <p class="service-desc">Comprehensive digital transformation strategies for modern businesses.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Process Automation:</strong> Streamline operations with automation</li>
+            <li>• <strong>Customer Experience:</strong> Enhance digital customer journeys</li>
+            <li>• <strong>Innovation Labs:</strong> Explore emerging technologies</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- 3. Data & Analytics -->
+    <div class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">Data &amp; Analytics <span>/ Analyze</span></h2>
+        <p class="category-desc">Data management, pipelines, predictive modeling, and business intelligence solutions.</p>
+      </div>
+      <section class="services-grid">
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Analytics</span>
+            <h3 class="service-name">Data Analytics</h3>
+            <p class="service-desc">Turn your data into actionable business insights.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>BI Solutions:</strong> Business intelligence dashboards</li>
+            <li>• <strong>Predictive Analytics:</strong> Forecast trends and patterns</li>
+            <li>• <strong>Data Visualization:</strong> Interactive data exploration</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Engineering</span>
+            <h3 class="service-name">Data Engineering</h3>
+            <p class="service-desc">Build robust data pipelines and infrastructure.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>ETL Pipelines:</strong> Efficient data processing</li>
+            <li>• <strong>Data Warehousing:</strong> Scalable storage solutions</li>
+            <li>• <strong>Real-time Processing:</strong> Streaming data solutions</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">AI/ML</span>
+            <h3 class="service-name">AI/ML Solutions</h3>
+            <p class="service-desc">Leverage artificial intelligence and machine learning for business growth.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Predictive Modeling:</strong> Forecast business outcomes</li>
+            <li>• <strong>Computer Vision:</strong> Image and video analysis</li>
+            <li>• <strong>NLP:</strong> Natural language processing</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- 4. Cybersecurity -->
+    <div class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">Cybersecurity <span>/ Secure</span></h2>
+        <p class="category-desc">Comprehensive security evaluations, threat management, compliance audits, and training.</p>
+      </div>
+      <section class="services-grid">
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Audit</span>
+            <h3 class="service-name">Security Assessment</h3>
+            <p class="service-desc">Comprehensive security evaluation and recommendations.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Vulnerability Scan:</strong> Identify security weaknesses</li>
+            <li>• <strong>Penetration Testing:</strong> Simulated cyber attacks</li>
+            <li>• <strong>Compliance Check:</strong> Ensure regulatory compliance</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Threat Mgmt</span>
+            <h3 class="service-name">Threat Management</h3>
+            <p class="service-desc">Proactive protection against evolving cyber threats.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Threat Detection:</strong> Real-time monitoring for security breaches</li>
+            <li>• <strong>Incident Response:</strong> Rapid response to security incidents</li>
+            <li>• <strong>Vulnerability Management:</strong> Continuous assessment and remediation</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Training</span>
+            <h3 class="service-name">Security Training</h3>
+            <p class="service-desc">Comprehensive security awareness and training programs.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Phishing Simulation:</strong> Test employee awareness</li>
+            <li>• <strong>Security Workshops:</strong> Hands-on training sessions</li>
+            <li>• <strong>Certification Prep:</strong> Prepare for security certifications</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- 5. Cloud Services -->
+    <div class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">Cloud Services <span>/ Deploy</span></h2>
+        <p class="category-desc">Strategy, architecture, deployment pipelines, DevOps automation, and resource optimization.</p>
+      </div>
+      <section class="services-grid">
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Migration</span>
+            <h3 class="service-name">Cloud Migration</h3>
+            <p class="service-desc">Seamless migration to cloud infrastructure.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Cloud Strategy:</strong> Migration planning</li>
+            <li>• <strong>Multi-Cloud:</strong> Hybrid cloud solutions</li>
+            <li>• <strong>Cost Optimization:</strong> Reduce cloud spending</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Devops</span>
+            <h3 class="service-name">DevOps Solutions</h3>
+            <p class="service-desc">Streamline development and operations with CI/CD.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>CI/CD Pipelines:</strong> Automated deployments</li>
+            <li>• <strong>Infrastructure as Code:</strong> Terraform &amp; CloudFormation</li>
+            <li>• <strong>Monitoring:</strong> Real-time system insights</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Optimization</span>
+            <h3 class="service-name">Cloud Optimization</h3>
+            <p class="service-desc">Maximize performance and minimize costs in the cloud.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Cost Analysis:</strong> Identify savings opportunities</li>
+            <li>• <strong>Performance Tuning:</strong> Optimize cloud resources</li>
+            <li>• <strong>Right-Sizing:</strong> Match resources to workloads</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- 6. IT Staffing -->
+    <div class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">IT Staffing <span>/ Source</span></h2>
+        <p class="category-desc">Premium talent pipelines, team augmentation, and executive searches for senior leadership.</p>
+      </div>
+      <section class="services-grid">
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Talent</span>
+            <h3 class="service-name">Technology Staffing</h3>
+            <p class="service-desc">Top-tier technology professionals for your team.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Contract Staffing:</strong> Flexible hiring solutions</li>
+            <li>• <strong>Permanent Placement:</strong> Long-term hires</li>
+            <li>• <strong>Skill Assessment:</strong> Technical screening</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Executive</span>
+            <h3 class="service-name">Executive Search</h3>
+            <p class="service-desc">C-level and senior technology leadership recruitment.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Leadership Hiring:</strong> C-level recruitment</li>
+            <li>• <strong>Industry Specialization:</strong> Tech sector expertise</li>
+            <li>• <strong>Retained Search:</strong> Focused recruitment</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div>
+            <span class="service-tag">Augmentation</span>
+            <h3 class="service-name">Team Augmentation</h3>
+            <p class="service-desc">Scale your team with skilled professionals on demand.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Flexible Staffing:</strong> Scale up or down as needed</li>
+            <li>• <strong>Specialized Skills:</strong> Access to niche expertise</li>
+            <li>• <strong>Rapid Onboarding:</strong> Quickly integrate new team members</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo-mark" style="margin-bottom: 20px;">
+          <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+        </a>
+        <p class="footer-desc">Precision cloud infrastructure, application development, and premium technical staffing pipelines since 2002.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="services.html">Cloud Architecture</a></li>
+          <li><a href="services.html">App Development</a></li>
+          <li><a href="services.html">COTS / GOTS</a></li>
+          <li><a href="services.html">Technical Staffing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Start a Project</a></li>
+          <li><a href="contact.html">Submit Resume</a></li>
+          <li><a href="contact.html">General Inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Cloud Focal. All rights reserved.</p>
+      <p>Precision Engineering &amp; Strategic Talent.</p>
+    </div>
+    </div>
+  </footer>
+
+</body>
+</html>

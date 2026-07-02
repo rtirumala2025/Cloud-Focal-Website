@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Cloud Focal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  --bg: #060812;
+  --bg-elevated: #0d1120;
+  --bg-panel: #10142a;
+  --line: #232a4a;
+  --line-bright: #3d4778;
+  --amber: #5B8DFF;
+  --amber-dim: #24305c;
+  --amber-glow: rgba(91,141,255,0.20);
+  --green: #7fd4ff;
+  --green-dim: #1f3a52;
+  --ink: #e9ecf7;
+  --ink-dim: #9498ba;
+  --ink-faint: #565c86;
+  --serif: 'Fraunces', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --dur-1: 0.6s;
+  --dur-2: 0.9s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; }
+body::before{
+  content:''; position: fixed; inset:0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px; opacity: 0.35; pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+}
+body::after{ content:''; position: fixed; inset:0; background: radial-gradient(ellipse 60% 40% at 78% 10%, var(--amber-glow), transparent 60%); pointer-events: none; z-index: 0; }
+a{ color: inherit; text-decoration: none; }
+.wrap{ max-width: 1360px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+.eyebrow{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before{ content:''; width: 7px; height: 7px; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp{ from{ opacity:0; transform: translateY(22px); } to{ opacity:1; transform: translateY(0); } }
+.seq{ opacity:0; animation: fadeUp var(--dur-1) var(--ease) forwards; }
+.seq-1{ animation-delay: 0.05s; }
+.seq-2{ animation-delay: 0.22s; }
+.seq-3{ animation-delay: 0.40s; }
+
+/* ============ NAV & FOOTER ============ */
+header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: rgba(10,11,9,0.82); backdrop-filter: blur(10px); }
+.nav{ display:flex; align-items:center; justify-content:space-between; padding: 20px 40px; max-width: 1360px; margin: 0 auto; }
+.logo-mark{ display:flex; align-items:center; gap: 12px; }
+.logo-chip{ width: 38px; height: 38px; background: #fff; border-radius: 8px; display:flex; align-items:center; justify-content:center; padding: 5px; box-shadow: 0 0 0 1px var(--line-bright); }
+.logo-word{ font-family: var(--mono); font-weight: 600; font-size: 15px; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase; }
+.logo-word .focal{ color: var(--amber); }
+.nav-links{ display:flex; gap: 36px; }
+.nav-links a{ font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); position: relative; padding-bottom: 3px; transition: color 0.25s var(--ease); }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background: var(--amber); transition: width 0.3s var(--ease); }
+.nav-links a:hover{ color: var(--ink); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a.active{ color: var(--ink); }
+.nav-links a.active::after{ width:100%; }
+.nav-cta{ font-size: 12px; letter-spacing:0.08em; text-transform: uppercase; border: 1px solid var(--line-bright); padding: 9px 18px; color: var(--ink); transition: all 0.25s var(--ease); }
+.nav-cta:hover{ border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
+
+/* ============ PAGE-SPECIFIC STYLE ============ */
+.about-hero{ padding-top: 160px; padding-bottom: 60px; }
+.about-title{ font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 500; line-height: 1.1; margin-top: 18px; margin-bottom: 34px; }
+.about-title em{ font-style: italic; font-weight: 400; color: var(--amber); }
+
+.about-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 60px; }
+.about-panel{ background: var(--bg-panel); padding: 50px 40px; }
+.about-panel.highlight{ border-left: 4px solid var(--amber); }
+.panel-label{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--green); text-transform: uppercase; margin-bottom: 24px; display: block; }
+.panel-text{ font-size: 15px; line-height: 1.8; color: var(--ink-dim); }
+.panel-text em{ color: var(--ink); font-style: normal; font-weight: 500; }
+.panel-quote{ font-family: var(--serif); font-size: 22px; line-height: 1.5; color: var(--ink); margin-bottom: 20px; }
+
+/* ============ APPROACH SPLIT COLUMN STYLE ============ */
+.approach-section{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 100px; }
+.approach-row{ display: grid; grid-template-columns: 1fr 2fr; gap: 40px; border-bottom: 1px solid var(--line); padding: 48px 0; }
+.approach-row:last-child{ border-bottom: none; }
+.approach-label{ font-family: var(--serif); font-size: clamp(22px, 3.5vw, 32px); font-weight: 500; color: var(--ink); }
+.approach-label span{ color: var(--amber); }
+.approach-content{ font-family: var(--mono); font-size: 14.5px; line-height: 1.8; color: var(--ink-dim); }
+.approach-list{ list-style: none; margin-top: 20px; }
+.approach-list li{ position: relative; padding-left: 24px; margin-bottom: 14px; }
+.approach-list li::before{ content: '→'; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+
+.timeline-section{ margin-top: 100px; border-top: 1px solid var(--line); padding-top: 100px; }
+.timeline-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+.timeline-card{ border-left: 2px solid var(--line-bright); padding-left: 24px; }
+.timeline-year{ font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--amber); margin-bottom: 12px; }
+.timeline-title{ font-size: 14px; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+.timeline-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; }
+
+/* ============ FOOTER ============ */
+footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
+.footer-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
+.footer-col ul{ list-style: none; }
+.footer-col ul li{ margin-bottom: 12px; }
+.footer-col ul li a{ font-size: 12px; color: var(--ink-dim); transition: color 0.25s var(--ease); }
+.footer-col ul li a:hover{ color: var(--ink); }
+.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 280px; margin-top: 20px; }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); }
+
+/* ============ RESPONSIVENESS ============ */
+@media (max-width: 980px){
+  .nav-links{ display:none; }
+  .about-grid, .timeline-grid, .approach-row{ grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="nav">
+      <a href="index.html" class="logo-mark" id="nav-logo">
+        <div class="logo-chip">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#060812" stroke-width="2">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 3 L12 21 M3 12 L21 12" />
+          </svg>
+        </div>
+        <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="about.html" class="active">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="wrap">
+    <section class="about-hero seq seq-1">
+      <div class="eyebrow">About / Philosophy</div>
+      <h1 class="about-title">The Philosophy of <em>Narrowing.</em></h1>
+    </section>
+
+    <section class="about-grid seq seq-2">
+      <div class="about-panel highlight">
+        <span class="panel-label">Core Objective</span>
+        <blockquote class="panel-quote">
+          "Whether it's a single staffing assignment or an enterprise-wide transformation, the objective never changes — narrow every project down to what actually moves your mission forward."
+        </blockquote>
+        <p class="panel-text">
+          In an industry dominated by complexity and bloat, Cloud Focal maintains a commitment to clarity. By stripping away extraneous processes, we reveal the core architectures that drive engineering stability and speed.
+        </p>
+      </div>
+
+      <div class="about-panel">
+        <span class="panel-label">Our Philosophy</span>
+        <p class="panel-text" style="margin-bottom: 20px;">
+          Established with the core belief that cloud engineering and technical talent acquisition are inherently linked, <em>Cloud Focal</em> serves as a hybrid partner. We provide the architectural guidance to build complex systems, alongside the specialized talent stream required to operate them.
+        </p>
+        <p class="panel-text">
+          Founded on principles of technical excellence, we reject the volume-driven recruiting and generic consulting frameworks that slow modern development. Every engagement is handled by hands-on engineering professionals.
+        </p>
+      </div>
+    </section>
+
+    <!-- repeating split column .approach layout style for Story, Mission, and Core Values -->
+    <section class="approach-section seq seq-3">
+      <div class="eyebrow" style="margin-bottom: 24px;">Who We Are &amp; What We Do</div>
+      <h2 style="font-family: var(--serif); font-size: clamp(32px, 4.5vw, 54px); font-weight: 500; margin-bottom: 40px;">Deep Corporate Context</h2>
+      
+      <!-- Our Story -->
+      <div class="approach-row">
+        <h3 class="approach-label">Our Story <span>/ Background</span></h3>
+        <div class="approach-content">
+          <p style="margin-bottom: 16px;">Founded in 2010, Cloud Focal began as a small team of technology enthusiasts with a big vision. We recognized that the success of any organization depends on having the right people with the right skills at the right time.</p>
+          <p>Today, we've grown into a comprehensive technology partner, serving organizations across various industries with staffing solutions, IT consulting, and system integration services. Our commitment to excellence and client success remains at the core of everything we do.</p>
+        </div>
+      </div>
+
+      <!-- Our Mission -->
+      <div class="approach-row">
+        <h3 class="approach-label">Our Mission <span>/ Directives</span></h3>
+        <div class="approach-content">
+          <p style="margin-bottom: 16px; font-size: 16px; color: var(--ink);">To empower organizations with exceptional technology talent and innovative solutions that drive digital transformation and sustainable growth.</p>
+          <p>Together, these factors lead to Cloud Focal's ultimate mission: To be the trusted partner that transforms our clients' visions into reality. Your success is our goal. We embrace your mission as our own.</p>
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <div class="approach-row">
+        <h3 class="approach-label">People First <span>/ Pillars</span></h3>
+        <div class="approach-content">
+          <p>Foster environments of collaboration and long-term career growth. We focus on enabling human capacity:</p>
+          <ul class="approach-list">
+            <li>Foster an environment of diversity, accountability, and collaboration</li>
+            <li>Equip our staff with tools, training, and opportunities for life-long careers</li>
+            <li>Celebrate and reward individual, team, and corporate achievement</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="approach-row">
+        <h3 class="approach-label">Process &amp; Innovation</h3>
+        <div class="approach-content">
+          <p>Deliver balanced methodologies that secure timelines, budgets, and quality deliverables:</p>
+          <ul class="approach-list">
+            <li>Balance a process-oriented approach with a passion for innovation</li>
+            <li>Listen intently to our clients and embrace their missions as our own</li>
+            <li>Endeavor to deliver all projects on time, in scope, and within budget</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="approach-row">
+        <h3 class="approach-label">Ethics &amp; Community</h3>
+        <div class="approach-content">
+          <p>Commit to the highest ethical codes of conduct and local social responsibility:</p>
+          <ul class="approach-list">
+            <li>Expect the highest ethical standards of ourselves and our partners</li>
+            <li>Seek to advance the common good professionally and personally</li>
+            <li>Promote social responsibility and local community service</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section seq seq-3">
+      <div class="eyebrow">Milestones</div>
+      <h2 style="font-family: var(--serif); font-size: 36px; font-weight: 500; margin-top: 18px; margin-bottom: 40px;">Our Journey</h2>
+      <div class="timeline-grid">
+        <div class="timeline-card">
+          <div class="timeline-year">2010</div>
+          <div class="timeline-title">Foundation</div>
+          <div class="timeline-desc">Cloud Focal was founded with a vision to bridge the gap between exceptional tech talent and innovative companies.</div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2015</div>
+          <div class="timeline-title">Service Expansion</div>
+          <div class="timeline-desc">Expanded capabilities to offer enterprise-grade IT consulting and custom systems integrations, providing unified technical solutions.</div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2020</div>
+          <div class="timeline-title">Digital Transformation</div>
+          <div class="timeline-desc">Pioneered advanced cloud migrations and DevOps automation strategies, enabling partners to modernize and scale globally.</div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-title">Platform Ops</div>
+          <div class="timeline-desc">Introduced platform engineering architectures and hybrid cloud frameworks to enable continuous security and multi-region resilience.</div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-title">Global Expansion</div>
+          <div class="timeline-desc">Opened strategic engineering and support centers across multiple timezones, growing our talent roster to serve enterprise partners globally.</div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-title">AI Infrastructure</div>
+          <div class="timeline-desc">Pioneered integration of cognitive intelligence pipelines, advanced agentic workflows, and automated cloud orchestration systems.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo-mark" style="margin-bottom: 20px;">
+          <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+        </a>
+        <p class="footer-desc">Precision cloud infrastructure, application development, and premium technical staffing pipelines since 2002.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="services.html">Cloud Architecture</a></li>
+          <li><a href="services.html">App Development</a></li>
+          <li><a href="services.html">COTS / GOTS</a></li>
+          <li><a href="services.html">Technical Staffing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Start a Project</a></li>
+          <li><a href="contact.html">Submit Resume</a></li>
+          <li><a href="contact.html">General Inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Cloud Focal. All rights reserved.</p>
+      <p>Precision Engineering &amp; Strategic Talent.</p>
+    </div>
+    </div>
+  </footer>
+
+</body>
+</html>
