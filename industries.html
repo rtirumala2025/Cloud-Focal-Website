@@ -12,43 +12,43 @@
 /* ============ DESIGN TOKENS ============ */
 :root{
   color-scheme: dark light;
-  --bg: #060812;
-  --bg-elevated: #0d1120;
-  --bg-panel: #10142a;
-  --bg-header: rgba(10,11,9,0.88);
-  --line: #232a4a;
-  --line-bright: #3d4778;
-  --amber: #5B8DFF;
-  --amber-dim: #24305c;
-  --amber-glow: rgba(91,141,255,0.20);
-  --green: #7fd4ff;
-  --green-dim: #1f3a52;
-  --ink: #e9ecf7;
-  --ink-dim: #9498ba;
-  --ink-faint: #565c86;
+  --bg: #060a1e;
+  --bg-elevated: #0d1433;
+  --bg-panel: #111a42;
+  --bg-header: rgba(6, 10, 30, 0.88);
+  --line: #1c2758;
+  --line-bright: #2d3e85;
+  --amber: #5371ff; /* Brand Vibrant Cobalt */
+  --amber-dim: #1e2eb5;
+  --amber-glow: rgba(83, 113, 255, 0.25);
+  --green: #37b5ff; /* Brand Electric Sky Cyan */
+  --green-dim: #14426b;
+  --ink: #f0f4ff;
+  --ink-dim: #9fb0e8;
+  --ink-faint: #5d6fba;
   --serif: 'Fraunces', Georgia, serif;
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
   --dur-1: 0.6s;
   --dur-2: 0.9s;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --glow-color: rgba(91, 141, 255, 0.15);
+  --glow-color: rgba(83, 113, 255, 0.18);
 }
 html.light-theme, body.light-theme {
-  --bg: #f3f4f8;
-  --bg-elevated: #e6e8f0;
-  --bg-panel: #dfe2ed;
-  --bg-header: rgba(243, 244, 248, 0.88);
-  --line: #cbd2e3;
-  --line-bright: #adb7d3;
-  --amber: #1a56db;
-  --amber-dim: #dbeafe;
-  --amber-glow: rgba(26, 86, 219, 0.12);
+  --bg: #f5f8ff;
+  --bg-elevated: #e6edff;
+  --bg-panel: #dae5ff;
+  --bg-header: rgba(245, 248, 255, 0.88);
+  --line: #c5d4fb;
+  --line-bright: #9eb8f7;
+  --amber: #3853f5;
+  --amber-dim: #e0ebff;
+  --amber-glow: rgba(56, 83, 245, 0.15);
   --green: #0284c7;
-  --green-dim: #e0f2fe;
-  --ink: #0b0d19;
-  --ink-dim: #4a5168;
-  --ink-faint: #8a93af;
-  --glow-color: rgba(26, 86, 219, 0.08);
+  --green-dim: #e0f4fe;
+  --ink: #08104d;
+  --ink-dim: #384b7a;
+  --ink-faint: #6c7ea6;
+  --glow-color: rgba(56, 83, 245, 0.10);
 }
 *{ box-sizing: border-box; margin:0; padding:0; }
 html{ scroll-behavior: smooth; }
@@ -215,13 +215,7 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
   <header role="banner">
     <div class="nav">
       <a href="index.html" class="logo-mark" id="nav-logo" aria-label="Cloud Focal Home">
-        <div class="logo-chip" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#060812" stroke-width="2">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 3 L12 21 M3 12 L21 12" />
-          </svg>
-        </div>
-        <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+        <img src="public/images/logos/cloudfocal-logo.png" alt="Cloud Focal Inc" style="height: 38px; width: auto; object-fit: contain;" />
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="about.html">About</a>
@@ -309,8 +303,10 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
     <div class="wrap">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="index.html" class="logo-mark" style="margin-bottom: 20px;" aria-label="Cloud Focal Home">
-            <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+          <a href="index.html" class="logo-mark" style="margin-bottom: 20px; display: inline-block;" aria-label="Cloud Focal Home">
+            <div style="background: #ffffff; padding: 8px 14px; border-radius: 10px; display: inline-flex; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+              <img src="public/images/logos/cloudfocal-logo.png" alt="Cloud Focal Inc" style="height: 32px; width: auto;" />
+            </div>
           </a>
           <p class="footer-desc">
             Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
