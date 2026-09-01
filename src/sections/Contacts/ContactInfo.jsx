@@ -6,29 +6,29 @@ const ContactInfo = () => {
     {
       icon: 'map-pin',
       title: 'Office Address',
-      content: '1234 Technology Drive, Suite 100',
-      subContent: 'Atlanta, GA 30309',
+      content: 'Melbourne CBD, Victoria',
+      subContent: 'Australia // APAC Operations',
       action: {
-        text: 'Get Directions',
-        href: 'https://maps.google.com/?q=1234+Technology+Drive,+Suite+100,+Atlanta,+GA+30309',
+        text: 'View Location',
+        href: 'https://maps.google.com/?q=Melbourne,+Victoria,+Australia',
         external: true
       }
     },
     {
       icon: 'phone',
       title: 'Phone',
-      content: '(555) 123-4567',
-      subContent: 'Main Business Line',
+      content: '+61 3 9000 0000',
+      subContent: 'Main Business Line (Australia)',
       action: {
         text: 'Call Now',
-        href: 'tel:+15551234567'
+        href: 'tel:+61390000000'
       }
     },
     {
       icon: 'envelope',
       title: 'Email',
       content: 'info@cloudfocal.com',
-      subContent: 'General Inquiries',
+      subContent: 'General & Staffing Inquiries',
       action: {
         text: 'Send Email',
         href: 'mailto:info@cloudfocal.com'
@@ -37,8 +37,8 @@ const ContactInfo = () => {
     {
       icon: 'clock',
       title: 'Business Hours',
-      content: 'Monday - Friday: 8:00 AM - 6:00 PM EST',
-      subContent: 'Standard Business Hours',
+      content: 'Monday - Friday: 9:00 AM - 5:30 PM AEST',
+      subContent: 'AEST / AEDT Standard Time',
       action: null
     },
     {

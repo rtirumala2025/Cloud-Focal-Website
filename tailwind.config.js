@@ -42,16 +42,17 @@ module.exports = {
         
         // Keep original colors for specific use cases
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#f0f4ff',
+          100: '#e0ebff',
+          200: '#c7d7fe',
+          300: '#a4bcfd',
+          400: '#7c96fb',
+          500: '#5371ff', // Brand Logo Vibrant Cobalt
+          600: '#3853f5',
+          700: '#273ce0',
+          800: '#1e2eb5',
+          900: '#14207a',
+          950: '#08104d', // Brand Logo Deep Midnight Navy
         },
         secondary: {
           50: '#f8fafc',
@@ -67,10 +68,10 @@ module.exports = {
         },
         accent: {
           50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
+          100: '#e0f4fe',
+          200: '#b9e8fe',
+          300: '#7cd5fd',
+          400: '#37b5ff', // Brand Logo Electric Sky Cyan
           500: '#0ea5e9',
           600: '#0284c7',
           700: '#0369a1',

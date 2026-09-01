@@ -152,15 +152,18 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
             {/* Brand Column */}
             <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-6">
-                <div className={`w-10 h-10 ${isDarkMode ? 'bg-emerald-600' : 'bg-white'} rounded-lg flex items-center justify-center font-bold ${isDarkMode ? 'text-white' : 'text-primary-600'}`}>
-                  CF
+              <Link to="/" className="inline-block mb-6 group">
+                <div className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl inline-flex items-center shadow-lg transition-transform group-hover:scale-105">
+                  <img
+                    src="/images/logos/cloudfocal-logo.png"
+                    alt="Cloud Focal Inc"
+                    className="h-10 w-auto"
+                    loading="lazy"
+                  />
                 </div>
-                <div className="text-2xl font-bold text-white">Cloud Focal</div>
-              </div>
+              </Link>
               <p className="text-white/80 leading-relaxed mb-6">
-              Leading technology staffing and IT consulting company. We help businesses 
-              find top tech talent and implement innovative IT solutions for digital transformation.
+              Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner delivering precision cloud solutions across Australia and globally.
             </p>
             
             {/* Social Links */}

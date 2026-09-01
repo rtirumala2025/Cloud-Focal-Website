@@ -111,19 +111,19 @@ const Header = () => {
                           to={item.path}
                           className={`px-4 py-3 transition-colors ${
                             isActiveLink(item.path)
-                              ? 'text-black font-medium border-b-2 border-black'
-                              : 'text-gray-800 hover:text-black hover:bg-gray-50'
+                              ? 'text-primary-600 font-semibold border-b-2 border-primary-600'
+                              : 'text-gray-700 hover:text-primary-600 hover:bg-primary-50/50'
                           }`}
                         >
                           {item.title}
                         </Link>
                         <button
                           onClick={(e) => toggleDropdown(item.id, e)}
-                          className="p-1 -ml-1 text-gray-500 hover:text-black"
+                          className="p-1 -ml-1 text-gray-500 hover:text-primary-600"
                         >
                           <svg
                             className={`w-4 h-4 transition-transform ${
-                              activeDropdown === item.id ? 'rotate-180' : ''
+                              activeDropdown === item.id ? 'rotate-180 text-primary-600' : ''
                             }`}
                             fill="none"
                             stroke="currentColor"
@@ -145,8 +145,8 @@ const Header = () => {
                       to={item.path}
                       className={`px-4 py-3 transition-colors ${
                         isActiveLink(item.path)
-                          ? 'text-black font-medium border-b-2 border-black'
-                          : 'text-gray-800 hover:text-black hover:bg-gray-50'
+                          ? 'text-primary-600 font-semibold border-b-2 border-primary-600'
+                          : 'text-gray-700 hover:text-primary-600 hover:bg-primary-50/50'
                       }`}
                     >
                       {item.title}

@@ -7,28 +7,28 @@ import ContactForm from '../../ui/Forms/ContactForm';
 const Contact = () => {
   const offices = [
     {
-      city: "San Francisco",
-      address: "123 Technology Drive, Suite 200",
-      state: "CA 94105",
-      country: "United States",
-      phone: "+1 (555) 123-4567",
-      email: "sf@cloudfocal.com"
+      city: "Melbourne (Headquarters)",
+      address: "Melbourne CBD, Victoria",
+      state: "VIC 3000",
+      country: "Australia",
+      phone: "+61 3 9000 0000",
+      email: "melbourne@cloudfocal.com"
     },
     {
-      city: "New York",
-      address: "456 Innovation Avenue, Floor 15",
-      state: "NY 10001",
-      country: "United States",
-      phone: "+1 (555) 987-6543",
-      email: "ny@cloudfocal.com"
+      city: "Sydney",
+      address: "Sydney CBD, New South Wales",
+      state: "NSW 2000",
+      country: "Australia",
+      phone: "+61 2 9000 0000",
+      email: "sydney@cloudfocal.com"
     },
     {
-      city: "London",
-      address: "789 Digital Street, Office 3",
-      state: "EC1A 1BB",
-      country: "United Kingdom",
-      phone: "+44 20 7123 4567",
-      email: "london@cloudfocal.com"
+      city: "Global Client Support",
+      address: "APAC, US & EMEA Operations",
+      state: "Global Support",
+      country: "International",
+      phone: "+61 3 9000 0000",
+      email: "global@cloudfocal.com"
     }
   ];
 
@@ -36,23 +36,23 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone Support",
-      description: "Speak directly with our experts",
-      primary: "+1 (555) 123-4567",
-      secondary: "Mon-Fri 9AM-6PM PST"
+      description: "Speak directly with our engineering and staffing advisors",
+      primary: "+61 3 9000 0000",
+      secondary: "Mon-Fri 9:00AM-5:30PM AEST"
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Support",
-      description: "Get detailed responses within 24 hours",
+      description: "Detailed proposals and talent profiles within 24 hours",
       primary: "info@cloudfocal.com",
-      secondary: "support@cloudfocal.com"
+      secondary: "staffing@cloudfocal.com"
     },
     {
       icon: <MessageSquare className="w-6 h-6" />,
       title: "Live Chat",
-      description: "Instant support during business hours",
+      description: "Direct real-time consultation during business hours",
       primary: "Available on website",
-      secondary: "Mon-Fri 9AM-6PM PST"
+      secondary: "Mon-Fri 9:00AM-5:30PM AEST"
     }
   ];
 

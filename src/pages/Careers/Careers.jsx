@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { DollarSign, HeartPulse, Home, BookOpen, PartyPopper, Laptop, Rocket, Handshake, Star, ShieldCheck } from 'lucide-react';
+import { DollarSign, HeartPulse, Home, BookOpen, PartyPopper, Laptop, Rocket, UserCheck, Star, ShieldCheck } from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 
 const Careers = () => {
@@ -48,7 +48,7 @@ const Careers = () => {
     {
       title: "Collaboration",
       description: "Teamwork and knowledge sharing are at the heart of our success",
-      icon: Handshake
+      icon: UserCheck
     },
     {
       title: "Excellence",

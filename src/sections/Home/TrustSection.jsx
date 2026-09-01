@@ -84,8 +84,8 @@ const TrustSection = () => {
                 variants={itemVariants}
                 className="text-center group"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-8 h-8 text-primary-600" />
+                <div className="w-20 h-20 bg-gradient-to-br from-[#f0f4ff] to-[#e0ebff] border border-[#c7d7fe] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:border-[#5371ff]/40 shadow-sm transition-all duration-300">
+                  <Icon className="w-8 h-8 text-primary-600 group-hover:text-primary-700" />
                 </div>
                 <h3 className="text-lg font-bold text-black mb-2">
                   {badge.title}

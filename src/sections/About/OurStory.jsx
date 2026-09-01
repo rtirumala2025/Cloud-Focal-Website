@@ -1,23 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Handshake, Star, Target } from 'lucide-react';
+import { Users, UserCheck, Star, Target } from 'lucide-react';
 
 const OurStory = () => {
   const timeline = [
     {
-      year: '2010',
-      title: 'Foundation',
-      description: 'Cloud Focal was founded with a vision to bridge the gap between exceptional tech talent and innovative companies.'
+      year: '2002',
+      title: 'Foundation & Talent Focus',
+      description: 'Cloud Focal was established with a vision to bridge the gap between executive strategy and technical talent execution.'
     },
     {
-      year: '2015',
-      title: 'Expansion',
-      description: 'We expanded our services to include IT consulting and system integration, becoming a comprehensive technology partner.'
+      year: '2012',
+      title: 'Consulting & Modernization',
+      description: 'Expanded capabilities into enterprise IT consulting, database architecture, and custom application modernization.'
     },
     {
-      year: '2020',
-      title: 'Digital Transformation',
-      description: 'Leading digital transformation initiatives with cutting-edge technologies and proven methodologies.'
+      year: '2018',
+      title: 'Cloud & Cyber Practice',
+      description: 'Launched multi-cloud migration and proactive cyber-defense practices aligned with Essential Eight and global standards.'
+    },
+    {
+      year: '2022',
+      title: 'Melbourne HQ & APAC Reach',
+      description: 'Consolidated headquarters in Melbourne, Victoria, expanding our talent network across Australia and international corridors.'
+    },
+    {
+      year: '2026',
+      title: 'Next-Gen IT Transformation',
+      description: 'Pioneering mission-driven Triple Bottom Line architecture and scalable technical staffing for the AI era.'
     }
   ];
 
@@ -49,7 +59,7 @@ const OurStory = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { number: "500+", label: "Successful Placements", icon: Users, color: "from-blue-500 to-blue-600" },
-              { number: "100+", label: "Client Partners", icon: Handshake, color: "from-green-500 to-green-600" },
+              { number: "100+", label: "Client Partners", icon: UserCheck, color: "from-green-500 to-green-600" },
               { number: "14+", label: "Years of Excellence", icon: Star, color: "from-yellow-500 to-yellow-600" },
               { number: "99%", label: "Client Satisfaction", icon: Target, color: "from-purple-500 to-purple-600" }
             ].map((stat, index) => {
@@ -97,14 +107,12 @@ const OurStory = () => {
                 </h3>
                 <div className="space-y-4">
                   <p className="text-lg text-black leading-relaxed">
-                    Founded in 2010, Cloud Focal began as a small team of technology enthusiasts with a big vision. 
-                    We recognized that the success of any organization depends on having the right people with the 
-                    right skills at the right time.
+                    Cloud Focal is a mission-driven company whose pursuit of meaningful solutions differentiates us from generic capability-oriented firms. 
+                    Headquartered in Melbourne, Australia, we bridge the critical gap between executive strategy and technical execution.
                   </p>
                   <p className="text-lg text-black leading-relaxed">
-                    Today, we've grown into a comprehensive technology partner, serving organizations across various 
-                    industries with staffing solutions, IT consulting, and system integration services. Our commitment 
-                    to excellence and client success remains at the core of everything we do.
+                    By appropriately applying the tenets of the <strong>Triple Bottom Line</strong> (profit, people, and planet) and practicing servant leadership as dedicated "Go-Givers", 
+                    we serve our employees, our clients, and our communities with uncompromising technical excellence.
                   </p>
                 </div>
               </div>

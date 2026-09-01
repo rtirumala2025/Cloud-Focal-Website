@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Industries — Cloud Focal</title>
+<title>Industries &amp; Sectors — Cloud Focal</title>
+<meta name="description" content="Cloud Focal delivers tailored cloud engineering, cybersecurity, and staffing solutions for Public Sector agencies and Private Enterprise across Australia and internationally.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
   --bg: #060812;
   --bg-elevated: #0d1120;
   --bg-panel: #10142a;
-  --bg-header: rgba(10,11,9,0.82);
+  --bg-header: rgba(10,11,9,0.88);
   --line: #232a4a;
   --line-bright: #3d4778;
   --amber: #5B8DFF;
@@ -36,7 +37,7 @@ html.light-theme, body.light-theme {
   --bg: #f3f4f8;
   --bg-elevated: #e6e8f0;
   --bg-panel: #dfe2ed;
-  --bg-header: rgba(243, 244, 248, 0.82);
+  --bg-header: rgba(243, 244, 248, 0.88);
   --line: #cbd2e3;
   --line-bright: #adb7d3;
   --amber: #1a56db;
@@ -65,13 +66,37 @@ a{ color: inherit; text-decoration: none; }
 .eyebrow{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
 .eyebrow::before{ content:''; width: 7px; height: 7px; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
 
+/* ============ ACCESSIBILITY ============ */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: var(--amber);
+  color: #fff;
+  padding: 12px 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 100;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 20px;
+  outline: 3px solid #fff;
+}
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
 /* ============ ANIMATIONS ============ */
 @keyframes fadeUp{ from{ opacity:0; transform: translateY(22px); } to{ opacity:1; transform: translateY(0); } }
 .seq{ opacity:0; animation: fadeUp var(--dur-1) var(--ease) forwards; }
 .seq-1{ animation-delay: 0.05s; }
 .seq-2{ animation-delay: 0.22s; }
 
-/* ============ NAV & FOOTER ============ */
+/* ============ NAV ============ */
 header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: var(--bg-header); backdrop-filter: blur(10px); transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease); }
 .nav{ display:flex; align-items:center; justify-content:space-between; padding: 20px 40px; max-width: 1360px; margin: 0 auto; }
 .logo-mark{ display:flex; align-items:center; gap: 12px; }
@@ -112,11 +137,11 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 .nav-cta:hover{ border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
 
 /* ============ PAGE-SPECIFIC STYLE ============ */
-.ind-hero{ padding-top: 160px; padding-bottom: 60px; }
-.ind-title{ font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 500; line-height: 1.1; margin-top: 18px; margin-bottom: 34px; }
+.ind-hero{ padding-top: 160px; padding-bottom: 50px; }
+.ind-title{ font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 500; line-height: 1.1; margin-top: 18px; margin-bottom: 24px; }
 .ind-title em{ font-style: italic; font-weight: 400; color: var(--amber); }
 
-.ind-section{ border: 1px solid var(--line); background: var(--bg-panel); padding: 50px 40px; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 24px; transition: background 0.3s var(--ease); }
+.ind-section{ border: 1px solid var(--line); background: var(--bg-panel); padding: 50px 40px; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 30px; transition: background 0.3s var(--ease); }
 .ind-section:hover{ background: var(--bg-elevated); }
 .ind-section::after {
   content: "";
@@ -143,68 +168,54 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
   z-index: 2;
   transition: opacity 0.3s ease;
 }
-.ind-section:hover::before, .ind-section:hover::after {
-  opacity: 1;
-}
-.ind-label{ font-family: var(--serif); font-size: clamp(24px, 3.5vw, 30px); font-weight: 500; color: var(--ink); position: relative; z-index: 3; }
+.ind-section:hover::before, .ind-section:hover::after { opacity: 1; }
+.ind-label{ font-family: var(--serif); font-size: clamp(26px, 3.5vw, 34px); font-weight: 500; color: var(--ink); position: relative; z-index: 3; }
 .ind-label span{ color: var(--amber); }
-.ind-content{ font-size: 15px; line-height: 1.8; color: var(--ink-dim); max-width: 76ch; position: relative; z-index: 3; }
-
-.ind-solutions-title{ font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 14px; margin-top: 20px; }
-.ind-solutions-list{ list-style: none; display: flex; flex-wrap: wrap; gap: 10px 24px; margin-bottom: 28px; }
-.ind-solutions-list li{ font-family: var(--mono); font-size: 13px; color: var(--ink-dim); position: relative; padding-left: 16px; }
-.ind-solutions-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 9px;
-  height: 9px;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%235B8DFF' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.ind-meta{ margin-top: 28px; display: flex; gap: 36px; border-top: 1px dashed var(--line); padding-top: 24px; }
-.meta-item{ border-left: 2px solid var(--line-bright); padding-left: 18px; flex: 1; }
-.meta-title{ font-family: var(--mono); font-size: 10.5px; color: var(--green); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
-.meta-val{ font-size: 14.5px; color: var(--ink); font-weight: 500; }
+.ind-body{ font-family: var(--mono); font-size: 14px; line-height: 1.85; color: var(--ink-dim); position: relative; z-index: 3; }
+.ind-list{ list-style: none; margin-top: 20px; }
+.ind-list li{ position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 13px; }
+.ind-list li::before{ content: '→'; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+.ind-badge{ display: inline-block; font-size: 10.5px; letter-spacing: 0.15em; color: var(--green); text-transform: uppercase; margin-bottom: 14px; }
 
 /* ============ FOOTER ============ */
 footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
-.footer-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-grid{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
 .footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
 .footer-col ul{ list-style: none; }
 .footer-col ul li{ margin-bottom: 12px; }
 .footer-col ul li a{ font-size: 12px; color: var(--ink-dim); transition: color 0.25s var(--ease); }
 .footer-col ul li a:hover{ color: var(--ink); }
-.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 280px; margin-top: 20px; }
-.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); }
+.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 320px; margin-top: 20px; }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); flex-wrap: wrap; gap: 12px; }
 
 /* ============ RESPONSIVENESS ============ */
 @media (max-width: 980px){
   .nav-links{ display:none; }
-  .ind-section{ grid-template-columns: 1fr; gap: 20px; }
-  .ind-meta{ flex-direction: column; gap: 20px; }
+  .ind-section{ grid-template-columns: 1fr; gap: 24px; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
 }
+@media (max-width: 640px){
+  .wrap{ padding: 0 20px; }
+}
 </style>
-  <script>
-    (function() {
-      const theme = localStorage.getItem('theme') || 'dark';
-      if (theme === 'light') {
-        document.documentElement.classList.add('light-theme');
-      }
-    })();
-  </script>
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  })();
+</script>
 </head>
 <body>
 
-  <header>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
     <div class="nav">
-      <a href="index.html" class="logo-mark" id="nav-logo">
-        <div class="logo-chip">
+      <a href="index.html" class="logo-mark" id="nav-logo" aria-label="Cloud Focal Home">
+        <div class="logo-chip" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#060812" stroke-width="2">
             <circle cx="12" cy="12" r="9" />
             <path d="M12 3 L12 21 M3 12 L21 12" />
@@ -214,15 +225,14 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="about.html">About</a>
-        <a href="services.html">Services</a>
+        <a href="services.html">Capabilities</a>
         <a href="industries.html" class="active">Industries</a>
-        <a href="careers.html">Careers</a>
+        <a href="careers.html">Staffing &amp; Careers</a>
         <a href="contact.html">Contact</a>
       </nav>
       <div class="nav-actions">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-          <!-- Sun Icon (visible in dark theme to switch to light) -->
-          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -233,8 +243,7 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <!-- Moon Icon (visible in light theme to switch to dark) -->
-          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
@@ -243,244 +252,104 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
     </div>
   </header>
 
-  <main id="main-content" class="wrap">
-    <section class="ind-hero seq seq-1">
-      <div class="eyebrow">Markets We Serve</div>
-      <h1 class="ind-title">Sector <em>Focus.</em></h1>
-      <p style="color: var(--ink-dim); max-width: 70ch; line-height: 1.8; font-size: 15px;">
-        We provide deep, sector-specific technology expertise to help organizations align complex systems with regulatory and operational requirements. Explore our key solutions and tracking metrics across six core industries.
+  <main id="main-content" class="wrap" tabindex="-1">
+    <section class="ind-hero seq seq-1" aria-labelledby="industries-heading">
+      <h1 id="industries-heading" class="ind-title">Industries <em>Served.</em></h1>
+      <p style="color: var(--ink-dim); max-width: 72ch; line-height: 1.85; font-size: 15px;">
+        Cloud Focal provides specialized technology consulting, custom systems integration, and technical talent acquisition tailored to the operational demands and regulatory environments of both Public Sector agencies and Private Enterprises.
       </p>
     </section>
 
-    <div class="seq seq-2">
-      <!-- 1. Public Sector -->
-      <section class="ind-section">
-        <h2 class="ind-label">Public Sector <span>/ GOTS</span></h2>
-        <div class="ind-content">
-          <p>Digital transformation solutions for government agencies and public institutions. Engineering secure, compliant systems for government frameworks. We understand the regulatory landscapes, certifications, and compliance standards necessary to implement government off-the-shelf software and custom cloud deployments.</p>
-          
-          <div class="ind-solutions-title">Key Solutions:</div>
-          <ul class="ind-solutions-list">
-            <li>Digital Government</li>
-            <li>Citizen Services</li>
-            <li>Data Security</li>
-            <li>Compliance</li>
-          </ul>
+    <!-- Public Sector (Source Cloud Alignment with AU and Global Context) -->
+    <section class="ind-section seq seq-2" aria-labelledby="public-sector-heading">
+      <div>
+        <span class="ind-badge">SECTOR_01 // GOVERNMENT &amp; CIVIC</span>
+        <h2 id="public-sector-heading" class="ind-label">Public <span>Sector</span></h2>
+      </div>
+      <div class="ind-body">
+        <p style="margin-bottom: 16px;">
+          Cloud Focal partners with Australian Federal and State Government departments, local councils, and international public sector entities to deliver resilient digital public services, sovereign cloud migrations, and hardened cybersecurity architectures.
+        </p>
+        <p>
+          We navigate complex compliance landscapes and procurement frameworks, ensuring taxpayer funds deliver maximum long-term efficiency and citizen impact:
+        </p>
+        <ul class="ind-list">
+          <li><strong>Australian Frameworks:</strong> Alignment with ACSC Essential Eight, PSPF, and IRAP certification readiness</li>
+          <li><strong>Sovereign Cloud &amp; GOTS:</strong> Deployment of Government Off-The-Shelf systems on protected cloud enclaves</li>
+          <li><strong>Citizen Service Modernization:</strong> Accessible, multi-channel citizen engagement portals compliant with WCAG 2.1 AA</li>
+          <li><strong>Vetted Clearances:</strong> Technical staffing and engineering squads holding necessary national security clearances</li>
+        </ul>
+      </div>
+    </section>
 
-          <div class="ind-meta">
-            <div class="meta-item">
-              <div class="meta-title">Projects Delivered</div>
-              <div class="meta-val">150+</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Compliance Audit</div>
-              <div class="meta-val">98% Satisfaction</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Financial Savings</div>
-              <div class="meta-val">$25M+ Optimized</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 2. Private Enterprise -->
-      <section class="ind-section">
-        <h2 class="ind-label">Private Enterprise <span>/ SaaS</span></h2>
-        <div class="ind-content">
-          <p>Technology solutions for private sector organizations of all sizes. Helping modern enterprises deploy hybrid cloud structures, modernize legacy applications, and scale their internal engineering throughput. We focus on business continuity, system stability, performance optimization, and robust engineering talent pipelines.</p>
-          
-          <div class="ind-solutions-title">Key Solutions:</div>
-          <ul class="ind-solutions-list">
-            <li>Digital Transformation</li>
-            <li>Cloud Migration</li>
-            <li>Process Automation</li>
-            <li>Analytics</li>
-          </ul>
-
-          <div class="ind-meta">
-            <div class="meta-item">
-              <div class="meta-title">Projects Delivered</div>
-              <div class="meta-val">300+</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Quality Assurance</div>
-              <div class="meta-val">97% Retention</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Budget Efficiency</div>
-              <div class="meta-val">$45M+ Saved</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. Healthcare -->
-      <section class="ind-section">
-        <h2 class="ind-label">Healthcare <span>/ HIPAA</span></h2>
-        <div class="ind-content">
-          <p>Technology solutions to improve patient care and operational efficiency. We specialize in building secure cloud architectures that conform strictly to HIPAA standards while enabling rapid EHR integration, telemetry aggregation, and healthcare analytics pipelines.</p>
-          
-          <div class="ind-solutions-title">Key Solutions:</div>
-          <ul class="ind-solutions-list">
-            <li>Electronic Health Records</li>
-            <li>Telemedicine</li>
-            <li>Data Analytics</li>
-            <li>HIPAA Security</li>
-          </ul>
-
-          <div class="ind-meta">
-            <div class="meta-item">
-              <div class="meta-title">Projects Delivered</div>
-              <div class="meta-val">75+</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Security Rating</div>
-              <div class="meta-val">99% Compliant</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Procurement Savings</div>
-              <div class="meta-val">$15M+ Cost Reduction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4. Financial Services -->
-      <section class="ind-section">
-        <h2 class="ind-label">Financial Services <span>/ SEC</span></h2>
-        <div class="ind-content">
-          <p>Secure and compliant technology solutions for financial institutions. We implement high-throughput transaction pipelines, risk-scoring engines, and advanced cybersecurity boundaries that protect customer capital and satisfy compliance parameters.</p>
-          
-          <div class="ind-solutions-title">Key Solutions:</div>
-          <ul class="ind-solutions-list">
-            <li>Digital Banking</li>
-            <li>Risk Management</li>
-            <li>Compliance</li>
-            <li>Cybersecurity</li>
-          </ul>
-
-          <div class="ind-meta">
-            <div class="meta-item">
-              <div class="meta-title">Projects Delivered</div>
-              <div class="meta-val">120+</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">System Reliability</div>
-              <div class="meta-val">96% Satisfaction</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Loss Prevention</div>
-              <div class="meta-val">$30M+ Protected</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. Manufacturing -->
-      <section class="ind-section">
-        <h2 class="ind-label">Manufacturing <span>/ IoT</span></h2>
-        <div class="ind-content">
-          <p>Industry 4.0 solutions to optimize production and supply chains. We deploy IoT sensor integrations, cloud data lakes, and predictive maintenance modeling to avoid hardware downtime and streamline distribution metrics.</p>
-          
-          <div class="ind-solutions-title">Key Solutions:</div>
-          <ul class="ind-solutions-list">
-            <li>IoT Integration</li>
-            <li>Predictive Analytics</li>
-            <li>Supply Chain</li>
-            <li>Automation</li>
-          </ul>
-
-          <div class="ind-meta">
-            <div class="meta-item">
-              <div class="meta-title">Projects Delivered</div>
-              <div class="meta-val">90+</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Operational Uptime</div>
-              <div class="meta-val">95% Efficiency</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Overhead Reduction</div>
-              <div class="meta-val">$20M+ Optimized</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. Retail & E-commerce -->
-      <section class="ind-section">
-        <h2 class="ind-label">Retail &amp; E-commerce <span>/ B2C</span></h2>
-        <div class="ind-content">
-          <p>Digital solutions to enhance customer experience and drive sales. We design custom e-commerce engines, real-time inventory databases, and omnichannel synchronization networks built for peak traffic stability.</p>
-          
-          <div class="ind-solutions-title">Key Solutions:</div>
-          <ul class="ind-solutions-list">
-            <li>E-commerce Platforms</li>
-            <li>Customer Analytics</li>
-            <li>Inventory Management</li>
-            <li>Omnichannel Sync</li>
-          </ul>
-
-          <div class="ind-meta">
-            <div class="meta-item">
-              <div class="meta-title">Projects Delivered</div>
-              <div class="meta-val">180+</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">User Engagement</div>
-              <div class="meta-val">97% Score</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-title">Conversion Savings</div>
-              <div class="meta-val">$35M+ Added Revenue</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    <!-- Private Enterprise -->
+    <section class="ind-section seq seq-2" aria-labelledby="private-enterprise-heading">
+      <div>
+        <span class="ind-badge">SECTOR_02 // COMMERCIAL ENTERPRISE</span>
+        <h2 id="private-enterprise-heading" class="ind-label">Private <span>Enterprise</span></h2>
+      </div>
+      <div class="ind-body">
+        <p style="margin-bottom: 16px;">
+          From ASX-listed corporations and multinational enterprises to high-growth venture-backed companies, we provide the technical leverage necessary to outpace market competitors, streamline operational workflows, and reduce infrastructure spend.
+        </p>
+        <p>
+          Our cross-functional teams bring deep domain expertise across financial services, healthcare, logistics, telecommunications, and retail:
+        </p>
+        <ul class="ind-list">
+          <li><strong>Financial Services &amp; FinTech:</strong> Low-latency data pipelines, APRA CPS 234 compliance, and PCI-DSS architecture</li>
+          <li><strong>Healthcare &amp; MedTech:</strong> Secure patient data platforms compliant with Australian Health Records &amp; HIPAA standards</li>
+          <li><strong>Retail &amp; eCommerce:</strong> High-throughput omnichannel architectures capable of handling peak festive volumes</li>
+          <li><strong>Logistics &amp; Supply Chain:</strong> Real-time IoT telematics, predictive analytics, and automated tracking systems</li>
+        </ul>
+      </div>
+    </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="index.html" class="logo-mark" style="margin-bottom: 20px;">
-          <span class="logo-word">Cloud <span class="focal">Focal</span></span>
-        </a>
-        <p class="footer-desc">Precision cloud infrastructure, application development, and premium technical staffing pipelines since 2002.</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo-mark" style="margin-bottom: 20px;" aria-label="Cloud Focal Home">
+            <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+          </a>
+          <p class="footer-desc">
+            Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Capabilities</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="careers.html">Staffing &amp; Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul>
+            <li><a href="services.html#apps">Apps &amp; COTS/GOTS</a></li>
+            <li><a href="services.html#data">Data &amp; Analytics</a></li>
+            <li><a href="services.html#cyber">Cyber Defense</a></li>
+            <li><a href="services.html#cloud">Cloud Strategy</a></li>
+            <li><a href="careers.html">Technical Staffing</a></li>
+            <li><a href="services.html#consulting">IT Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="contact.html">Melbourne HQ (Australia)</a></li>
+            <li><a href="contact.html">Start a Project</a></li>
+            <li><a href="careers.html#jobs">Submit Resume</a></li>
+            <li><a href="contact.html">General Inquiries</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="industries.html">Industries</a></li>
-          <li><a href="careers.html">Careers</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
+        <p>Public Sector &amp; Enterprise Solutions.</p>
       </div>
-      <div class="footer-col">
-        <h4>Capabilities</h4>
-        <ul>
-          <li><a href="services.html">Cloud Architecture</a></li>
-          <li><a href="services.html">App Development</a></li>
-          <li><a href="services.html">COTS / GOTS</a></li>
-          <li><a href="services.html">Technical Staffing</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="contact.html">Start a Project</a></li>
-          <li><a href="contact.html">Submit Resume</a></li>
-          <li><a href="contact.html">General Inquiries</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Cloud Focal. All rights reserved.</p>
-      <p>Precision Engineering &amp; Strategic Talent.</p>
-    </div>
     </div>
   </footer>
 
@@ -494,7 +363,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
-    // Spotlight Card mouse movement handler
     const cards = document.querySelectorAll('.ind-section');
     cards.forEach(card => {
       card.addEventListener('mousemove', e => {

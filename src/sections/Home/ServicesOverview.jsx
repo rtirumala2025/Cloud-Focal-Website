@@ -63,7 +63,7 @@ const ServicesOverview = () => {
               <div className="card card-elevated overflow-hidden h-full flex flex-col">
                 {/* Service Icon */}
                 <div className="p-8 pb-6 flex-1 flex flex-col">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#37b5ff] to-[#5371ff] text-white rounded-2xl flex items-center justify-center mb-6 shadow-md shadow-[#5371ff]/20 group-hover:scale-110 transition-transform duration-300">
                     <ServiceIcon icon={service.icon} />
                   </div>
                   
