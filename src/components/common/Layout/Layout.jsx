@@ -3,6 +3,11 @@ import { Helmet } from 'react-helmet-async';
 import ConditionalHeader from '../Header/ConditionalHeader';
 import ConditionalFooter from '../Footer/ConditionalFooter';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import {
+  CookieConsentBanner,
+  CookiePreferencesModal,
+  FloatingCookieButton,
+} from '../CookieConsent';
 import { useApp } from '../../../context/AppContext';
 
 const Layout = ({ children, title, description, keywords, image, canonical }) => {
@@ -95,6 +100,11 @@ const Layout = ({ children, title, description, keywords, image, canonical }) =>
       
       {/* FIXED: Added scroll to top component */}
       <ScrollToTop />
+
+      {/* Cookie and Privacy Consent Management */}
+      <CookieConsentBanner />
+      <CookiePreferencesModal />
+      <FloatingCookieButton />
 
       {/* Notifications */}
       {state.notifications.length > 0 && (

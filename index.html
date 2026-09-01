@@ -733,10 +733,16 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
-        <p>Results Matter // Bridging Strategy and Execution.</p>
+        <div style="display: flex; gap: 20px; align-items: center;">
+          <a href="privacy-policy.html" style="color: var(--ink-dim); font-size: 11px;">Privacy Policy</a>
+          <a href="cookie-policy.html" style="color: var(--ink-dim); font-size: 11px;">Cookie Policy</a>
+          <button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 11px; cursor: pointer; padding: 0;">Cookie Settings</button>
+        </div>
       </div>
     </div>
   </footer>
+
+  <script src="public/js/cookie-consent.js"></script>
 
   <script>
     if (document.documentElement.classList.contains('light-theme')) {

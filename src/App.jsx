@@ -9,6 +9,7 @@ import ErrorBoundary from './components/common/ErrorBoundary/ErrorBoundary';
 // Context Providers
 import { AppProvider } from './context/AppContext';
 import { AuthProvider } from './context/AuthContext';
+import { CookieProvider } from './context/CookieContext';
 
 // Layout Components
 import Layout from './components/common/Layout/Layout';
@@ -39,7 +40,8 @@ function App() {
       <HelmetProvider>
         <AppProvider>
           <AuthProvider>
-            <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <CookieProvider>
+              <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                 <div className="App">
                 <AnimatePresence mode="wait">
                   <Routes>
@@ -277,6 +279,7 @@ function App() {
                 </AnimatePresence>
               </div>
             </Router>
+          </CookieProvider>
         </AuthProvider>
       </AppProvider>
     </HelmetProvider>

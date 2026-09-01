@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Cloud Focal</title>
+<meta name="description" content="Cloud Focal Privacy Policy. Learn how we handle candidate data, client information, and website telemetry in compliance with Australian Privacy Principles, GDPR, and CCPA/CPRA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: dark light;
+  --bg: #060a1e;
+  --bg-elevated: #0d1433;
+  --bg-panel: #111a42;
+  --bg-header: rgba(6, 10, 30, 0.88);
+  --line: #1c2758;
+  --line-bright: #2d3e85;
+  --amber: #5371ff;
+  --amber-dim: #1e2eb5;
+  --amber-glow: rgba(83, 113, 255, 0.25);
+  --green: #37b5ff;
+  --green-dim: #14426b;
+  --ink: #f0f4ff;
+  --ink-dim: #9fb0e8;
+  --ink-faint: #5d6fba;
+  --serif: 'Fraunces', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --dur-1: 0.6s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html.light-theme, body.light-theme {
+  --bg: #f5f8ff;
+  --bg-elevated: #e6edff;
+  --bg-panel: #dae5ff;
+  --bg-header: rgba(245, 248, 255, 0.88);
+  --line: #c5d4fb;
+  --line-bright: #9eb8f7;
+  --amber: #3853f5;
+  --amber-dim: #e0ebff;
+  --amber-glow: rgba(56, 83, 245, 0.15);
+  --green: #0284c7;
+  --green-dim: #e0f4fe;
+  --ink: #08104d;
+  --ink-dim: #384b7a;
+  --ink-faint: #6c7ea6;
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease); }
+body::before{
+  content:''; position: fixed; inset:0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px; opacity: 0.35; pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+}
+a{ color: inherit; text-decoration: none; }
+.wrap{ max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+.skip-link { position: absolute; top: -60px; left: 20px; background: var(--amber); color: #fff; padding: 12px 20px; font-family: var(--mono); font-size: 13px; font-weight: 600; z-index: 100; border-radius: 4px; transition: top 0.2s ease; }
+.skip-link:focus { top: 20px; }
+header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: var(--bg-header); backdrop-filter: blur(10px); }
+.nav{ display:flex; align-items:center; justify-content:space-between; padding: 20px 40px; max-width: 1360px; margin: 0 auto; }
+.logo-mark{ display:flex; align-items:center; gap: 12px; }
+.nav-links{ display:flex; gap: 36px; }
+.nav-links a{ font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); transition: color 0.25s var(--ease); }
+.nav-links a:hover{ color: var(--ink); }
+.nav-actions{ display: flex; align-items: center; gap: 16px; }
+.theme-toggle-btn { background: transparent; border: 1px solid var(--line-bright); color: var(--ink); width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.theme-toggle-btn svg { display: none; }
+.light-theme .theme-toggle-btn .moon-icon { display: block; }
+html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
+
+.policy-hero{ padding: 140px 0 60px; border-bottom: 1px solid var(--line); }
+.badge{ display: inline-block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+.policy-title{ font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 500; margin-bottom: 20px; }
+.policy-sub{ color: var(--ink-dim); font-size: 15px; line-height: 1.8; max-width: 75ch; }
+
+.content-section{ padding: 60px 0 100px; line-height: 1.85; font-size: 14px; color: var(--ink-dim); }
+.content-section h2{ font-family: var(--serif); font-size: 26px; color: var(--ink); margin: 40px 0 16px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.content-section h3{ font-family: var(--mono); font-size: 16px; color: var(--amber); margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+.content-section p{ margin-bottom: 16px; }
+.content-section ul{ list-style: square; margin-left: 24px; margin-bottom: 20px; }
+.content-section li{ margin-bottom: 8px; }
+.content-section strong{ color: var(--ink); }
+.box{ background: var(--bg-panel); border: 1px solid var(--line-bright); padding: 24px; border-radius: 8px; margin: 24px 0; }
+
+footer{ border-top: 1px solid var(--line); padding: 60px 0; margin-top: 60px; }
+.footer-bottom{ display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--ink-faint); flex-wrap: wrap; gap: 16px; }
+.footer-nav{ display: flex; gap: 24px; }
+.footer-nav a, .footer-nav button{ font-size: 11px; color: var(--ink-dim); background: none; border: none; cursor: pointer; font-family: inherit; }
+.footer-nav a:hover, .footer-nav button:hover{ color: var(--ink); }
+</style>
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    if (theme === 'light') { document.documentElement.classList.add('light-theme'); }
+  })();
+</script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header role="banner">
+    <div class="nav">
+      <a href="index.html" class="logo-mark" aria-label="Cloud Focal Home">
+        <img src="public/images/logos/cloudfocal-logo.png" alt="Cloud Focal Inc" style="height: 38px; width: auto;" />
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="about.html">About</a>
+        <a href="services.html">Capabilities</a>
+        <a href="industries.html">Industries</a>
+        <a href="careers.html">Staffing &amp; Careers</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="policy-hero wrap">
+      <span class="badge">LEGAL COMPLIANCE // GOVERNANCE // V2.4</span>
+      <h1 class="policy-title">Privacy Policy</h1>
+      <p class="policy-sub">
+        Effective Date: September 1, 2026 • Compliant with the Australian Privacy Act 1988 (APPs), General Data Protection Regulation (GDPR), and California Consumer Privacy Act (CCPA/CPRA).
+      </p>
+    </section>
+
+    <div class="content-section wrap">
+      <h2>1. Data Controller Identification &amp; Scope</h2>
+      <p>
+        Cloud Focal ("Cloud Focal", "we", "us") provides technical staffing, cloud architecture, cyber defense, and enterprise IT consulting. We operate through <strong>Cloud Focal Pty Ltd</strong> in Australia (Melbourne HQ) and <strong>Cloud Focal Inc.</strong> in the United States (San Francisco).
+      </p>
+      
+      <h2>2. Categories of Data Collected</h2>
+      <h3>A. Technical Candidates, Contractors &amp; Job Applicants</h3>
+      <p>We collect contact details, professional resumes/CVs, work history, certifications (AWS, Azure, GCP), code assessment submissions, right-to-work / visa verification (e.g., Australian VEVO, US Work Authorization), and background check verification records with your express written consent.</p>
+      
+      <h3>B. Enterprise Clients &amp; Business Contacts</h3>
+      <p>We collect corporate contact details, Statements of Work (SOWs), technical requirement specifications, and billing information.</p>
+
+      <h3>C. Website Visitors</h3>
+      <p>We collect device telemetry, IP addresses, browser specifications, and cookie preferences.</p>
+
+      <h2>3. Unsolicited Candidate Information (APP 4 Protocol)</h2>
+      <p>
+        If Cloud Focal receives unsolicited resumes or CVs, we will determine within a reasonable period whether we could have lawfully collected the data under Australian Privacy Principle 3. If not, the information is securely destroyed or de-identified immediately.
+      </p>
+
+      <h2>4. AI &amp; Automated Decision-Making Disclosures</h2>
+      <div class="box">
+        <strong>Human-in-the-Loop Commitment:</strong> Cloud Focal does not make hiring or qualification decisions based solely on automated processing or algorithmic filtering. All applications and talent placements are evaluated and approved by experienced recruitment professionals.
+      </div>
+
+      <h2>5. Cross-Border International Data Transfers (APP 8 &amp; GDPR)</h2>
+      <p>
+        Candidate and project files may be processed between our Australian and US offices using Standard Contractual Clauses (SCCs), TLS 1.3 encryption in transit, and AES-256 encryption at rest.
+      </p>
+
+      <h2>6. Data Retention Schedules</h2>
+      <ul>
+        <li><strong>Candidate Talent Bench:</strong> 24 to 36 months (with re-consent notices).</li>
+        <li><strong>Placed Contractor &amp; Invoicing Records:</strong> 7 years (statutory tax requirement).</li>
+        <li><strong>Website Telemetry:</strong> 14 months (Google Analytics 4 standard).</li>
+      </ul>
+
+      <h2>7. Your Privacy Rights</h2>
+      <p>You have statutory rights to access (APP 12, GDPR Art. 15, CCPA), correct (APP 13, GDPR Art. 16), delete (GDPR Art. 17, CCPA), or opt-out of marketing at any time. We honor Global Privacy Control (GPC) signals.</p>
+
+      <h2>8. Privacy Officer Contact</h2>
+      <div class="box">
+        <strong>Data Privacy Officer:</strong> Cloud Focal Pty Ltd / Cloud Focal Inc.<br>
+        Email: <a href="mailto:privacy@cloudfocal.com" style="color: var(--amber);">privacy@cloudfocal.com</a><br>
+        Melbourne Office: Collins Street, Melbourne VIC 3000, Australia<br>
+        San Francisco Office: 123 Technology Drive, Suite 200, San Francisco CA 94105, USA
+      </div>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne &amp; San Francisco.</p>
+        <div class="footer-nav">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="cookie-policy.html">Cookie Policy</a>
+          <button id="static-cookie-btn" type="button">Cookie Settings</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="public/js/cookie-consent.js"></script>
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light-theme');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>

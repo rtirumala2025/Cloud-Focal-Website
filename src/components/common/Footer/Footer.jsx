@@ -2,9 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import navigationData from '../../../assets/data/navigationData.json';
+import { useCookieConsent } from '../../../context/CookieContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { openPreferencesModal } = useCookieConsent();
   const [cursorPrompt, setCursorPrompt] = useState({ show: false, text: '', x: 0, y: 0 });
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -255,7 +257,7 @@ const Footer = () => {
                 © {currentYear} Cloud Focal. All rights reserved.
             </div>
 
-              <nav className="flex gap-8">
+              <nav className="flex flex-wrap items-center gap-6 md:gap-8">
                 {navigationData.footerNavigation.legal.map((item) => (
                   <Link
                     key={item.title}
@@ -267,6 +269,15 @@ const Footer = () => {
                     {item.title}
                   </Link>
                 ))}
+                <button
+                  type="button"
+                  onClick={openPreferencesModal}
+                  className="text-white/60 hover:text-white transition-colors duration-300 bg-transparent border-none p-0 cursor-pointer text-inherit font-inherit"
+                  onMouseOver={(e) => handleMouseOver(e, "Manage Cookie Settings")}
+                  onMouseOut={handleMouseOut}
+                >
+                  Cookie Settings
+                </button>
               </nav>
           </div>
         </div>
