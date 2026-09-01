@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { Rocket, Cloud, BarChart3, Link2, Zap, DollarSign, Target, Shield, TrendingUp, Lock, Wrench, CheckCircle2 } from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 
 const PrivateEnterprise = () => {
@@ -8,25 +9,25 @@ const PrivateEnterprise = () => {
     {
       title: "Digital Transformation",
       description: "Complete digital transformation to modernize your business operations",
-      icon: "🚀",
+      icon: Rocket,
       features: ["Process Automation", "Digital Workflows", "Legacy Modernization", "Change Management"]
     },
     {
       title: "Cloud Migration",
       description: "Secure and scalable cloud solutions for enterprise applications",
-      icon: "☁️",
+      icon: Cloud,
       features: ["Multi-cloud Strategy", "Hybrid Cloud", "Cost Optimization", "Scalability"]
     },
     {
       title: "Data Analytics",
       description: "Transform data into actionable insights for strategic decision-making",
-      icon: "📊",
+      icon: BarChart3,
       features: ["Business Intelligence", "Predictive Analytics", "Real-time Dashboards", "Data Warehousing"]
     },
     {
       title: "Enterprise Integration",
       description: "Seamlessly connect your systems and applications for better efficiency",
-      icon: "🔗",
+      icon: Link2,
       features: ["API Integration", "System Integration", "Data Synchronization", "Workflow Automation"]
     }
   ];
@@ -35,22 +36,22 @@ const PrivateEnterprise = () => {
     {
       title: "Increased Efficiency",
       description: "Streamline operations and reduce manual processes by up to 60%",
-      icon: "⚡"
+      icon: Zap
     },
     {
       title: "Cost Reduction",
       description: "Optimize technology investments and reduce operational costs",
-      icon: "💰"
+      icon: DollarSign
     },
     {
       title: "Improved Agility",
       description: "Respond quickly to market changes and customer demands",
-      icon: "🎯"
+      icon: Target
     },
     {
       title: "Enhanced Security",
       description: "Protect your business with enterprise-grade security solutions",
-      icon: "🛡️"
+      icon: Shield
     }
   ];
 
@@ -144,27 +145,32 @@ const PrivateEnterprise = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {solutions.map((solution, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="text-4xl mb-4">{solution.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{solution.title}</h3>
-                  <p className="text-black mb-4">{solution.description}</p>
-                  <ul className="space-y-2">
-                    {solution.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-black">
-                        <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+              {solutions.map((solution, index) => {
+                const Icon = solution.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="mb-4 text-blue-600">
+                      <Icon className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{solution.title}</h3>
+                    <p className="text-black mb-4">{solution.description}</p>
+                    <ul className="space-y-2">
+                      {solution.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center text-sm text-black">
+                          <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -193,25 +199,30 @@ const PrivateEnterprise = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-5xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
-                  <p className="text-black">{benefit.description}</p>
-                </motion.div>
-              ))}
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="mb-4 flex justify-center text-blue-600">
+                      <Icon className="w-12 h-12" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
+                    <p className="text-black">{benefit.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
 
         {/* Enterprise Features */}
-        <section className="py-20">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <motion.h2
@@ -229,46 +240,51 @@ const PrivateEnterprise = () => {
                 {
                   title: "Scalability",
                   description: "Solutions that grow with your business needs",
-                  icon: "📈"
+                  icon: TrendingUp
                 },
                 {
                   title: "Security",
                   description: "Enterprise-grade security and compliance",
-                  icon: "🔒"
+                  icon: Lock
                 },
                 {
                   title: "Integration",
                   description: "Seamless integration with existing systems",
-                  icon: "🔗"
+                  icon: Link2
                 },
                 {
                   title: "Support",
                   description: "24/7 technical support and maintenance",
-                  icon: "🛠️"
+                  icon: Wrench
                 },
                 {
                   title: "Analytics",
                   description: "Advanced analytics and reporting capabilities",
-                  icon: "📊"
+                  icon: BarChart3
                 },
                 {
                   title: "Compliance",
                   description: "Industry-specific compliance frameworks",
-                  icon: "✅"
+                  icon: CheckCircle2
                 }
-              ].map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center"
-                >
-                  <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{feature.title}</h3>
-                  <p className="text-black">{feature.description}</p>
-                </motion.div>
-              ))}
+              ].map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center"
+                  >
+                    <div className="mb-4 flex justify-center text-blue-600">
+                      <Icon className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{feature.title}</h3>
+                    <p className="text-black">{feature.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>

@@ -2,13 +2,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Landmark, Building2, HeartPulse, DollarSign, Factory, ShoppingBag, Target, ClipboardList, Laptop, Lock } from 'lucide-react';
 
 const Industries = () => {
   const industries = [
     {
       title: "Public Sector",
       description: "Digital transformation solutions for government agencies and public institutions",
-      icon: "🏛️",
+      icon: Landmark,
       solutions: ["Digital Government", "Citizen Services", "Data Security", "Compliance"],
       stats: { projects: "150+", satisfaction: "98%", savings: "$25M+" },
       link: "/industries/public-sector"
@@ -16,7 +17,7 @@ const Industries = () => {
     {
       title: "Private Enterprise",
       description: "Technology solutions for private sector organizations of all sizes",
-      icon: "🏢",
+      icon: Building2,
       solutions: ["Digital Transformation", "Cloud Migration", "Process Automation", "Analytics"],
       stats: { projects: "300+", satisfaction: "97%", savings: "$45M+" },
       link: "/industries/private-enterprise"
@@ -24,7 +25,7 @@ const Industries = () => {
     {
       title: "Healthcare",
       description: "Technology solutions to improve patient care and operational efficiency",
-      icon: "🏥",
+      icon: HeartPulse,
       solutions: ["Electronic Health Records", "Telemedicine", "Data Analytics", "Security"],
       stats: { projects: "75+", satisfaction: "99%", savings: "$15M+" },
       link: "/industries/healthcare"
@@ -32,7 +33,7 @@ const Industries = () => {
     {
       title: "Financial Services",
       description: "Secure and compliant technology solutions for financial institutions",
-      icon: "💰",
+      icon: DollarSign,
       solutions: ["Digital Banking", "Risk Management", "Compliance", "Cybersecurity"],
       stats: { projects: "120+", satisfaction: "96%", savings: "$30M+" },
       link: "/industries/financial-services"
@@ -40,7 +41,7 @@ const Industries = () => {
     {
       title: "Manufacturing",
       description: "Industry 4.0 solutions to optimize production and supply chains",
-      icon: "🏭",
+      icon: Factory,
       solutions: ["IoT Integration", "Predictive Analytics", "Supply Chain", "Automation"],
       stats: { projects: "90+", satisfaction: "95%", savings: "$20M+" },
       link: "/industries/manufacturing"
@@ -48,7 +49,7 @@ const Industries = () => {
     {
       title: "Retail & E-commerce",
       description: "Digital solutions to enhance customer experience and drive sales",
-      icon: "🛍️",
+      icon: ShoppingBag,
       solutions: ["E-commerce Platforms", "Customer Analytics", "Inventory Management", "Omnichannel"],
       stats: { projects: "180+", satisfaction: "97%", savings: "$35M+" },
       link: "/industries/retail"
@@ -59,22 +60,22 @@ const Industries = () => {
     {
       title: "Industry-Specific Knowledge",
       description: "Deep understanding of regulatory requirements and business processes",
-      icon: "🎯"
+      icon: Target
     },
     {
       title: "Proven Methodologies",
       description: "Tailored approaches that have been tested across multiple industries",
-      icon: "📋"
+      icon: ClipboardList
     },
     {
       title: "Technology Expertise",
       description: "Latest technologies and platforms relevant to each industry",
-      icon: "💻"
+      icon: Laptop
     },
     {
       title: "Compliance & Security",
       description: "Industry-specific compliance frameworks and security standards",
-      icon: "🔒"
+      icon: Lock
     }
   ];
 
@@ -191,19 +192,24 @@ const Industries = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {expertise.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 text-center group hover:scale-105"
-                >
-                  <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-4">{item.title}</h3>
-                  <p className="text-black leading-relaxed">{item.description}</p>
-                </motion.div>
-              ))}
+              {expertise.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 text-center group hover:scale-105"
+                  >
+                    <div className="mb-6 flex justify-center text-blue-600 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-4">{item.title}</h3>
+                    <p className="text-black leading-relaxed">{item.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -232,33 +238,37 @@ const Industries = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {industries.map((industry, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white border border-gray-100 rounded-3xl hover:shadow-2xl transition-all duration-500 overflow-hidden group hover:scale-105"
-                >
-                  {/* Header */}
-                  <div className="h-32 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                    <div className="text-4xl relative z-10 group-hover:scale-110 transition-transform duration-300">{industry.icon}</div>
-                  </div>
+              {industries.map((industry, index) => {
+                const Icon = industry.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="bg-white border border-gray-100 rounded-3xl hover:shadow-2xl transition-all duration-500 overflow-hidden group hover:scale-105"
+                  >
+                    {/* Header */}
+                    <div className="h-32 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                      <div className="relative z-10 text-white group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="w-12 h-12 text-white" />
+                      </div>
+                    </div>
                   
                   {/* Content */}
                   <div className="p-8">
-                    <h3 className="text-2xl font-bold text-black mb-4">{industry.title}</h3>
+                    <h3 className="text-2xl font-bold text-black mb-3">{industry.title}</h3>
                     <p className="text-black mb-6 leading-relaxed">{industry.description}</p>
                     
                     {/* Solutions */}
-                    <div className="mb-8">
-                      <h4 className="font-semibold text-black mb-4">Key Solutions:</h4>
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Key Solutions</h4>
                       <div className="flex flex-wrap gap-2">
-                        {industry.solutions.map((solution, solutionIndex) => (
+                        {industry.solutions.map((solution, solIndex) => (
                           <span
-                            key={solutionIndex}
-                            className="px-3 py-2 bg-blue-50 text-blue-700 text-sm rounded-full border border-blue-100 hover:bg-blue-100 transition-colors duration-200"
+                            key={solIndex}
+                            className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full"
                           >
                             {solution}
                           </span>
@@ -267,18 +277,18 @@ const Industries = () => {
                     </div>
 
                     {/* Stats */}
-                    <div className="grid grid-cols-3 gap-4 mb-8">
-                      <div className="text-center p-4 bg-gray-50 rounded-xl">
-                        <div className="text-2xl font-bold text-blue-600">{industry.stats.projects}</div>
-                        <div className="text-xs text-black font-medium">Projects</div>
+                    <div className="grid grid-cols-3 gap-2 py-4 border-t border-gray-100 mb-6">
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-black">{industry.stats.projects}</div>
+                        <div className="text-xs text-gray-500">Projects</div>
                       </div>
-                      <div className="text-center p-4 bg-gray-50 rounded-xl">
-                        <div className="text-2xl font-bold text-blue-600">{industry.stats.satisfaction}</div>
-                        <div className="text-xs text-black font-medium">Satisfaction</div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-black">{industry.stats.satisfaction}</div>
+                        <div className="text-xs text-gray-500">Satisfaction</div>
                       </div>
-                      <div className="text-center p-4 bg-gray-50 rounded-xl">
-                        <div className="text-2xl font-bold text-blue-600">{industry.stats.savings}</div>
-                        <div className="text-xs text-black font-medium">Savings</div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-black">{industry.stats.savings}</div>
+                        <div className="text-xs text-gray-500">Value Delivered</div>
                       </div>
                     </div>
 
@@ -291,7 +301,8 @@ const Industries = () => {
                     </Link>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

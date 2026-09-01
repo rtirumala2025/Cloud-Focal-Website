@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — Cloud Focal</title>
+<title>Capabilities &amp; Services — Cloud Focal</title>
+<meta name="description" content="Explore Cloud Focal's technical capabilities across Apps, Data, Cyber, Cloud, Staffing, and Consulting. Delivering precision technology solutions in Australia and globally.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============ DESIGN TOKENS ============ */
 :root{
+  color-scheme: dark light;
   --bg: #060812;
   --bg-elevated: #0d1120;
   --bg-panel: #10142a;
+  --bg-header: rgba(10,11,9,0.88);
   --line: #232a4a;
   --line-bright: #3d4778;
   --amber: #5B8DFF;
@@ -28,21 +31,64 @@
   --dur-1: 0.6s;
   --dur-2: 0.9s;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --glow-color: rgba(91, 141, 255, 0.15);
+}
+html.light-theme, body.light-theme {
+  --bg: #f3f4f8;
+  --bg-elevated: #e6e8f0;
+  --bg-panel: #dfe2ed;
+  --bg-header: rgba(243, 244, 248, 0.88);
+  --line: #cbd2e3;
+  --line-bright: #adb7d3;
+  --amber: #1a56db;
+  --amber-dim: #dbeafe;
+  --amber-glow: rgba(26, 86, 219, 0.12);
+  --green: #0284c7;
+  --green-dim: #e0f2fe;
+  --ink: #0b0d19;
+  --ink-dim: #4a5168;
+  --ink-faint: #8a93af;
+  --glow-color: rgba(26, 86, 219, 0.08);
 }
 *{ box-sizing: border-box; margin:0; padding:0; }
 html{ scroll-behavior: smooth; }
-body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; }
+body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease); }
 body::before{
   content:''; position: fixed; inset:0;
   background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 64px 64px; opacity: 0.35; pointer-events: none; z-index: 0;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+  transition: background-image var(--dur-1) var(--ease);
 }
-body::after{ content:''; position: fixed; inset:0; background: radial-gradient(ellipse 60% 40% at 78% 10%, var(--amber-glow), transparent 60%); pointer-events: none; z-index: 0; }
+body::after{ content:''; position: fixed; inset:0; background: radial-gradient(ellipse 60% 40% at 78% 10%, var(--amber-glow), transparent 60%); pointer-events: none; z-index: 0; transition: background var(--dur-1) var(--ease); }
 a{ color: inherit; text-decoration: none; }
 .wrap{ max-width: 1360px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
 .eyebrow{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
 .eyebrow::before{ content:''; width: 7px; height: 7px; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+/* ============ ACCESSIBILITY ============ */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: var(--amber);
+  color: #fff;
+  padding: 12px 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 100;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 20px;
+  outline: 3px solid #fff;
+}
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
 
 /* ============ ANIMATIONS ============ */
 @keyframes fadeUp{ from{ opacity:0; transform: translateY(22px); } to{ opacity:1; transform: translateY(0); } }
@@ -50,8 +96,8 @@ a{ color: inherit; text-decoration: none; }
 .seq-1{ animation-delay: 0.05s; }
 .seq-2{ animation-delay: 0.22s; }
 
-/* ============ NAV & FOOTER ============ */
-header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: rgba(10,11,9,0.82); backdrop-filter: blur(10px); }
+/* ============ NAV ============ */
+header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: var(--bg-header); backdrop-filter: blur(10px); transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease); }
 .nav{ display:flex; align-items:center; justify-content:space-between; padding: 20px 40px; max-width: 1360px; margin: 0 auto; }
 .logo-mark{ display:flex; align-items:center; gap: 12px; }
 .logo-chip{ width: 38px; height: 38px; background: #fff; border-radius: 8px; display:flex; align-items:center; justify-content:center; padding: 5px; box-shadow: 0 0 0 1px var(--line-bright); }
@@ -64,6 +110,29 @@ header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px
 .nav-links a:hover::after{ width:100%; }
 .nav-links a.active{ color: var(--ink); }
 .nav-links a.active::after{ width:100%; }
+.nav-actions{ display: flex; align-items: center; gap: 16px; }
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--line-bright);
+  color: var(--ink);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  padding: 0;
+}
+.theme-toggle-btn:hover {
+  border-color: var(--amber);
+  background: var(--amber-glow);
+  color: var(--amber);
+}
+.theme-toggle-btn svg { display: none; }
+.light-theme .theme-toggle-btn .moon-icon { display: block; }
+html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 .nav-cta{ font-size: 12px; letter-spacing:0.08em; text-transform: uppercase; border: 1px solid var(--line-bright); padding: 9px 18px; color: var(--ink); transition: all 0.25s var(--ease); }
 .nav-cta:hover{ border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
 
@@ -72,31 +141,58 @@ header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px
 .services-title{ font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 500; line-height: 1.1; margin-top: 18px; margin-bottom: 24px; }
 .services-title em{ font-style: italic; font-weight: 400; color: var(--amber); }
 
-.category-group{ margin-top: 80px; }
-.category-header{ margin-bottom: 32px; border-left: 2px solid var(--amber); padding-left: 18px; }
-.category-title{ font-family: var(--serif); font-size: clamp(24px, 4vw, 36px); font-weight: 500; color: var(--ink); }
-.category-desc{ font-family: var(--mono); font-size: 13.5px; color: var(--ink-dim); line-height: 1.8; margin-top: 8px; max-width: 60ch; }
+.category-group{ margin-top: 80px; scroll-margin-top: 100px; }
+.category-header{ margin-bottom: 32px; border-left: 3px solid var(--amber); padding-left: 20px; }
+.category-title{ font-family: var(--serif); font-size: clamp(26px, 3.5vw, 38px); font-weight: 500; color: var(--ink); }
+.category-title span{ color: var(--amber); }
+.category-desc{ font-family: var(--mono); font-size: 13.5px; color: var(--ink-dim); line-height: 1.8; margin-top: 8px; max-width: 75ch; }
 
 .services-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.service-card{ background: var(--bg-panel); padding: 40px 32px; position: relative; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.3s var(--ease); }
+.service-card{ background: var(--bg-panel); padding: 40px 32px; position: relative; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.3s var(--ease); overflow: hidden; }
 .service-card:hover{ background: var(--bg-elevated); }
-.service-tag{ align-self: flex-start; display:inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; border: 1px solid var(--line-bright); color: var(--green); padding: 3px 10px; margin-bottom: 20px; text-transform: uppercase; }
-.service-name{ font-family: var(--serif); font-size: 23px; font-weight: 500; margin-bottom: 12px; color: var(--ink); }
-.service-desc{ font-family: var(--mono); font-size: 13px; line-height: 1.8; color: var(--ink-dim); }
-.service-features{ list-style: none; margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px; }
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--glow-color), transparent 80%);
+}
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--amber), var(--green) 50%, transparent 80%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+.service-card:hover::before, .service-card:hover::after { opacity: 1; }
+.service-tag{ align-self: flex-start; display:inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; border: 1px solid var(--line-bright); color: var(--green); padding: 3px 10px; margin-bottom: 20px; text-transform: uppercase; position: relative; z-index: 3; }
+.service-name{ font-family: var(--serif); font-size: 23px; font-weight: 500; margin-bottom: 12px; color: var(--ink); position: relative; z-index: 3; }
+.service-desc{ font-family: var(--mono); font-size: 13px; line-height: 1.8; color: var(--ink-dim); position: relative; z-index: 3; }
+.service-features{ list-style: none; margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px; position: relative; z-index: 3; }
 .service-features li{ font-size: 11.5px; color: var(--ink-dim); margin-bottom: 8px; font-family: var(--mono); line-height: 1.5; }
 .service-features li strong{ color: var(--ink); font-weight: 500; }
 
 /* ============ FOOTER ============ */
 footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
-.footer-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-grid{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
 .footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
 .footer-col ul{ list-style: none; }
 .footer-col ul li{ margin-bottom: 12px; }
 .footer-col ul li a{ font-size: 12px; color: var(--ink-dim); transition: color 0.25s var(--ease); }
 .footer-col ul li a:hover{ color: var(--ink); }
-.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 280px; margin-top: 20px; }
-.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); }
+.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 320px; margin-top: 20px; }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); flex-wrap: wrap; gap: 12px; }
 
 /* ============ RESPONSIVENESS ============ */
 @media (max-width: 1080px) {
@@ -107,14 +203,28 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
   .services-grid{ grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
 }
+@media (max-width: 640px){
+  .wrap{ padding: 0 20px; }
+}
 </style>
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  })();
+</script>
 </head>
 <body>
 
-  <header>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
     <div class="nav">
-      <a href="index.html" class="logo-mark" id="nav-logo">
-        <div class="logo-chip">
+      <a href="index.html" class="logo-mark" id="nav-logo" aria-label="Cloud Focal Home">
+        <div class="logo-chip" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#060812" stroke-width="2">
             <circle cx="12" cy="12" r="9" />
             <path d="M12 3 L12 21 M3 12 L21 12" />
@@ -124,342 +234,388 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="about.html">About</a>
-        <a href="services.html" class="active">Services</a>
+        <a href="services.html" class="active">Capabilities</a>
         <a href="industries.html">Industries</a>
-        <a href="careers.html">Careers</a>
+        <a href="careers.html">Staffing &amp; Careers</a>
         <a href="contact.html">Contact</a>
       </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="contact.html" class="nav-cta">Start a Project</a>
+      </div>
     </div>
   </header>
 
-  <main id="main-content" class="wrap">
-    <section class="services-hero seq seq-1">
-      <div class="eyebrow">Capabilities &amp; Services</div>
-      <h1 class="services-title">Technical <em>Execution.</em></h1>
-      <p style="color: var(--ink-dim); max-width: 70ch; line-height: 1.8; font-size: 15px;">
-        Cloud Focal delivers comprehensive technology solutions that help organizations thrive in the digital age. Our expertise spans program management, IT strategy, technology staffing, data services, and application development, providing everything you need to build, optimize, and scale.
+  <main id="main-content" class="wrap" tabindex="-1">
+    <section class="services-hero seq seq-1" aria-labelledby="services-heading">
+      <div class="eyebrow">Technical Execution &amp; Capabilities</div>
+      <h1 id="services-heading" class="services-title">Technical <em>Capabilities.</em></h1>
+      <p style="color: var(--ink-dim); max-width: 72ch; line-height: 1.85; font-size: 15px;">
+        Cloud Focal combines deep engineering practice and strategic talent placement across 6 core pillars. We help enterprises, government bodies, and high-growth organizations build, secure, optimize, and scale their technology systems across Australia and globally.
       </p>
     </section>
 
-    <!-- 1. Applications -->
-    <div class="category-group seq seq-2">
+    <!-- 1. APPS -->
+    <div id="apps" class="category-group seq seq-2">
       <div class="category-header">
-        <h2 class="category-title">Applications <span>/ Build</span></h2>
-        <p class="category-desc">Custom application development and modernization services designed for scalability and performance.</p>
+        <h2 class="category-title">Apps <span>/ Build &amp; Integrate</span></h2>
+        <p class="category-desc">Custom web &amp; mobile development, Commercial/Government Off-The-Shelf (COTS/GOTS) integration, and enterprise content management systems.</p>
       </div>
-      <section class="services-grid">
-        <div class="service-card">
+      <section class="services-grid" aria-label="Apps Services">
+        <article class="service-card">
           <div>
-            <span class="service-tag">Web Apps</span>
-            <h3 class="service-name">Custom Web Applications</h3>
-            <p class="service-desc">Tailored web applications built with modern frameworks for optimal performance and scalability.</p>
+            <span class="service-tag">Web &amp; Mobile</span>
+            <h3 class="service-name">Custom Web &amp; Mobile</h3>
+            <p class="service-desc">Tailored digital platforms built with modern frontend frameworks and microservices backends for high reliability and responsiveness.</p>
           </div>
           <ul class="service-features">
-            <li>• <strong>Responsive Design:</strong> Fully responsive applications that work on all devices</li>
-            <li>• <strong>Modern Stack:</strong> Built with React, Next.js, and modern JavaScript</li>
-            <li>• <strong>Scalable Architecture:</strong> Designed to grow with your business needs</li>
+            <li>• <strong>Modern Stack:</strong> React, TypeScript, Next.js, and Node.js microservices</li>
+            <li>• <strong>Mobile Engineering:</strong> Native iOS/Android and cross-platform React Native</li>
+            <li>• <strong>Design Systems:</strong> Accessible (WCAG 2.1 AA) UI components and intuitive UX</li>
           </ul>
-        </div>
-        <div class="service-card">
+        </article>
+        <article class="service-card">
           <div>
-            <span class="service-tag">Mobile Apps</span>
-            <h3 class="service-name">Mobile App Development</h3>
-            <p class="service-desc">Cross-platform mobile applications for iOS and Android with native performance.</p>
+            <span class="service-tag">COTS / GOTS</span>
+            <h3 class="service-name">COTS &amp; GOTS Integration</h3>
+            <p class="service-desc">Strategic integration of commercial and government off-the-shelf software packages to accelerate deployment and maintain standards.</p>
           </div>
           <ul class="service-features">
-            <li>• <strong>Cross-Platform:</strong> Single codebase for both iOS and Android</li>
-            <li>• <strong>Native Performance:</strong> Near-native performance with React Native</li>
-            <li>• <strong>Offline Support:</strong> Works seamlessly without internet connection</li>
+            <li>• <strong>Standard Compliance:</strong> Seamless government and defense-ready alignments</li>
+            <li>• <strong>API &amp; Middleware:</strong> Enterprise service buses and event-driven connectors</li>
+            <li>• <strong>Legacy Modernization:</strong> Wrapping and replacing legacy systems without downtime</li>
           </ul>
-        </div>
-        <div class="service-card">
+        </article>
+        <article class="service-card">
           <div>
-            <span class="service-tag">Enterprise</span>
-            <h3 class="service-name">Enterprise Solutions</h3>
-            <p class="service-desc">Robust enterprise-grade applications for complex business processes.</p>
+            <span class="service-tag">Content Systems</span>
+            <h3 class="service-name">Enterprise Content Mgmt</h3>
+            <p class="service-desc">Scalable content management, document lifecycle governance, and collaborative intranet systems for distributed workforces.</p>
           </div>
           <ul class="service-features">
-            <li>• <strong>Scalability:</strong> Handles high traffic and data volumes</li>
-            <li>• <strong>Security:</strong> Enterprise-grade security features</li>
-            <li>• <strong>Integration:</strong> Seamless integration with existing systems</li>
+            <li>• <strong>Workflow Automation:</strong> Business process automation and approvals</li>
+            <li>• <strong>Information Security:</strong> Role-based access control and audit trails</li>
+            <li>• <strong>Search &amp; Discovery:</strong> Semantic indexing and federated enterprise search</li>
           </ul>
-        </div>
+        </article>
       </section>
     </div>
 
-    <!-- 2. Consulting -->
-    <div class="category-group seq seq-2">
+    <!-- 2. DATA -->
+    <div id="data" class="category-group seq seq-2">
       <div class="category-header">
-        <h2 class="category-title">Consulting <span>/ Advise</span></h2>
-        <p class="category-desc">Strategic IT consulting and digital transformation planning to align tech with business operations.</p>
+        <h2 class="category-title">Data <span>/ Architecture &amp; Analytics</span></h2>
+        <p class="category-desc">Database architecture, big data analytics pipelines, cloud data warehousing, and automated ETL/ELT migration services.</p>
       </div>
-      <section class="services-grid">
-        <div class="service-card">
+      <section class="services-grid" aria-label="Data Services">
+        <article class="service-card">
           <div>
-            <span class="service-tag">Program Mgmt</span>
-            <h3 class="service-name">Program Management</h3>
-            <p class="service-desc">End-to-end program management for your technology initiatives.</p>
+            <span class="service-tag">Database Ops</span>
+            <h3 class="service-name">Database Architecture</h3>
+            <p class="service-desc">Architecting, tuning, and operating resilient relational and NoSQL database engines capable of high concurrency and sub-millisecond queries.</p>
           </div>
           <ul class="service-features">
-            <li>• <strong>Strategic Planning:</strong> Comprehensive program roadmaps</li>
-            <li>• <strong>Governance:</strong> Effective governance structures</li>
-            <li>• <strong>Risk Management:</strong> Proactive risk mitigation</li>
+            <li>• <strong>High Availability:</strong> Multi-region replication, failover, and active-active setups</li>
+            <li>• <strong>Performance Tuning:</strong> Index optimization, query refactoring, and caching</li>
+            <li>• <strong>Polyglot Persistence:</strong> PostgreSQL, MySQL, Redis, DynamoDB, and vector DBs</li>
           </ul>
-        </div>
-        <div class="service-card">
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Big Data</span>
+            <h3 class="service-name">Big Data Analytics</h3>
+            <p class="service-desc">Real-time telemetry, stream processing, and business intelligence dashboards that convert raw data streams into actionable operational foresight.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Streaming Pipelines:</strong> Apache Kafka, Flink, and AWS Kinesis integrations</li>
+            <li>• <strong>Executive Dashboards:</strong> Automated BI reporting, metrics alerts, and KPI tracking</li>
+            <li>• <strong>Data Science Ready:</strong> Clean feature stores and machine learning pipelines</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Warehousing</span>
+            <h3 class="service-name">Data Warehousing &amp; Migration</h3>
+            <p class="service-desc">Modern cloud lakehouse implementations and automated data migration pipelines from on-premises servers to cloud scale.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Modern Lakehouses:</strong> Snowflake, Google BigQuery, and AWS Redshift</li>
+            <li>• <strong>Automated ETL:</strong> dbt, Airflow, and serverless ingestion workflows</li>
+            <li>• <strong>Data Governance:</strong> Data lineage, masking, and compliance privacy controls</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+
+    <!-- 3. CYBER -->
+    <div id="cyber" class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">Cyber <span>/ Defense &amp; Assurance</span></h2>
+        <p class="category-desc">Cyber-defense strategies, comprehensive information assurance, vulnerability assessments, and Australian Essential Eight compliance.</p>
+      </div>
+      <section class="services-grid" aria-label="Cyber Services">
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Cyber-Defense</span>
+            <h3 class="service-name">Cyber-Defense Strategies</h3>
+            <p class="service-desc">Proactive defense-in-depth frameworks, Zero Trust network architectures, and Security Operations Center (SOC) operational blueprints.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Zero Trust Architecture:</strong> Strict identity verification and least-privilege access</li>
+            <li>• <strong>Threat Detection:</strong> SIEM/SOAR deployment, endpoint protection, and telemetry</li>
+            <li>• <strong>Incident Response:</strong> Playbook development, tabletop exercises, and response support</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Assurance</span>
+            <h3 class="service-name">Information Assurance</h3>
+            <p class="service-desc">Comprehensive compliance audits, regulatory alignments, and governance frameworks protecting sensitive corporate and citizen data.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Australian Frameworks:</strong> ACSC Essential Eight maturity &amp; IRAP readiness</li>
+            <li>• <strong>Global Standards:</strong> ISO 27001, SOC 2 Type II, and NIST alignment</li>
+            <li>• <strong>Data Privacy:</strong> Australian Privacy Principles (APPs) and GDPR compliance</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Assessments</span>
+            <h3 class="service-name">Vulnerability Assessments</h3>
+            <p class="service-desc">Continuous posture auditing, penetration testing, source code analysis, and prioritized remediation plans for cloud infrastructure.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Penetration Testing:</strong> Web applications, network perimeters, and APIs</li>
+            <li>• <strong>DevSecOps Scanning:</strong> Static &amp; dynamic security scanning in CI/CD pipelines</li>
+            <li>• <strong>Remediation Roadmaps:</strong> Clear engineering guidance to patch critical vectors</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+
+    <!-- 4. CLOUD -->
+    <div id="cloud" class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">Cloud <span>/ Strategy &amp; Migration</span></h2>
+        <p class="category-desc">End-to-end cloud adoption strategy, multi-cloud architecture, DevOps pipeline automation, and 24/7 platform system operations.</p>
+      </div>
+      <section class="services-grid" aria-label="Cloud Services">
+        <article class="service-card">
           <div>
             <span class="service-tag">Strategy</span>
-            <h3 class="service-name">IT Strategy &amp; Transformation</h3>
-            <p class="service-desc">Align technology with business goals through strategic planning.</p>
+            <h3 class="service-name">Cloud Strategy &amp; Migration</h3>
+            <p class="service-desc">Structured cloud readiness assessments, total-cost-of-ownership modeling, and phased migration pathways with zero business interruption.</p>
           </div>
           <ul class="service-features">
-            <li>• <strong>Digital Roadmap:</strong> Clear path for digital transformation</li>
-            <li>• <strong>Cloud Strategy:</strong> Cloud adoption and migration planning</li>
-            <li>• <strong>Tech Assessment:</strong> Current state architecture analysis</li>
+            <li>• <strong>Multi-Cloud:</strong> AWS, Microsoft Azure, Google Cloud Platform (GCP)</li>
+            <li>• <strong>Migration Execution:</strong> Lift-and-shift, re-platforming, and cloud-native refactoring</li>
+            <li>• <strong>FinOps:</strong> Cloud cost governance, reservation planning, and budget controls</li>
           </ul>
-        </div>
-        <div class="service-card">
+        </article>
+        <article class="service-card">
           <div>
-            <span class="service-tag">Digital Xform</span>
-            <h3 class="service-name">Digital Transformation</h3>
-            <p class="service-desc">Comprehensive digital transformation strategies for modern businesses.</p>
+            <span class="service-tag">Architecture</span>
+            <h3 class="service-name">Cloud Architecture</h3>
+            <p class="service-desc">Designing resilient, auto-scaling, and secure microservice architectures utilizing containers, service meshes, and serverless compute.</p>
           </div>
           <ul class="service-features">
-            <li>• <strong>Process Automation:</strong> Streamline operations with automation</li>
-            <li>• <strong>Customer Experience:</strong> Enhance digital customer journeys</li>
-            <li>• <strong>Innovation Labs:</strong> Explore emerging technologies</li>
+            <li>• <strong>Kubernetes &amp; Containers:</strong> EKS, AKS, GKE, Docker, and service mesh management</li>
+            <li>• <strong>Infrastructure as Code:</strong> Terraform, OpenTofu, AWS CDK, and Pulumi</li>
+            <li>• <strong>Disaster Recovery:</strong> Multi-region failover and automated backup testing</li>
           </ul>
-        </div>
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Platform Ops</span>
+            <h3 class="service-name">System Dev &amp; Operations</h3>
+            <p class="service-desc">DevOps pipeline engineering, continuous integration and delivery (CI/CD), observability, and proactive platform site reliability (SRE).</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Automated CI/CD:</strong> GitHub Actions, GitLab CI, and ArgoCD GitOps</li>
+            <li>• <strong>Observability:</strong> Prometheus, Grafana, Datadog, and OpenTelemetry tracing</li>
+            <li>• <strong>Reliability Engineering:</strong> 99.99% SLA uptime engineering and self-healing systems</li>
+          </ul>
+        </article>
       </section>
     </div>
 
-    <!-- 3. Data & Analytics -->
-    <div class="category-group seq seq-2">
+    <!-- 5. STAFFING -->
+    <div id="staffing" class="category-group seq seq-2">
       <div class="category-header">
-        <h2 class="category-title">Data &amp; Analytics <span>/ Analyze</span></h2>
-        <p class="category-desc">Data management, pipelines, predictive modeling, and business intelligence solutions.</p>
+        <h2 class="category-title">Staffing <span>/ Talent Solutions</span></h2>
+        <p class="category-desc">Professional technical staffing, staff augmentation, executive search, permanent placement, and outsourced recruiting models.</p>
       </div>
-      <section class="services-grid">
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Analytics</span>
-            <h3 class="service-name">Data Analytics</h3>
-            <p class="service-desc">Turn your data into actionable business insights.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>BI Solutions:</strong> Business intelligence dashboards</li>
-            <li>• <strong>Predictive Analytics:</strong> Forecast trends and patterns</li>
-            <li>• <strong>Data Visualization:</strong> Interactive data exploration</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Engineering</span>
-            <h3 class="service-name">Data Engineering</h3>
-            <p class="service-desc">Build robust data pipelines and infrastructure.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>ETL Pipelines:</strong> Efficient data processing</li>
-            <li>• <strong>Data Warehousing:</strong> Scalable storage solutions</li>
-            <li>• <strong>Real-time Processing:</strong> Streaming data solutions</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div>
-            <span class="service-tag">AI/ML</span>
-            <h3 class="service-name">AI/ML Solutions</h3>
-            <p class="service-desc">Leverage artificial intelligence and machine learning for business growth.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>Predictive Modeling:</strong> Forecast business outcomes</li>
-            <li>• <strong>Computer Vision:</strong> Image and video analysis</li>
-            <li>• <strong>NLP:</strong> Natural language processing</li>
-          </ul>
-        </div>
-      </section>
-    </div>
-
-    <!-- 4. Cybersecurity -->
-    <div class="category-group seq seq-2">
-      <div class="category-header">
-        <h2 class="category-title">Cybersecurity <span>/ Secure</span></h2>
-        <p class="category-desc">Comprehensive security evaluations, threat management, compliance audits, and training.</p>
-      </div>
-      <section class="services-grid">
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Audit</span>
-            <h3 class="service-name">Security Assessment</h3>
-            <p class="service-desc">Comprehensive security evaluation and recommendations.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>Vulnerability Scan:</strong> Identify security weaknesses</li>
-            <li>• <strong>Penetration Testing:</strong> Simulated cyber attacks</li>
-            <li>• <strong>Compliance Check:</strong> Ensure regulatory compliance</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Threat Mgmt</span>
-            <h3 class="service-name">Threat Management</h3>
-            <p class="service-desc">Proactive protection against evolving cyber threats.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>Threat Detection:</strong> Real-time monitoring for security breaches</li>
-            <li>• <strong>Incident Response:</strong> Rapid response to security incidents</li>
-            <li>• <strong>Vulnerability Management:</strong> Continuous assessment and remediation</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Training</span>
-            <h3 class="service-name">Security Training</h3>
-            <p class="service-desc">Comprehensive security awareness and training programs.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>Phishing Simulation:</strong> Test employee awareness</li>
-            <li>• <strong>Security Workshops:</strong> Hands-on training sessions</li>
-            <li>• <strong>Certification Prep:</strong> Prepare for security certifications</li>
-          </ul>
-        </div>
-      </section>
-    </div>
-
-    <!-- 5. Cloud Services -->
-    <div class="category-group seq seq-2">
-      <div class="category-header">
-        <h2 class="category-title">Cloud Services <span>/ Deploy</span></h2>
-        <p class="category-desc">Strategy, architecture, deployment pipelines, DevOps automation, and resource optimization.</p>
-      </div>
-      <section class="services-grid">
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Migration</span>
-            <h3 class="service-name">Cloud Migration</h3>
-            <p class="service-desc">Seamless migration to cloud infrastructure.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>Cloud Strategy:</strong> Migration planning</li>
-            <li>• <strong>Multi-Cloud:</strong> Hybrid cloud solutions</li>
-            <li>• <strong>Cost Optimization:</strong> Reduce cloud spending</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Devops</span>
-            <h3 class="service-name">DevOps Solutions</h3>
-            <p class="service-desc">Streamline development and operations with CI/CD.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>CI/CD Pipelines:</strong> Automated deployments</li>
-            <li>• <strong>Infrastructure as Code:</strong> Terraform &amp; CloudFormation</li>
-            <li>• <strong>Monitoring:</strong> Real-time system insights</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Optimization</span>
-            <h3 class="service-name">Cloud Optimization</h3>
-            <p class="service-desc">Maximize performance and minimize costs in the cloud.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>Cost Analysis:</strong> Identify savings opportunities</li>
-            <li>• <strong>Performance Tuning:</strong> Optimize cloud resources</li>
-            <li>• <strong>Right-Sizing:</strong> Match resources to workloads</li>
-          </ul>
-        </div>
-      </section>
-    </div>
-
-    <!-- 6. IT Staffing -->
-    <div class="category-group seq seq-2">
-      <div class="category-header">
-        <h2 class="category-title">IT Staffing <span>/ Source</span></h2>
-        <p class="category-desc">Premium talent pipelines, team augmentation, and executive searches for senior leadership.</p>
-      </div>
-      <section class="services-grid">
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Talent</span>
-            <h3 class="service-name">Technology Staffing</h3>
-            <p class="service-desc">Top-tier technology professionals for your team.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>Contract Staffing:</strong> Flexible hiring solutions</li>
-            <li>• <strong>Permanent Placement:</strong> Long-term hires</li>
-            <li>• <strong>Skill Assessment:</strong> Technical screening</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div>
-            <span class="service-tag">Executive</span>
-            <h3 class="service-name">Executive Search</h3>
-            <p class="service-desc">C-level and senior technology leadership recruitment.</p>
-          </div>
-          <ul class="service-features">
-            <li>• <strong>Leadership Hiring:</strong> C-level recruitment</li>
-            <li>• <strong>Industry Specialization:</strong> Tech sector expertise</li>
-            <li>• <strong>Retained Search:</strong> Focused recruitment</li>
-          </ul>
-        </div>
-        <div class="service-card">
+      <section class="services-grid" aria-label="Staffing Services">
+        <article class="service-card">
           <div>
             <span class="service-tag">Augmentation</span>
-            <h3 class="service-name">Team Augmentation</h3>
-            <p class="service-desc">Scale your team with skilled professionals on demand.</p>
+            <h3 class="service-name">Staff Augmentation</h3>
+            <p class="service-desc">Immediate deployment of senior engineers, DevOps leads, and cloud architects to accelerate delivery without internal overhead.</p>
           </div>
           <ul class="service-features">
-            <li>• <strong>Flexible Staffing:</strong> Scale up or down as needed</li>
-            <li>• <strong>Specialized Skills:</strong> Access to niche expertise</li>
-            <li>• <strong>Rapid Onboarding:</strong> Quickly integrate new team members</li>
+            <li>• <strong>Rapid Mobilization:</strong> Candidate shortlists and deployment within 48 hours</li>
+            <li>• <strong>Vetted Expertise:</strong> Deep technical evaluation by experienced engineering leads</li>
+            <li>• <strong>Flexible Contracts:</strong> Scale capacity up or down according to project velocity</li>
           </ul>
-        </div>
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Placement</span>
+            <h3 class="service-name">Permanent Placement</h3>
+            <p class="service-desc">Direct-hire recruitment of core technical leaders and engineers who align with your technological vision and organizational culture.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Culture Alignment:</strong> Evaluation of teamwork, problem-solving, and communication</li>
+            <li>• <strong>Leadership Roles:</strong> CTOs, VP Engineering, Lead Architects, and Engineering Managers</li>
+            <li>• <strong>Retention Guarantee:</strong> Thorough onboarding support to ensure long-term success</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">RPO</span>
+            <h3 class="service-name">Outsourced Recruiting</h3>
+            <p class="service-desc">End-to-end recruitment process outsourcing (RPO) and specialized project team staffing for rapid digital transformations.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Turnkey Squads:</strong> Complete cross-functional engineering teams ready to execute</li>
+            <li>• <strong>Pipeline Bench:</strong> Continuous pipeline of pre-screened technical candidates</li>
+            <li>• <strong>Global &amp; Local:</strong> Onshore Australian talent alongside offshore delivery hubs</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+
+    <!-- 6. CONSULTING -->
+    <div id="consulting" class="category-group seq seq-2">
+      <div class="category-header">
+        <h2 class="category-title">Consulting <span>/ Strategy &amp; Governance</span></h2>
+        <p class="category-desc">Program management services, program efficiency and quality benchmarking, IT strategy, and long-term enterprise architecture.</p>
+      </div>
+      <section class="services-grid" aria-label="Consulting Services">
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Programs</span>
+            <h3 class="service-name">Program Management</h3>
+            <p class="service-desc">Structured oversight and governance for high-stakes technology implementations, ensuring deliverables arrive on schedule and within budget.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Agile &amp; Waterfall:</strong> Scrum, SAFe, and hybrid delivery governance</li>
+            <li>• <strong>Risk Management:</strong> Early bottleneck detection, risk mitigation, and reporting</li>
+            <li>• <strong>Executive Alignment:</strong> Transparent stakeholder reporting and steering committee reviews</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Efficiency</span>
+            <h3 class="service-name">Program Quality &amp; Efficiency</h3>
+            <p class="service-desc">Auditing existing software delivery processes, identifying friction points, and implementing lean engineering methodologies.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>DORA Metrics:</strong> Measuring deployment frequency, lead time, and MTTR</li>
+            <li>• <strong>QA &amp; Test Automation:</strong> Continuous testing and automated regression suites</li>
+            <li>• <strong>Process Optimization:</strong> Eliminating waste and accelerating developer productivity</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <div>
+            <span class="service-tag">Transformation</span>
+            <h3 class="service-name">IT Strategy &amp; Enterprise Arch</h3>
+            <p class="service-desc">Multi-year technology modernization roadmaps aligning capital investments with strategic market opportunities.</p>
+          </div>
+          <ul class="service-features">
+            <li>• <strong>Enterprise Roadmaps:</strong> Current state evaluation to target operating model</li>
+            <li>• <strong>Vendor Selection:</strong> Objective RFP creation, technical scoring, and vendor management</li>
+            <li>• <strong>Value Realization:</strong> Continuous benchmarking against Triple Bottom Line KPIs</li>
+          </ul>
+        </article>
       </section>
     </div>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="index.html" class="logo-mark" style="margin-bottom: 20px;">
-          <span class="logo-word">Cloud <span class="focal">Focal</span></span>
-        </a>
-        <p class="footer-desc">Precision cloud infrastructure, application development, and premium technical staffing pipelines since 2002.</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo-mark" style="margin-bottom: 20px;" aria-label="Cloud Focal Home">
+            <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+          </a>
+          <p class="footer-desc">
+            Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Capabilities</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="careers.html">Staffing &amp; Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul>
+            <li><a href="services.html#apps">Apps &amp; COTS/GOTS</a></li>
+            <li><a href="services.html#data">Data &amp; Analytics</a></li>
+            <li><a href="services.html#cyber">Cyber Defense</a></li>
+            <li><a href="services.html#cloud">Cloud Strategy</a></li>
+            <li><a href="careers.html">Technical Staffing</a></li>
+            <li><a href="services.html#consulting">IT Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="contact.html">Melbourne HQ (Australia)</a></li>
+            <li><a href="contact.html">Start a Project</a></li>
+            <li><a href="careers.html#jobs">Submit Resume</a></li>
+            <li><a href="contact.html">General Inquiries</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="industries.html">Industries</a></li>
-          <li><a href="careers.html">Careers</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
+        <p>Results Matter // Comprehensive Capabilities.</p>
       </div>
-      <div class="footer-col">
-        <h4>Capabilities</h4>
-        <ul>
-          <li><a href="services.html">Cloud Architecture</a></li>
-          <li><a href="services.html">App Development</a></li>
-          <li><a href="services.html">COTS / GOTS</a></li>
-          <li><a href="services.html">Technical Staffing</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="contact.html">Start a Project</a></li>
-          <li><a href="contact.html">Submit Resume</a></li>
-          <li><a href="contact.html">General Inquiries</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Cloud Focal. All rights reserved.</p>
-      <p>Precision Engineering &amp; Strategic Talent.</p>
-    </div>
     </div>
   </footer>
 
+  <script>
+    if (document.documentElement.classList.contains('light-theme')) {
+      document.body.classList.add('light-theme');
+    }
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light-theme');
+      document.body.classList.toggle('light-theme', isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    // Spotlight Card mouse movement handler
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  </script>
 </body>
 </html>

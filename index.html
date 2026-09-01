@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cloud Focal — Precision Cloud Infrastructure &amp; Talent</title>
+<title>Cloud Focal — Bridging the Gap Between Strategy &amp; Execution</title>
+<meta name="description" content="Melbourne-based technology and staffing partner delivering cloud architecture, application development, data analytics, cyber defense, and enterprise IT transformation across Australia and globally.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============ DESIGN TOKENS ============ */
 :root{
+  color-scheme: dark light;
   --bg: #060812;
   --bg-elevated: #0d1120;
   --bg-panel: #10142a;
+  --bg-header: rgba(10,11,9,0.88);
   --line: #232a4a;
   --line-bright: #3d4778;
   --amber: #5B8DFF;
@@ -28,21 +31,64 @@
   --dur-1: 0.6s;
   --dur-2: 0.9s;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --glow-color: rgba(91, 141, 255, 0.15);
+}
+html.light-theme, body.light-theme {
+  --bg: #f3f4f8;
+  --bg-elevated: #e6e8f0;
+  --bg-panel: #dfe2ed;
+  --bg-header: rgba(243, 244, 248, 0.88);
+  --line: #cbd2e3;
+  --line-bright: #adb7d3;
+  --amber: #1a56db;
+  --amber-dim: #dbeafe;
+  --amber-glow: rgba(26, 86, 219, 0.12);
+  --green: #0284c7;
+  --green-dim: #e0f2fe;
+  --ink: #0b0d19;
+  --ink-dim: #4a5168;
+  --ink-faint: #8a93af;
+  --glow-color: rgba(26, 86, 219, 0.08);
 }
 *{ box-sizing: border-box; margin:0; padding:0; }
 html{ scroll-behavior: smooth; }
-body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; }
+body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease); }
 body::before{
   content:''; position: fixed; inset:0;
   background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 64px 64px; opacity: 0.35; pointer-events: none; z-index: 0;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+  transition: background-image var(--dur-1) var(--ease);
 }
-body::after{ content:''; position: fixed; inset:0; background: radial-gradient(ellipse 60% 40% at 78% 10%, var(--amber-glow), transparent 60%); pointer-events: none; z-index: 0; }
+body::after{ content:''; position: fixed; inset:0; background: radial-gradient(ellipse 60% 40% at 78% 10%, var(--amber-glow), transparent 60%); pointer-events: none; z-index: 0; transition: background var(--dur-1) var(--ease); }
 a{ color: inherit; text-decoration: none; }
 .wrap{ max-width: 1360px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
 .eyebrow{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
 .eyebrow::before{ content:''; width: 7px; height: 7px; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+/* ============ ACCESSIBILITY ============ */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: var(--amber);
+  color: #fff;
+  padding: 12px 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 100;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 20px;
+  outline: 3px solid #fff;
+}
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
 
 /* ============ ANIMATIONS ============ */
 @keyframes fadeUp{ from{ opacity:0; transform: translateY(22px); } to{ opacity:1; transform: translateY(0); } }
@@ -54,8 +100,8 @@ a{ color: inherit; text-decoration: none; }
 .seq-3{ animation-delay: 0.40s; }
 .seq-4{ animation-delay: 0.58s; }
 
-/* ============ NAV & FOOTER ============ */
-header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: rgba(10,11,9,0.82); backdrop-filter: blur(10px); }
+/* ============ NAV & HEADER ============ */
+header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: var(--bg-header); backdrop-filter: blur(10px); transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease); }
 .nav{ display:flex; align-items:center; justify-content:space-between; padding: 20px 40px; max-width: 1360px; margin: 0 auto; }
 .logo-mark{ display:flex; align-items:center; gap: 12px; }
 .logo-chip{ width: 38px; height: 38px; background: #fff; border-radius: 8px; display:flex; align-items:center; justify-content:center; padding: 5px; box-shadow: 0 0 0 1px var(--line-bright); }
@@ -68,56 +114,61 @@ header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px
 .nav-links a:hover::after{ width:100%; }
 .nav-links a.active{ color: var(--ink); }
 .nav-links a.active::after{ width:100%; }
+.nav-actions{ display: flex; align-items: center; gap: 16px; }
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--line-bright);
+  color: var(--ink);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  padding: 0;
+}
+.theme-toggle-btn:hover {
+  border-color: var(--amber);
+  background: var(--amber-glow);
+  color: var(--amber);
+}
+.theme-toggle-btn svg { display: none; }
+.light-theme .theme-toggle-btn .moon-icon { display: block; }
+html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 .nav-cta{ font-size: 12px; letter-spacing:0.08em; text-transform: uppercase; border: 1px solid var(--line-bright); padding: 9px 18px; color: var(--ink); transition: all 0.25s var(--ease); }
 .nav-cta:hover{ border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
-.nav-cta:hover::after{ width:100%; }
 
-/* ============ LAYOUT BLOCKS ============ */
-.hero{ min-height: 100vh; display:grid; grid-template-columns: 1fr; align-items: center; padding-top: 120px; padding-bottom: 60px; position: relative; }
-.hero-grid{ display:grid; grid-template-columns: 1fr; max-width: 880px; gap: 40px; align-items: center; }
-.hero-head{ font-family: var(--serif); font-weight: 500; font-size: clamp(46px, 6.2vw, 96px); line-height: 0.98; letter-spacing: -0.01em; color: var(--ink); }
-.hero-head em{ font-style: italic; font-weight: 400; color: var(--amber); }
-.hero-sub{ font-family: var(--mono); font-size: 15px; line-height: 1.8; color: var(--ink-dim); max-width: 70ch; margin-top: 28px; border-left: 2px solid var(--amber-dim); padding-left: 18px; }
+/* ============ HERO SECTION ============ */
+.hero{ min-height: 90vh; display:grid; grid-template-columns: 1fr; align-items: center; padding-top: 130px; padding-bottom: 60px; position: relative; }
+.hero-grid{ display:grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; }
+.hero-head{ font-family: var(--serif); font-weight: 500; font-size: clamp(42px, 5.8vw, 86px); line-height: 1.02; letter-spacing: -0.01em; color: var(--ink); }
+.hero-head em{ font-style: italic; font-weight: 400; color: var(--amber); display: inline-block; min-width: 6.2em; text-align: left; position: relative; vertical-align: bottom; }
+.hero-head em::after {
+  content: '|';
+  color: var(--amber);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  font-style: normal;
+  font-weight: 300;
+}
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+.hero-sub{ font-family: var(--mono); font-size: 15px; line-height: 1.8; color: var(--ink-dim); max-width: 72ch; margin-top: 28px; border-left: 2px solid var(--amber-dim); padding-left: 18px; }
 .hero-actions{ display:flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
-.btn-primary{ font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; background: var(--amber); color: var(--bg); padding: 15px 28px; font-weight: 600; transition: all 0.3s var(--ease); display: inline-block; }
+.btn-primary{ font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; background: var(--amber); color: #fff; padding: 15px 28px; font-weight: 600; transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 10px; border-radius: 2px; }
 .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(91,141,255,0.4); }
-.btn-ghost{ font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--line-bright); padding: 15px 28px; color: var(--ink); display:inline-flex; align-items:center; gap:10px; transition: all 0.3s var(--ease); }
+.btn-ghost{ font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--line-bright); padding: 15px 28px; color: var(--ink); display:inline-flex; align-items:center; gap:10px; transition: all 0.3s var(--ease); border-radius: 2px; }
 .btn-ghost:hover{ border-color: var(--green); color: var(--green); }
 .aperture-stage{ display:flex; flex-direction: column; align-items:center; justify-content:center; }
 .aperture { width: min(340px, 90%); aspect-ratio: 1; animation: irisIn 1.1s var(--ease) 0.3s both; }
 .aperture circle, .aperture path, .aperture line { stroke-dasharray: var(--len, 400); stroke-dashoffset: var(--len, 400); animation: drawLine 1.4s var(--ease) 0.5s forwards; }
 .aperture-readout{ font-family: var(--mono); font-size: 10.5px; color: var(--green); letter-spacing: 0.15em; text-align: center; margin-top: 18px; }
 
-/* ============ WHY CHOOSE GRID ============ */
-.why-section{ padding: 80px 0; border-top: 1px solid var(--line); margin-top: 40px; }
-.why-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
-.why-card{ background: var(--bg-panel); padding: 48px 38px; display: flex; flex-direction: column; transition: background 0.3s var(--ease); }
-.why-card:hover{ background: var(--bg-elevated); }
-.why-card-icon{ font-size: 32px; margin-bottom: 20px; display: block; }
-.why-card-title{ font-family: var(--serif); font-size: 24px; font-weight: 500; margin-bottom: 14px; color: var(--ink); }
-.why-card-desc{ font-family: var(--mono); font-size: 13.5px; line-height: 1.8; color: var(--ink-dim); }
-
-/* ============ TRUST GRID ============ */
-.trust-section{ padding: 80px 0; border-top: 1px solid var(--line); margin-top: 40px; }
-.trust-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
-.trust-item{ background: var(--bg-panel); padding: 36px 28px; position: relative; transition: background 0.3s var(--ease); }
-.trust-item:hover{ background: var(--bg-elevated); }
-.trust-badge{ display: inline-block; font-size: 9px; letter-spacing: 0.1em; color: var(--green); margin-bottom: 16px; font-family: var(--mono); }
-.trust-title{ font-family: var(--mono); font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
-.trust-desc{ font-family: var(--mono); font-size: 12px; line-height: 1.8; color: var(--ink-dim); }
-
-/* ============ FOOTER ============ */
-footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 100px; }
-.footer-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
-.footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
-.footer-col ul{ list-style: none; }
-.footer-col ul li{ margin-bottom: 12px; }
-.footer-col ul li a{ font-size: 12px; color: var(--ink-dim); transition: color 0.25s var(--ease); }
-.footer-col ul li a:hover{ color: var(--ink); }
-.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 280px; margin-top: 20px; }
-.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); }
-
-/* ============ TICKER STRIP ============ */
+/* ============ MARQUEE TICKER ============ */
 .ticker-strip {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -132,7 +183,7 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 100px; }
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 35s linear infinite;
   will-change: transform;
   gap: 32px;
   align-items: center;
@@ -171,28 +222,122 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 100px; }
   .ticker-track { animation: none; }
 }
 
+/* ============ 6 CORE CAPABILITIES (SOURCE CLOUD ALIGNED) ============ */
+.capabilities-section{ padding: 100px 0 60px; }
+.capabilities-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
+.cap-card{ background: var(--bg-panel); padding: 44px 34px; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.3s var(--ease); position: relative; overflow: hidden; }
+.cap-card:hover{ background: var(--bg-elevated); }
+.cap-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--glow-color), transparent 80%);
+}
+.cap-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--amber), var(--green) 50%, transparent 80%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+.cap-card:hover::before, .cap-card:hover::after { opacity: 1; }
+.cap-badge{ font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; color: var(--green); text-transform: uppercase; margin-bottom: 20px; display: inline-block; position: relative; z-index: 3; }
+.cap-icon{ width: 36px; height: 36px; color: var(--amber); margin-bottom: 20px; position: relative; z-index: 3; }
+.cap-title{ font-family: var(--serif); font-size: 26px; font-weight: 500; margin-bottom: 12px; color: var(--ink); position: relative; z-index: 3; }
+.cap-desc{ font-family: var(--mono); font-size: 13px; line-height: 1.8; color: var(--ink-dim); margin-bottom: 24px; position: relative; z-index: 3; }
+.cap-list{ list-style: none; border-top: 1px solid var(--line); padding-top: 18px; margin-bottom: 24px; position: relative; z-index: 3; }
+.cap-list li{ font-size: 12px; color: var(--ink-dim); margin-bottom: 8px; line-height: 1.5; }
+.cap-list li strong{ color: var(--ink); }
+.cap-link{ font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; position: relative; z-index: 3; transition: gap 0.25s var(--ease); }
+.cap-link:hover{ gap: 10px; }
+
+/* ============ PHILOSOPHY & MISSION ============ */
+.mission-section{ padding: 100px 0; border-top: 1px solid var(--line); }
+.mission-grid{ display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+.mission-quote{ font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); line-height: 1.25; font-weight: 400; color: var(--ink); margin-bottom: 24px; }
+.mission-quote span{ color: var(--amber); }
+.mission-text{ font-size: 14px; line-height: 1.9; color: var(--ink-dim); margin-bottom: 20px; }
+.triple-cards{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+.triple-card{ background: var(--bg-panel); border: 1px solid var(--line); padding: 24px 20px; border-radius: 6px; }
+.triple-num{ font-family: var(--mono); font-size: 10px; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+.triple-title{ font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+.triple-desc{ font-size: 11.5px; color: var(--ink-dim); line-height: 1.6; }
+
+/* ============ STAFFING FUNNEL CALLOUT ============ */
+.staffing-banner{ border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--bg-elevated), var(--bg)); padding: 90px 0; }
+.staffing-grid{ display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: center; }
+.staffing-cta-box{ background: var(--bg-panel); border: 1px solid var(--line-bright); padding: 40px; border-radius: 8px; display: flex; flex-direction: column; gap: 20px; }
+
+/* ============ TRUST GRID ============ */
+.trust-section{ padding: 90px 0; border-top: 1px solid var(--line); }
+.trust-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
+.trust-item{ background: var(--bg-panel); padding: 36px 28px; position: relative; transition: background 0.3s var(--ease); }
+.trust-item:hover{ background: var(--bg-elevated); }
+.trust-badge{ display: inline-block; font-size: 9px; letter-spacing: 0.1em; color: var(--green); margin-bottom: 16px; font-family: var(--mono); }
+.trust-title{ font-family: var(--mono); font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 10px; }
+.trust-desc{ font-family: var(--mono); font-size: 12px; line-height: 1.8; color: var(--ink-dim); }
+
+/* ============ FOOTER ============ */
+footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
+.footer-grid{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
+.footer-col ul{ list-style: none; }
+.footer-col ul li{ margin-bottom: 12px; }
+.footer-col ul li a{ font-size: 12px; color: var(--ink-dim); transition: color 0.25s var(--ease); }
+.footer-col ul li a:hover{ color: var(--ink); }
+.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 320px; margin-top: 20px; }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); flex-wrap: wrap; gap: 12px; }
+
 /* ============ MOBILE RESPONSIVENESS ============ */
+@media (max-width: 1080px){
+  .capabilities-grid{ grid-template-columns: repeat(2, 1fr); }
+  .triple-cards{ grid-template-columns: 1fr; }
+  .mission-grid, .staffing-grid{ grid-template-columns: 1fr; gap: 40px; }
+}
 @media (max-width: 980px){ 
   .nav-links{ display:none; } 
-  .hero-grid{ grid-template-columns: 1fr; gap: 60px; text-align: center; } 
+  .hero-grid{ grid-template-columns: 1fr; gap: 50px; text-align: center; } 
   .hero-sub{ margin: 28px auto 0; text-align: left; }
   .hero-actions{ justify-content: center; }
-  .why-grid{ grid-template-columns: 1fr; }
   .trust-grid{ grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; } 
 }
-@media (max-width: 480px){
+@media (max-width: 640px){
+  .capabilities-grid{ grid-template-columns: 1fr; }
   .trust-grid{ grid-template-columns: 1fr; }
+  .wrap{ padding: 0 20px; }
 }
 </style>
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  })();
+</script>
 </head>
 <body>
 
-  <header>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
     <div class="nav">
-      <a href="index.html" class="logo-mark" id="nav-logo">
-        <div class="logo-chip">
-          <!-- Focal Aperture Minimal SVG -->
+      <a href="index.html" class="logo-mark" id="nav-logo" aria-label="Cloud Focal Home">
+        <div class="logo-chip" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#060812" stroke-width="2">
             <circle cx="12" cy="12" r="9" />
             <path d="M12 3 L12 21 M3 12 L21 12" />
@@ -202,169 +347,463 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 100px; }
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="about.html">About</a>
-        <a href="services.html">Services</a>
+        <a href="services.html">Capabilities</a>
         <a href="industries.html">Industries</a>
-        <a href="careers.html">Careers</a>
+        <a href="careers.html">Staffing &amp; Careers</a>
         <a href="contact.html">Contact</a>
       </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="contact.html" class="nav-cta">Start a Project</a>
+      </div>
     </div>
   </header>
 
-  <main id="main-content">
-    <section class="hero wrap">
+  <main id="main-content" tabindex="-1">
+    <!-- Hero Section -->
+    <section class="hero wrap" aria-labelledby="hero-heading">
       <div class="hero-grid">
         <div class="seq seq-1">
-          <div class="eyebrow" style="margin-bottom: 24px;">Cloud Consulting &amp; Technical Staffing — Est. 2002</div>
-          <h1 class="hero-head">Infrastructure built for one thing: <em>focus.</em></h1>
-          <p class="hero-sub">Cloud Focal delivers comprehensive technology solutions that accelerate your digital transformation. From talent acquisition to system integration, we're your strategic partner for success.</p>
+          <div class="eyebrow" style="margin-bottom: 24px;">Bridging the Gap Between Strategy &amp; Execution</div>
+          <h1 id="hero-heading" class="hero-head">Results <em>Matter.</em></h1>
+          <p class="hero-sub">
+            At Cloud Focal, we are committed to helping our clients realize their vision. Whether a specialized technical staffing assignment or an enterprise IT transformation, our goal is the same: your success. Headquartered in Melbourne, Australia with global service delivery.
+          </p>
           <div class="hero-actions seq seq-2">
-            <a href="contact.html" class="btn-primary">Get Started Today</a>
-            <a href="services.html" class="btn-ghost">
-              Explore Services
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="contact.html" class="btn-primary">
+              Consult Our Team
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
+            <a href="services.html" class="btn-ghost">
+              Explore Capabilities
+            </a>
+          </div>
+        </div>
+        <div class="aperture-stage seq seq-3" aria-hidden="true">
+          <svg class="aperture" viewBox="0 0 200 200">
+            <line x1="20" y1="100" x2="180" y2="100" stroke="var(--line)" stroke-width="0.5" style="--len: 160;" />
+            <line x1="100" y1="20" x2="100" y2="180" stroke="var(--line)" stroke-width="0.5" style="--len: 160;" />
+            <circle cx="100" cy="100" r="75" stroke="var(--line-bright)" stroke-width="1" fill="none" style="--len: 472;" />
+            <circle cx="100" cy="100" r="55" stroke="var(--amber)" stroke-width="1.5" fill="none" stroke-dasharray="10, 6" style="--len: 346;" />
+            <path d="M 60 60 L 140 60 L 140 140 L 60 140 Z" stroke="var(--green)" stroke-width="1" fill="none" stroke-dasharray="4, 4" style="--len: 320;" />
+            <circle cx="100" cy="100" r="6" fill="var(--amber)" style="--len: 38;" />
+            <circle cx="100" cy="100" r="18" stroke="var(--green)" stroke-width="0.5" style="--len: 113;" />
+          </svg>
+          <div class="aperture-readout">HQ // MELBOURNE (VIC) // 37.8136° S, 144.9631° E</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Infinite Marquee Ticker -->
+    <div class="ticker-strip" aria-label="Key Service Highlights">
+      <div class="ticker-track">
+        <span class="ticker-item">SYS_CAP_01 // APPS &amp; COTS/GOTS INTEGRATION</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_02 // DATABASE &amp; BIG DATA ANALYTICS</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_03 // CYBER DEFENSE &amp; INFO ASSURANCE</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_04 // CLOUD MIGRATION &amp; ARCHITECTURE</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_05 // PROFESSIONAL TECHNICAL STAFFING</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_06 // IT STRATEGY &amp; PROGRAM CONSULTING</span>
+        <span class="ticker-separator">//</span>
+        <!-- Duplicated for loop -->
+        <span class="ticker-item">SYS_CAP_01 // APPS &amp; COTS/GOTS INTEGRATION</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_02 // DATABASE &amp; BIG DATA ANALYTICS</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_03 // CYBER DEFENSE &amp; INFO ASSURANCE</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_04 // CLOUD MIGRATION &amp; ARCHITECTURE</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_05 // PROFESSIONAL TECHNICAL STAFFING</span>
+        <span class="ticker-separator">//</span>
+        <span class="ticker-item">SYS_CAP_06 // IT STRATEGY &amp; PROGRAM CONSULTING</span>
+        <span class="ticker-separator">//</span>
+      </div>
+    </div>
+
+    <!-- 6 Technical Capabilities (Source Cloud Pillars) -->
+    <section class="capabilities-section wrap seq seq-4" aria-labelledby="capabilities-heading">
+      <div class="eyebrow" style="margin-bottom: 20px;">Technical Offerings</div>
+      <h2 id="capabilities-heading" style="font-family: var(--serif); font-size: clamp(32px, 4.5vw, 54px); font-weight: 500; margin-bottom: 16px;">Our Technical Capabilities</h2>
+      <p style="color: var(--ink-dim); max-width: 70ch; line-height: 1.8; margin-bottom: 40px;">
+        Cloud Focal combines technology engineering and staffing expertise to serve clients addressing complex operational issues across both private enterprise and the public sector in Australia and worldwide.
+      </p>
+
+      <div class="capabilities-grid">
+        <!-- 1. APPS -->
+        <article class="cap-card">
+          <div>
+            <span class="cap-badge">CAPABILITY_01 // DEVELOPMENT</span>
+            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h3 class="cap-title">Apps</h3>
+            <p class="cap-desc">Robust web, mobile, and custom platform solutions engineered for scalable performance and seamless user experiences.</p>
+            <ul class="cap-list">
+              <li>• <strong>Web &amp; Mobile:</strong> Full-stack iOS, Android, and responsive web systems</li>
+              <li>• <strong>COTS / GOTS:</strong> Commercial and government off-the-shelf integration</li>
+              <li>• <strong>Content Management:</strong> Enterprise content workflows and portals</li>
+            </ul>
+          </div>
+          <a href="services.html#apps" class="cap-link">Explore Apps <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <!-- 2. DATA -->
+        <article class="cap-card">
+          <div>
+            <span class="cap-badge">CAPABILITY_02 // INTELLIGENCE</span>
+            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+            <h3 class="cap-title">Data</h3>
+            <p class="cap-desc">End-to-end data architectures that turn high-velocity data into actionable business intelligence and automated pipelines.</p>
+            <ul class="cap-list">
+              <li>• <strong>Database Architecture:</strong> High-availability SQL, NoSQL, and vector stores</li>
+              <li>• <strong>Big Data Analytics:</strong> Real-time streaming, predictive metrics, and reporting</li>
+              <li>• <strong>Data Warehousing:</strong> Cloud lakehouses, ETL automation, and migration</li>
+            </ul>
+          </div>
+          <a href="services.html#data" class="cap-link">Explore Data <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <!-- 3. CYBER -->
+        <article class="cap-card">
+          <div>
+            <span class="cap-badge">CAPABILITY_03 // SECURITY</span>
+            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <h3 class="cap-title">Cyber</h3>
+            <p class="cap-desc">Proactive cyber defense and rigorous information assurance protecting mission-critical digital assets and compliance postures.</p>
+            <ul class="cap-list">
+              <li>• <strong>Cyber-Defense Strategies:</strong> Threat hunting, Zero Trust, and SOC ops</li>
+              <li>• <strong>Information Assurance:</strong> Essential Eight, ISO 27001, and IRAP compliance</li>
+              <li>• <strong>Vulnerability Assessments:</strong> Continuous audit, penetration, and remediation</li>
+            </ul>
+          </div>
+          <a href="services.html#cyber" class="cap-link">Explore Cyber <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <!-- 4. CLOUD -->
+        <article class="cap-card">
+          <div>
+            <span class="cap-badge">CAPABILITY_04 // INFRASTRUCTURE</span>
+            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+            <h3 class="cap-title">Cloud</h3>
+            <p class="cap-desc">Holistic cloud adoption, multi-region architecture, and continuous platform operations designed for resilience and cost efficiency.</p>
+            <ul class="cap-list">
+              <li>• <strong>Strategy &amp; Migration:</strong> Seamless workload transitions across AWS, Azure, GCP</li>
+              <li>• <strong>Cloud Architecture:</strong> Serverless, containerized (Kubernetes), and hybrid setups</li>
+              <li>• <strong>System Operations:</strong> Automated CI/CD, 24/7 reliability, and FinOps</li>
+            </ul>
+          </div>
+          <a href="services.html#cloud" class="cap-link">Explore Cloud <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <!-- 5. STAFFING -->
+        <article class="cap-card">
+          <div>
+            <span class="cap-badge">CAPABILITY_05 // TALENT PIPELINE</span>
+            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <h3 class="cap-title">Staffing</h3>
+            <p class="cap-desc">Specialized technical recruiting model finding and retaining high-calibre engineering and consulting professionals.</p>
+            <ul class="cap-list">
+              <li>• <strong>Staff Augmentation:</strong> Immediate technical headcount for active projects</li>
+              <li>• <strong>Permanent Placement:</strong> Vetted executive and engineering hires</li>
+              <li>• <strong>Outsourced Recruiting:</strong> Dedicated project staffing and talent funnels</li>
+            </ul>
+          </div>
+          <a href="careers.html" class="cap-link">Explore Staffing <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <!-- 6. CONSULTING -->
+        <article class="cap-card">
+          <div>
+            <span class="cap-badge">CAPABILITY_06 // TRANSFORMATION</span>
+            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <h3 class="cap-title">Consulting</h3>
+            <p class="cap-desc">Strategic executive advisory and program management that elevates delivery quality and aligns technology investments with outcomes.</p>
+            <ul class="cap-list">
+              <li>• <strong>Program Management:</strong> Rigorous execution, risk controls, and governance</li>
+              <li>• <strong>Program Quality:</strong> Performance benchmarking and optimization</li>
+              <li>• <strong>Enterprise Architecture:</strong> Long-term IT strategy and modernization roadmaps</li>
+            </ul>
+          </div>
+          <a href="services.html#consulting" class="cap-link">Explore Consulting <span aria-hidden="true">&rarr;</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Mission & Triple Bottom Line Section -->
+    <section class="mission-section wrap" aria-labelledby="mission-heading">
+      <div class="mission-grid">
+        <div>
+          <div class="eyebrow" style="margin-bottom: 20px;">Corporate Philosophy</div>
+          <h2 id="mission-heading" class="mission-quote">
+            "The highest form of capitalism is the private sector advancing <span>public interests, profitably.</span>"
+          </h2>
+          <p class="mission-text">
+            Cloud Focal is a mission-driven company whose pursuit of meaningful solutions differentiates us from generic capability-oriented firms. By applying tenets of the <strong>Triple Bottom Line</strong> philosophy (consciously considering profit, people, and planet), we examine every engagement to drive measurable value and positive societal impact.
+          </p>
+          <p class="mission-text">
+            Our purpose within this mission is simple: to bridge the gap between strategy and execution for clients in markets that demand excellence and deliver sustainable competitive advantage.
+          </p>
+          <a href="about.html" class="btn-ghost" style="margin-top: 16px;">Read Our Full Story</a>
+        </div>
+        <div>
+          <div class="triple-cards">
+            <div class="triple-card">
+              <div class="triple-num">PILLAR // 01</div>
+              <h3 class="triple-title">Profit with Purpose</h3>
+              <p class="triple-desc">Delivering tangible ROI, cost reductions, and technical leverage that build enduring enterprise valuation.</p>
+            </div>
+            <div class="triple-card">
+              <div class="triple-num">PILLAR // 02</div>
+              <h3 class="triple-title">People First</h3>
+              <p class="triple-desc">Practicing servant leadership towards our employees, clients, and community as dedicated "Go-Givers".</p>
+            </div>
+            <div class="triple-card">
+              <div class="triple-num">PILLAR // 03</div>
+              <h3 class="triple-title">Sustainable Future</h3>
+              <p class="triple-desc">Prioritizing efficient, green cloud architectures and responsible ethical governance in all systems we build.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Infinite Horizontal Marquee -->
-    <div class="ticker-strip">
-      <div class="ticker-track">
-        <span class="ticker-item">SYS_VAL_01 // CLOUD ARCHITECTURE</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_02 // SYSTEM INTEGRATION</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_03 // DEVSECOPS PIPELINES</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_04 // PREMIUM STAFFING</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_05 // APPLICATION DEVELOPMENT</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_06 // AGILE DELIVERY</span>
-        <span class="ticker-separator">//</span>
-        <!-- Duplicated for seamless loop -->
-        <span class="ticker-item">SYS_VAL_01 // CLOUD ARCHITECTURE</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_02 // SYSTEM INTEGRATION</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_03 // DEVSECOPS PIPELINES</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_04 // PREMIUM STAFFING</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_05 // APPLICATION DEVELOPMENT</span>
-        <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_VAL_06 // AGILE DELIVERY</span>
-        <span class="ticker-separator">//</span>
-      </div>
-    </div>
-
-    <!-- Why Choose Cloud Focal Section -->
-    <section class="why-section wrap seq seq-4">
-      <div class="eyebrow" style="margin-bottom: 24px;">Value Proposition</div>
-      <h2 style="font-family: var(--serif); font-size: clamp(32px, 4.5vw, 54px); font-weight: 500; margin-bottom: 20px;">Why Choose Cloud Focal?</h2>
-      <p style="color: var(--ink-dim); max-width: 60ch; line-height: 1.8; margin-bottom: 40px;">We don't just provide services – we deliver transformative results that drive your business forward.</p>
-      
-      <div class="why-grid">
-        <div class="why-card">
-          <span class="why-card-icon">⚡</span>
-          <h3 class="why-card-title">Accelerated Results</h3>
-          <p class="why-card-desc">Get faster time-to-market with our proven methodologies and experienced teams. We deliver results 40% faster than industry average.</p>
+    <!-- Professional Staffing Callout (Find a Job / Hire Talent) -->
+    <section class="staffing-banner wrap" aria-labelledby="staffing-heading">
+      <div class="staffing-grid">
+        <div>
+          <div class="eyebrow" style="margin-bottom: 20px;">Talent Acquisition Engine</div>
+          <h2 id="staffing-heading" style="font-family: var(--serif); font-size: clamp(32px, 4vw, 50px); font-weight: 500; margin-bottom: 20px;">
+            Professional Staffing Solutions
+          </h2>
+          <p style="color: var(--ink-dim); line-height: 1.8; font-size: 14.5px; margin-bottom: 20px;">
+            Our dedicated staffing team recruits for immediate headcount increases and replacements as well as creating a dynamic funnel and bench of vetted candidates. We have developed a proven model for finding and keeping exceptional technology talent across Australia and global hubs.
+          </p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="careers.html#jobs" class="btn-primary">Find a Job</a>
+            <a href="contact.html?type=hire" class="btn-ghost">Hire Talent</a>
+          </div>
         </div>
-        <div class="why-card">
-          <span class="why-card-icon">🏆</span>
-          <h3 class="why-card-title">Proven Expertise</h3>
-          <p class="why-card-desc">15+ years of experience across industries with 500+ successful projects and 95% client satisfaction rate.</p>
-        </div>
-        <div class="why-card">
-          <span class="why-card-icon">🤝</span>
-          <h3 class="why-card-title">Dedicated Partnership</h3>
-          <p class="why-card-desc">We become an extension of your team, working closely to understand your unique challenges and deliver tailored solutions.</p>
-        </div>
-        <div class="why-card">
-          <span class="why-card-icon">💰</span>
-          <h3 class="why-card-title">Cost Optimization</h3>
-          <p class="why-card-desc">Reduce operational costs by up to 30% while improving efficiency and quality through our optimized processes.</p>
+        <div class="staffing-cta-box">
+          <div style="font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase;">STAFFING_METRICS</div>
+          <div style="font-size: 20px; font-family: var(--serif); color: var(--ink);">Rapid Deployment &amp; High Retention</div>
+          <p style="font-size: 12.5px; line-height: 1.7; color: var(--ink-dim);">
+            Average placement turnaround of under 48 hours for core engineering, DevOps, cloud architect, and cyber defense roles.
+          </p>
+          <div style="border-top: 1px solid var(--line); padding-top: 16px; display: flex; justify-content: space-between; font-size: 12px;">
+            <span>Placement Success Rate:</span>
+            <strong style="color: var(--amber);">98.4%</strong>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Trusted by Industry Leaders Section -->
-    <section class="trust-section wrap seq seq-4">
+    <!-- Market Validation / Trust Badges -->
+    <section class="trust-section wrap seq seq-4" aria-labelledby="trust-heading">
       <div class="eyebrow" style="margin-bottom: 24px;">Market Validation</div>
-      <h2 style="font-family: var(--serif); font-size: clamp(32px, 4.5vw, 54px); font-weight: 500; margin-bottom: 20px;">Trusted by Industry Leaders</h2>
-      <p style="color: var(--ink-dim); max-width: 60ch; line-height: 1.8; margin-bottom: 40px;">Our track record speaks for itself. See how we've helped organizations across industries achieve remarkable results.</p>
+      <h2 id="trust-heading" style="font-family: var(--serif); font-size: clamp(32px, 4.5vw, 54px); font-weight: 500; margin-bottom: 20px;">Trusted by Industry Leaders</h2>
+      <p style="color: var(--ink-dim); max-width: 60ch; line-height: 1.8; margin-bottom: 40px;">Our track record speaks for itself. See how we've helped organizations across Australia and internationally achieve remarkable results.</p>
       
       <div class="trust-grid">
         <div class="trust-item">
           <span class="trust-badge">SYS_VAL_01 // STAFFING</span>
-          <h3 class="trust-title">🏆 Award Winner</h3>
-          <p class="trust-desc">Best Technology Staffing 2024</p>
+          <h3 class="trust-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+            </svg>
+            Industry Winner
+          </h3>
+          <p class="trust-desc">Premier Technology Staffing Partner</p>
         </div>
         <div class="trust-item">
           <span class="trust-badge">SYS_VAL_02 // QUALITY</span>
-          <h3 class="trust-title">⭐ 5-Star Rated</h3>
-          <p class="trust-desc">Client Satisfaction Excellence</p>
+          <h3 class="trust-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            5-Star Rating
+          </h3>
+          <p class="trust-desc">Client Satisfaction &amp; Delivery Excellence</p>
         </div>
         <div class="trust-item">
           <span class="trust-badge">SYS_VAL_03 // SECURITY</span>
-          <h3 class="trust-title">🔒 ISO Certified</h3>
-          <p class="trust-desc">Quality Management System</p>
+          <h3 class="trust-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            Security Aligned
+          </h3>
+          <p class="trust-desc">Essential Eight &amp; ISO 27001 Standards</p>
         </div>
         <div class="trust-item">
           <span class="trust-badge">SYS_VAL_04 // CAPACITY</span>
-          <h3 class="trust-title">🌐 Global Reach</h3>
-          <p class="trust-desc">Serving 25+ Countries</p>
+          <h3 class="trust-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1-4-10z"></path>
+            </svg>
+            Global Reach
+          </h3>
+          <p class="trust-desc">Melbourne HQ // APAC, US &amp; EMEA Support</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="index.html" class="logo-mark" style="margin-bottom: 20px;">
-          <span class="logo-word">Cloud <span class="focal">Focal</span></span>
-        </a>
-        <p class="footer-desc">Precision cloud infrastructure, application development, and premium technical staffing pipelines since 2002.</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo-mark" style="margin-bottom: 20px;" aria-label="Cloud Focal Home">
+            <span class="logo-word">Cloud <span class="focal">Focal</span></span>
+          </a>
+          <p class="footer-desc">
+            Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Capabilities</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="careers.html">Staffing &amp; Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul>
+            <li><a href="services.html#apps">Apps &amp; COTS/GOTS</a></li>
+            <li><a href="services.html#data">Data &amp; Analytics</a></li>
+            <li><a href="services.html#cyber">Cyber Defense</a></li>
+            <li><a href="services.html#cloud">Cloud Strategy</a></li>
+            <li><a href="careers.html">Technical Staffing</a></li>
+            <li><a href="services.html#consulting">IT Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="contact.html">Melbourne HQ (Australia)</a></li>
+            <li><a href="contact.html">Start a Project</a></li>
+            <li><a href="careers.html#jobs">Submit Resume</a></li>
+            <li><a href="contact.html">General Inquiries</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="industries.html">Industries</a></li>
-          <li><a href="careers.html">Careers</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
+        <p>Results Matter // Bridging Strategy and Execution.</p>
       </div>
-      <div class="footer-col">
-        <h4>Capabilities</h4>
-        <ul>
-          <li><a href="services.html">Cloud Architecture</a></li>
-          <li><a href="services.html">App Development</a></li>
-          <li><a href="services.html">COTS / GOTS</a></li>
-          <li><a href="services.html">Technical Staffing</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="contact.html">Start a Project</a></li>
-          <li><a href="contact.html">Submit Resume</a></li>
-          <li><a href="contact.html">General Inquiries</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Cloud Focal. All rights reserved.</p>
-      <p>Precision Engineering &amp; Strategic Talent.</p>
-    </div>
     </div>
   </footer>
 
+  <script>
+    if (document.documentElement.classList.contains('light-theme')) {
+      document.body.classList.add('light-theme');
+    }
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light-theme');
+      document.body.classList.toggle('light-theme', isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    // Spotlight Card mouse movement handler
+    const cards = document.querySelectorAll('.cap-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // Typewriter effect handler for hero head em
+    document.addEventListener('DOMContentLoaded', () => {
+      const typewriterEl = document.querySelector('.hero-head em');
+      if (!typewriterEl) return;
+      
+      const words = ["Matter.", "Execute.", "Transform.", "Succeed."];
+      let wordIndex = 0;
+      let charIndex = words[0].length;
+      let isDeleting = false;
+      let timeoutId = null;
+      
+      function type() {
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+          charIndex--;
+        } else {
+          charIndex++;
+        }
+        
+        typewriterEl.textContent = currentWord.substring(0, charIndex);
+        
+        let typeSpeed = isDeleting ? 75 : 150;
+        
+        if (!isDeleting && charIndex === currentWord.length) {
+          typeSpeed = 2200; // Hold word
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          typeSpeed = 500; // Transition pause
+        }
+        
+        timeoutId = setTimeout(type, typeSpeed);
+      }
+      
+      timeoutId = setTimeout(type, 1800);
+    });
+  </script>
 </body>
 </html>

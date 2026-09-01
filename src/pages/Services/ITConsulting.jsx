@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { Rocket, Cloud, Shield, BarChart3, DollarSign, Zap, Trophy } from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 
 const ITConsulting = () => {
@@ -8,25 +9,25 @@ const ITConsulting = () => {
     {
       title: "Digital Transformation",
       description: "Guide your organization through complete digital transformation initiatives",
-      icon: "🚀",
+      icon: Rocket,
       features: ["Technology Assessment", "Change Management", "Process Optimization", "ROI Analysis"]
     },
     {
       title: "Cloud Strategy & Migration",
       description: "Develop and execute comprehensive cloud adoption strategies",
-      icon: "☁️",
+      icon: Cloud,
       features: ["Cloud Architecture Design", "Migration Planning", "Security Implementation", "Cost Optimization"]
     },
     {
       title: "Cybersecurity Consulting",
       description: "Protect your digital assets with comprehensive security strategies",
-      icon: "🔒",
+      icon: Shield,
       features: ["Security Audits", "Compliance Frameworks", "Incident Response", "Employee Training"]
     },
     {
       title: "Data Analytics & BI",
       description: "Transform data into actionable insights for strategic decision-making",
-      icon: "📊",
+      icon: BarChart3,
       features: ["Data Strategy", "BI Implementation", "Predictive Analytics", "Dashboard Design"]
     }
   ];
@@ -58,22 +59,22 @@ const ITConsulting = () => {
     {
       title: "Reduced Costs",
       description: "Optimize technology investments and reduce operational expenses by up to 30%",
-      icon: "💰"
+      icon: DollarSign
     },
     {
       title: "Improved Efficiency",
       description: "Streamline processes and workflows to increase productivity and reduce time-to-market",
-      icon: "⚡"
+      icon: Zap
     },
     {
       title: "Enhanced Security",
       description: "Implement robust security measures to protect against evolving cyber threats",
-      icon: "🛡️"
+      icon: Shield
     },
     {
       title: "Competitive Advantage",
       description: "Leverage technology to gain market differentiation and drive innovation",
-      icon: "🏆"
+      icon: Trophy
     }
   ];
 
@@ -170,27 +171,32 @@ const ITConsulting = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {services.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{service.title}</h3>
-                  <p className="text-black mb-4">{service.description}</p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-black">
-                        <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+              {services.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="mb-4 text-blue-600">
+                      <Icon className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{service.title}</h3>
+                    <p className="text-black mb-4">{service.description}</p>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center text-sm text-black">
+                          <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -253,19 +259,24 @@ const ITConsulting = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-5xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
-                  <p className="text-black">{benefit.description}</p>
-                </motion.div>
-              ))}
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="mb-4 flex justify-center text-blue-600">
+                      <Icon className="w-12 h-12" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
+                    <p className="text-black">{benefit.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { BarChart3, Map, CheckCircle2 } from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 
 const LatestInsights = () => {
@@ -47,7 +48,7 @@ const LatestInsights = () => {
       type: "Tool",
       description: "Calculate the return on investment for your technology staffing initiatives.",
       downloadUrl: "/resources/roi-calculator",
-      icon: "📊"
+      icon: BarChart3
     },
     {
       id: 2,
@@ -55,7 +56,7 @@ const LatestInsights = () => {
       type: "Template",
       description: "A comprehensive template to plan and execute your digital transformation journey.",
       downloadUrl: "/resources/transformation-roadmap",
-      icon: "🗺️"
+      icon: Map
     },
     {
       id: 3,
@@ -63,7 +64,7 @@ const LatestInsights = () => {
       type: "Checklist",
       description: "Essential checklist for successful API integration projects.",
       downloadUrl: "/resources/api-checklist",
-      icon: "✅"
+      icon: CheckCircle2
     }
   ];
 
@@ -206,42 +207,47 @@ const LatestInsights = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {resources.map((resource, index) => (
-              <motion.div
-                key={resource.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-4xl mb-4">{resource.icon}</div>
-                <div className="mb-2">
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
-                    {resource.type}
-                  </span>
-                </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">
-                  {resource.title}
-                </h4>
-                <p className="text-gray-600 mb-4 text-sm">
-                  {resource.description}
-                </p>
-                <Button
-                  href={resource.downloadUrl}
-                  variant="outline"
-                  size="small"
-                  className="w-full"
-                  icon={
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  }
+            {resources.map((resource, index) => {
+              const Icon = resource.icon;
+              return (
+                <motion.div
+                  key={resource.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
                 >
-                  Download
-                </Button>
-              </motion.div>
-            ))}
+                  <div className="mb-4 text-primary-600">
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <div className="mb-2">
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+                      {resource.type}
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold text-gray-900 mb-2">
+                    {resource.title}
+                  </h4>
+                  <p className="text-gray-600 mb-4 text-sm">
+                    {resource.description}
+                  </p>
+                  <Button
+                    href={resource.downloadUrl}
+                    variant="outline"
+                    size="small"
+                    className="w-full"
+                    icon={
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    }
+                  >
+                    Download
+                  </Button>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 

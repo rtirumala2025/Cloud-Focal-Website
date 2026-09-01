@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { DollarSign, HeartPulse, Home, BookOpen, PartyPopper, Laptop, Rocket, Handshake, Star, ShieldCheck } from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 
 const Careers = () => {
@@ -9,32 +10,32 @@ const Careers = () => {
     {
       title: "Competitive Compensation",
       description: "Attractive salary packages with performance bonuses and equity options",
-      icon: "💰"
+      icon: DollarSign
     },
     {
       title: "Health & Wellness",
       description: "Comprehensive health insurance, dental, vision, and wellness programs",
-      icon: "🏥"
+      icon: HeartPulse
     },
     {
       title: "Flexible Work",
       description: "Remote work options, flexible hours, and work-life balance support",
-      icon: "🏠"
+      icon: Home
     },
     {
       title: "Professional Growth",
       description: "Continuous learning opportunities, certifications, and career development",
-      icon: "📚"
+      icon: BookOpen
     },
     {
       title: "Team Events",
       description: "Regular team building activities, social events, and company retreats",
-      icon: "🎉"
+      icon: PartyPopper
     },
     {
       title: "Modern Tools",
       description: "Latest technology and tools to help you do your best work",
-      icon: "💻"
+      icon: Laptop
     }
   ];
 
@@ -42,22 +43,22 @@ const Careers = () => {
     {
       title: "Innovation",
       description: "We encourage creative thinking and embrace new technologies",
-      icon: "🚀"
+      icon: Rocket
     },
     {
       title: "Collaboration",
       description: "Teamwork and knowledge sharing are at the heart of our success",
-      icon: "🤝"
+      icon: Handshake
     },
     {
       title: "Excellence",
       description: "We strive for excellence in everything we do",
-      icon: "⭐"
+      icon: Star
     },
     {
       title: "Integrity",
       description: "Honest, ethical, and transparent in all our interactions",
-      icon: "🔒"
+      icon: ShieldCheck
     }
   ];
 
@@ -163,19 +164,24 @@ const Careers = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-5xl mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{value.title}</h3>
-                  <p className="text-black">{value.description}</p>
-                </motion.div>
-              ))}
+              {values.map((value, index) => {
+                const Icon = value.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="mb-4 flex justify-center text-blue-600">
+                      <Icon className="w-12 h-12" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{value.title}</h3>
+                    <p className="text-black">{value.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -204,19 +210,24 @@ const Careers = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="text-4xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
-                  <p className="text-black">{benefit.description}</p>
-                </motion.div>
-              ))}
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="mb-4 text-blue-600">
+                      <Icon className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
+                    <p className="text-black">{benefit.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>

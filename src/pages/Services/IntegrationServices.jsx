@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { Link2, BarChart3, Cloud, RefreshCw, Zap, CheckCircle2, DollarSign, Eye } from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 
 const IntegrationServices = () => {
@@ -8,25 +9,25 @@ const IntegrationServices = () => {
     {
       title: "API Integration",
       description: "Seamlessly connect your applications through robust API development and integration",
-      icon: "🔗",
+      icon: Link2,
       features: ["RESTful APIs", "GraphQL", "Webhook Integration", "API Gateway Setup"]
     },
     {
       title: "Data Integration",
       description: "Unify your data across multiple systems and platforms for better insights",
-      icon: "📊",
+      icon: BarChart3,
       features: ["ETL Processes", "Data Warehousing", "Real-time Sync", "Data Migration"]
     },
     {
       title: "Cloud Integration",
       description: "Connect on-premise systems with cloud services for hybrid solutions",
-      icon: "☁️",
+      icon: Cloud,
       features: ["Multi-cloud Strategy", "Hybrid Cloud", "Cloud Migration", "DevOps Integration"]
     },
     {
       title: "Legacy System Integration",
       description: "Modernize and connect your existing systems with new technologies",
-      icon: "🔄",
+      icon: RefreshCw,
       features: ["System Modernization", "Legacy API Wrappers", "Data Transformation", "Migration Planning"]
     }
   ];
@@ -58,22 +59,22 @@ const IntegrationServices = () => {
     {
       title: "Improved Efficiency",
       description: "Automate manual processes and reduce data entry errors by up to 90%",
-      icon: "⚡"
+      icon: Zap
     },
     {
       title: "Better Data Quality",
       description: "Ensure data consistency and accuracy across all integrated systems",
-      icon: "✅"
+      icon: CheckCircle2
     },
     {
       title: "Cost Reduction",
       description: "Reduce operational costs through automation and streamlined processes",
-      icon: "💰"
+      icon: DollarSign
     },
     {
       title: "Enhanced Visibility",
       description: "Gain real-time insights across all systems with unified dashboards",
-      icon: "👁️"
+      icon: Eye
     }
   ];
 
@@ -176,27 +177,32 @@ const IntegrationServices = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {integrationTypes.map((type, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="text-4xl mb-4">{type.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{type.title}</h3>
-                  <p className="text-black mb-4">{type.description}</p>
-                  <ul className="space-y-2">
-                    {type.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-black">
-                        <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+              {integrationTypes.map((type, index) => {
+                const Icon = type.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="mb-4 text-blue-600">
+                      <Icon className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{type.title}</h3>
+                    <p className="text-black mb-4">{type.description}</p>
+                    <ul className="space-y-2">
+                      {type.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center text-sm text-black">
+                          <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -259,19 +265,24 @@ const IntegrationServices = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-5xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
-                  <p className="text-black">{benefit.description}</p>
-                </motion.div>
-              ))}
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="mb-4 flex justify-center text-blue-600">
+                      <Icon className="w-12 h-12" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{benefit.title}</h3>
+                    <p className="text-black">{benefit.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>

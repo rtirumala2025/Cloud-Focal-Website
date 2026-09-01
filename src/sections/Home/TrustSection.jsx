@@ -1,26 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Trophy, Star, ShieldCheck, Globe } from 'lucide-react';
 
 const TrustSection = () => {
 
   const trustBadges = [
     {
-      icon: "🏆",
+      icon: Trophy,
       title: "Award Winner",
       description: "Best Technology Staffing 2024"
     },
     {
-      icon: "⭐",
+      icon: Star,
       title: "5-Star Rated",
       description: "Client Satisfaction Excellence"
     },
     {
-      icon: "🔒",
+      icon: ShieldCheck,
       title: "ISO Certified",
       description: "Quality Management System"
     },
     {
-      icon: "🌐",
+      icon: Globe,
       title: "Global Reach",
       description: "Serving 25+ Countries"
     }
@@ -75,23 +76,26 @@ const TrustSection = () => {
           viewport={{ once: true }}
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
         >
-          {trustBadges.map((badge, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="text-center group"
-            >
-              <div className="w-20 h-20 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-3xl">{badge.icon}</span>
-              </div>
-              <h3 className="text-lg font-bold text-black mb-2">
-                {badge.title}
-              </h3>
-              <p className="text-sm text-black">
-                {badge.description}
-              </p>
-            </motion.div>
-          ))}
+          {trustBadges.map((badge, index) => {
+            const Icon = badge.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="text-center group"
+              >
+                <div className="w-20 h-20 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-primary-600" />
+                </div>
+                <h3 className="text-lg font-bold text-black mb-2">
+                  {badge.title}
+                </h3>
+                <p className="text-sm text-black">
+                  {badge.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
 

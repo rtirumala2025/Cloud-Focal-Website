@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Users, Handshake, Star, Target } from 'lucide-react';
 
 const OurStory = () => {
   const timeline = [
@@ -47,33 +48,36 @@ const OurStory = () => {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { number: "500+", label: "Successful Placements", icon: "👥", color: "from-blue-500 to-blue-600" },
-              { number: "100+", label: "Client Partners", icon: "🤝", color: "from-green-500 to-green-600" },
-              { number: "14+", label: "Years of Excellence", icon: "⭐", color: "from-yellow-500 to-yellow-600" },
-              { number: "99%", label: "Client Satisfaction", icon: "🎯", color: "from-purple-500 to-purple-600" }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group text-center bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-              >
-                <div className="relative mb-6">
-                  <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${stat.color} flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    {stat.icon}
+              { number: "500+", label: "Successful Placements", icon: Users, color: "from-blue-500 to-blue-600" },
+              { number: "100+", label: "Client Partners", icon: Handshake, color: "from-green-500 to-green-600" },
+              { number: "14+", label: "Years of Excellence", icon: Star, color: "from-yellow-500 to-yellow-600" },
+              { number: "99%", label: "Client Satisfaction", icon: Target, color: "from-purple-500 to-purple-600" }
+            ].map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="group text-center bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                >
+                  <div className="relative mb-6">
+                    <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${stat.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
                   </div>
-                </div>
-                <div className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
-                  {stat.number}
-                </div>
-                <div className="text-gray-700 font-medium text-sm lg:text-base leading-relaxed">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+                  <div className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-700 font-medium text-sm lg:text-base leading-relaxed">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 

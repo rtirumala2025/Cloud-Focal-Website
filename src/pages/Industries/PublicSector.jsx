@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { Landmark, Shield, Cloud, BarChart3 } from 'lucide-react';
 import Button from '../../components/common/Button/Button';
 
 const PublicSector = () => {
@@ -8,25 +9,25 @@ const PublicSector = () => {
     {
       title: "Digital Government",
       description: "Modernize citizen services and government operations with digital solutions",
-      icon: "🏛️",
+      icon: Landmark,
       features: ["Citizen Portals", "Digital Forms", "Workflow Automation", "Mobile Apps"]
     },
     {
       title: "Data Security & Compliance",
       description: "Ensure data protection and regulatory compliance for government systems",
-      icon: "🔒",
+      icon: Shield,
       features: ["FISMA Compliance", "Data Encryption", "Access Controls", "Audit Trails"]
     },
     {
       title: "Cloud Migration",
       description: "Secure cloud solutions for government agencies and public institutions",
-      icon: "☁️",
+      icon: Cloud,
       features: ["FedRAMP Compliance", "Hybrid Cloud", "Cost Optimization", "Scalability"]
     },
     {
       title: "Analytics & Reporting",
       description: "Data-driven insights to improve decision-making and transparency",
-      icon: "📊",
+      icon: BarChart3,
       features: ["Performance Metrics", "Real-time Dashboards", "Predictive Analytics", "Compliance Reporting"]
     }
   ];
@@ -140,27 +141,32 @@ const PublicSector = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {solutions.map((solution, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="text-4xl mb-4">{solution.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{solution.title}</h3>
-                  <p className="text-black mb-4">{solution.description}</p>
-                  <ul className="space-y-2">
-                    {solution.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-black">
-                        <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+              {solutions.map((solution, index) => {
+                const Icon = solution.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="mb-4 text-blue-600">
+                      <Icon className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{solution.title}</h3>
+                    <p className="text-black mb-4">{solution.description}</p>
+                    <ul className="space-y-2">
+                      {solution.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center text-sm text-black">
+                          <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -264,31 +270,36 @@ const PublicSector = () => {
                 {
                   title: "FISMA Compliance",
                   description: "Federal Information Security Management Act compliance for federal agencies",
-                  icon: "🛡️"
+                  icon: Shield
                 },
                 {
                   title: "FedRAMP Authorization",
                   description: "Federal Risk and Authorization Management Program for cloud services",
-                  icon: "☁️"
+                  icon: Cloud
                 },
                 {
                   title: "State & Local Standards",
                   description: "Compliance with state and local government security requirements",
-                  icon: "🏛️"
+                  icon: Landmark
                 }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-5xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-bold text-black mb-3">{item.title}</h3>
-                  <p className="text-black">{item.description}</p>
-                </motion.div>
-              ))}
+              ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="mb-4 flex justify-center text-blue-600">
+                      <Icon className="w-12 h-12" />
+                    </div>
+                    <h3 className="text-xl font-bold text-black mb-3">{item.title}</h3>
+                    <p className="text-black">{item.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
