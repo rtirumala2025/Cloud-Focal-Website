@@ -65,7 +65,7 @@ const PrivacyPolicy = () => {
       >
         {/* Hero Section */}
         <section className="relative py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-primary-950 to-slate-900 border-b border-slate-800/80 overflow-hidden">
-          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#3853f5_1px,transparent_1px)] [background-size:24px_24px]" />
+          <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[radial-gradient(#3853f5_1px,transparent_1px)] [background-size:24px_24px]" />
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

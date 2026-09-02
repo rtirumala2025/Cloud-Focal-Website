@@ -122,14 +122,14 @@ const PrivateEnterprise = () => {
         </section>
 
         {/* Solutions */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 max-w-7xl">
             <div className="text-center mb-16">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
               >
                 Enterprise Solutions
               </motion.h2>
@@ -137,14 +137,13 @@ const PrivateEnterprise = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-black max-w-3xl mx-auto"
+                className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
               >
-                Comprehensive technology solutions designed to drive innovation, 
-                improve efficiency, and accelerate growth for private sector organizations.
+                End-to-end technology services driving operational efficiency, risk reduction, and continuous innovation for commercial enterprises.
               </motion.p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {solutions.map((solution, index) => {
                 const Icon = solution.icon;
                 return (
@@ -153,18 +152,18 @@ const PrivateEnterprise = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
-                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
                   >
-                    <div className="mb-4 text-blue-600">
-                      <Icon className="w-10 h-10" />
+                    <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-5 text-blue-600">
+                      <Icon className="w-8 h-8" />
                     </div>
-                    <h3 className="text-xl font-bold text-black mb-3">{solution.title}</h3>
-                    <p className="text-black mb-4">{solution.description}</p>
-                    <ul className="space-y-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{solution.title}</h3>
+                    <p className="text-gray-600 mb-5 text-sm md:text-base leading-relaxed flex-1">{solution.description}</p>
+                    <ul className="space-y-2.5 pl-5 border-t border-gray-100 pt-4">
                       {solution.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-sm text-black">
-                          <span className="w-2 h-2 bg-accent-400 rounded-full mr-2"></span>
-                          {feature}
+                        <li key={featureIndex} className="flex items-center text-sm text-gray-700">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-2.5 flex-shrink-0"></span>
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>

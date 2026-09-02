@@ -25,9 +25,9 @@ const HeroSection = () => {
         {/* Deep Navy/Cyan Blend - Bottom */}
         <div className="absolute -bottom-40 left-1/3 w-[40rem] h-80 bg-[#37b5ff]/15 rounded-full blur-3xl" />
 
-        {/* Subtle Grid overlay for technical precision */}
+        {/* Subtle Grid overlay for technical precision (calibrated <= 4% opacity) */}
         <div 
-          className="absolute inset-0 opacity-[0.07]" 
+          className="absolute inset-0 opacity-[0.04]" 
           style={{
             backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)`,
             backgroundSize: '32px 32px'
@@ -152,16 +152,16 @@ const HeroSection = () => {
                   {/* Subtle Background Glow behind emblem */}
                   <div className="absolute inset-0 bg-gradient-to-b from-[#37b5ff]/15 to-[#5371ff]/15 pointer-events-none" />
 
-                  {/* High Quality Logo Emblem */}
+                  {/* High Quality Logo Emblem with Seamless Transparent Integration */}
                   <motion.div
                     animate={{ y: [0, -6, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative z-10 mb-3 bg-white/95 p-3.5 rounded-2xl shadow-lg border border-white/40"
+                    className="relative z-10 mb-3 p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"
                   >
                     <img 
-                      src="/images/logos/cloudfocal-logo.png" 
+                      src="/images/logos/cloudfocal-logo.svg" 
                       alt="Cloud Focal Logo Emblem"
-                      className="w-32 sm:w-36 h-auto object-contain"
+                      className="w-32 sm:w-36 h-auto object-contain drop-shadow-md"
                     />
                   </motion.div>
 

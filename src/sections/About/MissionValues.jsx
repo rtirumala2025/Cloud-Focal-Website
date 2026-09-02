@@ -65,19 +65,19 @@ const MissionValues = () => {
   const differentiators = [
     {
       title: "Mission-Driven Approach",
-      description: "We're more than a vendor; we're your long-term technology transformation partner. We don't just offer capabilities - we pursue global issues and embrace client missions as our own."
+      description: "We partner for long-term transformation, embracing client goals with dedicated execution and accountable delivery."
     },
     {
       title: "Dual Expertise",
-      description: "Combining technology AND staffing expertise, we provide scalable solutions for any need - from single staffing assignments to full enterprise IT transformations."
+      description: "Seamlessly combining specialized tech staffing with full-lifecycle enterprise IT consulting and cloud modernization."
     },
     {
       title: "Proven Methodology",
-      description: "Our proprietary Cloud Focal methodologies combine federal and commercial best practices, ensuring cost benefits, enhanced schedule management, and improved quality."
+      description: "Enterprise-grade delivery frameworks ensuring cost efficiency, tight milestone control, and superior engineering quality."
     },
     {
       title: "Results-Oriented",
-      description: "With over a decade of experience, we consistently deliver high-quality, repeatable solutions on time, in scope, and within budget."
+      description: "A decade of dependable delivery, consistently executing high-complexity initiatives on time and within scope."
     }
   ];
 
@@ -92,10 +92,9 @@ const MissionValues = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Core Values</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            At Cloud Focal, our values are the foundation of everything we do. They guide our decisions, 
-            shape our culture, and ensure we deliver exceptional value to our clients and community.
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Values that shape our culture, guide architectural decisions, and ensure exceptional value for clients and community.
           </p>
         </motion.div>
 
@@ -105,17 +104,15 @@ const MissionValues = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 md:p-12 text-white text-center mb-16 shadow-lg"
+          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 md:p-10 text-white text-center mb-16 shadow-lg"
         >
-          <div className="max-w-5xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white">Our Mission</h3>
-            <p className="text-xl md:text-2xl leading-relaxed mb-6 text-white">
-              To empower organizations with exceptional technology talent and innovative solutions that drive 
-              digital transformation and sustainable growth. Together, these factors lead to Cloud Focal's 
-              ultimate mission: To be the trusted partner that transforms our clients' visions into reality.
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">Our Mission</h3>
+            <p className="text-lg md:text-xl leading-relaxed mb-4 text-white">
+              To empower organizations with elite technical talent and innovative cloud solutions that accelerate digital transformation and sustainable growth.
             </p>
-            <p className="text-lg md:text-xl font-medium text-white">
-              Your success is our goal. We embrace your mission as our own.
+            <p className="text-base md:text-lg font-medium text-blue-100">
+              Your mission is our commitment. Engineering excellence delivered with integrity.
             </p>
           </div>
         </motion.div>
@@ -125,28 +122,28 @@ const MissionValues = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true }} 
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         >
           {pillars.map((pillar, index) => (
             <motion.div
               key={pillar.title}
               variants={itemVariants}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
             >
               <div className={`h-2 bg-gradient-to-r ${pillar.color}`}></div>
-              <div className="p-6">
-                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${pillar.color} flex items-center justify-center text-white mb-6 mx-auto`}>
+              <div className="p-6 flex-1 flex flex-col">
+                <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${pillar.color} flex items-center justify-center text-white mb-5 mx-auto`}>
                   {pillar.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">{pillar.title}</h3>
-                <ul className="space-y-3">
+                <ul className="space-y-3 pl-5 flex-1">
                   {pillar.items.map((item, i) => (
                     <li key={i} className="flex items-start">
-                      <svg className="h-5 w-5 text-green-500 mt-1 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-600">{item}</span>
+                      <span className="text-gray-600 text-sm md:text-base leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -163,16 +160,16 @@ const MissionValues = () => {
           transition={{ duration: 0.6 }}
           className="max-w-5xl mx-auto"
         >
-          <h3 className="text-3xl font-bold text-center mb-8">Why Choose Cloud Focal</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h3 className="text-3xl font-bold text-center mb-8 text-gray-900">Why Choose Cloud Focal</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {differentiators.map((item, index) => (
               <motion.div 
                 key={index} 
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
-                whileHover={{ y: -5 }}
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+                whileHover={{ y: -4 }}
               >
-                <h4 className="text-xl font-bold mb-3 text-gray-800">{item.title}</h4>
-                <p className="text-gray-600">{item.description}</p>
+                <h4 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h4>
+                <p className="text-gray-600 text-base leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>

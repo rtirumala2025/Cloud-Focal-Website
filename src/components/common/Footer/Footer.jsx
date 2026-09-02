@@ -151,22 +151,22 @@ const Footer = () => {
           </motion.div>
 
           {/* Footer Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-16">
             {/* Brand Column */}
             <div className="lg:col-span-1">
               <Link to="/" className="inline-block mb-6 group">
-                <div className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl inline-flex items-center shadow-lg transition-transform group-hover:scale-105">
+                <div className="bg-white/15 backdrop-blur-md px-4 py-2 rounded-xl inline-flex items-center shadow-md border border-white/20 transition-transform group-hover:scale-105">
                   <img
-                    src="/images/logos/cloudfocal-logo.png"
-                    alt="Cloud Focal Inc"
-                    className="h-10 w-auto"
+                    src="/images/logos/cloudfocal-logo.svg"
+                    alt="Cloud Focal"
+                    className="h-10 w-auto object-contain"
                     loading="lazy"
                   />
                 </div>
               </Link>
               <p className="text-white/80 leading-relaxed mb-6">
-              Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner delivering precision cloud solutions across Australia and globally.
-            </p>
+                Bridging strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner delivering precision cloud solutions globally.
+              </p>
             
             {/* Social Links */}
               <div className="flex gap-4">

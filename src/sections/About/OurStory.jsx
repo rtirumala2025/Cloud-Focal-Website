@@ -102,17 +102,15 @@ const OurStory = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div>
-                <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">
+                <h3 className="text-3xl lg:text-4xl font-bold text-black mb-4">
                   Building the Future of Technology
                 </h3>
                 <div className="space-y-4">
                   <p className="text-lg text-black leading-relaxed">
-                    Cloud Focal is a mission-driven company whose pursuit of meaningful solutions differentiates us from generic capability-oriented firms. 
-                    Headquartered in Melbourne, Australia, we bridge the critical gap between executive strategy and technical execution.
+                    Cloud Focal is a mission-driven partner bridging executive strategy with technical execution. Headquartered in Melbourne, we architect and deploy enterprise cloud solutions across Australia and global corridors.
                   </p>
                   <p className="text-lg text-black leading-relaxed">
-                    By appropriately applying the tenets of the <strong>Triple Bottom Line</strong> (profit, people, and planet) and practicing servant leadership as dedicated "Go-Givers", 
-                    we serve our employees, our clients, and our communities with uncompromising technical excellence.
+                    Guided by the <strong>Triple Bottom Line</strong> (people, planet, and performance) and a servant leadership mindset, we deliver high-impact engineering with uncompromising excellence.
                   </p>
                 </div>
               </div>
@@ -122,16 +120,16 @@ const OurStory = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex items-center space-x-4 p-6 bg-blue-50 rounded-xl border border-blue-100"
+                className="flex items-center space-x-4 p-5 bg-blue-50 rounded-xl border border-blue-100"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <span className="text-gray-900 font-semibold text-lg">Trusted by Fortune 500 companies</span>
-                  <p className="text-gray-700 text-sm">Proven track record of excellence</p>
+                  <span className="text-gray-900 font-semibold text-lg">Trusted by Enterprise Leaders</span>
+                  <p className="text-gray-700 text-sm">Consistent delivery across complex systems</p>
                 </div>
               </motion.div>
             </div>
@@ -143,13 +141,13 @@ const OurStory = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 lg:p-10 text-gray-900 border border-blue-100"
             >
-              <h4 className="text-2xl lg:text-3xl font-bold mb-8 text-center">Why Choose Cloud Focal?</h4>
-              <div className="space-y-6">
+              <h4 className="text-2xl lg:text-3xl font-bold mb-6 text-center">Why Choose Cloud Focal?</h4>
+              <div className="space-y-4">
                 {[
-                  "Expert team with proven track records",
-                  "Comprehensive technology solutions",
-                  "Long-term strategic partnerships",
-                  "Industry-leading success rates"
+                  "Elite engineering talent with verified domain expertise",
+                  "End-to-end cloud modernization and DevOps automation",
+                  "Strategic, mission-aligned long-term partnerships",
+                  "Proven on-time, in-budget delivery record"
                 ].map((benefit, index) => (
                   <motion.div 
                     key={index}
@@ -157,14 +155,14 @@ const OurStory = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.1 * index }}
-                    className="flex items-center space-x-4 p-4 rounded-xl hover:bg-white/50 transition-all duration-300"
+                    className="flex items-center space-x-4 p-3.5 rounded-xl hover:bg-white/60 transition-all duration-300"
                   >
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-gray-800 font-medium text-lg">{benefit}</span>
+                    <span className="text-gray-800 font-medium text-base leading-relaxed">{benefit}</span>
                   </motion.div>
                 ))}
               </div>
@@ -181,15 +179,15 @@ const OurStory = () => {
           className="pt-8"
         >
           <div className="text-center mb-16">
-            <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6">Our Journey</h3>
-            <p className="text-lg text-black max-w-2xl mx-auto">
-              A timeline of milestones that shaped our growth and success in the technology industry
+            <h3 className="text-3xl lg:text-4xl font-bold text-black mb-4">Our Journey</h3>
+            <p className="text-lg text-black max-w-2xl mx-auto leading-relaxed">
+              Key milestones shaping our evolution into a trusted global technology and staffing partner
             </p>
           </div>
           
           <div className="relative max-w-4xl mx-auto">
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gray-300 h-full rounded-full"></div>
-            <div className="space-y-12">
+            <div className="space-y-8">
               {timeline.map((item, index) => (
                 <motion.div 
                   key={index}
@@ -197,19 +195,19 @@ const OurStory = () => {
                   whileInView={{ opacity: 1, y: 0 }} 
                   viewport={{ once: true }} 
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                  className={`flex items-stretch ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
                 >
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'} flex`}>
                     <motion.div 
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                      whileHover={{ scale: 1.02, y: -4 }}
+                      className="w-full bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-center min-h-[160px]"
                     >
-                      <div className="text-3xl font-bold text-blue-600 mb-3">{item.year}</div>
-                      <h4 className="text-2xl font-bold text-black mb-4">{item.title}</h4>
-                      <p className="text-black leading-relaxed">{item.description}</p>
+                      <div className="text-2xl font-bold text-blue-600 mb-2">{item.year}</div>
+                      <h4 className="text-xl font-bold text-black mb-2">{item.title}</h4>
+                      <p className="text-black text-sm md:text-base leading-relaxed">{item.description}</p>
                     </motion.div>
                   </div>
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex items-center justify-center">
                     <div className="w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
                   </div>
                   <div className="w-1/2"></div>

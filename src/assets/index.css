@@ -311,12 +311,57 @@ button:hover, a:hover, .card:hover, .btn:hover {
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* DYNAMIC ICON COLOR VARIABLES (Light mode defaults to dark slate) */
+  --icon-color: #0f172a;
+  --icon-color-muted: #334155;
+  --icon-color-primary: #3853f5;
+  --bg-grid-opacity: 0.03;
 }
 
+/* Dark Theme Overrides */
+.dark-theme,
+[data-theme='dark'],
+.dark {
+  --bg-primary: #08104d;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1e293b;
+  --bg-elevated: #1e293b;
+  --bg-overlay: rgba(0, 0, 0, 0.75);
 
-/* Base Styles */
-* {
-  box-sizing: border-box;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #0f172a;
+  --text-muted: #64748b;
+
+  --border-primary: #334155;
+  --border-secondary: #475569;
+
+  --icon-color: #f8fafc;
+  --icon-color-muted: #cbd5e1;
+  --icon-color-primary: #7c96fb;
+  --bg-grid-opacity: 0.06;
+}
+
+/* Dynamic SVG Icon styling */
+.icon-dynamic {
+  color: var(--icon-color);
+  fill: currentColor;
+}
+
+.icon-dynamic-stroke {
+  color: var(--icon-color);
+  stroke: currentColor;
+}
+
+/* Global list padding inside cards for proper bullet indentation */
+.card ul,
+.capability-card ul,
+.industry-card ul,
+[class*="card"] ul,
+.service-card ul {
+  padding-left: 1.25rem;
 }
 
 
