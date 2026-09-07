@@ -69,9 +69,11 @@
   .hero-head em { min-width: unset !important; display: inline; }
   .hero-sub { text-align: left; margin-left: 0; max-width: 100%; font-size: 14px !important; }
   .hero-actions { justify-content: center; flex-wrap: wrap; gap: 12px; }
-  .aperture-stage { order: -1; margin-bottom: 0; }
-  .aperture-stage > div { width: min(150px, 42vw) !important; }
-  .aperture-readout { font-size: 8.5px !important; margin-top: 10px; }
+  .aperture-stage { margin-top: 32px; }
+  .aperture-stage > div { width: min(110px, 32vw) !important; }
+  .aperture-stage img { width: 70px !important; }
+  .aperture-stage > div > div { padding: 10px 12px !important; }
+  .aperture-readout { font-size: 8px !important; margin-top: 8px; }
 
   /* Body text — use system font instead of mono for readability */
   p, li, .cap-desc, .mission-text, .trust-desc, .footer-desc {
