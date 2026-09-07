@@ -63,17 +63,66 @@
   .nav-cta { display: none; }
 
   /* Hero */
-  .hero { padding-top: 140px !important; padding-bottom: 50px !important; min-height: unset; }
-  .hero-grid { grid-template-columns: 1fr !important; gap: 36px !important; text-align: center; }
-  .hero-head { white-space: normal !important; font-size: clamp(32px, 9vw, 56px) !important; }
+  .hero { padding-top: 128px !important; padding-bottom: 40px !important; min-height: unset; }
+  .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; text-align: center; }
+
+  .hero-eyebrow-mobile {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 18px;
+  }
+  .hero-eyebrow-mobile::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 8px var(--amber);
+  }
+
+  .hero-head { white-space: normal !important; font-size: clamp(32px, 9vw, 56px) !important; margin-bottom: 4px; }
   .hero-head em { min-width: unset !important; display: inline; }
-  .hero-sub { text-align: left; margin-left: 0; max-width: 100%; font-size: 14px !important; }
-  .hero-actions { justify-content: center; flex-wrap: wrap; gap: 12px; }
-  .aperture-stage { margin-top: 32px; }
-  .aperture-stage > div { width: min(110px, 32vw) !important; }
-  .aperture-stage img { width: 70px !important; }
-  .aperture-stage > div > div { padding: 10px 12px !important; }
-  .aperture-readout { font-size: 8px !important; margin-top: 8px; }
+  .hero-sub { text-align: left; margin-left: 0; max-width: 100%; font-size: 14px !important; margin-top: 20px !important; }
+  .hero-actions { justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px !important; }
+
+  /* Emblem — recast as a clean panel card instead of a floating decorative graphic */
+  .aperture-stage {
+    margin-top: 36px;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 20px;
+    display: flex !important;
+  }
+  .aperture-stage svg { display: none !important; }
+  .aperture-stage > div {
+    position: static !important;
+    width: auto !important;
+    aspect-ratio: unset !important;
+  }
+  .aperture-stage img { width: 84px !important; }
+  .aperture-stage > div > div {
+    padding: 12px 16px !important;
+    box-shadow: none !important;
+    border-width: 1.5px !important;
+  }
+  .aperture-readout {
+    font-size: 10px !important;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+    width: 100%;
+  }
+
+  /* Tighten gap into ticker */
+  .ticker-strip { margin-top: -8px; }
 
   /* Body text — use system font instead of mono for readability */
   p, li, .cap-desc, .mission-text, .trust-desc, .footer-desc {
