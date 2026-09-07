@@ -217,7 +217,7 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 
 /* ============ FOOTER ============ */
 footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
-.footer-grid{ display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-grid{ display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
 #static-cookie-btn{ transition: color 0.25s var(--ease); }
 #static-cookie-btn:hover{ color: var(--ink) !important; }
 .footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
@@ -239,6 +239,15 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
 }
 @media (max-width: 640px){
   .wrap{ padding: 0 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 <script>
@@ -511,13 +520,23 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
           <h4>Legal</h4>
           <ul>
             <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
             <li><a href="cookie-policy.html">Cookie Policy</a></li>
             <li><button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 12px; cursor: pointer; padding: 0;">Cookie Settings</button></li>
           </ul>
         </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <address style="font-style:normal; font-size:12px; line-height:1.8; color:var(--ink-dim); margin:0;">
+            Cloud Focal Inc.<br>
+            Collins Street, Melbourne VIC 3000, Australia<br>
+            <a href="mailto:cloudfocalaus@gmail.com" style="color:var(--ink-dim);">cloudfocalaus@gmail.com</a><br>
+            <a href="tel:+61470612358" style="color:var(--ink-dim);">0470 612 358</a>
+          </address>
+        </div>
       </div>
             <div class="footer-bottom">
-        <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
+        <p>&copy; 2026 Cloud Focal Inc. All rights reserved. Melbourne, Victoria, Australia.</p>
         <a href="#main-content" style="color: var(--ink-dim); font-size: 11px; text-decoration: none; transition: color 0.25s var(--ease);">Back to top &uarr;</a>
       </div>
     </div>

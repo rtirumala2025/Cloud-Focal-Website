@@ -116,6 +116,20 @@ footer{ border-top: 1px solid var(--line); padding: 60px 0; margin-top: 60px; }
 .footer-nav{ display: flex; gap: 24px; }
 .footer-nav a, .footer-nav button{ font-size: 11px; color: var(--ink-dim); background: none; border: none; cursor: pointer; font-family: inherit; }
 .footer-nav a:hover, .footer-nav button:hover{ color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
 </style>
 <script>
   (function() {
@@ -173,7 +187,7 @@ footer{ border-top: 1px solid var(--line); padding: 60px 0; margin-top: 60px; }
     <div class="content-section wrap">
       <h2>1. Data Controller Identification &amp; Scope</h2>
       <p>
-        Cloud Focal ("Cloud Focal", "we", "us") provides technical staffing, cloud architecture, cyber defense, and enterprise IT consulting. We operate through <strong>Cloud Focal Pty Ltd</strong> in Australia (Melbourne HQ) and <strong>Cloud Focal Inc.</strong> in the United States (San Francisco).
+        <strong>Cloud Focal Inc.</strong> ("Cloud Focal", "we", "us") provides technical staffing, cloud architecture, cyber defense, and enterprise IT consulting, headquartered in Melbourne, Australia and serving clients across the APAC region and internationally.
       </p>
       
       <h2>2. Categories of Data Collected</h2>
@@ -198,14 +212,14 @@ footer{ border-top: 1px solid var(--line); padding: 60px 0; margin-top: 60px; }
 
       <h2>5. Cross-Border International Data Transfers (APP 8 &amp; GDPR)</h2>
       <p>
-        Candidate and project files may be processed between our Australian and US offices using Standard Contractual Clauses (SCCs), TLS 1.3 encryption in transit, and AES-256 encryption at rest.
+        As we serve clients across the APAC region and internationally, candidate and project files may occasionally be processed by service providers located outside Australia. Where this occurs, we take reasonable steps — including Standard Contractual Clauses (SCCs) where applicable, TLS 1.3 encryption in transit, and AES-256 encryption at rest — to ensure your data remains protected consistently with this Policy.
       </p>
 
       <h2>6. Data Retention Schedules</h2>
       <ul>
         <li><strong>Candidate Talent Bench:</strong> 24 to 36 months (with re-consent notices).</li>
         <li><strong>Placed Contractor &amp; Invoicing Records:</strong> 7 years (statutory tax requirement).</li>
-        <li><strong>Website Telemetry:</strong> 14 months (Google Analytics 4 standard).</li>
+        <li><strong>Website Telemetry:</strong> Basic server/security logs only. We do not currently run Google Analytics or any other analytics/advertising script; if we introduce one in the future, this Policy and our <a href="cookie-policy.html" style="color: var(--amber);">Cookie Policy</a> will be updated first and your consent requested via the cookie banner before it loads.</li>
       </ul>
 
       <h2>7. Your Privacy Rights</h2>
@@ -213,10 +227,9 @@ footer{ border-top: 1px solid var(--line); padding: 60px 0; margin-top: 60px; }
 
       <h2>8. Privacy Officer Contact</h2>
       <div class="box">
-        <strong>Data Privacy Officer:</strong> Cloud Focal Pty Ltd / Cloud Focal Inc.<br>
+        <strong>Data Privacy Officer:</strong> Cloud Focal Inc.<br>
         Email: <a href="mailto:cloudfocalaus@gmail.com" style="color: var(--amber);">cloudfocalaus@gmail.com</a><br>
-        Melbourne Office: Collins Street, Melbourne VIC 3000, Australia<br>
-        San Francisco Office: 123 Technology Drive, Suite 200, San Francisco CA 94105, USA
+        Melbourne Office: Collins Street, Melbourne VIC 3000, Australia
       </div>
     </div>
   </main>
@@ -224,9 +237,10 @@ footer{ border-top: 1px solid var(--line); padding: 60px 0; margin-top: 60px; }
   <footer role="contentinfo">
     <div class="wrap">
       <div class="footer-bottom">
-        <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
+        <p>&copy; 2026 Cloud Focal Inc. All rights reserved. Melbourne, Victoria, Australia.</p>
         <div class="footer-nav">
           <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-conditions.html">Terms &amp; Conditions</a>
           <a href="cookie-policy.html">Cookie Policy</a>
           <button id="static-cookie-btn" type="button">Cookie Settings</button>
         </div>
