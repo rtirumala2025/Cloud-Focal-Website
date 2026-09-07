@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+<meta charset="UTF-8">
+  <script>
+    (function() {
+      try {
+        if (window.location.protocol.startsWith('http')) {
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(function() {});
+          }
+
+          var path = window.location.pathname;
+          if (path.endsWith('.html')) {
+            var clean = path.replace(/\.html$/, '');
+            if (clean.endsWith('/index')) clean = clean.slice(0, -6);
+            if (!clean) clean = '/';
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          } else if (path.length > 1 && path.endsWith('/')) {
+            var clean = path.slice(0, -1);
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industries &amp; Sectors — Cloud Focal</title>
+<meta name="description" content="Cloud Focal delivers tailored cloud engineering, cybersecurity, and staffing solutions for Public Sector agencies and Private Enterprise across Australia and internationally.">
+<link rel="icon" type="image/svg+xml" href="public/images/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="public/images/logos/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="public/images/logos/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="public/images/logos/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  color-scheme: dark light;
+  --bg: #060a1e;
+  --bg-elevated: #0d1433;
+  --bg-panel: #111a42;
+  --bg-header: rgba(6, 10, 30, 0.88);
+  --line: #1c2758;
+  --line-bright: #2d3e85;
+  --amber: #5371ff; /* Brand Vibrant Cobalt */
+  --amber-dim: #1e2eb5;
+  --amber-glow: rgba(83, 113, 255, 0.25);
+  --green: #37b5ff; /* Brand Electric Sky Cyan */
+  --green-dim: #14426b;
+  --ink: #f0f4ff;
+  --ink-dim: #9fb0e8;
+  --ink-faint: #5d6fba;
+  --serif: 'Fraunces', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --dur-1: 0.6s;
+  --dur-2: 0.9s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --glow-color: rgba(83, 113, 255, 0.18);
+}
+html.light-theme, body.light-theme {
+  --bg: #f5f8ff;
+  --bg-elevated: #e6edff;
+  --bg-panel: #dae5ff;
+  --bg-header: rgba(245, 248, 255, 0.88);
+  --line: #c5d4fb;
+  --line-bright: #9eb8f7;
+  --amber: #3853f5;
+  --amber-dim: #e0ebff;
+  --amber-glow: rgba(56, 83, 245, 0.15);
+  --green: #0284c7;
+  --green-dim: #e0f4fe;
+  --ink: #08104d;
+  --ink-dim: #384b7a;
+  --ink-faint: #6c7ea6;
+  --glow-color: rgba(56, 83, 245, 0.10);
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease); }
+body::before{
+  content:''; position: fixed; inset:0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px; opacity: 0.35; pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+  transition: background-image var(--dur-1) var(--ease);
+}
+body::after{ content:''; position: fixed; inset:0; background: radial-gradient(ellipse 60% 40% at 78% 10%, var(--amber-glow), transparent 60%); pointer-events: none; z-index: 0; transition: background var(--dur-1) var(--ease); }
+a{ color: inherit; text-decoration: none; }
+.wrap{ max-width: 1360px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+.eyebrow{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before{ content:''; width: 7px; height: 7px; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+/* ============ ACCESSIBILITY ============ */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: var(--amber);
+  color: #fff;
+  padding: 12px 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 100;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 20px;
+  outline: 3px solid #fff;
+}
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp{ from{ opacity:0; transform: translateY(22px); } to{ opacity:1; transform: translateY(0); } }
+.seq{ opacity:0; animation: fadeUp var(--dur-1) var(--ease) forwards; }
+.seq-1{ animation-delay: 0.05s; }
+.seq-2{ animation-delay: 0.22s; }
+
+/* ============ NAV ============ */
+header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: var(--bg-header); backdrop-filter: blur(10px); transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease); }
+.nav{ display:flex; align-items:center; justify-content:space-between; padding: 20px 40px; max-width: 1360px; margin: 0 auto; }
+.logo-mark{ display:flex; align-items:center; gap: 12px; }
+.logo-chip{ width: 38px; height: 38px; background: #fff; border-radius: 8px; display:flex; align-items:center; justify-content:center; padding: 5px; box-shadow: 0 0 0 1px var(--line-bright); }
+.logo-word{ font-family: var(--mono); font-weight: 600; font-size: 15px; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase; }
+.logo-word .focal{ color: var(--amber); }
+.nav-links{ display:flex; gap: 36px; }
+.nav-links a{ font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); position: relative; padding-bottom: 3px; transition: color 0.25s var(--ease); }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background: var(--amber); transition: width 0.3s var(--ease); }
+.nav-links a:hover{ color: var(--ink); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a.active{ color: var(--ink); }
+.nav-links a.active::after{ width:100%; }
+.nav-actions{ display: flex; align-items: center; gap: 16px; }
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--line-bright);
+  color: var(--ink);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  padding: 0;
+}
+.theme-toggle-btn:hover {
+  border-color: var(--amber);
+  background: var(--amber-glow);
+  color: var(--amber);
+}
+.theme-toggle-btn svg { display: none; }
+.light-theme .theme-toggle-btn .moon-icon { display: block; }
+html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
+.nav-cta{ font-size: 12px; letter-spacing:0.08em; text-transform: uppercase; border: 1px solid var(--line-bright); padding: 9px 18px; color: var(--ink); transition: all 0.25s var(--ease); }
+.nav-cta:hover{ border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
+
+/* ============ PAGE-SPECIFIC STYLE ============ */
+.ind-hero{ padding-top: 160px; padding-bottom: 50px; }
+.ind-title{ font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 500; line-height: 1.1; margin-top: 18px; margin-bottom: 24px; }
+.ind-title em{ font-style: italic; font-weight: 400; color: var(--amber); }
+
+.ind-section{ border: 1px solid var(--line); background: var(--bg-panel); padding: 50px 40px; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 30px; transition: background 0.3s var(--ease); }
+.ind-section:hover{ background: var(--bg-elevated); }
+.ind-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--glow-color), transparent 80%);
+}
+.ind-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--amber), var(--green) 50%, transparent 80%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+.ind-section:hover::before, .ind-section:hover::after { opacity: 1; }
+.ind-label{ font-family: var(--serif); font-size: clamp(26px, 3.5vw, 34px); font-weight: 500; color: var(--ink); position: relative; z-index: 3; }
+.ind-label span{ color: var(--amber); }
+.ind-body{ font-family: var(--mono); font-size: 14px; line-height: 1.85; color: var(--ink-dim); position: relative; z-index: 3; }
+.ind-list{ list-style: none; margin-top: 20px; }
+.ind-list li{ position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 13px; }
+.ind-list li::before{ content: '→'; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+.ind-badge{ display: inline-block; font-size: 10.5px; letter-spacing: 0.15em; color: var(--green); text-transform: uppercase; margin-bottom: 14px; }
+
+/* ============ FOOTER ============ */
+footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
+.footer-grid{ display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+#static-cookie-btn{ transition: color 0.25s var(--ease); }
+#static-cookie-btn:hover{ color: var(--ink) !important; }
+.footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
+.footer-col ul{ list-style: none; }
+.footer-col ul li{ margin-bottom: 12px; }
+.footer-col ul li a{ font-size: 12px; color: var(--ink-dim); transition: color 0.25s var(--ease); }
+.footer-col ul li a:hover{ color: var(--ink); }
+.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 320px; margin-top: 20px; }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); flex-wrap: wrap; gap: 12px; }
+
+/* ============ RESPONSIVENESS ============ */
+@media (max-width: 980px){
+  .nav-links{ display:none; }
+  .ind-section{ grid-template-columns: 1fr; gap: 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 640px){
+  .wrap{ padding: 0 20px; }
+}
+</style>
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  })();
+</script>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <div class="nav">
+      <a href="index.html" class="logo-mark" id="nav-logo" aria-label="Cloud Focal Home">
+        <img src="public/images/logos/cloudfocal-logo.png" alt="Cloud Focal Inc" style="height: 38px; width: auto; object-fit: contain;" />
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="about.html">About</a>
+        <a href="services.html">Capabilities</a>
+        <a href="industries.html" class="active">Industries</a>
+        <a href="careers.html">Staffing &amp; Careers</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="contact.html" class="nav-cta">Start a Project</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="wrap" tabindex="-1">
+    <section class="ind-hero seq seq-1" aria-labelledby="industries-heading">
+      <h1 id="industries-heading" class="ind-title">Industries <em>Served.</em></h1>
+      <p style="color: var(--ink-dim); max-width: 72ch; line-height: 1.85; font-size: 15px;">
+        Cloud Focal provides specialized technology consulting, custom systems integration, and technical talent acquisition tailored to the operational demands and regulatory environments of both Public Sector agencies and Private Enterprises.
+      </p>
+    </section>
+
+    <!-- Public Sector (Source Cloud Alignment with AU and Global Context) -->
+    <section class="ind-section seq seq-2" aria-labelledby="public-sector-heading">
+      <div>
+        <h2 id="public-sector-heading" class="ind-label">Public <span>Sector</span></h2>
+      </div>
+      <div class="ind-body">
+        <p style="margin-bottom: 16px;">
+          Cloud Focal partners with Australian Federal and State Government departments, local councils, and international public sector entities to deliver resilient digital public services, sovereign cloud migrations, and hardened cybersecurity architectures.
+        </p>
+        <p>
+          We navigate complex compliance landscapes and procurement frameworks, ensuring taxpayer funds deliver maximum long-term efficiency and citizen impact:
+        </p>
+        <ul class="ind-list">
+          <li><strong>Australian Frameworks:</strong> Alignment with ACSC Essential Eight, PSPF, and IRAP certification readiness</li>
+          <li><strong>Sovereign Cloud &amp; GOTS:</strong> Deployment of Government Off-The-Shelf systems on protected cloud enclaves</li>
+          <li><strong>Citizen Service Modernization:</strong> Accessible, multi-channel citizen engagement portals compliant with WCAG 2.1 AA</li>
+          <li><strong>Vetted Clearances:</strong> Technical staffing and engineering squads holding necessary national security clearances</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Private Enterprise -->
+    <section class="ind-section seq seq-2" aria-labelledby="private-enterprise-heading">
+      <div>
+        <h2 id="private-enterprise-heading" class="ind-label">Private <span>Enterprise</span></h2>
+      </div>
+      <div class="ind-body">
+        <p style="margin-bottom: 16px;">
+          From ASX-listed corporations and multinational enterprises to high-growth venture-backed companies, we provide the technical leverage necessary to outpace market competitors, streamline operational workflows, and reduce infrastructure spend.
+        </p>
+        <p>
+          Our cross-functional teams bring deep domain expertise across financial services, healthcare, logistics, telecommunications, and retail:
+        </p>
+        <ul class="ind-list">
+          <li><strong>Financial Services &amp; FinTech:</strong> Low-latency data pipelines, APRA CPS 234 compliance, and PCI-DSS architecture</li>
+          <li><strong>Healthcare &amp; MedTech:</strong> Secure patient data platforms compliant with Australian Health Records &amp; HIPAA standards</li>
+          <li><strong>Retail &amp; eCommerce:</strong> High-throughput omnichannel architectures capable of handling peak festive volumes</li>
+          <li><strong>Logistics &amp; Supply Chain:</strong> Real-time IoT telematics, predictive analytics, and automated tracking systems</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo-mark" style="margin-bottom: 20px; display: inline-block;" aria-label="Cloud Focal Home">
+            <div style="background: #ffffff; padding: 8px 14px; border-radius: 10px; display: inline-flex; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+              <img src="public/images/logos/cloudfocal-logo.png" alt="Cloud Focal Inc" style="height: 32px; width: auto;" />
+            </div>
+          </a>
+          <p class="footer-desc">
+            Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
+          </p>
+        </div>
+                <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Capabilities</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="careers.html">Staffing &amp; Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            <li><button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 12px; cursor: pointer; padding: 0;">Cookie Settings</button></li>
+          </ul>
+        </div>
+      </div>
+            <div class="footer-bottom">
+        <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
+        <a href="#main-content" style="color: var(--ink-dim); font-size: 11px; text-decoration: none; transition: color 0.25s var(--ease);">Back to top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="public/js/cookie-consent.js"></script>
+
+  <script>
+    if (document.documentElement.classList.contains('light-theme')) {
+      document.body.classList.add('light-theme');
+    }
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light-theme');
+      document.body.classList.toggle('light-theme', isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    const cards = document.querySelectorAll('.ind-section');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  </script>
+</body>
+</html>

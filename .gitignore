@@ -94,3 +94,7 @@ Thumbs.db
 
 # Yarn Integrity file
 .yarn-integrity
+.vercel
+node_modules/
+_react-app-backup/node_modules/
+.env*

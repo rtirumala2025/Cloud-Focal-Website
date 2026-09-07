@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+<meta charset="UTF-8">
+  <script>
+    (function() {
+      try {
+        if (window.location.protocol.startsWith('http')) {
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(function() {});
+          }
+
+          var path = window.location.pathname;
+          if (path.endsWith('.html')) {
+            var clean = path.replace(/\.html$/, '');
+            if (clean.endsWith('/index')) clean = clean.slice(0, -6);
+            if (!clean) clean = '/';
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          } else if (path.length > 1 && path.endsWith('/')) {
+            var clean = path.slice(0, -1);
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Cloud Focal | Melbourne HQ &amp; Global Support</title>
+<meta name="description" content="Get in touch with Cloud Focal for technical staffing inquiries, cloud consulting, or project engagements. Headquartered in Melbourne, Australia.">
+<link rel="icon" type="image/svg+xml" href="public/images/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="public/images/logos/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="public/images/logos/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="public/images/logos/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  color-scheme: dark light;
+  --bg: #060a1e;
+  --bg-elevated: #0d1433;
+  --bg-panel: #111a42;
+  --bg-header: rgba(6, 10, 30, 0.88);
+  --line: #1c2758;
+  --line-bright: #2d3e85;
+  --amber: #5371ff; /* Brand Vibrant Cobalt */
+  --amber-dim: #1e2eb5;
+  --amber-glow: rgba(83, 113, 255, 0.25);
+  --green: #37b5ff; /* Brand Electric Sky Cyan */
+  --green-dim: #14426b;
+  --ink: #f0f4ff;
+  --ink-dim: #9fb0e8;
+  --ink-faint: #5d6fba;
+  --serif: 'Fraunces', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --dur-1: 0.6s;
+  --dur-2: 0.9s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --glow-color: rgba(83, 113, 255, 0.18);
+}
+html.light-theme, body.light-theme {
+  --bg: #f5f8ff;
+  --bg-elevated: #e6edff;
+  --bg-panel: #dae5ff;
+  --bg-header: rgba(245, 248, 255, 0.88);
+  --line: #c5d4fb;
+  --line-bright: #9eb8f7;
+  --amber: #3853f5;
+  --amber-dim: #e0ebff;
+  --amber-glow: rgba(56, 83, 245, 0.15);
+  --green: #0284c7;
+  --green-dim: #e0f4fe;
+  --ink: #08104d;
+  --ink-dim: #384b7a;
+  --ink-faint: #6c7ea6;
+  --glow-color: rgba(56, 83, 245, 0.10);
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{ background: var(--bg); color: var(--ink); font-family: var(--mono); overflow-x: hidden; position: relative; transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease); }
+body::before{
+  content:''; position: fixed; inset:0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px; opacity: 0.35; pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+  transition: background-image var(--dur-1) var(--ease);
+}
+body::after{ content:''; position: fixed; inset:0; background: radial-gradient(ellipse 60% 40% at 78% 10%, var(--amber-glow), transparent 60%); pointer-events: none; z-index: 0; transition: background var(--dur-1) var(--ease); }
+a{ color: inherit; text-decoration: none; }
+.wrap{ max-width: 1360px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+.eyebrow{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before{ content:''; width: 7px; height: 7px; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+/* ============ ACCESSIBILITY ============ */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: var(--amber);
+  color: #fff;
+  padding: 12px 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 100;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 20px;
+  outline: 3px solid #fff;
+}
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp{ from{ opacity:0; transform: translateY(22px); } to{ opacity:1; transform: translateY(0); } }
+.seq{ opacity:0; animation: fadeUp var(--dur-1) var(--ease) forwards; }
+.seq-1{ animation-delay: 0.05s; }
+.seq-2{ animation-delay: 0.22s; }
+
+/* ============ NAV ============ */
+header{ position: fixed; top:0; left:0; right:0; z-index: 50; border-bottom: 1px solid var(--line); background: var(--bg-header); backdrop-filter: blur(10px); transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease); }
+.nav{ display:flex; align-items:center; justify-content:space-between; padding: 20px 40px; max-width: 1360px; margin: 0 auto; }
+.logo-mark{ display:flex; align-items:center; gap: 12px; }
+.logo-chip{ width: 38px; height: 38px; background: #fff; border-radius: 8px; display:flex; align-items:center; justify-content:center; padding: 5px; box-shadow: 0 0 0 1px var(--line-bright); }
+.logo-word{ font-family: var(--mono); font-weight: 600; font-size: 15px; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase; }
+.logo-word .focal{ color: var(--amber); }
+.nav-links{ display:flex; gap: 36px; }
+.nav-links a{ font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); position: relative; padding-bottom: 3px; transition: color 0.25s var(--ease); }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background: var(--amber); transition: width 0.3s var(--ease); }
+.nav-links a:hover{ color: var(--ink); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a.active{ color: var(--ink); }
+.nav-links a.active::after{ width:100%; }
+.nav-actions{ display: flex; align-items: center; gap: 16px; }
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--line-bright);
+  color: var(--ink);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  padding: 0;
+}
+.theme-toggle-btn:hover {
+  border-color: var(--amber);
+  background: var(--amber-glow);
+  color: var(--amber);
+}
+.theme-toggle-btn svg { display: none; }
+.light-theme .theme-toggle-btn .moon-icon { display: block; }
+html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
+.nav-cta{ font-size: 12px; letter-spacing:0.08em; text-transform: uppercase; border: 1px solid var(--line-bright); padding: 9px 18px; color: var(--ink); transition: all 0.25s var(--ease); }
+.nav-cta:hover{ border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
+.nav-cta.active{ border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
+
+/* ============ PAGE-SPECIFIC STYLE ============ */
+.contact-hero{ padding-top: 160px; padding-bottom: 50px; }
+.contact-title{ font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 500; line-height: 1.1; margin-top: 18px; margin-bottom: 24px; }
+.contact-title em{ font-style: italic; font-weight: 400; color: var(--amber); }
+
+.contact-layout{ display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; margin-top: 40px; }
+
+/* Contact Cards Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.contact-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  padding: 32px 26px;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+}
+.contact-card:hover {
+  border-color: var(--amber);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -10px var(--amber-glow);
+}
+.card-icon {
+  color: var(--amber);
+  margin-bottom: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amber-glow);
+  border-radius: 6px;
+  border: 1px solid rgba(91, 141, 255, 0.3);
+}
+.info-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+}
+.info-val {
+  font-size: 14.5px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.card-note {
+  font-size: 11.5px;
+  color: var(--ink-dim);
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  line-height: 1.6;
+}
+
+/* Contact Form Styling */
+.form-panel{
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  padding: 44px 38px;
+  border-radius: 8px;
+}
+.form-title{
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.form-sub{
+  font-size: 13px;
+  color: var(--ink-dim);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.form-group{
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-label{
+  font-size: 11.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+.form-input, .form-select, .form-textarea{
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-bright);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13.5px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  transition: border-color 0.25s var(--ease);
+  width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus{
+  border-color: var(--amber);
+  outline: 2px solid var(--amber);
+  outline-offset: 1px;
+}
+.form-textarea{
+  min-height: 120px;
+  resize: vertical;
+}
+.btn-submit{
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--amber);
+  color: #fff;
+  padding: 16px 32px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s var(--ease);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.btn-submit:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(91,141,255,0.4);
+}
+
+/* ============ FOOTER ============ */
+footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
+.footer-grid{ display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+#static-cookie-btn{ transition: color 0.25s var(--ease); }
+#static-cookie-btn:hover{ color: var(--ink) !important; }
+.footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
+.footer-col ul{ list-style: none; }
+.footer-col ul li{ margin-bottom: 12px; }
+.footer-col ul li a{ font-size: 12px; color: var(--ink-dim); transition: color 0.25s var(--ease); }
+.footer-col ul li a:hover{ color: var(--ink); }
+.footer-desc{ font-size: 13px; color: var(--ink-dim); line-height: 1.8; max-width: 320px; margin-top: 20px; }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top: 40px; font-size: 11px; color: var(--ink-faint); flex-wrap: wrap; gap: 12px; }
+
+/* ============ RESPONSIVENESS ============ */
+@media (max-width: 980px){
+  .nav-links{ display:none; }
+  .contact-layout{ grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid{ grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 640px){
+  .wrap{ padding: 0 20px; }
+}
+</style>
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  })();
+</script>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <div class="nav">
+      <a href="index.html" class="logo-mark" id="nav-logo" aria-label="Cloud Focal Home">
+        <img src="public/images/logos/cloudfocal-logo.png" alt="Cloud Focal Inc" style="height: 38px; width: auto; object-fit: contain;" />
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="about.html">About</a>
+        <a href="services.html">Capabilities</a>
+        <a href="industries.html">Industries</a>
+        <a href="careers.html">Staffing &amp; Careers</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="contact.html" class="nav-cta active">Start a Project</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="wrap" tabindex="-1">
+    <section class="contact-hero seq seq-1" aria-labelledby="contact-heading">
+      <h1 id="contact-heading" class="contact-title">Connect with <em>Cloud Focal.</em></h1>
+      <p style="color: var(--ink-dim); max-width: 72ch; line-height: 1.85; font-size: 15px;">
+        Headquartered in Melbourne, Victoria, Australia, Cloud Focal provides responsive technical consulting, software architecture, and specialized technology staffing services locally and internationally.
+      </p>
+    </section>
+
+    <div class="contact-layout seq seq-2">
+      <!-- Contact Details & Global Delivery -->
+      <div>
+        <h2 style="font-family: var(--serif); font-size: 26px; font-weight: 500; margin-bottom: 20px; color: var(--ink);">Headquarters &amp; Direct Support</h2>
+        <div class="contact-grid">
+          <!-- Melbourne HQ -->
+          <div class="contact-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="info-label">Melbourne HQ, Australia</div>
+            <div class="info-val">
+              Level 2, 627 Chapel Street<br>
+              South Yarra VIC 3141
+            </div>
+            <div class="card-note">AEST / AEDT Timezone · APAC Central Operations</div>
+          </div>
+
+          <!-- Email Desk -->
+          <div class="contact-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div class="info-label">Direct Inquiries</div>
+            <div class="info-val">
+              <a href="mailto:info@cloudfocal.com" style="color: var(--amber);">info@cloudfocal.com</a><br>
+              <a href="mailto:staffing@cloudfocal.com" style="color: var(--amber);">staffing@cloudfocal.com</a>
+            </div>
+            <div class="card-note">Client Inquiries &amp; Talent Applications</div>
+          </div>
+
+          <!-- Phone Support -->
+          <div class="contact-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
+            <div class="info-label">Australian Line</div>
+            <div class="info-val">
+              <a href="tel:0470612358" style="color: var(--amber);">0470 612 358</a>
+            </div>
+            <div class="card-note">Mon-Fri 9:00AM - 5:30PM AEST</div>
+          </div>
+
+          <!-- International Delivery -->
+          <div class="contact-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <div class="info-label">Global Coverage</div>
+            <div class="info-val" style="color: var(--green);">APAC &amp; US</div>
+            <div class="card-note">24/7 Enterprise SLA Support Available</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accessible Inquiry Form -->
+      <section class="form-panel" aria-labelledby="form-heading">
+        <h2 id="form-heading" class="form-title">Send a Message</h2>
+        <p class="form-sub">Tell us about your project requirements or staffing needs. Our Melbourne-based practice leads will respond within 24 hours.</p>
+
+        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for contacting Cloud Focal. Our Melbourne team will get back to you shortly.');">
+          <div class="form-group">
+            <label for="fullName" class="form-label">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" class="form-input" placeholder="e.g. Sarah Jenkins" required aria-required="true">
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Work Email *</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="sarah@company.com" required aria-required="true">
+          </div>
+
+          <div class="form-group">
+            <label for="inquiryType" class="form-label">Area of Interest *</label>
+            <select id="inquiryType" name="inquiryType" class="form-select" required aria-required="true">
+              <option value="cloud-consulting">Cloud Strategy &amp; Migration</option>
+              <option value="staffing-hire">Technical Staffing / Hire Talent</option>
+              <option value="cyber-security">Cyber Defense &amp; Information Assurance</option>
+              <option value="data-analytics">Data Architecture &amp; Analytics</option>
+              <option value="app-dev">Custom Web &amp; Mobile Apps</option>
+              <option value="careers-candidate">Job Seeker / Submit Resume</option>
+              <option value="other">General Inquiries</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Project Details or Message *</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Describe your technical requirements, timeline, or open role..." required aria-required="true"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <span>Transmit Inquiry</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo-mark" style="margin-bottom: 20px; display: inline-block;" aria-label="Cloud Focal Home">
+            <div style="background: #ffffff; padding: 8px 14px; border-radius: 10px; display: inline-flex; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+              <img src="public/images/logos/cloudfocal-logo.png" alt="Cloud Focal Inc" style="height: 32px; width: auto;" />
+            </div>
+          </a>
+          <p class="footer-desc">
+            Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
+          </p>
+        </div>
+                <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Capabilities</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="careers.html">Staffing &amp; Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            <li><button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 12px; cursor: pointer; padding: 0;">Cookie Settings</button></li>
+          </ul>
+        </div>
+      </div>
+            <div class="footer-bottom">
+        <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
+        <a href="#main-content" style="color: var(--ink-dim); font-size: 11px; text-decoration: none; transition: color 0.25s var(--ease);">Back to top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="public/js/cookie-consent.js"></script>
+
+  <script>
+    if (document.documentElement.classList.contains('light-theme')) {
+      document.body.classList.add('light-theme');
+    }
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light-theme');
+      document.body.classList.toggle('light-theme', isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    // Auto-select inquiry type from URL parameters if present
+    const urlParams = new URLSearchParams(window.location.search);
+    const typeParam = urlParams.get('type');
+    const roleParam = urlParams.get('role');
+    const selectEl = document.getElementById('inquiryType');
+    const msgEl = document.getElementById('message');
+
+    if (typeParam === 'hire' && selectEl) {
+      selectEl.value = 'staffing-hire';
+    }
+    if ((typeParam === 'career' || typeParam === 'careers') && selectEl) {
+      selectEl.value = 'careers-candidate';
+    }
+    if (roleParam && msgEl) {
+      selectEl.value = 'careers-candidate';
+      msgEl.value = `Inquiring regarding open position: ${roleParam.replace('-', ' ')}`;
+    }
+  </script>
+</body>
+</html>

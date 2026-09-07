@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <script>
+    (function() {
+      try {
+        if (window.location.protocol.startsWith('http')) {
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(function() {});
+          }
+
+          var path = window.location.pathname;
+          if (path.endsWith('.html')) {
+            var clean = path.replace(/\.html$/, '');
+            if (clean.endsWith('/index')) clean = clean.slice(0, -6);
+            if (!clean) clean = '/';
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          } else if (path.length > 1 && path.endsWith('/')) {
+            var clean = path.slice(0, -1);
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Us — Cloud Focal | Strategy, Culture &amp; Mission</title>
 <meta name="description" content="Learn about Cloud Focal's mission-driven approach to technology consulting and staffing. Headquartered in Melbourne, Australia, guided by servant leadership and triple-bottom-line values.">
+<link rel="icon" type="image/svg+xml" href="public/images/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="public/images/logos/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="public/images/logos/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="public/images/logos/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -182,7 +209,9 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 
 /* ============ FOOTER ============ */
 footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 120px; }
-.footer-grid{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-grid{ display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+#static-cookie-btn{ transition: color 0.25s var(--ease); }
+#static-cookie-btn:hover{ color: var(--ink) !important; }
 .footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
 .footer-col ul{ list-style: none; }
 .footer-col ul li{ margin-bottom: 12px; }
@@ -209,6 +238,7 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 120px; }
     }
   })();
 </script>
+<link rel="stylesheet" href="public/mobile.css">
 </head>
 <body>
 
@@ -245,9 +275,23 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 120px; }
           </svg>
         </button>
         <a href="contact.html" class="nav-cta">Start a Project</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
       </div>
     </div>
   </header>
+  <nav class="mobile-nav-overlay" id="mobile-nav-overlay" aria-label="Mobile Navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="services.html">Capabilities</a>
+    <a href="industries.html">Industries</a>
+    <a href="careers.html">Staffing &amp; Careers</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-nav-cta">Start a Project</a>
+  </nav>
 
   <main id="main-content" class="wrap" tabindex="-1">
     <section class="about-hero seq seq-1" aria-labelledby="about-heading">
@@ -294,7 +338,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 120px; }
 
       <div class="serving-grid">
         <div class="serving-card">
-          <span class="serving-tag">PILLAR // 01</span>
           <h3 class="serving-title">Serving Our Employees</h3>
           <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.7;">
             We foster an environment of diversity, accountability, and high-velocity collaboration.
@@ -307,7 +350,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 120px; }
         </div>
 
         <div class="serving-card">
-          <span class="serving-tag">PILLAR // 02</span>
           <h3 class="serving-title">Serving Our Clients</h3>
           <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.7;">
             We balance a rigorous process-oriented approach with an unrelenting passion for technical innovation.
@@ -320,7 +362,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 120px; }
         </div>
 
         <div class="serving-card">
-          <span class="serving-tag">PILLAR // 03</span>
           <h3 class="serving-title">Serving Our Community</h3>
           <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.7;">
             We expect the highest ethical standards of ourselves and our industry partners.
@@ -420,43 +461,29 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 120px; }
             Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
           </p>
         </div>
-        <div class="footer-col">
+                <div class="footer-col">
           <h4>Navigation</h4>
           <ul>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Capabilities</a></li>
             <li><a href="industries.html">Industries</a></li>
             <li><a href="careers.html">Staffing &amp; Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Capabilities</h4>
+          <h4>Legal</h4>
           <ul>
-            <li><a href="services.html#apps">Apps &amp; COTS/GOTS</a></li>
-            <li><a href="services.html#data">Data &amp; Analytics</a></li>
-            <li><a href="services.html#cyber">Cyber Defense</a></li>
-            <li><a href="services.html#cloud">Cloud Strategy</a></li>
-            <li><a href="careers.html">Technical Staffing</a></li>
-            <li><a href="services.html#consulting">IT Consulting</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="contact.html">Melbourne HQ (Australia)</a></li>
-            <li><a href="contact.html">Start a Project</a></li>
-            <li><a href="careers.html#jobs">Submit Resume</a></li>
-            <li><a href="contact.html">General Inquiries</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            <li><button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 12px; cursor: pointer; padding: 0;">Cookie Settings</button></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
+            <div class="footer-bottom">
         <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
-        <div style="display: flex; gap: 20px; align-items: center;">
-          <a href="privacy-policy.html" style="color: var(--ink-dim); font-size: 11px;">Privacy Policy</a>
-          <a href="cookie-policy.html" style="color: var(--ink-dim); font-size: 11px;">Cookie Policy</a>
-          <button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 11px; cursor: pointer; padding: 0;">Cookie Settings</button>
-        </div>
+        <a href="#main-content" style="color: var(--ink-dim); font-size: 11px; text-decoration: none; transition: color 0.25s var(--ease);">Back to top &uarr;</a>
       </div>
     </div>
   </footer>
@@ -472,6 +499,25 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 120px; }
       document.body.classList.toggle('light-theme', isLight);
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
+  </script>
+  <script>
+    (function() {
+      var btn = document.getElementById('mobile-menu-btn');
+      var overlay = document.getElementById('mobile-nav-overlay');
+      if (!btn || !overlay) return;
+      btn.addEventListener('click', function() {
+        var open = overlay.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          overlay.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    })();
   </script>
 </body>
 </html>

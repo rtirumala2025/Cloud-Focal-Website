@@ -1,0 +1,137 @@
+/* ============ MOBILE NAV (HAMBURGER) ============ */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--line-bright);
+  color: var(--ink);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+.mobile-menu-btn:hover { border-color: var(--amber); background: var(--amber-glow); color: var(--amber); }
+
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: var(--bg);
+  padding: 100px 30px 40px;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+.mobile-nav-overlay.open { display: flex; }
+.mobile-nav-overlay a {
+  font-family: var(--mono, monospace);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s ease;
+}
+.mobile-nav-overlay a:hover, .mobile-nav-overlay a.active { color: var(--amber); }
+.mobile-nav-cta {
+  margin-top: 24px;
+  display: block;
+  text-align: center;
+  font-family: var(--mono, monospace);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--amber);
+  color: #fff !important;
+  padding: 16px 28px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+@media (max-width: 980px) {
+  .mobile-menu-btn { display: flex; }
+
+  /* Nav adjustments */
+  .nav { padding: 16px 20px; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  .hero { padding-top: 110px; padding-bottom: 40px; min-height: unset; }
+  .hero-grid { grid-template-columns: 1fr !important; gap: 36px !important; text-align: center; }
+  .hero-head { white-space: normal !important; font-size: clamp(28px, 8vw, 52px) !important; }
+  .hero-head em { min-width: unset !important; display: block; }
+  .hero-sub { text-align: left; margin-left: 0; max-width: 100%; }
+  .hero-actions { justify-content: center; flex-wrap: wrap; }
+  .aperture-stage { display: none !important; }
+
+  /* Page hero sections (inner pages) */
+  .page-hero { padding-top: 110px !important; padding-bottom: 40px !important; }
+  .page-hero h1 { font-size: clamp(28px, 8vw, 50px) !important; }
+
+  /* Grids */
+  .capabilities-grid { grid-template-columns: 1fr !important; }
+  .mission-grid, .staffing-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .triple-cards { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .trust-grid { grid-template-columns: 1fr 1fr !important; }
+  .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+
+  /* About page */
+  .about-grid, .values-grid, .leadership-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .stats-row { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+
+  /* Services page */
+  .service-grid, .services-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .service-detail { flex-direction: column !important; gap: 28px !important; }
+
+  /* Industries page */
+  .industries-grid { grid-template-columns: 1fr !important; }
+
+  /* Careers page */
+  .jobs-grid, .job-listings { grid-template-columns: 1fr !important; }
+  .careers-split { grid-template-columns: 1fr !important; gap: 36px !important; }
+
+  /* Contact page */
+  .contact-grid, .contact-layout { grid-template-columns: 1fr !important; gap: 36px !important; }
+
+  /* Section padding */
+  .capabilities-section, .mission-section, .trust-section,
+  .staffing-banner, section[class*="-section"] { 
+    padding-top: 60px !important; 
+    padding-bottom: 60px !important; 
+  }
+  footer { padding: 50px 0 !important; }
+
+  /* Wrap padding */
+  .wrap { padding: 0 20px !important; }
+
+  /* Buttons full-width on small screens */
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  .hero-actions .btn-primary, .hero-actions .btn-ghost { width: auto; }
+
+  /* Typography */
+  h1, h2 { word-break: break-word; }
+}
+
+@media (max-width: 640px) {
+  .trust-grid { grid-template-columns: 1fr !important; }
+  .stats-row { grid-template-columns: 1fr !important; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  
+  /* Cap cards */
+  .cap-card { padding: 28px 20px; }
+  .cap-title { font-size: 22px !important; }
+  
+  /* Nav */
+  .nav { padding: 12px 16px; }
+  .wrap { padding: 0 16px !important; }
+
+  /* Legal pages */
+  .legal-content { padding: 0 !important; }
+}

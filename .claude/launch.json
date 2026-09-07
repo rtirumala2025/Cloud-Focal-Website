@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cloud-focal",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "env": { "PORT": "3008" },
+      "port": 3008,
+      "url": "http://localhost:3008"
+    }
+  ]
+}

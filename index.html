@@ -2,12 +2,39 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <script>
+    (function() {
+      try {
+        if (window.location.protocol.startsWith('http')) {
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(function() {});
+          }
+
+          var path = window.location.pathname;
+          if (path.endsWith('.html')) {
+            var clean = path.replace(/\.html$/, '');
+            if (clean.endsWith('/index')) clean = clean.slice(0, -6);
+            if (!clean) clean = '/';
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          } else if (path.length > 1 && path.endsWith('/')) {
+            var clean = path.slice(0, -1);
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cloud Focal — Bridging the Gap Between Strategy &amp; Execution</title>
 <meta name="description" content="Melbourne-based technology and staffing partner delivering cloud architecture, application development, data analytics, cyber defense, and enterprise IT transformation across Australia and globally.">
+<link rel="icon" type="image/svg+xml" href="public/images/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="public/images/logos/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="public/images/logos/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="public/images/logos/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============ DESIGN TOKENS ============ */
 :root{
@@ -143,7 +170,7 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 /* ============ HERO SECTION ============ */
 .hero{ min-height: 90vh; display:grid; grid-template-columns: 1fr; align-items: center; padding-top: 130px; padding-bottom: 60px; position: relative; }
 .hero-grid{ display:grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: center; }
-.hero-head{ font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 4.6vw, 78px); line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; }
+.hero-head{ font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 4.6vw, 78px); line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); }
 .hero-head em{ font-style: italic; font-weight: 400; color: var(--amber); display: inline-block; min-width: 5.5em; text-align: left; position: relative; vertical-align: baseline; }
 .hero-head em::after {
   content: '|';
@@ -224,9 +251,32 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 
 /* ============ 6 CORE CAPABILITIES (SOURCE CLOUD ALIGNED) ============ */
 .capabilities-section{ padding: 100px 0 60px; }
-.capabilities-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
-.cap-card{ background: var(--bg-panel); padding: 44px 34px; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.3s var(--ease); position: relative; overflow: hidden; }
-.cap-card:hover{ background: var(--bg-elevated); }
+.capabilities-grid{ 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px; 
+  background: transparent; 
+  border: none; 
+  margin-top: 48px; 
+}
+.cap-card{ 
+  background: var(--bg-panel); 
+  border: 1px solid var(--line); 
+  border-radius: 16px; 
+  padding: 40px 32px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease), background 0.3s var(--ease); 
+  position: relative; 
+  overflow: hidden; 
+}
+.cap-card:hover{ 
+  background: var(--bg-elevated); 
+  border-color: var(--amber); 
+  transform: translateY(-4px); 
+  box-shadow: 0 16px 36px -12px var(--amber-glow); 
+}
 .cap-card::after {
   content: "";
   position: absolute;
@@ -237,31 +287,121 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
   transition: opacity 0.3s ease;
   background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--glow-color), transparent 80%);
 }
-.cap-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--amber), var(--green) 50%, transparent 80%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0;
-  z-index: 2;
-  transition: opacity 0.3s ease;
+.cap-card:hover::after { opacity: 1; }
+.cap-card-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 3;
 }
-.cap-card:hover::before, .cap-card:hover::after { opacity: 1; }
-.cap-badge{ font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; color: var(--green); text-transform: uppercase; margin-bottom: 20px; display: inline-block; position: relative; z-index: 3; }
-.cap-icon{ width: 36px; height: 36px; color: var(--amber); margin-bottom: 20px; position: relative; z-index: 3; }
-.cap-title{ font-family: var(--serif); font-size: 26px; font-weight: 500; margin-bottom: 12px; color: var(--ink); position: relative; z-index: 3; }
-.cap-desc{ font-family: var(--mono); font-size: 13px; line-height: 1.8; color: var(--ink-dim); margin-bottom: 24px; position: relative; z-index: 3; }
-.cap-list{ list-style: none; border-top: 1px solid var(--line); padding-top: 18px; margin-bottom: 24px; position: relative; z-index: 3; }
-.cap-list li{ font-size: 12px; color: var(--ink-dim); margin-bottom: 8px; line-height: 1.5; }
-.cap-list li strong{ color: var(--ink); }
-.cap-link{ font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; position: relative; z-index: 3; transition: gap 0.25s var(--ease); }
-.cap-link:hover{ gap: 10px; }
+.cap-icon-box{
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amber-glow);
+  border: 1px solid rgba(83, 113, 255, 0.25);
+  color: var(--amber);
+  transition: all 0.3s var(--ease);
+}
+.cap-card:hover .cap-icon-box{
+  background: var(--amber);
+  color: #ffffff;
+  border-color: var(--amber);
+  box-shadow: 0 6px 20px -4px var(--amber-glow);
+}
+.cap-icon{ 
+  width: 22px; 
+  height: 22px; 
+}
+.cap-number{
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  transition: color 0.3s var(--ease);
+}
+.cap-card:hover .cap-number{
+  color: var(--green);
+}
+.cap-title{ 
+  font-family: var(--serif); 
+  font-size: 28px; 
+  font-weight: 500; 
+  line-height: 1.2; 
+  margin-bottom: 14px; 
+  color: var(--ink); 
+  position: relative; 
+  z-index: 3; 
+}
+.cap-desc{ 
+  font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+  font-size: 14.5px; 
+  line-height: 1.75; 
+  color: var(--ink-dim); 
+  margin-bottom: 24px; 
+  position: relative; 
+  z-index: 3; 
+}
+.cap-list{ 
+  list-style: none; 
+  border-top: 1px solid var(--line); 
+  padding-top: 20px; 
+  margin-bottom: 28px; 
+  position: relative; 
+  z-index: 3; 
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cap-list li{ 
+  font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+  font-size: 13px; 
+  color: var(--ink-dim); 
+  line-height: 1.6; 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 10px; 
+}
+.cap-list li::before{
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+.cap-list li strong{ 
+  color: var(--ink); 
+  font-weight: 600; 
+}
+.cap-link{ 
+  font-family: var(--mono);
+  font-size: 11.5px; 
+  letter-spacing: 0.12em; 
+  text-transform: uppercase; 
+  color: var(--amber); 
+  font-weight: 600; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 8px; 
+  position: relative; 
+  z-index: 3; 
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  transition: all 0.25s var(--ease); 
+}
+.cap-link:hover{ 
+  gap: 12px; 
+  color: var(--green); 
+}
 
 /* ============ PHILOSOPHY & MISSION ============ */
 .mission-section{ padding: 100px 0; border-top: 1px solid var(--line); }
@@ -291,7 +431,9 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 
 /* ============ FOOTER ============ */
 footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
-.footer-grid{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-grid{ display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+#static-cookie-btn{ transition: color 0.25s var(--ease); }
+#static-cookie-btn:hover{ color: var(--ink) !important; }
 .footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
 .footer-col ul{ list-style: none; }
 .footer-col ul li{ margin-bottom: 12px; }
@@ -328,6 +470,7 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
     }
   })();
 </script>
+<link rel="stylesheet" href="public/mobile.css">
 </head>
 <body>
 
@@ -364,9 +507,23 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
           </svg>
         </button>
         <a href="contact.html" class="nav-cta">Start a Project</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
       </div>
     </div>
   </header>
+  <nav class="mobile-nav-overlay" id="mobile-nav-overlay" aria-label="Mobile Navigation">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Capabilities</a>
+    <a href="industries.html">Industries</a>
+    <a href="careers.html">Staffing &amp; Careers</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-nav-cta">Start a Project</a>
+  </nav>
 
   <main id="main-content" tabindex="-1">
     <!-- Hero Section -->
@@ -403,7 +560,7 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
               <img src="public/images/logos/cloudfocal-logo.png" alt="Cloud Focal Emblem" style="width: 140px; height: auto; display: block;" />
             </div>
           </div>
-          <div class="aperture-readout">HQ // MELBOURNE (VIC) // 37.8136° S, 144.9631° E</div>
+          <div class="aperture-readout">Melbourne, Victoria, Australia · 37.8136° S, 144.9631° E</div>
         </div>
       </div>
     </section>
@@ -411,30 +568,30 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
     <!-- Infinite Marquee Ticker -->
     <div class="ticker-strip" aria-label="Key Service Highlights">
       <div class="ticker-track">
-        <span class="ticker-item">SYS_CAP_01 // APPS &amp; COTS/GOTS INTEGRATION</span>
+        <span class="ticker-item">APPS &amp; COTS/GOTS INTEGRATION</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_02 // DATABASE &amp; BIG DATA ANALYTICS</span>
+        <span class="ticker-item">DATABASE &amp; BIG DATA ANALYTICS</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_03 // CYBER DEFENSE &amp; INFO ASSURANCE</span>
+        <span class="ticker-item">CYBER DEFENSE &amp; INFO ASSURANCE</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_04 // CLOUD MIGRATION &amp; ARCHITECTURE</span>
+        <span class="ticker-item">CLOUD MIGRATION &amp; ARCHITECTURE</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_05 // PROFESSIONAL TECHNICAL STAFFING</span>
+        <span class="ticker-item">PROFESSIONAL TECHNICAL STAFFING</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_06 // IT STRATEGY &amp; PROGRAM CONSULTING</span>
+        <span class="ticker-item">IT STRATEGY &amp; PROGRAM CONSULTING</span>
         <span class="ticker-separator">//</span>
         <!-- Duplicated for loop -->
-        <span class="ticker-item">SYS_CAP_01 // APPS &amp; COTS/GOTS INTEGRATION</span>
+        <span class="ticker-item">APPS &amp; COTS/GOTS INTEGRATION</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_02 // DATABASE &amp; BIG DATA ANALYTICS</span>
+        <span class="ticker-item">DATABASE &amp; BIG DATA ANALYTICS</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_03 // CYBER DEFENSE &amp; INFO ASSURANCE</span>
+        <span class="ticker-item">CYBER DEFENSE &amp; INFO ASSURANCE</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_04 // CLOUD MIGRATION &amp; ARCHITECTURE</span>
+        <span class="ticker-item">CLOUD MIGRATION &amp; ARCHITECTURE</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_05 // PROFESSIONAL TECHNICAL STAFFING</span>
+        <span class="ticker-item">PROFESSIONAL TECHNICAL STAFFING</span>
         <span class="ticker-separator">//</span>
-        <span class="ticker-item">SYS_CAP_06 // IT STRATEGY &amp; PROGRAM CONSULTING</span>
+        <span class="ticker-item">IT STRATEGY &amp; PROGRAM CONSULTING</span>
         <span class="ticker-separator">//</span>
       </div>
     </div>
@@ -450,18 +607,22 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
         <!-- 1. APPS -->
         <article class="cap-card">
           <div>
-            <span class="cap-badge">CAPABILITY_01 // DEVELOPMENT</span>
-            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
+            <div class="cap-card-top">
+              <div class="cap-icon-box" aria-hidden="true">
+                <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <span class="cap-number">01</span>
+            </div>
             <h3 class="cap-title">Apps</h3>
             <p class="cap-desc">Robust web, mobile, and custom platform solutions engineered for scalable performance and seamless user experiences.</p>
             <ul class="cap-list">
-              <li>• <strong>Web &amp; Mobile:</strong> Full-stack iOS, Android, and responsive web systems</li>
-              <li>• <strong>COTS / GOTS:</strong> Commercial and government off-the-shelf integration</li>
-              <li>• <strong>Content Management:</strong> Enterprise content workflows and portals</li>
+              <li><span><strong>Web &amp; Mobile:</strong> Full-stack iOS, Android, and responsive web systems</span></li>
+              <li><span><strong>COTS / GOTS:</strong> Commercial and government off-the-shelf integration</span></li>
+              <li><span><strong>Content Management:</strong> Enterprise content workflows and portals</span></li>
             </ul>
           </div>
           <a href="services.html#apps" class="cap-link">Explore Apps <span aria-hidden="true">&rarr;</span></a>
@@ -470,18 +631,22 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
         <!-- 2. DATA -->
         <article class="cap-card">
           <div>
-            <span class="cap-badge">CAPABILITY_02 // INTELLIGENCE</span>
-            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-            </svg>
+            <div class="cap-card-top">
+              <div class="cap-icon-box" aria-hidden="true">
+                <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+              </div>
+              <span class="cap-number">02</span>
+            </div>
             <h3 class="cap-title">Data</h3>
             <p class="cap-desc">End-to-end data architectures that turn high-velocity data into actionable business intelligence and automated pipelines.</p>
             <ul class="cap-list">
-              <li>• <strong>Database Architecture:</strong> High-availability SQL, NoSQL, and vector stores</li>
-              <li>• <strong>Big Data Analytics:</strong> Real-time streaming, predictive metrics, and reporting</li>
-              <li>• <strong>Data Warehousing:</strong> Cloud lakehouses, ETL automation, and migration</li>
+              <li><span><strong>Database Architecture:</strong> High-availability SQL, NoSQL, and vector stores</span></li>
+              <li><span><strong>Big Data Analytics:</strong> Real-time streaming, predictive metrics, and reporting</span></li>
+              <li><span><strong>Data Warehousing:</strong> Cloud lakehouses, ETL automation, and migration</span></li>
             </ul>
           </div>
           <a href="services.html#data" class="cap-link">Explore Data <span aria-hidden="true">&rarr;</span></a>
@@ -490,17 +655,21 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
         <!-- 3. CYBER -->
         <article class="cap-card">
           <div>
-            <span class="cap-badge">CAPABILITY_03 // SECURITY</span>
-            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              <path d="m9 12 2 2 4-4"></path>
-            </svg>
+            <div class="cap-card-top">
+              <div class="cap-icon-box" aria-hidden="true">
+                <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <span class="cap-number">03</span>
+            </div>
             <h3 class="cap-title">Cyber</h3>
             <p class="cap-desc">Proactive cyber defense and rigorous information assurance protecting mission-critical digital assets and compliance postures.</p>
             <ul class="cap-list">
-              <li>• <strong>Cyber-Defense Strategies:</strong> Threat hunting, Zero Trust, and SOC ops</li>
-              <li>• <strong>Information Assurance:</strong> Essential Eight, ISO 27001, and IRAP compliance</li>
-              <li>• <strong>Vulnerability Assessments:</strong> Continuous audit, penetration, and remediation</li>
+              <li><span><strong>Cyber-Defense Strategies:</strong> Threat hunting, Zero Trust, and SOC ops</span></li>
+              <li><span><strong>Information Assurance:</strong> Essential Eight, ISO 27001, and IRAP compliance</span></li>
+              <li><span><strong>Vulnerability Assessments:</strong> Continuous audit, penetration, and remediation</span></li>
             </ul>
           </div>
           <a href="services.html#cyber" class="cap-link">Explore Cyber <span aria-hidden="true">&rarr;</span></a>
@@ -509,16 +678,20 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
         <!-- 4. CLOUD -->
         <article class="cap-card">
           <div>
-            <span class="cap-badge">CAPABILITY_04 // INFRASTRUCTURE</span>
-            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-            </svg>
+            <div class="cap-card-top">
+              <div class="cap-icon-box" aria-hidden="true">
+                <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                </svg>
+              </div>
+              <span class="cap-number">04</span>
+            </div>
             <h3 class="cap-title">Cloud</h3>
             <p class="cap-desc">Holistic cloud adoption, multi-region architecture, and continuous platform operations designed for resilience and cost efficiency.</p>
             <ul class="cap-list">
-              <li>• <strong>Strategy &amp; Migration:</strong> Seamless workload transitions across AWS, Azure, GCP</li>
-              <li>• <strong>Cloud Architecture:</strong> Serverless, containerized (Kubernetes), and hybrid setups</li>
-              <li>• <strong>System Operations:</strong> Automated CI/CD, 24/7 reliability, and FinOps</li>
+              <li><span><strong>Strategy &amp; Migration:</strong> Seamless workload transitions across AWS, Azure, GCP</span></li>
+              <li><span><strong>Cloud Architecture:</strong> Serverless, containerized (Kubernetes), and hybrid setups</span></li>
+              <li><span><strong>System Operations:</strong> Automated CI/CD, 24/7 reliability, and FinOps</span></li>
             </ul>
           </div>
           <a href="services.html#cloud" class="cap-link">Explore Cloud <span aria-hidden="true">&rarr;</span></a>
@@ -527,19 +700,23 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
         <!-- 5. STAFFING -->
         <article class="cap-card">
           <div>
-            <span class="cap-badge">CAPABILITY_05 // TALENT PIPELINE</span>
-            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
+            <div class="cap-card-top">
+              <div class="cap-icon-box" aria-hidden="true">
+                <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <span class="cap-number">05</span>
+            </div>
             <h3 class="cap-title">Staffing</h3>
             <p class="cap-desc">Specialized technical recruiting model finding and retaining high-calibre engineering and consulting professionals.</p>
             <ul class="cap-list">
-              <li>• <strong>Staff Augmentation:</strong> Immediate technical headcount for active projects</li>
-              <li>• <strong>Permanent Placement:</strong> Vetted executive and engineering hires</li>
-              <li>• <strong>Outsourced Recruiting:</strong> Dedicated project staffing and talent funnels</li>
+              <li><span><strong>Staff Augmentation:</strong> Immediate technical headcount for active projects</span></li>
+              <li><span><strong>Permanent Placement:</strong> Vetted executive and engineering hires</span></li>
+              <li><span><strong>Outsourced Recruiting:</strong> Dedicated project staffing and talent funnels</span></li>
             </ul>
           </div>
           <a href="careers.html" class="cap-link">Explore Staffing <span aria-hidden="true">&rarr;</span></a>
@@ -548,16 +725,20 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
         <!-- 6. CONSULTING -->
         <article class="cap-card">
           <div>
-            <span class="cap-badge">CAPABILITY_06 // TRANSFORMATION</span>
-            <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-            </svg>
+            <div class="cap-card-top">
+              <div class="cap-icon-box" aria-hidden="true">
+                <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <span class="cap-number">06</span>
+            </div>
             <h3 class="cap-title">Consulting</h3>
             <p class="cap-desc">Strategic executive advisory and program management that elevates delivery quality and aligns technology investments with outcomes.</p>
             <ul class="cap-list">
-              <li>• <strong>Program Management:</strong> Rigorous execution, risk controls, and governance</li>
-              <li>• <strong>Program Quality:</strong> Performance benchmarking and optimization</li>
-              <li>• <strong>Enterprise Architecture:</strong> Long-term IT strategy and modernization roadmaps</li>
+              <li><span><strong>Program Management:</strong> Rigorous execution, risk controls, and governance</span></li>
+              <li><span><strong>Program Quality:</strong> Performance benchmarking and optimization</span></li>
+              <li><span><strong>Enterprise Architecture:</strong> Long-term IT strategy and modernization roadmaps</span></li>
             </ul>
           </div>
           <a href="services.html#consulting" class="cap-link">Explore Consulting <span aria-hidden="true">&rarr;</span></a>
@@ -583,17 +764,14 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
         <div>
           <div class="triple-cards">
             <div class="triple-card">
-              <div class="triple-num">PILLAR // 01</div>
               <h3 class="triple-title">Profit with Purpose</h3>
               <p class="triple-desc">Delivering tangible ROI, cost reductions, and technical leverage that build enduring enterprise valuation.</p>
             </div>
             <div class="triple-card">
-              <div class="triple-num">PILLAR // 02</div>
               <h3 class="triple-title">People First</h3>
               <p class="triple-desc">Practicing servant leadership towards our employees, clients, and community as dedicated "Go-Givers".</p>
             </div>
             <div class="triple-card">
-              <div class="triple-num">PILLAR // 03</div>
               <h3 class="triple-title">Sustainable Future</h3>
               <p class="triple-desc">Prioritizing efficient, green cloud architectures and responsible ethical governance in all systems we build.</p>
             </div>
@@ -637,7 +815,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
       
       <div class="trust-grid">
         <div class="trust-item">
-          <span class="trust-badge">SYS_VAL_01 // STAFFING</span>
           <h3 class="trust-title">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true">
               <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
@@ -652,7 +829,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
           <p class="trust-desc">Premier Technology Staffing Partner</p>
         </div>
         <div class="trust-item">
-          <span class="trust-badge">SYS_VAL_02 // QUALITY</span>
           <h3 class="trust-title">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -662,7 +838,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
           <p class="trust-desc">Client Satisfaction &amp; Delivery Excellence</p>
         </div>
         <div class="trust-item">
-          <span class="trust-badge">SYS_VAL_03 // SECURITY</span>
           <h3 class="trust-title">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -673,7 +848,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
           <p class="trust-desc">Essential Eight &amp; ISO 27001 Standards</p>
         </div>
         <div class="trust-item">
-          <span class="trust-badge">SYS_VAL_04 // CAPACITY</span>
           <h3 class="trust-title">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true">
               <circle cx="12" cy="12" r="10"></circle>
@@ -682,7 +856,7 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
             </svg>
             Global Reach
           </h3>
-          <p class="trust-desc">Melbourne HQ // APAC, US &amp; EMEA Support</p>
+          <p class="trust-desc">Melbourne HQ · APAC, US &amp; EMEA Support</p>
         </div>
       </div>
     </section>
@@ -701,43 +875,29 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
             Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
           </p>
         </div>
-        <div class="footer-col">
+                <div class="footer-col">
           <h4>Navigation</h4>
           <ul>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Capabilities</a></li>
             <li><a href="industries.html">Industries</a></li>
             <li><a href="careers.html">Staffing &amp; Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Capabilities</h4>
+          <h4>Legal</h4>
           <ul>
-            <li><a href="services.html#apps">Apps &amp; COTS/GOTS</a></li>
-            <li><a href="services.html#data">Data &amp; Analytics</a></li>
-            <li><a href="services.html#cyber">Cyber Defense</a></li>
-            <li><a href="services.html#cloud">Cloud Strategy</a></li>
-            <li><a href="careers.html">Technical Staffing</a></li>
-            <li><a href="services.html#consulting">IT Consulting</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="contact.html">Melbourne HQ (Australia)</a></li>
-            <li><a href="contact.html">Start a Project</a></li>
-            <li><a href="careers.html#jobs">Submit Resume</a></li>
-            <li><a href="contact.html">General Inquiries</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            <li><button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 12px; cursor: pointer; padding: 0;">Cookie Settings</button></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
+            <div class="footer-bottom">
         <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
-        <div style="display: flex; gap: 20px; align-items: center;">
-          <a href="privacy-policy.html" style="color: var(--ink-dim); font-size: 11px;">Privacy Policy</a>
-          <a href="cookie-policy.html" style="color: var(--ink-dim); font-size: 11px;">Cookie Policy</a>
-          <button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 11px; cursor: pointer; padding: 0;">Cookie Settings</button>
-        </div>
+        <a href="#main-content" style="color: var(--ink-dim); font-size: 11px; text-decoration: none; transition: color 0.25s var(--ease);">Back to top &uarr;</a>
       </div>
     </div>
   </footer>
@@ -803,6 +963,25 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 80px; }
       
       timeoutId = setTimeout(type, 1800);
     });
+  </script>
+  <script>
+    (function() {
+      var btn = document.getElementById('mobile-menu-btn');
+      var overlay = document.getElementById('mobile-nav-overlay');
+      if (!btn || !overlay) return;
+      btn.addEventListener('click', function() {
+        var open = overlay.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          overlay.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    })();
   </script>
 </body>
 </html>

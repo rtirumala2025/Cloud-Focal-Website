@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <script>
+    (function() {
+      try {
+        if (window.location.protocol.startsWith('http')) {
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(function() {});
+          }
+
+          var path = window.location.pathname;
+          if (path.endsWith('.html')) {
+            var clean = path.replace(/\.html$/, '');
+            if (clean.endsWith('/index')) clean = clean.slice(0, -6);
+            if (!clean) clean = '/';
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          } else if (path.length > 1 && path.endsWith('/')) {
+            var clean = path.slice(0, -1);
+            window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Capabilities &amp; Services — Cloud Focal</title>
 <meta name="description" content="Explore Cloud Focal's technical capabilities across Apps, Data, Cyber, Cloud, Staffing, and Consulting. Delivering precision technology solutions in Australia and globally.">
+<link rel="icon" type="image/svg+xml" href="public/images/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="public/images/logos/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="public/images/logos/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="public/images/logos/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -185,7 +212,9 @@ html:not(.light-theme) .theme-toggle-btn .sun-icon { display: block; }
 
 /* ============ FOOTER ============ */
 footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
-.footer-grid{ display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+.footer-grid{ display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--line); }
+#static-cookie-btn{ transition: color 0.25s var(--ease); }
+#static-cookie-btn:hover{ color: var(--ink) !important; }
 .footer-col h4{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 24px; }
 .footer-col ul{ list-style: none; }
 .footer-col ul li{ margin-bottom: 12px; }
@@ -215,6 +244,7 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
     }
   })();
 </script>
+<link rel="stylesheet" href="public/mobile.css">
 </head>
 <body>
 
@@ -251,9 +281,23 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
           </svg>
         </button>
         <a href="contact.html" class="nav-cta">Start a Project</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
       </div>
     </div>
   </header>
+  <nav class="mobile-nav-overlay" id="mobile-nav-overlay" aria-label="Mobile Navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html" class="active">Capabilities</a>
+    <a href="industries.html">Industries</a>
+    <a href="careers.html">Staffing &amp; Careers</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-nav-cta">Start a Project</a>
+  </nav>
 
   <main id="main-content" class="wrap" tabindex="-1">
     <section class="services-hero seq seq-1" aria-labelledby="services-heading">
@@ -272,7 +316,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       <section class="services-grid" aria-label="Apps Services">
         <article class="service-card">
           <div>
-            <span class="service-tag">Web &amp; Mobile</span>
             <h3 class="service-name">Custom Web &amp; Mobile</h3>
             <p class="service-desc">Tailored digital platforms built with modern frontend frameworks and microservices backends for high reliability and responsiveness.</p>
           </div>
@@ -284,7 +327,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">COTS / GOTS</span>
             <h3 class="service-name">COTS &amp; GOTS Integration</h3>
             <p class="service-desc">Strategic integration of commercial and government off-the-shelf software packages to accelerate deployment and maintain standards.</p>
           </div>
@@ -296,7 +338,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Content Systems</span>
             <h3 class="service-name">Enterprise Content Mgmt</h3>
             <p class="service-desc">Scalable content management, document lifecycle governance, and collaborative intranet systems for distributed workforces.</p>
           </div>
@@ -318,7 +359,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       <section class="services-grid" aria-label="Data Services">
         <article class="service-card">
           <div>
-            <span class="service-tag">Database Ops</span>
             <h3 class="service-name">Database Architecture</h3>
             <p class="service-desc">Architecting, tuning, and operating resilient relational and NoSQL database engines capable of high concurrency and sub-millisecond queries.</p>
           </div>
@@ -330,7 +370,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Big Data</span>
             <h3 class="service-name">Big Data Analytics</h3>
             <p class="service-desc">Real-time telemetry, stream processing, and business intelligence dashboards that convert raw data streams into actionable operational foresight.</p>
           </div>
@@ -342,7 +381,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Warehousing</span>
             <h3 class="service-name">Data Warehousing &amp; Migration</h3>
             <p class="service-desc">Modern cloud lakehouse implementations and automated data migration pipelines from on-premises servers to cloud scale.</p>
           </div>
@@ -364,7 +402,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       <section class="services-grid" aria-label="Cyber Services">
         <article class="service-card">
           <div>
-            <span class="service-tag">Cyber-Defense</span>
             <h3 class="service-name">Cyber-Defense Strategies</h3>
             <p class="service-desc">Proactive defense-in-depth frameworks, Zero Trust network architectures, and Security Operations Center (SOC) operational blueprints.</p>
           </div>
@@ -376,7 +413,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Assurance</span>
             <h3 class="service-name">Information Assurance</h3>
             <p class="service-desc">Comprehensive compliance audits, regulatory alignments, and governance frameworks protecting sensitive corporate and citizen data.</p>
           </div>
@@ -388,7 +424,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Assessments</span>
             <h3 class="service-name">Vulnerability Assessments</h3>
             <p class="service-desc">Continuous posture auditing, penetration testing, source code analysis, and prioritized remediation plans for cloud infrastructure.</p>
           </div>
@@ -410,7 +445,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       <section class="services-grid" aria-label="Cloud Services">
         <article class="service-card">
           <div>
-            <span class="service-tag">Strategy</span>
             <h3 class="service-name">Cloud Strategy &amp; Migration</h3>
             <p class="service-desc">Structured cloud readiness assessments, total-cost-of-ownership modeling, and phased migration pathways with zero business interruption.</p>
           </div>
@@ -422,7 +456,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Architecture</span>
             <h3 class="service-name">Cloud Architecture</h3>
             <p class="service-desc">Designing resilient, auto-scaling, and secure microservice architectures utilizing containers, service meshes, and serverless compute.</p>
           </div>
@@ -434,7 +467,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Platform Ops</span>
             <h3 class="service-name">System Dev &amp; Operations</h3>
             <p class="service-desc">DevOps pipeline engineering, continuous integration and delivery (CI/CD), observability, and proactive platform site reliability (SRE).</p>
           </div>
@@ -456,7 +488,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       <section class="services-grid" aria-label="Staffing Services">
         <article class="service-card">
           <div>
-            <span class="service-tag">Augmentation</span>
             <h3 class="service-name">Staff Augmentation</h3>
             <p class="service-desc">Immediate deployment of senior engineers, DevOps leads, and cloud architects to accelerate delivery without internal overhead.</p>
           </div>
@@ -468,7 +499,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Placement</span>
             <h3 class="service-name">Permanent Placement</h3>
             <p class="service-desc">Direct-hire recruitment of core technical leaders and engineers who align with your technological vision and organizational culture.</p>
           </div>
@@ -480,7 +510,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">RPO</span>
             <h3 class="service-name">Outsourced Recruiting</h3>
             <p class="service-desc">End-to-end recruitment process outsourcing (RPO) and specialized project team staffing for rapid digital transformations.</p>
           </div>
@@ -502,7 +531,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
       <section class="services-grid" aria-label="Consulting Services">
         <article class="service-card">
           <div>
-            <span class="service-tag">Programs</span>
             <h3 class="service-name">Program Management</h3>
             <p class="service-desc">Structured oversight and governance for high-stakes technology implementations, ensuring deliverables arrive on schedule and within budget.</p>
           </div>
@@ -514,7 +542,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Efficiency</span>
             <h3 class="service-name">Program Quality &amp; Efficiency</h3>
             <p class="service-desc">Auditing existing software delivery processes, identifying friction points, and implementing lean engineering methodologies.</p>
           </div>
@@ -526,7 +553,6 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         </article>
         <article class="service-card">
           <div>
-            <span class="service-tag">Transformation</span>
             <h3 class="service-name">IT Strategy &amp; Enterprise Arch</h3>
             <p class="service-desc">Multi-year technology modernization roadmaps aligning capital investments with strategic market opportunities.</p>
           </div>
@@ -553,43 +579,29 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
             Bridging the gap between strategy and execution. Melbourne-headquartered technical staffing and digital consulting partner serving Australian and international enterprise clients.
           </p>
         </div>
-        <div class="footer-col">
+                <div class="footer-col">
           <h4>Navigation</h4>
           <ul>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Capabilities</a></li>
             <li><a href="industries.html">Industries</a></li>
             <li><a href="careers.html">Staffing &amp; Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Capabilities</h4>
+          <h4>Legal</h4>
           <ul>
-            <li><a href="services.html#apps">Apps &amp; COTS/GOTS</a></li>
-            <li><a href="services.html#data">Data &amp; Analytics</a></li>
-            <li><a href="services.html#cyber">Cyber Defense</a></li>
-            <li><a href="services.html#cloud">Cloud Strategy</a></li>
-            <li><a href="careers.html">Technical Staffing</a></li>
-            <li><a href="services.html#consulting">IT Consulting</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="contact.html">Melbourne HQ (Australia)</a></li>
-            <li><a href="contact.html">Start a Project</a></li>
-            <li><a href="careers.html#jobs">Submit Resume</a></li>
-            <li><a href="contact.html">General Inquiries</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            <li><button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 12px; cursor: pointer; padding: 0;">Cookie Settings</button></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
+            <div class="footer-bottom">
         <p>&copy; 2026 Cloud Focal. All rights reserved. Melbourne, Victoria, Australia.</p>
-        <div style="display: flex; gap: 20px; align-items: center;">
-          <a href="privacy-policy.html" style="color: var(--ink-dim); font-size: 11px;">Privacy Policy</a>
-          <a href="cookie-policy.html" style="color: var(--ink-dim); font-size: 11px;">Cookie Policy</a>
-          <button id="static-cookie-btn" type="button" style="background: none; border: none; color: var(--ink-dim); font-family: inherit; font-size: 11px; cursor: pointer; padding: 0;">Cookie Settings</button>
-        </div>
+        <a href="#main-content" style="color: var(--ink-dim); font-size: 11px; text-decoration: none; transition: color 0.25s var(--ease);">Back to top &uarr;</a>
       </div>
     </div>
   </footer>
@@ -617,6 +629,25 @@ footer{ border-top: 1px solid var(--line); padding: 80px 0; margin-top: 140px; }
         card.style.setProperty('--mouse-y', `${y}px`);
       });
     });
+  </script>
+  <script>
+    (function() {
+      var btn = document.getElementById('mobile-menu-btn');
+      var overlay = document.getElementById('mobile-nav-overlay');
+      if (!btn || !overlay) return;
+      btn.addEventListener('click', function() {
+        var open = overlay.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          overlay.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    })();
   </script>
 </body>
 </html>
