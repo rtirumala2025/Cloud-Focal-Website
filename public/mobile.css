@@ -124,6 +124,9 @@
   /* Tighten gap into ticker */
   .ticker-strip { margin-top: -8px; }
 
+  /* Hide Technical Capabilities section on homepage (mobile only) */
+  .capabilities-section { display: none !important; }
+
   /* Body text — use system font instead of mono for readability */
   p, li, .cap-desc, .mission-text, .trust-desc, .footer-desc {
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif !important;
