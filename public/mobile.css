@@ -115,8 +115,8 @@
   }
   footer { padding: 50px 0 !important; }
 
-  /* Wrap padding */
-  .wrap { padding: 0 20px !important; }
+  /* Wrap padding — left/right only, so it never resets .hero's own padding-top when an element has both classes */
+  .wrap { padding-left: 20px !important; padding-right: 20px !important; }
 
   /* Buttons full-width on small screens */
   .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
@@ -137,7 +137,7 @@
   
   /* Nav */
   .nav { padding: 12px 16px; }
-  .wrap { padding: 0 16px !important; }
+  .wrap { padding-left: 16px !important; padding-right: 16px !important; }
 
   /* Legal pages */
   .legal-content { padding: 0 !important; }
