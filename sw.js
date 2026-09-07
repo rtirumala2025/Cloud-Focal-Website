@@ -1,28 +1,19 @@
-// Cloud Focal - Clean URL Service Worker
-// Automatically serves .html files for extensionless clean URLs (e.g. on page refresh)
+// Cloud Focal - Service worker disabled.
+// Clean URLs are handled natively by Vercel's cleanUrls config (vercel.json).
+// This SW now only unregisters itself to clear out any stale cached version
+// from client devices that still have the old redirect-based worker installed.
 self.addEventListener('install', function(e) {
   self.skipWaiting();
 });
 
 self.addEventListener('activate', function(e) {
-  e.waitUntil(self.clients.claim());
-});
-
-self.addEventListener('fetch', function(e) {
-  var req = e.request;
-  if (req.mode === 'navigate' && req.method === 'GET') {
-    var url = new URL(req.url);
-    if (url.origin === self.location.origin) {
-      var pathname = url.pathname;
-      if (pathname !== '/' && !pathname.includes('.')) {
-        var cleanPath = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
-        var target = cleanPath + '.html' + url.search + url.hash;
-        e.respondWith(
-          fetch(target).catch(function() {
-            return fetch(req);
-          })
-        );
-      }
-    }
-  }
+  e.waitUntil(
+    self.registration.unregister().then(function() {
+      return self.clients.matchAll();
+    }).then(function(clients) {
+      clients.forEach(function(client) {
+        client.navigate(client.url);
+      });
+    })
+  );
 });
